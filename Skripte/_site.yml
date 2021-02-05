@@ -4,4 +4,4 @@ navbar:
   title: "EEP-Datenauswertung"
   left:
     - text: "Datenauswertung"
-      href: DatenauswertungExampleFormat.Rmd
+      href: DatenauswertungExampleFormat.html

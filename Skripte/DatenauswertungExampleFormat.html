@@ -10,21 +10,21 @@
     
     <title>Datenauswertung EEP</title>
 
-        <script src="DatenauswertungExampleFormat_files/jquery-1.11.3/jquery.min.js"></script>
+        <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="DatenauswertungExampleFormat_files/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="DatenauswertungExampleFormat_files/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script src="DatenauswertungExampleFormat_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
-    <script src="DatenauswertungExampleFormat_files/navigation-1.1/tabsets.js"></script>
-    <script src="DatenauswertungExampleFormat_files/navigation-1.1/codefolding.js"></script>
-    <link href="DatenauswertungExampleFormat_files/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
-    <script src="DatenauswertungExampleFormat_files/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
-    <link href="DatenauswertungExampleFormat_files/readthedown-0.1/readthedown.css" rel="stylesheet" />
-    <link href="DatenauswertungExampleFormat_files/readthedown-0.1/readthedown_fonts.css" rel="stylesheet" />
-    <script src="DatenauswertungExampleFormat_files/readthedown-0.1/readthedown.js"></script>
-    <script src="DatenauswertungExampleFormat_files/accessible-code-block-0.0.1/empty-anchor.js"></script>
-    <link href="DatenauswertungExampleFormat_files/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-    <script src="DatenauswertungExampleFormat_files/pagedtable-1.1/js/pagedtable.js"></script>
+    <link href="site_libs/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="site_libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+    <script src="site_libs/navigation-1.1/tabsets.js"></script>
+    <script src="site_libs/navigation-1.1/codefolding.js"></script>
+    <link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+    <script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+    <link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+    <link href="site_libs/readthedown-0.1/readthedown_fonts.css" rel="stylesheet" />
+    <script src="site_libs/readthedown-0.1/readthedown.js"></script>
+    <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+    <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+    <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
     
     
         <style type="text/css">code{white-space: pre;}</style>
@@ -199,6 +199,29 @@
 	    	    	         </ul>
    </div>
    
+      
+   <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+     <div class="container">
+       <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="index.html">EEP-Datenauswertung</a>
+       </div>
+       <div id="navbar" class="navbar-collapse collapse">
+         <ul class="nav navbar-nav">
+           <li>
+     <a href="DatenauswertungExampleFormat.html">Datenauswertung</a>
+   </li>
+         </ul>
+         <ul class="nav navbar-nav navbar-right">
+           
+         </ul>
+       </div><!--/.nav-collapse -->
+     </div><!--/.container -->
+   </div><!--/.navbar -->
         
       <h1 class="title">Datenauswertung EEP</h1>
       
@@ -636,29 +659,32 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] ez_4.4-0         forcats_0.5.0    stringr_1.4.0    dplyr_1.0.2     
- [5] purrr_0.3.4      readr_1.4.0      tidyr_1.1.2      tibble_3.0.4    
- [9] ggplot2_3.3.2    tidyverse_1.3.0  Rmisc_1.5        plyr_1.8.6      
-[13] lattice_0.20-41  rmarkdown_2.6.4  rmdformats_1.0.0 knitr_1.30      
+ [1] viridis_0.5.1     viridisLite_0.3.0 ggsci_2.9         colorspace_2.0-0  lemon_0.4.5      
+ [6] ez_4.4-0          forcats_0.5.0     stringr_1.4.0     dplyr_1.0.2       purrr_0.3.4      
+[11] readr_1.4.0       tidyr_1.1.2       tibble_3.0.4      ggplot2_3.3.2     tidyverse_1.3.0  
+[16] Rmisc_1.5         plyr_1.8.6        lattice_0.20-41   rmarkdown_2.6.4   rmdformats_1.0.0 
+[21] knitr_1.30       
 
 loaded via a namespace (and not attached):
- [1] httr_1.4.2        jsonlite_1.7.2    splines_3.6.0     carData_3.0-4    
- [5] modelr_0.1.8      assertthat_0.2.1  statmod_1.4.35    cellranger_1.1.0 
- [9] yaml_2.2.1        pillar_1.4.7      backports_1.2.1   glue_1.4.2       
-[13] digest_0.6.27     rvest_0.3.6       minqa_1.2.4       colorspace_2.0-0 
-[17] htmltools_0.5.0   Matrix_1.2-17     pkgconfig_2.0.3   broom_0.7.3      
-[21] haven_2.3.1       bookdown_0.21     scales_1.1.1      openxlsx_4.2.3   
-[25] rio_0.5.16        lme4_1.1-26       mgcv_1.8-28       generics_0.1.0   
-[29] car_3.0-10        ellipsis_0.3.1    withr_2.3.0       cli_2.2.0        
-[33] magrittr_2.0.1    crayon_1.3.4      readxl_1.3.1      evaluate_0.14    
-[37] fs_1.5.0          fansi_0.4.1       nlme_3.1-139      MASS_7.3-51.4    
-[41] xml2_1.3.2        foreign_0.8-71    tools_3.6.0       data.table_1.13.4
-[45] hms_0.5.3         lifecycle_0.2.0   munsell_0.5.0     reprex_0.3.0     
-[49] zip_2.1.1         compiler_3.6.0    rlang_0.4.10      grid_3.6.0       
-[53] nloptr_1.2.2.2    rstudioapi_0.13   boot_1.3-25       gtable_0.3.0     
-[57] abind_1.4-5       DBI_1.1.0         curl_4.3          reshape2_1.4.4   
-[61] R6_2.5.0          lubridate_1.7.9.2 stringi_1.5.3     Rcpp_1.0.5       
-[65] vctrs_0.3.6       dbplyr_2.0.0      tidyselect_1.1.0  xfun_0.19        </code></pre>
+ [1] nlme_3.1-139       fs_1.5.0           lubridate_1.7.9.2  RColorBrewer_1.1-2
+ [5] httr_1.4.2         rprojroot_2.0.2    tools_3.6.0        backports_1.2.1   
+ [9] R6_2.5.0           DBI_1.1.0          mgcv_1.8-28        withr_2.3.0       
+[13] tidyselect_1.1.0   gridExtra_2.3      curl_4.3           compiler_3.6.0    
+[17] cli_2.2.0          rvest_0.3.6        xml2_1.3.2         labeling_0.4.2    
+[21] bookdown_0.21      scales_1.1.1       hexbin_1.28.1      digest_0.6.27     
+[25] foreign_0.8-71     minqa_1.2.4        rio_0.5.16         pkgconfig_2.0.3   
+[29] htmltools_0.5.0    lme4_1.1-26        dbplyr_2.0.0       rlang_0.4.10      
+[33] readxl_1.3.1       rstudioapi_0.13    generics_0.1.0     farver_2.0.3      
+[37] jsonlite_1.7.2     zip_2.1.1          car_3.0-10         magrittr_2.0.1    
+[41] Matrix_1.2-17      Rcpp_1.0.5         munsell_0.5.0      fansi_0.4.1       
+[45] abind_1.4-5        lifecycle_0.2.0    stringi_1.5.3      yaml_2.2.1        
+[49] carData_3.0-4      MASS_7.3-51.4      grid_3.6.0         crayon_1.3.4      
+[53] haven_2.3.1        splines_3.6.0      hms_0.5.3          pillar_1.4.7      
+[57] boot_1.3-25        reshape2_1.4.4     reprex_0.3.0       glue_1.4.2        
+[61] evaluate_0.14      data.table_1.13.4  modelr_0.1.8       vctrs_0.3.6       
+[65] nloptr_1.2.2.2     cellranger_1.1.0   gtable_0.3.0       assertthat_0.2.1  
+[69] xfun_0.19          openxlsx_4.2.3     broom_0.7.3        statmod_1.4.35    
+[73] ellipsis_0.3.1    </code></pre>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">writeLines</span>(<span class="kw">capture.output</span>(<span class="kw">sessionInfo</span>()), <span class="kw">paste0</span>(<span class="kw">format</span>(<span class="kw">Sys.time</span>(), <span class="st">&quot;%Y%b%d&quot;</span>),<span class="st">&quot;sessionInfo.txt&quot;</span>))</span></code></pre></div>
 <p><br />
 </p>
@@ -685,7 +711,16 @@ und ggf. korrigieren mit <code>setwd("C:/richtiger/Pfad/")</code>.</p>
 Wenn der Output von <code>ls()</code> leer ist, ist es auch der Workspace.</p>
 <p>Andernfalls könnt ihr mit <code>rm(list=ls())</code> den Workspace leeren.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">ls</span>()</span></code></pre></div>
-<pre><code>[1] &quot;packages&quot; &quot;vec&quot;      &quot;wd&quot;      </code></pre>
+<pre><code> [1] &quot;Balken&quot;             &quot;Baseplot&quot;           &quot;Boxplot&quot;            &quot;colors&quot;            
+ [5] &quot;data&quot;               &quot;data.alle.vps&quot;      &quot;data.anova&quot;         &quot;data.df&quot;           
+ [9] &quot;data.example&quot;       &quot;data.files&quot;         &quot;data.id&quot;            &quot;data.list&quot;         
+[13] &quot;data.ohneFehler.df&quot; &quot;data.RT.df&quot;         &quot;daten&quot;              &quot;daten1&quot;            
+[17] &quot;daten2&quot;             &quot;daten3&quot;             &quot;ErrorData&quot;          &quot;file&quot;              
+[21] &quot;i&quot;                  &quot;Interaction&quot;        &quot;lookupT&quot;            &quot;myanova&quot;           
+[25] &quot;npg&quot;                &quot;packages&quot;           &quot;pd&quot;                 &quot;plot&quot;              
+[29] &quot;plots&quot;              &quot;pttest&quot;             &quot;sem&quot;                &quot;SEwithinRT&quot;        
+[33] &quot;StandardTheme&quot;      &quot;vec&quot;                &quot;vector&quot;             &quot;VP&quot;                
+[37] &quot;vp.err&quot;             &quot;wd&quot;                </code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="kw">ls</span>()</span></code></pre></div>
 <pre><code>character(0)</code></pre>
@@ -1058,17 +1093,17 @@ Show/hide
 <span id="cb29-3"><a href="#cb29-3"></a><span class="st">  </span><span class="kw">filter</span>(corr <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</span></code></pre></div>
 <p><strong>Histogram</strong> Verteilung der Reaktionszeiten - insgesamt (ohne Berücksichtigung der Bedingungen)</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="kw">ggplot</span>( <span class="dt">data=</span>data.ohneFehler.df, <span class="kw">aes</span>(<span class="dt">x=</span> rt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth=</span><span class="dv">100</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(<span class="op">~</span>Condition1)</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-15-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 <p>Verteilung der Reaktionszeiten pro Bedingung</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="kw">ggplot</span>( <span class="dt">data=</span>data.ohneFehler.df, <span class="kw">aes</span>(<span class="dt">x=</span> rt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth=</span><span class="dv">100</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(Condition1<span class="op">~</span>Condition2)</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-16-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 <p><strong>Boxplot</strong> Boxplot der Reaktionszeiten pro Bedingung</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="kw">ggplot</span>( <span class="dt">data=</span>data.ohneFehler.df, <span class="kw">aes</span>(<span class="dt">x=</span> Condition2 , <span class="dt">y=</span>rt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>()<span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(<span class="op">~</span>Condition1)</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-17-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 <p><a name="Ausreisseranalyse"></a></p>
@@ -1273,9 +1308,9 @@ Arguments:
 <p><br />
 Histogramme pro VP:</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="kw">qplot</span>(<span class="dt">x=</span>Condition2, <span class="dt">y=</span>rt, <span class="dt">data=</span>data.df, <span class="dt">geom=</span><span class="kw">c</span>(<span class="st">&quot;boxplot&quot;</span>, <span class="st">&quot;jitter&quot;</span>), <span class="dt">binwidth=</span><span class="dv">100</span>, <span class="dt">facets=</span>id<span class="op">~</span>Condition1) </span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-24-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="kw">ggplot</span>( <span class="dt">data=</span>data.df, <span class="kw">aes</span>(<span class="dt">x=</span> Condition2 , <span class="dt">y=</span>rt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>()<span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(id<span class="op">~</span>Condition1)</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-24-2.png" style="display: block; margin: auto;" /><br />
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-24-2.png" width="576" style="display: block; margin: auto;" /><br />
 </p>
 <p>Wie ihr seht werden Plots pro VP sehr schnell unübersichtlich wenn ihr facets verwendet. Ihr könnt euch in dem Chunk einen Filter setzen mit dem ihr euch flexibel einzelne VPs ansehen könnt.<br />
 </p>
@@ -1283,7 +1318,7 @@ Histogramme pro VP:</p>
 <span id="cb45-2"><a href="#cb45-2"></a>data.id =<span class="st"> </span>data.df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(id <span class="op">==</span><span class="st"> </span>VP)</span>
 <span id="cb45-3"><a href="#cb45-3"></a></span>
 <span id="cb45-4"><a href="#cb45-4"></a><span class="kw">ggplot</span>( <span class="dt">data=</span>data.id, <span class="kw">aes</span>(<span class="dt">x=</span> Condition2 , <span class="dt">y=</span>rt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>()<span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(id<span class="op">~</span>Condition1)</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-25-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 <div class="red">
@@ -1330,43 +1365,43 @@ Histogramme pro VP:</p>
 <h4>Plotten in Tabs</h4>
 <div id="vp-1" class="section level5">
 <h5>VP: 1</h5>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="vp-2" class="section level5">
 <h5>VP: 2</h5>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-2.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-2.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="vp-3" class="section level5">
 <h5>VP: 3</h5>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-3.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-3.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="vp-4" class="section level5">
 <h5>VP: 4</h5>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-4.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-4.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="vp-5" class="section level5">
 <h5>VP: 5</h5>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-5.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-5.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="vp-6" class="section level5">
 <h5>VP: 6</h5>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-6.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-6.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="vp-7" class="section level5">
 <h5>VP: 7</h5>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-7.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-7.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="vp-8" class="section level5">
 <h5>VP: 8</h5>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-8.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-8.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="vp-9" class="section level5">
 <h5>VP: 9</h5>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-9.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-9.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="vp-10" class="section level5">
 <h5>VP: 10</h5>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-10.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-28-10.png" width="576" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 </div>
@@ -1394,17 +1429,17 @@ Histogramme pro VP:</p>
 </p>
 <p><strong>Boxplot Reaktionszeiten</strong></p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="kw">ggplot</span>( <span class="dt">data=</span>data.alle.vps, <span class="kw">aes</span>(<span class="dt">x=</span> Condition2 , <span class="dt">y=</span>mean.rt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>()<span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(<span class="op">~</span>Condition1)</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-30-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 <p><strong>Boxplot Antwortgenauigkeiten</strong></p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="kw">ggplot</span>( <span class="dt">data=</span>data.alle.vps, <span class="kw">aes</span>(<span class="dt">x=</span> Condition2 , <span class="dt">y=</span>mean.err)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>()<span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(<span class="op">~</span>Condition1)</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-31-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><strong>Boxplot Label</strong></p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>pd =<span class="st"> </span><span class="kw">position_jitter</span>(<span class="fl">0.25</span>)</span>
 <span id="cb50-2"><a href="#cb50-2"></a></span>
 <span id="cb50-3"><a href="#cb50-3"></a><span class="kw">ggplot</span>( <span class="dt">data=</span>data.alle.vps, <span class="kw">aes</span>(<span class="dt">x=</span> Condition2 , <span class="dt">y=</span>mean.rt, <span class="dt">label=</span> id)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">position=</span>pd)<span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(<span class="op">~</span>Condition1) <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="dt">position =</span> pd, <span class="dt">hjust =</span><span class="fl">1.5</span>)</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-32-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><a name="VPsausschließen"></a></p>
 </div>
 <div id="vps-ausschließen" class="section level2">
@@ -1546,7 +1581,7 @@ Levels: 1 2 3 4 5 6 7 8 9 10</code></pre>
 <span id="cb55-3"><a href="#cb55-3"></a>data.anova &lt;-<span class="st"> </span>data.df  <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(corr <span class="op">==</span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(id, Condition1 , Condition2) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(<span class="dt">rt.mean =</span> <span class="kw">mean</span>(rt, <span class="dt">na.rm =</span> T))</span>
 <span id="cb55-4"><a href="#cb55-4"></a></span>
 <span id="cb55-5"><a href="#cb55-5"></a><span class="kw">ezDesign</span>(<span class="dt">data=</span> data.anova, <span class="dt">x =</span> Condition1, <span class="dt">y =</span> Condition2)</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-36-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-36-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>myanova &lt;-<span class="st"> </span><span class="kw">ezANOVA</span>(data.anova</span>
 <span id="cb56-2"><a href="#cb56-2"></a>, <span class="dt">dv =</span> rt.mean </span>
 <span id="cb56-3"><a href="#cb56-3"></a>, <span class="dt">wid =</span> id </span>
@@ -1566,12 +1601,9 @@ $`Mauchly&#39;s Test for Sphericity`
 4 Condition1:Condition2 0.7279830 0.2808568      
 
 $`Sphericity Corrections`
-                 Effect       GGe        p[GG] p[GG]&lt;.05       HFe        p[HF]
-3            Condition2 0.7576871 0.0006122429         * 0.8787173 0.0002744808
-4 Condition1:Condition2 0.7861530 0.0518397618           0.9237767 0.0424924293
-  p[HF]&lt;.05
-3         *
-4         *</code></pre>
+                 Effect       GGe        p[GG] p[GG]&lt;.05       HFe        p[HF] p[HF]&lt;.05
+3            Condition2 0.7576871 0.0006122429         * 0.8787173 0.0002744808         *
+4 Condition1:Condition2 0.7861530 0.0518397618           0.9237767 0.0424924293         *</code></pre>
 <p><br />
 </p>
 <div id="interaction-mit-ezplot" class="section level3">
@@ -1591,7 +1623,7 @@ $`Sphericity Corrections`
 <span id="cb58-10"><a href="#cb58-10"></a>    , <span class="dt">y_lab =</span> <span class="st">&quot;Reaktionszeiten (ms)&quot;</span></span>
 <span id="cb58-11"><a href="#cb58-11"></a></span>
 <span id="cb58-12"><a href="#cb58-12"></a>)</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-37-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-37-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><br />
 Der Output beinhaltet drei Tabellen:</p>
 <ol style="list-style-type: decimal">
@@ -1614,12 +1646,9 @@ $`Mauchly&#39;s Test for Sphericity`
 4 Condition1:Condition2 0.7279830 0.2808568      
 
 $`Sphericity Corrections`
-                 Effect       GGe        p[GG] p[GG]&lt;.05       HFe        p[HF]
-3            Condition2 0.7576871 0.0006122429         * 0.8787173 0.0002744808
-4 Condition1:Condition2 0.7861530 0.0518397618           0.9237767 0.0424924293
-  p[HF]&lt;.05
-3         *
-4         *</code></pre>
+                 Effect       GGe        p[GG] p[GG]&lt;.05       HFe        p[HF] p[HF]&lt;.05
+3            Condition2 0.7576871 0.0006122429         * 0.8787173 0.0002744808         *
+4 Condition1:Condition2 0.7861530 0.0518397618           0.9237767 0.0424924293         *</code></pre>
 <p><br />
 </p>
 <p>Zuerst müssen wir kontrollieren, ob die Voraussetzungen für die Anova erfüllt sind mit dem <code>Mauchly's Test for Sphericity</code>.</p>
@@ -1911,7 +1940,7 @@ fill = Condition2  **wie color nur bezogen auf die Füllfarbe der `geoms`</code>
 <span id="cb67-3"><a href="#cb67-3"></a>                            <span class="dt">y =</span> rt.mean,))</span>
 <span id="cb67-4"><a href="#cb67-4"></a></span>
 <span id="cb67-5"><a href="#cb67-5"></a><span class="kw">print</span>(plot)                               <span class="co">##Plotten</span></span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-44-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-44-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 </div>
@@ -1920,10 +1949,10 @@ fill = Condition2  **wie color nur bezogen auf die Füllfarbe der `geoms`</code>
 <p>Damit ist die Grunddatenstruktur festgelegt, aber der Plot ist erstmal leer, denn wir haben keine <code>geoms</code> zur Visualisierung festgelegt. Da wir den Plot in <code>plot</code> gespeichert haben, können wir ihn und weiter modifizieren und ein Layer hinzufügen.</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>plot &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span>
 <span id="cb68-2"><a href="#cb68-2"></a><span class="kw">print</span>(plot)</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-45-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-45-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Wenn wir kontrollieren wollen, ob alle VPs dem globalen Trend folgen (B&gt;A) können wir Linien hinzufügen pro VP. Dafür müssen wir die Daten aber gruppieren. Das können wir in den globalen aesthetics machen (<code>ggplot(data= , aes())</code>) oder für einzelne Layers festlegen, wie im Beispiel unten:</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group=</span>id))</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-46-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-46-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div id="liste-von-geoms" class="section level4">
 <h4>Liste von <code>geoms</code></h4>
 <p>geom_boxplot() geom_violin() geom_bar() geom_histogram() geom_point() geom_line() geom_errorbar() geom_abline() geom_hline() geom_vline()</p>
@@ -1946,7 +1975,7 @@ fill = Condition2  **wie color nur bezogen auf die Füllfarbe der `geoms`</code>
 <span id="cb70-11"><a href="#cb70-11"></a>               <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">group =</span> id),</span>
 <span id="cb70-12"><a href="#cb70-12"></a>               <span class="dt">geom =</span> <span class="kw">c</span>(<span class="st">&quot;line&quot;</span>))</span>
 <span id="cb70-13"><a href="#cb70-13"></a>plot</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-47-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-47-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Analog können wir den Mittelwert hinzufügen. Wir können die Farbe über <code>color="farbe"</code> oder die Größe über <code>size=xx</code> verändern und den Mittelwert so abheben.</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>plot &lt;-</span>
 <span id="cb71-2"><a href="#cb71-2"></a><span class="st">  </span>plot <span class="op">+</span><span class="st"> </span><span class="kw">stat_summary</span>(</span>
@@ -1964,7 +1993,7 @@ fill = Condition2  **wie color nur bezogen auf die Füllfarbe der `geoms`</code>
 <span id="cb71-14"><a href="#cb71-14"></a>  )</span>
 <span id="cb71-15"><a href="#cb71-15"></a></span>
 <span id="cb71-16"><a href="#cb71-16"></a>plot</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-48-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-48-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><strong>Wichtig:</strong> <code>geoms</code> lassen sich anpassen über Argumente wie: <em>size Größe von Punkte, Dicke von Linien </em>color Farbe der Konture <em>fill Füllfarbe </em>alpha Transparenz <em>linetype Linienart </em>shape Punktart</p>
 <p>Wenn ihr das Argument an ein Layer übergebt, gilt es für das gesamte Layer wie im obigen Beispiel. Übergebt ihr es jedoch als aesthic (z.B. <code>color = id</code>) weißt ggplot für jede Ausprägung der Variable eine andere Farbe, Linienart usw. usf. zu. In folgendem Beispiel weisen wir jeder VP eine Farbe zu.</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>plot &lt;-</span>
@@ -1992,7 +2021,7 @@ fill = Condition2  **wie color nur bezogen auf die Füllfarbe der `geoms`</code>
 <span id="cb72-23"><a href="#cb72-23"></a>  )</span>
 <span id="cb72-24"><a href="#cb72-24"></a></span>
 <span id="cb72-25"><a href="#cb72-25"></a>plot</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-49-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-49-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="interaction-plot" class="section level3">
 <h3>Interaction-Plot</h3>
@@ -2024,7 +2053,7 @@ fill = Condition2  **wie color nur bezogen auf die Füllfarbe der `geoms`</code>
 <span id="cb74-12"><a href="#cb74-12"></a>                            <span class="dt">size=</span><span class="fl">1.2</span>)</span>
 <span id="cb74-13"><a href="#cb74-13"></a></span>
 <span id="cb74-14"><a href="#cb74-14"></a>Interaction</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-51-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-51-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="interaction-mit-ezplot-1" class="section level3">
 <h3>Interaction mit ezPlot</h3>
@@ -2043,7 +2072,7 @@ fill = Condition2  **wie color nur bezogen auf die Füllfarbe der `geoms`</code>
 <span id="cb75-10"><a href="#cb75-10"></a>    , <span class="dt">y_lab =</span> <span class="st">&quot;Reaktionszeiten (ms)&quot;</span></span>
 <span id="cb75-11"><a href="#cb75-11"></a></span>
 <span id="cb75-12"><a href="#cb75-12"></a>)</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-52-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-52-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div class="red">
 <p><strong>FANCY</strong></p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="kw">library</span>(lemon)</span>
@@ -2075,14 +2104,14 @@ fill = Condition2  **wie color nur bezogen auf die Füllfarbe der `geoms`</code>
 <span id="cb76-27"><a href="#cb76-27"></a>                            <span class="dt">size=</span><span class="fl">1.2</span>)</span>
 <span id="cb76-28"><a href="#cb76-28"></a></span>
 <span id="cb76-29"><a href="#cb76-29"></a>Interaction</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-53-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-53-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="facets" class="section level3">
 <h3>Facets</h3>
 <p>Wenn individuelle Daten in einem Interaction-Plot dargestellt werden, kann es schnell unübersichtlich werden. Eine Alternative ist die Bedingungen einer Variable in unterschiedlichen Plots darzustellen. Dazu eignet sich die Funktion <code>facet_grid</code>, die wir oben schon verwendet haben. Die Funktion erlaubt mehrere Grafiken in Spalten und Reihen zu organisiern. Dafür müsst ihr angeben, welche Variablen auf die Reihen bzw. Spalten aufgeteilt werden soll. Die Variablen müssen mit <code>vars()</code> umschlossen sein.</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>Interaction <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(<span class="dt">cols=</span> <span class="kw">vars</span>(Condition2))</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-54-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-54-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="fehlerbalken" class="section level3">
 <h3>Fehlerbalken</h3>
@@ -2101,7 +2130,7 @@ fill = Condition2  **wie color nur bezogen auf die Füllfarbe der `geoms`</code>
 <span id="cb78-12"><a href="#cb78-12"></a>                              <span class="dt">position=</span><span class="kw">position_dodge</span>(<span class="fl">0.1</span>), </span>
 <span id="cb78-13"><a href="#cb78-13"></a>                              <span class="dt">show.legend =</span> F,</span>
 <span id="cb78-14"><a href="#cb78-14"></a>                              )</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-55-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-55-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Das ist zugegeben nicht ganz <code>tidy</code>, da wir einen neuen Datensatz erstellen müssen. Das liegt daran, dass wir im Within-Design nicht auf gruppenbasis die <em>Standard Error of the Mean</em> berechnen können, sondern immer den kompletten Datensatz brauchen.</p>
 <p>Im Between-Design ist das nicht so und wir können <code>tidy</code>arbeiten. Wir definieren eine Hilfsfunktion, die den <em>Standard Error of the Mean</em> berechnet <code>sem &lt;- function(x) sd(x)/sqrt(length(x))</code> und verwenden diese in <code>stat_summary</code>. Im Unterschied zu <code>geom_errorbar</code>, wo wir die Werte übergeben haben, müssen wir hier eine Funktion übergeben, die die Werte berechnet <code>function(i) mean(i) + sem(i)</code> für die obere Grenze und <code>function(i) mean(i) - sem(i)</code> für die untere Grenze.</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a>sem &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">sd</span>(x)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(x))</span>
@@ -2112,7 +2141,7 @@ fill = Condition2  **wie color nur bezogen auf die Füllfarbe der `geoms`</code>
 <span id="cb79-6"><a href="#cb79-6"></a>                            <span class="dt">fun.min=</span><span class="cf">function</span>(i) <span class="kw">mean</span>(i) <span class="op">-</span><span class="st"> </span><span class="kw">sem</span>(i), </span>
 <span id="cb79-7"><a href="#cb79-7"></a>                            , <span class="dt">mapping=</span> <span class="kw">aes</span>(<span class="dt">x=</span>Condition1,<span class="dt">y=</span>rt.mean, <span class="dt">group=</span>Condition2)</span>
 <span id="cb79-8"><a href="#cb79-8"></a>                            , <span class="dt">geom=</span><span class="kw">c</span>(<span class="st">&quot;errorbar&quot;</span>),  <span class="dt">size=</span><span class="fl">1.2</span>, <span class="dt">width =</span> <span class="fl">0.15</span>)</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-56-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="boxplots" class="section level3">
 <h3>Boxplots</h3>
@@ -2126,7 +2155,7 @@ fill = Condition2  **wie color nur bezogen auf die Füllfarbe der `geoms`</code>
 <span id="cb81-2"><a href="#cb81-2"></a>                                          <span class="dt">group =</span>Condition2), <span class="dt">geom=</span><span class="kw">c</span>(<span class="st">&quot;point&quot;</span>) ,</span>
 <span id="cb81-3"><a href="#cb81-3"></a>                       <span class="dt">position=</span><span class="kw">position_dodge</span>(<span class="fl">0.7</span>) <span class="co">## Stellt sicher, dass die Mittelwerte in den Boxen zentriert sind</span></span>
 <span id="cb81-4"><a href="#cb81-4"></a>                                          )</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-58-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="balkendiagramme" class="section level3">
 <h3>Balkendiagramme</h3>
@@ -2151,7 +2180,7 @@ fill = Condition2  **wie color nur bezogen auf die Füllfarbe der `geoms`</code>
 <span id="cb83-12"><a href="#cb83-12"></a>                              )</span>
 <span id="cb83-13"><a href="#cb83-13"></a></span>
 <span id="cb83-14"><a href="#cb83-14"></a>Balken</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-60-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-60-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="grafiken-formatiern" class="section level3">
 <h3>Grafiken Formatiern</h3>
@@ -2159,7 +2188,7 @@ fill = Condition2  **wie color nur bezogen auf die Füllfarbe der `geoms`</code>
 <h4>Achsen Beschriften</h4>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a>Balken &lt;-<span class="st"> </span>Balken <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Unabhängige Variable&quot;</span>, <span class="dt">y=</span> <span class="st">&quot;Mittelwert abhängige Variable (Einheit)&quot;</span>)</span>
 <span id="cb84-2"><a href="#cb84-2"></a>Balken</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-61-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-61-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="farben-ändern-bezeichnung-in-der-legende-ändern" class="section level4">
 <h4>Farben ändern/ Bezeichnung in der Legende ändern</h4>
@@ -2175,7 +2204,7 @@ fill = Condition2  **wie color nur bezogen auf die Füllfarbe der `geoms`</code>
 <span id="cb85-10"><a href="#cb85-10"></a>    <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Stufe1&quot;</span>, <span class="st">&quot;Stufe2&quot;</span>, <span class="st">&quot;Stufe3&quot;</span>)</span>
 <span id="cb85-11"><a href="#cb85-11"></a>  )</span>
 <span id="cb85-12"><a href="#cb85-12"></a>Balken</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-62-1.png" style="display: block; margin: auto;" /> <strong>Verwendet mehrere Aesthetics (Color und Fill im Beispiel) in der Grafik, muss die Legende für alle codiert werden, sonst entstehen mehrere Legenden</strong></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-62-1.png" width="576" style="display: block; margin: auto;" /> <strong>Verwendet mehrere Aesthetics (Color und Fill im Beispiel) in der Grafik, muss die Legende für alle codiert werden, sonst entstehen mehrere Legenden</strong></p>
 <p>Allgemeine Hinweise zur Bearbeitung der Legende findet ihr<a href="http://www.cookbook-r.com/Graphs/Legends_%28ggplot2%29/" target="_blank">hier</a></p>
 </div>
 <div id="welche-farben" class="section level4">
@@ -2191,7 +2220,7 @@ fill = Condition2  **wie color nur bezogen auf die Füllfarbe der `geoms`</code>
 <span id="cb86-5"><a href="#cb86-5"></a>npg &lt;-<span class="st"> </span><span class="kw">pal_npg</span>(<span class="st">&quot;nrc&quot;</span>)(<span class="dv">10</span>)        <span class="co"># gibt die RGB-Werte der kompletten Palette</span></span>
 <span id="cb86-6"><a href="#cb86-6"></a><span class="kw">specplot</span>(npg)                    <span class="co"># Zeichnet Luminanz, Chroma und HUE Verlauf</span></span>
 <span id="cb86-7"><a href="#cb86-7"></a><span class="kw">specplot</span>(npg)[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">7</span>)]</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-63-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-63-1.png" width="576" style="display: block; margin: auto;" /></p>
 <pre><code>$HCL
               H         C        L
  [1,]  15.69080 127.41065 54.15136
@@ -2225,7 +2254,7 @@ NULL</code></pre>
 <span id="cb88-12"><a href="#cb88-12"></a>    <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Stufe1&quot;</span>, <span class="st">&quot;Stufe2&quot;</span>, <span class="st">&quot;Stufe3&quot;</span>)</span>
 <span id="cb88-13"><a href="#cb88-13"></a>  )</span>
 <span id="cb88-14"><a href="#cb88-14"></a>Balken</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-64-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-64-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="perzeptuell-gleichförmig" class="section level5">
 <h5>Perzeptuell gleichförmig</h5>
@@ -2240,7 +2269,7 @@ NULL</code></pre>
 <span id="cb89-6"><a href="#cb89-6"></a><span class="st">  </span><span class="kw">coord_fixed</span>() <span class="op">+</span></span>
 <span id="cb89-7"><a href="#cb89-7"></a><span class="st">  </span><span class="kw">scale_fill_viridis</span>() <span class="op">+</span><span class="st"> </span></span>
 <span id="cb89-8"><a href="#cb89-8"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-65-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-65-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="symbole-und-linientyp-ändern" class="section level4">
@@ -2249,7 +2278,7 @@ NULL</code></pre>
 <span id="cb90-2"><a href="#cb90-2"></a>                                 <span class="dt">name =</span> <span class="st">&quot;Condition2&quot;</span>) <span class="op">+</span></span>
 <span id="cb90-3"><a href="#cb90-3"></a><span class="st">              </span><span class="kw">scale_linetype_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;dotted&quot;</span>, <span class="st">&quot;dotted&quot;</span>, <span class="st">&quot;dotted&quot;</span>),</span>
 <span id="cb90-4"><a href="#cb90-4"></a>                        <span class="dt">name =</span> <span class="st">&quot;Condition2&quot;</span>)</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-66-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-66-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Allgemeine Hinweise zur Bearbeitung der Symbole und Linientypen findet ihr <a href="http://www.cookbook-r.com/Graphs/Shapes_and_line_types/" target="_blank">hier</a>.</p>
 </div>
 <div id="stufen-der-variable-x-auf-der-x-achse-benennen" class="section level4">
@@ -2257,30 +2286,30 @@ NULL</code></pre>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a>Balken &lt;-</span>
 <span id="cb91-2"><a href="#cb91-2"></a><span class="st">  </span>Balken <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_discrete</span>(<span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>),<span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Stufe1&quot;</span>, <span class="st">&quot;Stufe2&quot;</span>))</span>
 <span id="cb91-3"><a href="#cb91-3"></a>Balken</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-67-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-67-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="y-limits-setzen" class="section level4">
 <h4>Y-Limits setzen</h4>
 <p>Es gibt mehrere Möglichkeiten X und Y Limits zu setzen, z.B. <code>ylim()</code> oder <code>scale_y_continuous(limits = c(min, max))</code>, bei diesen werden aber Datenpunkte außerhalb der Limits entfernt und <code>stat_summary</code> funktioniert nicht mehr. Deshalb ist es ratsam <code>coord_cartesian(ylim=c(min, max))</code> zu verwenden.</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a>Balken <span class="op">+</span><span class="st">  </span><span class="kw">ylim</span>(<span class="dv">250</span>, <span class="dv">1250</span>)</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-68-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-68-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a>Balken &lt;-</span>
 <span id="cb93-2"><a href="#cb93-2"></a><span class="st">  </span>Balken <span class="op">+</span><span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">250</span>, <span class="dv">1250</span>))</span>
 <span id="cb93-3"><a href="#cb93-3"></a>Balken</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-68-2.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-68-2.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="themes" class="section level4">
 <h4>Themes</h4>
 <p>Mit <code>theme()</code> könnte ihr Komponenten des Layouts verändern, die sich nicht direkt auf die Daten beziehen, d.h. Titel, Achsen, Legende usw.. Mit <code>theme_get()</code>könnt ihr alle Optionen betrachten.</p>
 <p>Es gibt eine Reihe vordefinierter Themes die ihr z.B. <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" target="_blank">hier</a> findet. Diese könnt ihr sehr einfach verwenden</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a>Balken</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-69-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-69-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a>Balken <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-69-2.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-69-2.png" width="576" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a>Balken <span class="op">+</span><span class="st"> </span><span class="kw">theme_classic</span>()</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-69-3.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-69-3.png" width="576" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a>Balken <span class="op">+</span><span class="st"> </span><span class="kw">theme_linedraw</span>()</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-69-4.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-69-4.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Es lohnt sich in der Regel sich ein Standard-Theme zu definieren, dass man dann für alle Plots verwendet, sodass die Grafiken ein einheitliches Layout haben und aufgeräumt aussehen. Wenn ein bestimmtes Element entfernt werden soll, kann dafür <code>element_blank()</code> verwendet werden.</p>
 <p>Unter <code>?element_blank</code> findet ihr alle gängigen Element-Typen die verwendet werden können und welche Argumente übergeben werden können.</p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a>StandardTheme &lt;-<span class="st"> </span><span class="kw">theme</span>(</span>
@@ -2300,9 +2329,9 @@ NULL</code></pre>
 <span id="cb98-15"><a href="#cb98-15"></a></span>
 <span id="cb98-16"><a href="#cb98-16"></a></span>
 <span id="cb98-17"><a href="#cb98-17"></a>Interaction</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-70-1.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-70-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1"></a>Interaction <span class="op">+</span><span class="st">  </span>StandardTheme</span></code></pre></div>
-<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-70-2.png" style="display: block; margin: auto;" /></p>
+<p><img src="DatenauswertungExampleFormat_files/figure-html/unnamed-chunk-70-2.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="speichern-exportieren" class="section level3">
