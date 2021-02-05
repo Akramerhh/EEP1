@@ -1,0 +1,32 @@
+---
+title: "Untitled"
+output: 
+  html_document:
+    numbered: yes
+    df_print: paged
+    toc: yes
+    toc_float: true
+    self_contained: false
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+Einfach Text schreiben
+
+
+```{r}
+
+vector <- c(1,2,3,4)
+vector
+
+```
+
+
+# Nächster Auswertungschritt
+
+
+```{r}
+
+```
+

@@ -1,0 +1,7 @@
+name: "EEP-Datenauswertung"
+output_dir: "."
+navbar:
+  title: "EEP-Datenauswertung"
+  left:
+    - text: "Datenauswertung"
+      href: DatenauswertungExampleFormat.Rmd
