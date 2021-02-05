@@ -13,6 +13,7 @@ output:
     fig_height: 12
     source_code: embed
     df_print: paged
+    keep_md: true
 fontsize: 14pt
 editor_options: 
   chunk_output_type: inline

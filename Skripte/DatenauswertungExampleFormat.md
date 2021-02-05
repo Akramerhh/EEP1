@@ -23,6 +23,7 @@ editor_options:
 
 
 
+
 \
 \
 
@@ -411,8 +412,9 @@ loaded via a namespace (and not attached):
 [49] zip_2.1.1         compiler_3.6.0    rlang_0.4.10      grid_3.6.0       
 [53] nloptr_1.2.2.2    rstudioapi_0.13   boot_1.3-25       gtable_0.3.0     
 [57] abind_1.4-5       DBI_1.1.0         curl_4.3          reshape2_1.4.4   
-[61] R6_2.5.0          lubridate_1.7.9.2 stringi_1.5.3     Rcpp_1.0.5       
-[65] vctrs_0.3.6       dbplyr_2.0.0      tidyselect_1.1.0  xfun_0.19        
+[61] R6_2.5.0          lubridate_1.7.9.2 rprojroot_2.0.2   stringi_1.5.3    
+[65] Rcpp_1.0.5        vctrs_0.3.6       dbplyr_2.0.0      tidyselect_1.1.0 
+[69] xfun_0.19        
 ```
 
 ```r

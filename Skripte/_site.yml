@@ -3,5 +3,7 @@ output_dir: "."
 navbar:
   title: "EEP-Datenauswertung"
   left:
+    - text: "Home"
+      href: index.html
     - text: "Datenauswertung"
       href: DatenauswertungExampleFormat.html
