@@ -13,4 +13,4 @@ RnwWeave: Sweave
 LaTeX: pdfLaTeX
 
 BuildType: Website
-WebsitePath: Skripte
+WebsitePath: ~/PHD/Lehre/WS2020/EEP1_Datenauswertung/EEP1
