@@ -17,6 +17,7 @@ output:
 fontsize: 14pt
 editor_options: 
   chunk_output_type: inline
+css: style.css
 ---
 
 
