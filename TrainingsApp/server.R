@@ -6,8 +6,6 @@ library(gamlss.dist)
 library(ez)
 library(shinycssloaders)
 
-set.seed(1)
-
 
 simulate <- function(N, trialsPerCond){
     mean.rt = 350

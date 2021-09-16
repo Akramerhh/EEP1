@@ -14,6 +14,7 @@ output:
     source_code: embed
     df_print: paged
     keep_md: true
+    code_download: true
 fontsize: 14pt
 editor_options: 
   chunk_output_type: inline
