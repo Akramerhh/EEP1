@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="pandoc" />
+
+    
+    
+    <title>Automatisierung der Analyse für mehrere VPs</title>
+
+        <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+        <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="site_libs/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="site_libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+        <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+        <script src="site_libs/navigation-1.1/tabsets.js"></script>
+        <script src="site_libs/navigation-1.1/codefolding.js"></script>
+        <script src="site_libs/navigation-1.1/FileSaver.min.js"></script>
+        <script src="site_libs/navigation-1.1/sourceembed.js"></script>
+        <link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+        <script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+        <link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+        <link href="site_libs/readthedown-0.1/readthedown_fonts_embed.css" rel="stylesheet" />
+        <script src="site_libs/readthedown-0.1/readthedown.js"></script>
+        <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+        <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+    
+    
+        <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+          background-color: #ffffff;
+          color: #a0a0a0;
+        }
+      pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+      div.sourceCode
+        { color: #1f1c1b; background-color: #ffffff; }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+      code span { color: #1f1c1b; } /* Normal */
+      code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+      code span.an { color: #ca60ca; } /* Annotation */
+      code span.at { color: #0057ae; } /* Attribute */
+      code span.bn { color: #b08000; } /* BaseN */
+      code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+      code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+      code span.ch { color: #924c9d; } /* Char */
+      code span.cn { color: #aa5500; } /* Constant */
+      code span.co { color: #898887; } /* Comment */
+      code span.cv { color: #0095ff; } /* CommentVar */
+      code span.do { color: #607880; } /* Documentation */
+      code span.dt { color: #0057ae; } /* DataType */
+      code span.dv { color: #b08000; } /* DecVal */
+      code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+      code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+      code span.fl { color: #b08000; } /* Float */
+      code span.fu { color: #644a9b; } /* Function */
+      code span.im { color: #ff5500; } /* Import */
+      code span.in { color: #b08000; } /* Information */
+      code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+      code span.op { color: #1f1c1b; } /* Operator */
+      code span.ot { color: #006e28; } /* Other */
+      code span.pp { color: #006e28; } /* Preprocessor */
+      code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+      code span.sc { color: #3daee9; } /* SpecialChar */
+      code span.ss { color: #ff5500; } /* SpecialString */
+      code span.st { color: #bf0303; } /* String */
+      code span.va { color: #0057ae; } /* Variable */
+      code span.vs { color: #bf0303; } /* VerbatimString */
+      code span.wa { color: #bf0303; } /* Warning */
+    </style>
+    
+        <link rel="stylesheet" href="style.css" type="text/css" />
+    
+    <!-- tabsets -->
+    <script>
+      $(document).ready(function () {
+	  window.buildTabsets("toc");
+      });
+      $(document).ready(function () {
+	  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+	      $(this).parent().toggleClass('nav-tabs-open')
+	  });
+      });
+    </script>
+
+    <!-- code folding -->
+        <script>
+      $(document).ready(function () {
+	  	  window.initializeSourceEmbed("02_allsubjects.rmd");
+	  	  	  window.initializeCodeFolding("show" === "show");
+	        });
+    </script>
+    
+    <!-- code download -->
+        <style>
+      #rmd-source-code {
+	  display: none;
+      }
+    </style>
+    
+    <!-- tabsets dropdown -->
+
+    <style type="text/css">
+      .tabset-dropdown > .nav-tabs {
+	  display: inline-table;
+	  max-height: 500px;
+	  min-height: 44px;
+	  overflow-y: auto;
+	  background: white;
+	  border: 1px solid #ddd;
+	  border-radius: 4px;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+	  content: "&#xe258;";
+	  border: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active {
+	  display: block;
+      }
+
+      .tabset-dropdown > .nav-tabs > li.active a {
+  	  padding: 0 15px !important;
+      }
+
+      .tabset-dropdown > .nav-tabs > li > a,
+      .tabset-dropdown > .nav-tabs > li > a:focus,
+      .tabset-dropdown > .nav-tabs > li > a:hover {
+	  border: none;
+	  display: inline-block;
+	  border-radius: 4px;
+	  background-color: transparent;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+	  display: block;
+	  float: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li {
+	  display: none;
+	  margin-left: 0 !important;
+      }
+    </style>
+    
+</head>
+
+<body class="preload">
+
+   	
+         <!-- readthedown start -->   
+   <div id="content" data-toggle="wy-nav-shift">
+     <nav id="nav-top" role="navigation" aria-label="top navigation">
+       <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+     </nav>
+         
+      <div class="btn-group pull-right">
+     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+     <ul class="dropdown-menu" style="min-width: 50px;">
+	    	    <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+	    <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+	    	    <li role="separator" class="divider"></li>
+	    	    	    	    <li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+	         </ul>
+   </div>
+   
+      
+      <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">EEP-Datenauswertung</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li>
+        <a href="DatenauswertungExampleFormat.html">Seminar Skript</a>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+          Templates
+           
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li>
+            <a href="01_singlesubject.html">Eine VP</a>
+          </li>
+          <li>
+            <a href="02_allsubjects.html">Alle VPs</a>
+          </li>
+          <li>
+            <a href="03_inferenzstatistik.html">Inferenz Statistik</a>
+          </li>
+          <li>
+            <a href="04_abbildungen.html">Abbildungen</a>
+          </li>
+        </ul>
+      </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container -->
+      </div><!--/.navbar -->
+        
+      <h1 class="title">Automatisierung der Analyse für mehrere VPs</h1>
+      
+         <!-- readthedown authors -->
+   <div id="sidebar">
+    <h2><a href="#content">Automatisierung der Analyse für mehrere VPs</a></h2>
+    <div id="toc">
+      <ul>
+      <li><a href="#skript">1. Skript:</a></li>
+      <li><a href="#daten-importieren">2. Daten importieren</a></li>
+      <li><a href="#übungstrials-entfernen">3. Übungstrials entfernen</a></li>
+      <li><a href="#datenstruktur-prüfen-und-faktoren-definieren">4. Datenstruktur prüfen und Faktoren definieren</a></li>
+      <li><a href="#bis-8.-bisheriges-skript-an-veränderten-datensatz-anpassen">5. bis 8.: bisheriges Skript an veränderten Datensatz anpassen</a></li>
+      </ul>
+    </div>
+    <div id="postamble" data-toggle="wy-nav-shift" class="status">
+                </div>
+   </div>
+     
+
+   
+      
+   
+<!-- Don't indent these lines or it will mess pre blocks indentation --> 
+<div id="main">
+<div id="skript" class="section level1">
+<h1>1. Skript:</h1>
+<p>siehe singlesubject.pdf</p>
+</div>
+<div id="daten-importieren" class="section level1">
+<h1>2. Daten importieren</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># welche files (Dateien) sollen eingelesen werden?</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>filelist <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">pattern =</span> <span class="st">&quot;XXXX&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># eine leere Datentabelle anlegen</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>daten <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Daten aller VPs einlesen</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(singlefile <span class="cf">in</span> filelist){</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  vpfile <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(singlefile)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  daten <span class="ot">&lt;-</span> <span class="fu">rbind</span>(daten, vpfile)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="übungstrials-entfernen" class="section level1">
+<h1>3. Übungstrials entfernen</h1>
+<p>siehe singlesubject.pdf</p>
+</div>
+<div id="datenstruktur-prüfen-und-faktoren-definieren" class="section level1">
+<h1>4. Datenstruktur prüfen und Faktoren definieren</h1>
+<p>siehe singlesubject.pdf</p>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="bis-8.-bisheriges-skript-an-veränderten-datensatz-anpassen" class="section level1">
+<h1>5. bis 8.: bisheriges Skript an veränderten Datensatz anpassen</h1>
+<ul>
+<li>Die Variable “id” muss bei vielen Befehlen als weiterer Gruppierungsfaktor eingegeben werden
+<ul>
+<li>in %&gt;% pipes: “group_by(.., id)”</li>
+<li>in Grafiken: “facet_grid(~id)”, “facet_grid(UV2~id)” oder “facet_grid(id~UV2)”; facet_grid(Spalte~Zeile)</li>
+</ul></li>
+<li>weiterer Schritt der Datenbereinigung: VPs mit auffälligen Antwortmuster identifizieren und ausschließen (Ausschlusskritierien müssen gut begründet sein:
+<ul>
+<li>VPs mit auffällig vielen Fehlern</li>
+<li>VPs mit auffällig langsamen Reaktionszeiten</li>
+<li>VPs mit geringen Anzahl an gültigen Trials</li>
+</ul></li>
+<li>Aggregation (=Zusammenfassen) der Antwortgenauigkeit und Reaktionszeit in zwei Schritten:
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>Mittelwerte pro Bedingung UND Versuchsperson: für jede VP werden die Trials pro Bedingung in einer neuen Tabelle zusammengefasst (Mittelwert aller Trials pro Bedingung innerhalb der VP)</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>Mittelwerte pro Bedingung (gemittelt ueber alle VPs). Input für diese Berechnung ist die Tabelle, die vorigen Schritt (Schritt 1 der Aggregation) erstellt wurde.</li>
+</ol></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+   
+      <div id="rmd-source-code">LS0tDQp0aXRsZTogIkF1dG9tYXRpc2llcnVuZyBkZXIgQW5hbHlzZSBmw7xyIG1laHJlcmUgVlBzIg0KaGVhZGVyLWluY2x1ZGVzOg0KLSBcdXNlcGFja2FnZXtmYW5jeWhkcn0NCi0gXHBhZ2VzdHlsZXtmYW5jeXBsYWlufQ0KLSBcZmFuY3loZnt9DQotIFxmYW5jeWhlYWRbTF17RHIuIENvcmR1bGEgSMO2bGlnfQ0KLSBcZmFuY3loZWFkW0Nde1VuaXZlcnNpdMOkdCBIYW1idXJnfQ0KLSBcZmFuY3loZWFkW1Jde0VFUCBJfQ0KLSBcZmFuY3lmb290W0Nde0RpZXNlcyBEb2t1bWVudCBpc3QgdXJoZWJlcnJlY2h0bGljaCBnZXNjaMO8dHp0Ln0NCi0gXGZhbmN5Zm9vdFtSXXtcdGhlcGFnZX0NCi0gXHNldGxlbmd0aHtcaGVhZGhlaWdodH17MTVwdH0NCm91dHB1dDoNCiAgcm1kZm9ybWF0czo6cmVhZHRoZWRvd246DQogICAgaGlnaGxpZ2h0OiBrYXRlDQogICAgc2VsZl9jb250YWluZWQ6IHRydWUNCiAgICB0aHVtYm5haWxzOiBmYWxzZQ0KICAgIGNvZGVfZm9sZGluZzogc2hvdw0KICAgIHRvY19kZXB0aDogNQ0KICAgIGZpZ193aWR0aDogMTIgDQogICAgZmlnX2hlaWdodDogMTINCiAgICBzb3VyY2VfY29kZTogZW1iZWQNCiAgICBkZl9wcmludDogcGFnZWQNCiAgICBrZWVwX21kOiB0cnVlDQogICAgY29kZV9kb3dubG9hZDogdHJ1ZQ0KZm9udHNpemU6IDE0cHQNCmVkaXRvcl9vcHRpb25zOiANCiAgY2h1bmtfb3V0cHV0X3R5cGU6IGlubGluZQ0KY3NzOiBzdHlsZS5jc3MNCi0tLQ0KDQoNCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfQ0KbGlicmFyeShrbml0cikNCmxpYnJhcnkocm1kZm9ybWF0cykNCmxpYnJhcnkocm1hcmtkb3duKQ0KbGlicmFyeSh0aWR5dmVyc2UpDQoNCiMjIEdsb2JhbCBvcHRpb25zDQpvcHRpb25zKG1heC5wcmludD0iNzUiKQ0Kb3B0c19jaHVuayRzZXQoZWNobz1UUlVFLA0KCSAgICAgICAgICAgICBjYWNoZT1GQUxTRSwNCiAgICAgICAgICAgICAgIHByb21wdD1GQUxTRSwNCiAgICAgICAgICAgICAgIHRpZHk9VFJVRSwNCiAgICAgICAgICAgICAgIGNvbW1lbnQ9TkEsDQogICAgICAgICAgICAgICBtZXNzYWdlPUZBTFNFLA0KICAgICAgICAgICAgICAgd2FybmluZz1GQUxTRSwgDQogICAgICAgICAgICAgICBmaWcud2lkdGggPSA2LCANCiAgICAgICAgICAgICAgIGZpZy5oZWlnaHQgPSA0Ljc1LCANCiAgICAgICAgICAgICAgIGZpZy5hbGlnbiA9ICJjZW50ZXIiLA0KICAgICAgICAgICAgICAgdGlkeSA9IEZBTFNFDQogICAgICAgICAgICAgICApDQoNCm9wdHNfa25pdCRzZXQoDQogICAgICAgICAgICAgICByb290LmRpciA9IHJwcm9qcm9vdDo6ZmluZF9yc3R1ZGlvX3Jvb3RfZmlsZSgpLA0KICAgICAgICAgICAgICAgYmFzZS5kaXIgPSBycHJvanJvb3Q6OmZpbmRfcnN0dWRpb19yb290X2ZpbGUoKQ0KICAgICAgICAgICAgICApDQoNCg0Kcm1hcmtkb3duOjpmaW5kX3BhbmRvYyhjYWNoZT1GKQ0KZGlyLmV4aXN0cygiUGFuZG9jMi8iKQ0KcGFuZG9jX3ZlcnNpb24oKQ0KDQpvcHRzX2tuaXQkZ2V0KCkNCmBgYA0KIyAxLiBTa3JpcHQ6IA0Kc2llaGUgc2luZ2xlc3ViamVjdC5wZGYNCg0KIyAyLiBEYXRlbiBpbXBvcnRpZXJlbg0KDQpgYGB7ciBEYXRlbmltcG9ydCwgZXZhbCA9IEZ9IA0KIyB3ZWxjaGUgZmlsZXMgKERhdGVpZW4pIHNvbGxlbiBlaW5nZWxlc2VuIHdlcmRlbj8NCmZpbGVsaXN0IDwtIGxpc3QuZmlsZXMocGF0dGVybiA9ICJYWFhYIikNCiMgZWluZSBsZWVyZSBEYXRlbnRhYmVsbGUgYW5sZWdlbg0KZGF0ZW4gPC0gZGF0YS5mcmFtZSgpDQoNCiMgRGF0ZW4gYWxsZXIgVlBzIGVpbmxlc2VuDQpmb3Ioc2luZ2xlZmlsZSBpbiBmaWxlbGlzdCl7DQogIHZwZmlsZSA8LSByZWFkX2NzdihzaW5nbGVmaWxlKQ0KICBkYXRlbiA8LSByYmluZChkYXRlbiwgdnBmaWxlKQ0KfQ0KYGBgDQojIDMuIMOcYnVuZ3N0cmlhbHMgZW50ZmVybmVuDQpzaWVoZSBzaW5nbGVzdWJqZWN0LnBkZiANCg0KIyA0LiBEYXRlbnN0cnVrdHVyIHByw7xmZW4gdW5kIEZha3RvcmVuIGRlZmluaWVyZW4NCnNpZWhlIHNpbmdsZXN1YmplY3QucGRmDQoNClxuZXdwYWdlDQoNCiMgNS4gYmlzIDguOiBiaXNoZXJpZ2VzIFNrcmlwdCBhbiB2ZXLDpG5kZXJ0ZW4gRGF0ZW5zYXR6IGFucGFzc2VuDQoNCiogRGllIFZhcmlhYmxlICJpZCIgbXVzcyBiZWkgdmllbGVuIEJlZmVobGVuIGFscyB3ZWl0ZXJlciBHcnVwcGllcnVuZ3NmYWt0b3IgZWluZ2VnZWJlbiB3ZXJkZW4NCiAgKyBpbiAlPiUgcGlwZXM6ICJncm91cF9ieSguLiwgaWQpIiANCiAgKyBpbiBHcmFmaWtlbjogImZhY2V0X2dyaWQofmlkKSIsICJmYWNldF9ncmlkKFVWMn5pZCkiIG9kZXIgImZhY2V0X2dyaWQoaWR+VVYyKSI7ICBmYWNldF9ncmlkKFNwYWx0ZX5aZWlsZSkNCiogd2VpdGVyZXIgU2Nocml0dCBkZXIgRGF0ZW5iZXJlaW5pZ3VuZzogVlBzIG1pdCBhdWZmw6RsbGlnZW4gQW50d29ydG11c3RlciBpZGVudGlmaXppZXJlbiB1bmQgYXVzc2NobGllw59lbiAoQXVzc2NobHVzc2tyaXRpZXJpZW4gbcO8c3NlbiBndXQgYmVncsO8bmRldCBzZWluOg0KICArIFZQcyBtaXQgYXVmZsOkbGxpZyB2aWVsZW4gRmVobGVybiANCiAgKyBWUHMgbWl0IGF1ZmbDpGxsaWcgbGFuZ3NhbWVuIFJlYWt0aW9uc3plaXRlbg0KICArIFZQcyBtaXQgZ2VyaW5nZW4gQW56YWhsIGFuIGfDvGx0aWdlbiBUcmlhbHMNCiogQWdncmVnYXRpb24gKD1adXNhbW1lbmZhc3NlbikgZGVyIEFudHdvcnRnZW5hdWlna2VpdCB1bmQgUmVha3Rpb25zemVpdCBpbiB6d2VpIFNjaHJpdHRlbjoNCiAgKyAxLiBNaXR0ZWx3ZXJ0ZSBwcm8gQmVkaW5ndW5nIFVORCBWZXJzdWNoc3BlcnNvbjogZsO8ciBqZWRlIFZQIHdlcmRlbiBkaWUgVHJpYWxzIHBybyBCZWRpbmd1bmcgaW4gZWluZXIgbmV1ZW4gVGFiZWxsZSB6dXNhbW1lbmdlZmFzc3QgKE1pdHRlbHdlcnQgYWxsZXIgVHJpYWxzIHBybyBCZWRpbmd1bmcgaW5uZXJoYWxiIGRlciBWUCkNCiAgKyAyLiBNaXR0ZWx3ZXJ0ZSBwcm8gQmVkaW5ndW5nIChnZW1pdHRlbHQgdWViZXIgYWxsZSBWUHMpLiBJbnB1dCBmw7xyIGRpZXNlIEJlcmVjaG51bmcgaXN0IGRpZSBUYWJlbGxlLCBkaWUgdm9yaWdlbiBTY2hyaXR0IChTY2hyaXR0IDEgZGVyIEFnZ3JlZ2F0aW9uKSBlcnN0ZWxsdCB3dXJkZS4NCg==</div>
+   
+            
+      
+
+  <script>
+    $(document).ready(function () {
+
+			
+ 		
+	    });
+  </script>
+
+
+
+    <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+	var script = document.createElement("script");
+	script.type = "text/javascript";
+	script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+	document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  
+</body>
+</html>

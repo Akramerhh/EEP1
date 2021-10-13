@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="pandoc" />
+
+    
+    
+    <title>Abbildungen</title>
+
+        <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+        <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="site_libs/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="site_libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+        <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+        <script src="site_libs/navigation-1.1/tabsets.js"></script>
+        <script src="site_libs/navigation-1.1/codefolding.js"></script>
+        <script src="site_libs/navigation-1.1/FileSaver.min.js"></script>
+        <script src="site_libs/navigation-1.1/sourceembed.js"></script>
+        <link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+        <script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+        <link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+        <link href="site_libs/readthedown-0.1/readthedown_fonts_embed.css" rel="stylesheet" />
+        <script src="site_libs/readthedown-0.1/readthedown.js"></script>
+        <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+        <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+    
+    
+        <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+          background-color: #ffffff;
+          color: #a0a0a0;
+        }
+      pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+      div.sourceCode
+        { color: #1f1c1b; background-color: #ffffff; }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+      code span { color: #1f1c1b; } /* Normal */
+      code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+      code span.an { color: #ca60ca; } /* Annotation */
+      code span.at { color: #0057ae; } /* Attribute */
+      code span.bn { color: #b08000; } /* BaseN */
+      code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+      code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+      code span.ch { color: #924c9d; } /* Char */
+      code span.cn { color: #aa5500; } /* Constant */
+      code span.co { color: #898887; } /* Comment */
+      code span.cv { color: #0095ff; } /* CommentVar */
+      code span.do { color: #607880; } /* Documentation */
+      code span.dt { color: #0057ae; } /* DataType */
+      code span.dv { color: #b08000; } /* DecVal */
+      code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+      code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+      code span.fl { color: #b08000; } /* Float */
+      code span.fu { color: #644a9b; } /* Function */
+      code span.im { color: #ff5500; } /* Import */
+      code span.in { color: #b08000; } /* Information */
+      code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+      code span.op { color: #1f1c1b; } /* Operator */
+      code span.ot { color: #006e28; } /* Other */
+      code span.pp { color: #006e28; } /* Preprocessor */
+      code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+      code span.sc { color: #3daee9; } /* SpecialChar */
+      code span.ss { color: #ff5500; } /* SpecialString */
+      code span.st { color: #bf0303; } /* String */
+      code span.va { color: #0057ae; } /* Variable */
+      code span.vs { color: #bf0303; } /* VerbatimString */
+      code span.wa { color: #bf0303; } /* Warning */
+    </style>
+    
+        <link rel="stylesheet" href="style.css" type="text/css" />
+    
+    <!-- tabsets -->
+    <script>
+      $(document).ready(function () {
+	  window.buildTabsets("toc");
+      });
+      $(document).ready(function () {
+	  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+	      $(this).parent().toggleClass('nav-tabs-open')
+	  });
+      });
+    </script>
+
+    <!-- code folding -->
+        <script>
+      $(document).ready(function () {
+	  	  window.initializeSourceEmbed("04_abbildungen.rmd");
+	  	  	  window.initializeCodeFolding("show" === "show");
+	        });
+    </script>
+    
+    <!-- code download -->
+        <style>
+      #rmd-source-code {
+	  display: none;
+      }
+    </style>
+    
+    <!-- tabsets dropdown -->
+
+    <style type="text/css">
+      .tabset-dropdown > .nav-tabs {
+	  display: inline-table;
+	  max-height: 500px;
+	  min-height: 44px;
+	  overflow-y: auto;
+	  background: white;
+	  border: 1px solid #ddd;
+	  border-radius: 4px;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+	  content: "&#xe258;";
+	  border: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active {
+	  display: block;
+      }
+
+      .tabset-dropdown > .nav-tabs > li.active a {
+  	  padding: 0 15px !important;
+      }
+
+      .tabset-dropdown > .nav-tabs > li > a,
+      .tabset-dropdown > .nav-tabs > li > a:focus,
+      .tabset-dropdown > .nav-tabs > li > a:hover {
+	  border: none;
+	  display: inline-block;
+	  border-radius: 4px;
+	  background-color: transparent;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+	  display: block;
+	  float: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li {
+	  display: none;
+	  margin-left: 0 !important;
+      }
+    </style>
+    
+</head>
+
+<body class="preload">
+
+   	
+         <!-- readthedown start -->   
+   <div id="content" data-toggle="wy-nav-shift">
+     <nav id="nav-top" role="navigation" aria-label="top navigation">
+       <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+     </nav>
+         
+      <div class="btn-group pull-right">
+     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+     <ul class="dropdown-menu" style="min-width: 50px;">
+	    	    <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+	    <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+	    	    <li role="separator" class="divider"></li>
+	    	    	    	    <li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+	         </ul>
+   </div>
+   
+      
+      <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">EEP-Datenauswertung</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li>
+        <a href="DatenauswertungExampleFormat.html">Seminar Skript</a>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+          Templates
+           
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li>
+            <a href="01_singlesubject.html">Eine VP</a>
+          </li>
+          <li>
+            <a href="02_allsubjects.html">Alle VPs</a>
+          </li>
+          <li>
+            <a href="03_inferenzstatistik.html">Inferenz Statistik</a>
+          </li>
+          <li>
+            <a href="04_abbildungen.html">Abbildungen</a>
+          </li>
+        </ul>
+      </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container -->
+      </div><!--/.navbar -->
+        
+      <h1 class="title">Abbildungen</h1>
+      
+         <!-- readthedown authors -->
+   <div id="sidebar">
+    <h2><a href="#content">Abbildungen</a></h2>
+    <div id="toc">
+      <ul>
+      <li><a href="#libraryggplot2">library(ggplot2)</a></li>
+      <li><a href="#abbildungen-in-andere-programme-exportieren">Abbildungen in andere Programme exportieren</a></li>
+      <li><a href="#boxplot-violinplot">Boxplot &amp; Violinplot</a></li>
+      <li><a href="#mittelwerte-streuungsmaß">Mittelwerte + Streuungsmaß</a>
+      <ul>
+      <li><a href="#step-1-daten-zusammenfassen">Step 1: Daten zusammenfassen</a></li>
+      <li><a href="#step-2-grafik-erstellen-z.b.-mittelwerte-streuungsmaß">Step 2: Grafik erstellen: z.B. Mittelwerte + Streuungsmaß</a></li>
+      <li><a href="#step-2-grafik-erstellen-z.b.-balkendiagramm">Step 2: Grafik erstellen: z.B. Balkendiagramm</a></li>
+      </ul></li>
+      <li><a href="#grafikbefehle">Grafikbefehle</a>
+      <ul>
+      <li><a href="#different-geoms">different geoms</a></li>
+      <li><a href="#farben">Farben</a></li>
+      <li><a href="#achsen">Achsen</a></li>
+      <li><a href="#symbole-und-linientyp-ändern">Symbole und Linientyp ändern</a></li>
+      <li><a href="#schriftgröße">Schriftgröße</a></li>
+      <li><a href="#bearbeiten-der-legende">Bearbeiten der Legende</a></li>
+      <li><a href="#themes-schriftgrößen-layout-des-plots-etc.">Themes: Schriftgrößen, Layout des Plots, etc.</a></li>
+      </ul></li>
+      </ul>
+    </div>
+    <div id="postamble" data-toggle="wy-nav-shift" class="status">
+                </div>
+   </div>
+     
+
+   
+      
+   
+<!-- Don't indent these lines or it will mess pre blocks indentation --> 
+<div id="main">
+<p>Alle hier gezeigten Abbildungen können Sie für alle abhängigen Variablen verwenden. Beispielhaft wird im folgenden überall die Reaktionszeit benutzt.</p>
+<div id="libraryggplot2" class="section level1">
+<h1>library(ggplot2)</h1>
+<p>sehr gute Dokumentation: <a href="http://www.cookbook-r.com/Graphs/">Cookbook R</a></p>
+</div>
+<div id="abbildungen-in-andere-programme-exportieren" class="section level1">
+<h1>Abbildungen in andere Programme exportieren</h1>
+<p>Mit dem folgende Befehl können Sie die Größe (in cm) und die Auflösung der Abbildung einstellen. Die Abbildung wird im aktuellen Arbeitsverzeichnis als .png Datei abgelegt. Die .png Datei können Sie in jedes Textverarbeitungsprogramm (Word, Powerpoint, …) einbinden.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafik in hoher Auflösung speichern </span><span class="al">###</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;experiment_grafik.png&quot;</span>, <span class="at">width =</span> <span class="dv">18</span>, <span class="at">height =</span> <span class="dv">12</span>, <span class="at">units =</span> <span class="st">&quot;cm&quot;</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div>
+</div>
+<div id="boxplot-violinplot" class="section level1">
+<h1>Boxplot &amp; Violinplot</h1>
+<p>Im folgenden Beispiel ist RT.vp ein Datensatz, der pro VP Mittelwerte für jede Bedingung enthält (aber keine einzelnen Trials mehr). Dargestellt wird pro Bedingung ein Boxplot/Violinplot und der Mittelwert.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BOXPLOT: Grundform</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(RT.vp, <span class="fu">aes</span>(<span class="at">x=</span>UV1, <span class="at">y=</span>AV, <span class="at">fill=</span>UV2)) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.7</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># BOXPLOT: etwas verändert</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(RT.vp, <span class="fu">aes</span>(<span class="at">x=</span>UV1, <span class="at">y=</span>AV, <span class="at">fill=</span>UV2)) <span class="sc">+</span>  </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.5</span>, <span class="at">position=</span><span class="fu">position_dodge</span>(<span class="fl">0.7</span>)) <span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&quot;point&quot;</span>, <span class="at">position=</span><span class="fu">position_dodge</span>(<span class="fl">0.7</span>), </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">shape=</span><span class="dv">19</span>, <span class="at">size=</span><span class="dv">4</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Unabhaengige Variable&quot;</span>,<span class="at">y =</span> <span class="st">&quot;Abhaengige Variable&quot;</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># VIOLINPLOT</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(RT.vp, <span class="fu">aes</span>(<span class="at">x =</span> UV1, <span class="at">y =</span> AV, <span class="at">fill =</span> UV2)) <span class="sc">+</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.9</span>)) <span class="sc">+</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> median, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">shape =</span> <span class="dv">23</span>, </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>               <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.9</span>)) </span></code></pre></div>
+</div>
+<div id="mittelwerte-streuungsmaß" class="section level1">
+<h1>Mittelwerte + Streuungsmaß</h1>
+<div id="step-1-daten-zusammenfassen" class="section level2">
+<h2>Step 1: Daten zusammenfassen</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>group.rt <span class="ot">&lt;-</span> Rmisc<span class="sc">::</span><span class="fu">summarySEwithin</span>(RT.vp, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">measure =</span> <span class="st">&quot;AV&quot;</span>, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">withinvars =</span> <span class="fu">c</span>(<span class="st">&quot;UV1&quot;</span>, <span class="st">&quot;UV2&quot;</span>), </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">idvar =</span> <span class="st">&quot;id&quot;</span>, </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">conf.interval =</span> .<span class="dv">95</span>)</span></code></pre></div>
+<p>Das Zusammenfassen der Daten erfolgt in zwei Schritten:</p>
+<ol style="list-style-type: decimal">
+<li>RT.vp
+<ul>
+<li>dataframe, enthält für jede VP Mittelwerte pro Bedingung.</li>
+<li>wird aus dem (bereinigten) Datensatz, der einzelne Trials enthält, erstellt</li>
+<li>Informationen über einzelne Trials sind nicht mehr enthalten</li>
+</ul></li>
+<li>group.rt
+<ul>
+<li>dataframe, enthält Mittelwert und Streuungsmaß pro Bedingung</li>
+<li>wird aus RT.vp erzeugt.</li>
+<li>Informationen über einzelne VPs sind nicht mehr enthalten</li>
+</ul></li>
+</ol>
+<p><strong>Achtung</strong>: wichtiger Hinweis zu <strong>Rmisc::summarySEwithin</strong>  library(RMisc) lädt auch das package plyr(). plyr-Funktionen stehen in Konflikt mit dplyr-Funktionen (und wir nutzen dplyr-Funktionen, tidyverse lädt dplyr). Wird plyr() im Skript nach tidyverse (dplyr) geladen, dann funktionieren die dplyr-Funktionen nicht mehr richtig. Laden Sie deswegen Rmisc nicht über library(Rmisc) in den Workspace, sondern nur für die genutzte Funktion (<strong>Rmisc::summarySEwithin</strong>)</p>
+</div>
+<div id="step-2-grafik-erstellen-z.b.-mittelwerte-streuungsmaß" class="section level2">
+<h2>Step 2: Grafik erstellen: z.B. Mittelwerte + Streuungsmaß</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Grundgerüst</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(group.rt, <span class="fu">aes</span>(<span class="at">x =</span> UV1, <span class="at">y =</span> AV, <span class="at">group =</span> UV2, <span class="at">colour =</span> UV2)) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> UV2)) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">linetype =</span> UV2)) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> AV <span class="sc">-</span> se, <span class="at">ymax =</span> AV <span class="sc">+</span> se))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="do">## bearbeitet</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> group.rt, <span class="fu">aes</span>(<span class="at">x =</span> UV1, <span class="at">y =</span> AV, <span class="at">group =</span> UV2, <span class="at">colour =</span> UV2)) <span class="sc">+</span> </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> UV2), <span class="at">size =</span> <span class="dv">4</span>, </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">position=</span><span class="fu">position_dodge</span>(<span class="fl">0.1</span>)) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">linetype =</span> UV2), <span class="at">size =</span> <span class="dv">1</span>, </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">position=</span><span class="fu">position_dodge</span>(<span class="fl">0.1</span>)) <span class="sc">+</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>AV<span class="sc">-</span>se, <span class="at">ymax=</span>AV<span class="sc">+</span>se), </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">size =</span> <span class="dv">1</span>, <span class="at">width=</span>.<span class="dv">1</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">position=</span><span class="fu">position_dodge</span>(<span class="fl">0.1</span>), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&#39;Unabhaengige Variable&#39;</span>, <span class="at">y =</span> <span class="st">&#39;Abhaengige Variable&#39;</span>) </span></code></pre></div>
+</div>
+<div id="step-2-grafik-erstellen-z.b.-balkendiagramm" class="section level2">
+<h2>Step 2: Grafik erstellen: z.B. Balkendiagramm</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(group.rt, <span class="fu">aes</span>(<span class="at">x=</span>UV1, <span class="at">y=</span>AV, <span class="at">fill=</span>UV2)) <span class="sc">+</span>  </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="at">width=</span><span class="fl">0.5</span>, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.5</span>)) <span class="sc">+</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>AV<span class="sc">-</span>se, <span class="at">ymax=</span>AV<span class="sc">+</span>se, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>), <span class="at">size =</span> <span class="dv">1</span>, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">width=</span>.<span class="dv">1</span>, <span class="at">position=</span><span class="fu">position_dodge</span>(<span class="fl">0.5</span>), <span class="at">show.legend =</span> F) <span class="co">#+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># labs(x = &quot;Unabhaengige Variable&quot;, y = &quot;Abhaengige Variable&quot;) </span></span></code></pre></div>
+</div>
+</div>
+<div id="grafikbefehle" class="section level1">
+<h1>Grafikbefehle</h1>
+<div id="different-geoms" class="section level2">
+<h2>different geoms</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_boxplot</span>()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_violin</span>()</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>()</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_errorbar</span>()</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>()</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_histogram</span>()</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_abline</span>()</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_hline</span>()</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_vline</span>()</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>...</span></code></pre></div>
+</div>
+<div id="farben" class="section level2">
+<h2>Farben</h2>
+<p><a href="http://www.cookbook-r.com/Graphs/Colors_%28ggplot2%29/">http://www.cookbook-r.com/Graphs/Colors_%28ggplot2%29/</a></p>
+<p>Google-Suche: R color chart</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">### für Punkte und Linien</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_colour_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;green&quot;</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_colour_brewer</span>(<span class="at">palette=</span><span class="st">&quot;Set3&quot;</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">### für Barplots / boxplots</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;green&quot;</span>))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">&quot;Set3&quot;</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set1&quot;</span>, <span class="at">name=</span><span class="st">&quot;UV2&quot;</span>, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;X2&quot;</span>), </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;einLabel&quot;</span>, <span class="st">&quot;nocheinLabel&quot;</span>))</span></code></pre></div>
+</div>
+<div id="achsen" class="section level2">
+<h2>Achsen</h2>
+<p><a href="http://www.cookbook-r.com/Graphs/Axes_%28ggplot2%29/" class="uri">http://www.cookbook-r.com/Graphs/Axes_%28ggplot2%29/</a></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Beschriftung x-Achse</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_x_discrete</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="st">&quot;X1&quot;</span>, <span class="st">&quot;X2&quot;</span>),<span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;X1&quot;</span>, <span class="st">&quot;X1&quot;</span>)) </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Skalierung</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">coord_cartesian</span>(<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>)) <span class="co"># oder</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>))</span></code></pre></div>
+</div>
+<div id="symbole-und-linientyp-ändern" class="section level2">
+<h2>Symbole und Linientyp ändern</h2>
+<p><a href="http://www.cookbook-r.com/Graphs/Shapes_and_line_types/">http://www.cookbook-r.com/Graphs/Shapes_and_line_types/</a></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Symbole ändern (in diesem Beispiel hat UV 3 Stufen):</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_shape_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">15</span>, <span class="dv">17</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Linenart ändern (in diesem Beispiel hat UV 3 Stufen):</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_linetype_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;solid&quot;</span>, <span class="st">&quot;twodash&quot;</span>, <span class="st">&quot;dotted&quot;</span>))</span></code></pre></div>
+</div>
+<div id="schriftgröße" class="section level2">
+<h2>Schriftgröße</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">40</span>), </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">40</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)) </span></code></pre></div>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="bearbeiten-der-legende" class="section level2">
+<h2>Bearbeiten der Legende</h2>
+<p><a href="http://www.cookbook-r.com/Graphs/Legends_%28ggplot2%29/">http://www.cookbook-r.com/Graphs/Legends_%28ggplot2%29/</a></p>
+<p>Verwendet man Colour, Shape und Linetype in der Grafik, muss die Legende für alle 3 codiert werden, sonst entstehen mehrere Legenden</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_colour_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;cornflowerblue&quot;</span>,<span class="st">&quot;coral3&quot;</span>), <span class="at">name =</span> <span class="st">&quot;UV1&quot;</span>, </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">breaks=</span><span class="fu">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;oben&quot;</span>, <span class="st">&quot;unten&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_shape_discrete</span>(<span class="at">name =</span> <span class="st">&quot;UV1&quot;</span>, </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks=</span><span class="fu">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;oben&quot;</span>, <span class="st">&quot;unten&quot;</span>))<span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_linetype_discrete</span>(<span class="at">name =</span> <span class="st">&quot;UV1&quot;</span>, </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">breaks=</span><span class="fu">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;oben&quot;</span>, <span class="st">&quot;unten&quot;</span>))</span></code></pre></div>
+</div>
+<div id="themes-schriftgrößen-layout-des-plots-etc." class="section level2">
+<h2>Themes: Schriftgrößen, Layout des Plots, etc.</h2>
+<p>Mit theme() kann man Komponenten des Layouts verändern, die sich nicht direkt auf die Daten beziehen, d.h. Titel, Achsen, Schriftgrößen, Legende usw.. Mit theme_get() kann man alle Optionen betrachten.</p>
+<p>Es gibt eine Reihe vordefinierter Themes (z.B. hier: <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">https://ggplot2.tidyverse.org/reference/ggtheme.html</a></p>
+<p>Themes werden wie alle anderen Grafikbefehle zur Grafiken hinzugefügt, z.B.:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grauen Hintergrund durch weißen ersetzen</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p>Es lohnt sich in der Regel sich ein Standard-Theme zu definieren, dass man dann für alle Plots verwendet, sodass die Grafiken ein einheitliches Layout haben. Wenn ein bestimmtes Element entfernt werden soll, kann dafür element_blank() verwendet werden.</p>
+<p>Beispiel:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>StandardTheme <span class="ot">&lt;-</span> <span class="fu">theme</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">&quot;black&quot;</span>), <span class="co"># Hauptachsenfarbe schwarz</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(),  <span class="co"># Hauptgitterlinien entfernen</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),  <span class="co"># Untergitterlinien entfernen</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">panel.border =</span> <span class="fu">element_blank</span>(),      <span class="co"># Rahmen entfernen</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),  <span class="co"># Hintergrund leer, d.h. weiß</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>),          <span class="co"># allg. Schriftgröße definieren</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">14</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>), </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.title.y =</span> <span class="fu">element_text</span>( <span class="at">size=</span><span class="dv">14</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">strip.text =</span>  <span class="fu">element_text</span>( <span class="at">size=</span><span class="dv">12</span>),</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text =</span> <span class="fu">element_text</span>( <span class="at">size=</span><span class="dv">12</span>),</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">&quot;black&quot;</span>), <span class="co"># Rahmen um Legende</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.key =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="dv">3</span>, <span class="st">&quot;lines&quot;</span>))</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardtheme zur Grafik hinzufügen</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(...) <span class="sc">+</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  ... <span class="sc">+</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  StandardTheme</span></code></pre></div>
+</div>
+</div>
+</div>
+
+   
+      <div id="rmd-source-code">LS0tDQp0aXRsZTogIkFiYmlsZHVuZ2VuIg0KaGVhZGVyLWluY2x1ZGVzOiANCi0gXHVzZXBhY2thZ2V7ZmFuY3loZHJ9IA0KLSBccGFnZXN0eWxle2ZhbmN5cGxhaW59IA0KLSBcZmFuY3loZnt9DQotIFxmYW5jeWhlYWRbTF17RHIuIENvcmR1bGEgSMO2bGlnfQ0KLSBcZmFuY3loZWFkW0Nde1VuaXZlcnNpdMOkdCBIYW1idXJnfQ0KLSBcZmFuY3loZWFkW1Jde0VFUCBJfQ0KLSBcZmFuY3lmb290W0Nde0RpZXNlcyBEb2t1bWVudCBpc3QgdXJoZWJlcnJlY2h0bGljaCBnZXNjaMO8dHp0Ln0gDQotIFxmYW5jeWZvb3RbUl17XHRoZXBhZ2V9IA0KLSBcc2V0bGVuZ3Roe1xoZWFkaGVpZ2h0fXsxNXB0fSANCm91dHB1dDoNCiAgcm1kZm9ybWF0czo6cmVhZHRoZWRvd246DQogICAgaGlnaGxpZ2h0OiBrYXRlDQogICAgc2VsZl9jb250YWluZWQ6IHRydWUNCiAgICB0aHVtYm5haWxzOiBmYWxzZQ0KICAgIGNvZGVfZm9sZGluZzogc2hvdw0KICAgIHRvY19kZXB0aDogNQ0KICAgIGZpZ193aWR0aDogMTIgDQogICAgZmlnX2hlaWdodDogMTINCiAgICBzb3VyY2VfY29kZTogZW1iZWQNCiAgICBkZl9wcmludDogcGFnZWQNCiAgICBrZWVwX21kOiB0cnVlDQogICAgY29kZV9kb3dubG9hZDogdHJ1ZQ0KZm9udHNpemU6IDE0cHQNCmVkaXRvcl9vcHRpb25zOiANCiAgY2h1bmtfb3V0cHV0X3R5cGU6IGlubGluZQ0KY3NzOiBzdHlsZS5jc3MNCi0tLQ0KDQoNCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfQ0KbGlicmFyeShrbml0cikNCmxpYnJhcnkocm1kZm9ybWF0cykNCmxpYnJhcnkocm1hcmtkb3duKQ0KbGlicmFyeSh0aWR5dmVyc2UpDQpsaWJyYXJ5KGdncGxvdDIpDQoNCiMjIEdsb2JhbCBvcHRpb25zDQpvcHRpb25zKG1heC5wcmludD0iNzUiKQ0Kb3B0c19jaHVuayRzZXQoZWNobz1UUlVFLA0KCSAgICAgICAgICAgICBjYWNoZT1GQUxTRSwNCiAgICAgICAgICAgICAgIHByb21wdD1GQUxTRSwNCiAgICAgICAgICAgICAgIHRpZHk9VFJVRSwNCiAgICAgICAgICAgICAgIGNvbW1lbnQ9TkEsDQogICAgICAgICAgICAgICBtZXNzYWdlPUZBTFNFLA0KICAgICAgICAgICAgICAgd2FybmluZz1GQUxTRSwgDQogICAgICAgICAgICAgICBmaWcud2lkdGggPSA2LCANCiAgICAgICAgICAgICAgIGZpZy5oZWlnaHQgPSA0Ljc1LCANCiAgICAgICAgICAgICAgIGZpZy5hbGlnbiA9ICJjZW50ZXIiLA0KICAgICAgICAgICAgICAgdGlkeSA9IEZBTFNFDQogICAgICAgICAgICAgICApDQoNCm9wdHNfa25pdCRzZXQoDQogICAgICAgICAgICAgICByb290LmRpciA9IHJwcm9qcm9vdDo6ZmluZF9yc3R1ZGlvX3Jvb3RfZmlsZSgpLA0KICAgICAgICAgICAgICAgYmFzZS5kaXIgPSBycHJvanJvb3Q6OmZpbmRfcnN0dWRpb19yb290X2ZpbGUoKQ0KICAgICAgICAgICAgICApDQoNCg0Kcm1hcmtkb3duOjpmaW5kX3BhbmRvYyhjYWNoZT1GKQ0KZGlyLmV4aXN0cygiUGFuZG9jMi8iKQ0KcGFuZG9jX3ZlcnNpb24oKQ0KDQpvcHRzX2tuaXQkZ2V0KCkNCmBgYA0KQWxsZSBoaWVyIGdlemVpZ3RlbiBBYmJpbGR1bmdlbiBrw7ZubmVuIFNpZSBmw7xyIGFsbGUgYWJow6RuZ2lnZW4gVmFyaWFibGVuIHZlcndlbmRlbi4NCkJlaXNwaWVsaGFmdCB3aXJkIGltIGZvbGdlbmRlbiDDvGJlcmFsbCBkaWUgUmVha3Rpb25zemVpdCBiZW51dHp0Lg0KDQojIGxpYnJhcnkoZ2dwbG90MikNCnNlaHIgZ3V0ZSBEb2t1bWVudGF0aW9uOiBbQ29va2Jvb2sgUl0oaHR0cDovL3d3dy5jb29rYm9vay1yLmNvbS9HcmFwaHMvKQ0KDQojIEFiYmlsZHVuZ2VuIGluIGFuZGVyZSBQcm9ncmFtbWUgZXhwb3J0aWVyZW4NCk1pdCBkZW0gZm9sZ2VuZGUgQmVmZWhsIGvDtm5uZW4gU2llIGRpZSBHcsO2w59lIChpbiBjbSkgdW5kIGRpZSBBdWZsw7ZzdW5nIGRlciBBYmJpbGR1bmcgZWluc3RlbGxlbi4gRGllIEFiYmlsZHVuZyB3aXJkIGltIGFrdHVlbGxlbiBBcmJlaXRzdmVyemVpY2huaXMgYWxzIC5wbmcgRGF0ZWkgYWJnZWxlZ3QuIERpZSAucG5nIERhdGVpIGvDtm5uZW4gU2llIGluIGplZGVzIFRleHR2ZXJhcmJlaXR1bmdzcHJvZ3JhbW0gKFdvcmQsIFBvd2VycG9pbnQsIC4uLikgZWluYmluZGVuLiANCg0KYGBge3J9DQojIEdyYWZpayBpbiBob2hlciBBdWZsw7ZzdW5nIHNwZWljaGVybiAjIyMNCmdnc2F2ZSgiZXhwZXJpbWVudF9ncmFmaWsucG5nIiwgd2lkdGggPSAxOCwgaGVpZ2h0ID0gMTIsIHVuaXRzID0gImNtIiwgDQogICAgICAgZHBpID0gMzAwKQ0KYGBgDQoNCiMgQm94cGxvdCAmIFZpb2xpbnBsb3QNCkltIGZvbGdlbmRlbiBCZWlzcGllbCBpc3QgUlQudnAgZWluIERhdGVuc2F0eiwgZGVyIHBybyBWUCBNaXR0ZWx3ZXJ0ZSBmw7xyIGplZGUgQmVkaW5ndW5nIGVudGjDpGx0IChhYmVyIGtlaW5lIGVpbnplbG5lbiBUcmlhbHMgbWVocikuIERhcmdlc3RlbGx0IHdpcmQgcHJvIEJlZGluZ3VuZyBlaW4gQm94cGxvdC9WaW9saW5wbG90IHVuZCBkZXIgTWl0dGVsd2VydC4gDQoNCmBgYHtyIGJveHBsb3QsIGV2YWwgPSBGfQ0KIyBCT1hQTE9UOiBHcnVuZGZvcm0NCmdncGxvdChSVC52cCwgYWVzKHg9VVYxLCB5PUFWLCBmaWxsPVVWMikpICsNCiAgZ2VvbV9ib3hwbG90KCkgKw0KICBzdGF0X3N1bW1hcnkoZnVuID0gbWVhbiwgZ2VvbSA9ICJwb2ludCIsIHBvc2l0aW9uID0gcG9zaXRpb25fZG9kZ2UoMC43KSkNCg0KIyBCT1hQTE9UOiBldHdhcyB2ZXLDpG5kZXJ0DQpnZ3Bsb3QoUlQudnAsIGFlcyh4PVVWMSwgeT1BViwgZmlsbD1VVjIpKSArICANCiAgZ2VvbV9ib3hwbG90KHdpZHRoID0gMC41LCBwb3NpdGlvbj1wb3NpdGlvbl9kb2RnZSgwLjcpKSArDQogIHN0YXRfc3VtbWFyeShmdW49bWVhbiwgZ2VvbT0icG9pbnQiLCBwb3NpdGlvbj1wb3NpdGlvbl9kb2RnZSgwLjcpLCANCiAgICAgICAgICAgICAgIHNoYXBlPTE5LCBzaXplPTQsIHNob3cubGVnZW5kID0gRikgKw0KICBsYWJzKHggPSAiVW5hYmhhZW5naWdlIFZhcmlhYmxlIix5ID0gIkFiaGFlbmdpZ2UgVmFyaWFibGUiKQ0KDQojIFZJT0xJTlBMT1QNCmdncGxvdChSVC52cCwgYWVzKHggPSBVVjEsIHkgPSBBViwgZmlsbCA9IFVWMikpICsNCiAgZ2VvbV92aW9saW4oKSArDQogIHN0YXRfc3VtbWFyeShmdW4gPSBtZWFuLCBnZW9tID0gInBvaW50IiwgcG9zaXRpb24gPSBwb3NpdGlvbl9kb2RnZSgwLjkpKSArDQogIHN0YXRfc3VtbWFyeShmdW4gPSBtZWRpYW4sIGdlb20gPSAicG9pbnQiLCBzaGFwZSA9IDIzLCANCiAgICAgICAgICAgICAgIHBvc2l0aW9uID0gcG9zaXRpb25fZG9kZ2UoMC45KSkgDQpgYGANCg0KDQojIE1pdHRlbHdlcnRlICsgU3RyZXV1bmdzbWHDnw0KDQojIyBTdGVwIDE6IERhdGVuIHp1c2FtbWVuZmFzc2VuDQoNCmBgYHtyIGdyb3VwLnJ0LCBldmFsID0gRn0NCmdyb3VwLnJ0IDwtIFJtaXNjOjpzdW1tYXJ5U0V3aXRoaW4oUlQudnAsIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtZWFzdXJlID0gIkFWIiwgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHdpdGhpbnZhcnMgPSBjKCJVVjEiLCAiVVYyIiksIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZHZhciA9ICJpZCIsIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb25mLmludGVydmFsID0gLjk1KQ0KYGBgDQoNCkRhcyBadXNhbW1lbmZhc3NlbiBkZXIgRGF0ZW4gZXJmb2xndCBpbiB6d2VpIFNjaHJpdHRlbjoNCg0KMS4gUlQudnANCiAgICAqICAgZGF0YWZyYW1lLCBlbnRow6RsdCBmw7xyIGplZGUgVlAgTWl0dGVsd2VydGUgcHJvIEJlZGluZ3VuZy4gDQogICAgKiAgIHdpcmQgYXVzIGRlbSAoYmVyZWluaWd0ZW4pIERhdGVuc2F0eiwgZGVyIGVpbnplbG5lIFRyaWFscyBlbnRow6RsdCwgZXJzdGVsbHQNCiAgICAqICAgSW5mb3JtYXRpb25lbiDDvGJlciBlaW56ZWxuZSBUcmlhbHMgc2luZCBuaWNodCBtZWhyIGVudGhhbHRlbg0KDQoyLiBncm91cC5ydA0KICAgICogICBkYXRhZnJhbWUsIGVudGjDpGx0IE1pdHRlbHdlcnQgdW5kIFN0cmV1dW5nc21hw58gcHJvIEJlZGluZ3VuZw0KICAgICogICB3aXJkIGF1cyBSVC52cCBlcnpldWd0LiANCiAgICAqICAgSW5mb3JtYXRpb25lbiDDvGJlciBlaW56ZWxuZSBWUHMgc2luZCBuaWNodCBtZWhyIGVudGhhbHRlbg0KDQoNCioqQWNodHVuZyoqOiB3aWNodGlnZXIgSGlud2VpcyB6dSAqKlJtaXNjOjpzdW1tYXJ5U0V3aXRoaW4qKg0KXG5ld2xpbmUNCmxpYnJhcnkoUk1pc2MpIGzDpGR0IGF1Y2ggZGFzIHBhY2thZ2UgcGx5cigpLiBwbHlyLUZ1bmt0aW9uZW4gc3RlaGVuIGluIEtvbmZsaWt0IG1pdCBkcGx5ci1GdW5rdGlvbmVuICh1bmQgd2lyIG51dHplbiBkcGx5ci1GdW5rdGlvbmVuLCB0aWR5dmVyc2UgbMOkZHQgZHBseXIpLiBXaXJkIHBseXIoKSBpbSBTa3JpcHQgbmFjaCB0aWR5dmVyc2UgKGRwbHlyKSBnZWxhZGVuLCBkYW5uIGZ1bmt0aW9uaWVyZW4gZGllIGRwbHlyLUZ1bmt0aW9uZW4gbmljaHQgbWVociByaWNodGlnLiBMYWRlbiBTaWUgZGVzd2VnZW4gUm1pc2MgbmljaHQgw7xiZXIgbGlicmFyeShSbWlzYykgaW4gZGVuIFdvcmtzcGFjZSwgc29uZGVybiBudXIgZsO8ciBkaWUgZ2VudXR6dGUgRnVua3Rpb24gKCoqUm1pc2M6OnN1bW1hcnlTRXdpdGhpbioqKQ0KDQoNCg0KIyMgU3RlcCAyOiBHcmFmaWsgZXJzdGVsbGVuOiB6LkIuIE1pdHRlbHdlcnRlICsgU3RyZXV1bmdzbWHDnw0KYGBge3IgcHVua3RlLCBldmFsID0gRn0NCiMjIEdydW5kZ2Vyw7xzdA0KZ2dwbG90KGdyb3VwLnJ0LCBhZXMoeCA9IFVWMSwgeSA9IEFWLCBncm91cCA9IFVWMiwgY29sb3VyID0gVVYyKSkgKw0KICBnZW9tX3BvaW50KGFlcyhzaGFwZSA9IFVWMikpICsNCiAgZ2VvbV9saW5lKGFlcyhsaW5ldHlwZSA9IFVWMikpICsNCiAgZ2VvbV9lcnJvcmJhcihhZXMoeW1pbiA9IEFWIC0gc2UsIHltYXggPSBBViArIHNlKSkNCg0KDQojIyBiZWFyYmVpdGV0DQpnZ3Bsb3QoZGF0YSA9IGdyb3VwLnJ0LCBhZXMoeCA9IFVWMSwgeSA9IEFWLCBncm91cCA9IFVWMiwgY29sb3VyID0gVVYyKSkgKyANCiAgZ2VvbV9wb2ludChhZXMoc2hhcGUgPSBVVjIpLCBzaXplID0gNCwgDQogICAgICAgICAgICAgcG9zaXRpb249cG9zaXRpb25fZG9kZ2UoMC4xKSkgKw0KICBnZW9tX2xpbmUoYWVzKGxpbmV0eXBlID0gVVYyKSwgc2l6ZSA9IDEsIA0KICAgICAgICAgICAgcG9zaXRpb249cG9zaXRpb25fZG9kZ2UoMC4xKSkgKw0KICBnZW9tX2Vycm9yYmFyKGFlcyh5bWluPUFWLXNlLCB5bWF4PUFWK3NlKSwgDQogICAgICAgICAgICAgICAgc2l6ZSA9IDEsIHdpZHRoPS4xLA0KICAgICAgICAgICAgICAgIHBvc2l0aW9uPXBvc2l0aW9uX2RvZGdlKDAuMSksIHNob3cubGVnZW5kID0gRikgKw0KICBsYWJzKHggPSAnVW5hYmhhZW5naWdlIFZhcmlhYmxlJywgeSA9ICdBYmhhZW5naWdlIFZhcmlhYmxlJykgDQoNCmBgYA0KDQojIyBTdGVwIDI6IEdyYWZpayBlcnN0ZWxsZW46IHouQi4gQmFsa2VuZGlhZ3JhbW0NCmBgYHtyIGJhcnBsb3QsIGV2YWwgPSBGfQ0KZ2dwbG90KGdyb3VwLnJ0LCBhZXMoeD1VVjEsIHk9QVYsIGZpbGw9VVYyKSkgKyAgDQogIGdlb21fYmFyKHN0YXQ9ImlkZW50aXR5IiwgY29sb3VyID0gImJsYWNrIiwgd2lkdGg9MC41LCANCiAgICAgICAgICAgcG9zaXRpb24gPSBwb3NpdGlvbl9kb2RnZSgwLjUpKSArIA0KICBnZW9tX2Vycm9yYmFyKGFlcyh5bWluPUFWLXNlLCB5bWF4PUFWK3NlLCBjb2xvdXIgPSAiYmxhY2siKSwgc2l6ZSA9IDEsIA0KICAgICAgICAgICAgICAgIHdpZHRoPS4xLCBwb3NpdGlvbj1wb3NpdGlvbl9kb2RnZSgwLjUpLCBzaG93LmxlZ2VuZCA9IEYpICMrDQogICMgbGFicyh4ID0gIlVuYWJoYWVuZ2lnZSBWYXJpYWJsZSIsIHkgPSAiQWJoYWVuZ2lnZSBWYXJpYWJsZSIpIA0KYGBgDQoNCiMgR3JhZmlrYmVmZWhsZQ0KIyMgZGlmZmVyZW50IGdlb21zDQpgYGB7ciBnZW9tcywgZXZhbCA9IEZ9DQpnZW9tX2JveHBsb3QoKQ0KZ2VvbV92aW9saW4oKQ0KZ2VvbV9wb2ludCgpDQpnZW9tX2xpbmUoKQ0KZ2VvbV9lcnJvcmJhcigpDQpnZW9tX2JhcigpDQpnZW9tX2hpc3RvZ3JhbSgpDQpnZW9tX2FibGluZSgpDQpnZW9tX2hsaW5lKCkNCmdlb21fdmxpbmUoKQ0KLi4uDQpgYGANCg0KIyMgRmFyYmVuIA0KW2h0dHA6Ly93d3cuY29va2Jvb2stci5jb20vR3JhcGhzL0NvbG9yc18lMjhnZ3Bsb3QyJTI5L10oaHR0cDovL3d3dy5jb29rYm9vay1yLmNvbS9HcmFwaHMvQ29sb3JzXyUyOGdncGxvdDIlMjkvKQ0KDQpHb29nbGUtU3VjaGU6IFIgY29sb3IgY2hhcnQgDQpgYGB7ciBGYXJiZW4sIGV2YWwgPSBGfQ0KIyMjIGbDvHIgUHVua3RlIHVuZCBMaW5pZW4NCnNjYWxlX2NvbG91cl9tYW51YWwodmFsdWVzPWMoInJlZCIsImJsdWUiLCJncmVlbiIpKQ0Kc2NhbGVfY29sb3VyX2JyZXdlcihwYWxldHRlPSJTZXQzIikNCiMjIyBmw7xyIEJhcnBsb3RzIC8gYm94cGxvdHMNCnNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcz1jKCJyZWQiLCJibHVlIiwiZ3JlZW4iKSkNCnNjYWxlX2ZpbGxfYnJld2VyKHBhbGV0dGU9IlNldDMiKQ0Kc2NhbGVfZmlsbF9icmV3ZXIocGFsZXR0ZSA9ICJTZXQxIiwgbmFtZT0iVVYyIiwgYnJlYWtzID0gYygiWCIsICJYMiIpLCANCmxhYmVscz1jKCJlaW5MYWJlbCIsICJub2NoZWluTGFiZWwiKSkNCmBgYA0KDQojIyBBY2hzZW4NCmh0dHA6Ly93d3cuY29va2Jvb2stci5jb20vR3JhcGhzL0F4ZXNfJTI4Z2dwbG90MiUyOS8NCg0KYGBge3IgQXhpcywgZXZhbCA9IEZ9DQojIEJlc2NocmlmdHVuZyB4LUFjaHNlDQpzY2FsZV94X2Rpc2NyZXRlKGJyZWFrcz1jKCJYMSIsICJYMiIpLGxhYmVscz1jKCJYMSIsICJYMSIpKSANCiMgU2thbGllcnVuZw0KY29vcmRfY2FydGVzaWFuKHlsaW09YygxLCA0KSkgIyBvZGVyDQp5bGltKGMoMSw0KSkNCmBgYA0KDQojIyBTeW1ib2xlIHVuZCBMaW5pZW50eXAgw6RuZGVybg0KW2h0dHA6Ly93d3cuY29va2Jvb2stci5jb20vR3JhcGhzL1NoYXBlc19hbmRfbGluZV90eXBlcy9dKGh0dHA6Ly93d3cuY29va2Jvb2stci5jb20vR3JhcGhzL1NoYXBlc19hbmRfbGluZV90eXBlcy8pDQoNCmBgYHtyIHN5bWJvbHMsIGV2YWwgPSBGfQ0KIyBTeW1ib2xlIMOkbmRlcm4gKGluIGRpZXNlbSBCZWlzcGllbCBoYXQgVVYgMyBTdHVmZW4pOg0Kc2NhbGVfc2hhcGVfbWFudWFsKHZhbHVlcz1jKDE2LCAxNSwgMTcpKQ0KIyBMaW5lbmFydCDDpG5kZXJuIChpbiBkaWVzZW0gQmVpc3BpZWwgaGF0IFVWIDMgU3R1ZmVuKToNCnNjYWxlX2xpbmV0eXBlX21hbnVhbCh2YWx1ZXM9Yygic29saWQiLCAidHdvZGFzaCIsICJkb3R0ZWQiKSkNCmBgYA0KIyMgU2NocmlmdGdyw7bDn2UNCmBgYHtyIGZvbnQsIGV2YWwgPSBGfQ0KdGhlbWUodGV4dD1lbGVtZW50X3RleHQoc2l6ZT00MCksIA0KICAgICAgYXhpcy50ZXh0Lng9ZWxlbWVudF90ZXh0KHNpemU9NDAsIGNvbG91ciA9ICJibGFjayIpKSANCmBgYA0KDQpcbmV3cGFnZQ0KIyMgQmVhcmJlaXRlbiBkZXIgTGVnZW5kZQ0KW2h0dHA6Ly93d3cuY29va2Jvb2stci5jb20vR3JhcGhzL0xlZ2VuZHNfJTI4Z2dwbG90MiUyOS9dKGh0dHA6Ly93d3cuY29va2Jvb2stci5jb20vR3JhcGhzL0xlZ2VuZHNfJTI4Z2dwbG90MiUyOS8pDQoNClZlcndlbmRldCBtYW4gQ29sb3VyLCBTaGFwZSB1bmQgTGluZXR5cGUgaW4gZGVyIEdyYWZpaywgbXVzcyBkaWUgTGVnZW5kZSBmw7xyIGFsbGUgMyBjb2RpZXJ0IHdlcmRlbiwgc29uc3QgZW50c3RlaGVuIG1laHJlcmUgTGVnZW5kZW4NCg0KYGBge3IgbGVnZW5kcywgZXZhbCA9IEZ9DQpzY2FsZV9jb2xvdXJfbWFudWFsKHZhbHVlcz1jKCJjb3JuZmxvd2VyYmx1ZSIsImNvcmFsMyIpLCBuYW1lID0gIlVWMSIsIA0KICAgICAgICAgICAgICAgICAgICBicmVha3M9YygiMSIsIjIiKSwgbGFiZWxzID0gYygib2JlbiIsICJ1bnRlbiIpKSArDQpzY2FsZV9zaGFwZV9kaXNjcmV0ZShuYW1lID0gIlVWMSIsIA0KICAgICAgICAgICAgICAgICAgICAgYnJlYWtzPWMoIjEiLCIyIiksIGxhYmVscyA9IGMoIm9iZW4iLCAidW50ZW4iKSkrDQpzY2FsZV9saW5ldHlwZV9kaXNjcmV0ZShuYW1lID0gIlVWMSIsIA0KICAgICAgICAgICAgICAgICAgICAgICAgYnJlYWtzPWMoIjEiLCIyIiksIGxhYmVscyA9IGMoIm9iZW4iLCAidW50ZW4iKSkNCmBgYA0KDQoNCiMjIFRoZW1lczogU2NocmlmdGdyw7bDn2VuLCBMYXlvdXQgZGVzIFBsb3RzLCBldGMuIA0KTWl0IHRoZW1lKCkga2FubiBtYW4gS29tcG9uZW50ZW4gZGVzIExheW91dHMgdmVyw6RuZGVybiwgZGllIHNpY2ggbmljaHQgZGlyZWt0IGF1ZiBkaWUgRGF0ZW4gYmV6aWVoZW4sIGQuaC4gVGl0ZWwsIEFjaHNlbiwgU2NocmlmdGdyw7bDn2VuLCBMZWdlbmRlIHVzdy4uIE1pdCB0aGVtZV9nZXQoKSBrYW5uIG1hbiBhbGxlIE9wdGlvbmVuIGJldHJhY2h0ZW4uDQoNCkVzIGdpYnQgZWluZSBSZWloZSB2b3JkZWZpbmllcnRlciBUaGVtZXMgKHouQi4gaGllcjogW2h0dHBzOi8vZ2dwbG90Mi50aWR5dmVyc2Uub3JnL3JlZmVyZW5jZS9nZ3RoZW1lLmh0bWxdKGh0dHBzOi8vZ2dwbG90Mi50aWR5dmVyc2Uub3JnL3JlZmVyZW5jZS9nZ3RoZW1lLmh0bWwpDQoNClRoZW1lcyB3ZXJkZW4gd2llIGFsbGUgYW5kZXJlbiBHcmFmaWtiZWZlaGxlIHp1ciBHcmFmaWtlbiBoaW56dWdlZsO8Z3QsIHouQi46DQpgYGB7ciB0aGVtZV9idywgZXZhbCA9IEZ9DQojIGdyYXVlbiBIaW50ZXJncnVuZCBkdXJjaCB3ZWnDn2VuIGVyc2V0emVuDQorIHRoZW1lX2J3KCkNCmBgYA0KDQpFcyBsb2hudCBzaWNoIGluIGRlciBSZWdlbCBzaWNoIGVpbiBTdGFuZGFyZC1UaGVtZSB6dSBkZWZpbmllcmVuLCBkYXNzIG1hbiBkYW5uIGbDvHIgYWxsZSBQbG90cyB2ZXJ3ZW5kZXQsIHNvZGFzcyBkaWUgR3JhZmlrZW4gZWluIGVpbmhlaXRsaWNoZXMgTGF5b3V0IGhhYmVuLiBXZW5uIGVpbiBiZXN0aW1tdGVzIEVsZW1lbnQgZW50ZmVybnQgd2VyZGVuIHNvbGwsIGthbm4gZGFmw7xyIGVsZW1lbnRfYmxhbmsoKSB2ZXJ3ZW5kZXQgd2VyZGVuLg0KDQpCZWlzcGllbDogDQpgYGB7ciBTdGFuZGFyZHRoZW1lLCBldmFsID0gRn0NClN0YW5kYXJkVGhlbWUgPC0gdGhlbWUoDQogIGF4aXMubGluZSA9IGVsZW1lbnRfbGluZShjb2xvdXIgPSAiYmxhY2siKSwgIyBIYXVwdGFjaHNlbmZhcmJlIHNjaHdhcnoNCiAgcGFuZWwuZ3JpZC5tYWpvciA9IGVsZW1lbnRfYmxhbmsoKSwgICMgSGF1cHRnaXR0ZXJsaW5pZW4gZW50ZmVybmVuDQogIHBhbmVsLmdyaWQubWlub3IgPSBlbGVtZW50X2JsYW5rKCksICAjIFVudGVyZ2l0dGVybGluaWVuIGVudGZlcm5lbg0KICBwYW5lbC5ib3JkZXIgPSBlbGVtZW50X2JsYW5rKCksICAgICAgIyBSYWhtZW4gZW50ZmVybmVuDQogIHBhbmVsLmJhY2tncm91bmQgPSBlbGVtZW50X2JsYW5rKCksICAjIEhpbnRlcmdydW5kIGxlZXIsIGQuaC4gd2Vpw58NCiAgdGV4dD1lbGVtZW50X3RleHQoc2l6ZT0xNCksICAgICAgICAgICMgYWxsZy4gU2NocmlmdGdyw7bDn2UgZGVmaW5pZXJlbg0KICBheGlzLnRpdGxlLnggPSBlbGVtZW50X3RleHQoc2l6ZT0xNCwgZmFjZT0iYm9sZCIsIGNvbG91ciA9ICJibGFjayIpLCANCiAgYXhpcy50aXRsZS55ID0gZWxlbWVudF90ZXh0KCBzaXplPTE0LCBmYWNlPSJib2xkIiwgY29sb3VyID0gImJsYWNrIiksDQogIHN0cmlwLnRleHQgPSAgZWxlbWVudF90ZXh0KCBzaXplPTEyKSwNCiAgYXhpcy50ZXh0ID0gZWxlbWVudF90ZXh0KCBzaXplPTEyKSwNCiAgbGVnZW5kLmJhY2tncm91bmQgPSBlbGVtZW50X3JlY3QoY29sb3VyID0gImJsYWNrIiksICMgUmFobWVuIHVtIExlZ2VuZGUNCiAgbGVnZW5kLmtleSA9IGVsZW1lbnRfYmxhbmsoKSwNCiAgbGVnZW5kLmtleS5zaXplID0gdW5pdCgzLCAibGluZXMiKSkNCg0KIyBTdGFuZGFyZHRoZW1lIHp1ciBHcmFmaWsgaGluenVmw7xnZW4NCmdncGxvdCguLi4pICsNCiAgLi4uICsNCiAgU3RhbmRhcmRUaGVtZQ0KYGBgICAgICAgICAgICAgDQo=</div>
+   
+            
+      
+
+  <script>
+    $(document).ready(function () {
+
+			
+ 		
+	    });
+  </script>
+
+
+
+    <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+	var script = document.createElement("script");
+	script.type = "text/javascript";
+	script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+	document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  
+</body>
+</html>

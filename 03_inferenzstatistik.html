@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="pandoc" />
+
+    
+    
+    <title>Inferenzstatistik</title>
+
+        <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+        <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="site_libs/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="site_libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+        <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+        <script src="site_libs/navigation-1.1/tabsets.js"></script>
+        <script src="site_libs/navigation-1.1/codefolding.js"></script>
+        <script src="site_libs/navigation-1.1/FileSaver.min.js"></script>
+        <script src="site_libs/navigation-1.1/sourceembed.js"></script>
+        <link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+        <script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+        <link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+        <link href="site_libs/readthedown-0.1/readthedown_fonts_embed.css" rel="stylesheet" />
+        <script src="site_libs/readthedown-0.1/readthedown.js"></script>
+        <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+        <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+    
+    
+        <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+          background-color: #ffffff;
+          color: #a0a0a0;
+        }
+      pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+      div.sourceCode
+        { color: #1f1c1b; background-color: #ffffff; }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+      code span { color: #1f1c1b; } /* Normal */
+      code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+      code span.an { color: #ca60ca; } /* Annotation */
+      code span.at { color: #0057ae; } /* Attribute */
+      code span.bn { color: #b08000; } /* BaseN */
+      code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+      code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+      code span.ch { color: #924c9d; } /* Char */
+      code span.cn { color: #aa5500; } /* Constant */
+      code span.co { color: #898887; } /* Comment */
+      code span.cv { color: #0095ff; } /* CommentVar */
+      code span.do { color: #607880; } /* Documentation */
+      code span.dt { color: #0057ae; } /* DataType */
+      code span.dv { color: #b08000; } /* DecVal */
+      code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+      code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+      code span.fl { color: #b08000; } /* Float */
+      code span.fu { color: #644a9b; } /* Function */
+      code span.im { color: #ff5500; } /* Import */
+      code span.in { color: #b08000; } /* Information */
+      code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+      code span.op { color: #1f1c1b; } /* Operator */
+      code span.ot { color: #006e28; } /* Other */
+      code span.pp { color: #006e28; } /* Preprocessor */
+      code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+      code span.sc { color: #3daee9; } /* SpecialChar */
+      code span.ss { color: #ff5500; } /* SpecialString */
+      code span.st { color: #bf0303; } /* String */
+      code span.va { color: #0057ae; } /* Variable */
+      code span.vs { color: #bf0303; } /* VerbatimString */
+      code span.wa { color: #bf0303; } /* Warning */
+    </style>
+    
+        <link rel="stylesheet" href="style.css" type="text/css" />
+    
+    <!-- tabsets -->
+    <script>
+      $(document).ready(function () {
+	  window.buildTabsets("toc");
+      });
+      $(document).ready(function () {
+	  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+	      $(this).parent().toggleClass('nav-tabs-open')
+	  });
+      });
+    </script>
+
+    <!-- code folding -->
+        <script>
+      $(document).ready(function () {
+	  	  window.initializeSourceEmbed("03_inferenzstatistik.rmd");
+	  	  	  window.initializeCodeFolding("show" === "show");
+	        });
+    </script>
+    
+    <!-- code download -->
+        <style>
+      #rmd-source-code {
+	  display: none;
+      }
+    </style>
+    
+    <!-- tabsets dropdown -->
+
+    <style type="text/css">
+      .tabset-dropdown > .nav-tabs {
+	  display: inline-table;
+	  max-height: 500px;
+	  min-height: 44px;
+	  overflow-y: auto;
+	  background: white;
+	  border: 1px solid #ddd;
+	  border-radius: 4px;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+	  content: "&#xe258;";
+	  border: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active {
+	  display: block;
+      }
+
+      .tabset-dropdown > .nav-tabs > li.active a {
+  	  padding: 0 15px !important;
+      }
+
+      .tabset-dropdown > .nav-tabs > li > a,
+      .tabset-dropdown > .nav-tabs > li > a:focus,
+      .tabset-dropdown > .nav-tabs > li > a:hover {
+	  border: none;
+	  display: inline-block;
+	  border-radius: 4px;
+	  background-color: transparent;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+	  display: block;
+	  float: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li {
+	  display: none;
+	  margin-left: 0 !important;
+      }
+    </style>
+    
+</head>
+
+<body class="preload">
+
+   	
+         <!-- readthedown start -->   
+   <div id="content" data-toggle="wy-nav-shift">
+     <nav id="nav-top" role="navigation" aria-label="top navigation">
+       <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+     </nav>
+         
+      <div class="btn-group pull-right">
+     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+     <ul class="dropdown-menu" style="min-width: 50px;">
+	    	    <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+	    <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+	    	    <li role="separator" class="divider"></li>
+	    	    	    	    <li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+	         </ul>
+   </div>
+   
+      
+      <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">EEP-Datenauswertung</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li>
+        <a href="DatenauswertungExampleFormat.html">Seminar Skript</a>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+          Templates
+           
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li>
+            <a href="01_singlesubject.html">Eine VP</a>
+          </li>
+          <li>
+            <a href="02_allsubjects.html">Alle VPs</a>
+          </li>
+          <li>
+            <a href="03_inferenzstatistik.html">Inferenz Statistik</a>
+          </li>
+          <li>
+            <a href="04_abbildungen.html">Abbildungen</a>
+          </li>
+        </ul>
+      </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container -->
+      </div><!--/.navbar -->
+        
+      <h1 class="title">Inferenzstatistik</h1>
+      
+         <!-- readthedown authors -->
+   <div id="sidebar">
+    <h2><a href="#content">Inferenzstatistik</a></h2>
+    <div id="toc">
+      <ul>
+      <li><a href="#vorbereitung">Vorbereitung</a></li>
+      <li><a href="#ezanova">ezANOVA()</a>
+      <ul>
+      <li><a href="#fehlersuche">Fehlersuche</a>
+      <ul>
+      <li><a href="#droplevels">1. droplevels()</a></li>
+      <li><a href="#ezdesign">2. ezDesign()</a></li>
+      </ul></li>
+      </ul></li>
+      <li><a href="#post-hoc-tests">post-hoc Tests</a></li>
+      </ul>
+    </div>
+    <div id="postamble" data-toggle="wy-nav-shift" class="status">
+                </div>
+   </div>
+     
+
+   
+      
+   
+<!-- Don't indent these lines or it will mess pre blocks indentation --> 
+<div id="main">
+<div id="vorbereitung" class="section level1">
+<h1>Vorbereitung</h1>
+<ol style="list-style-type: decimal">
+<li>Schauen Sie sich die empirischen Hypothesen für Ihr Experiment an.</li>
+<li>Beschreiben Sie den Versuchsplan Ihres Experiments:
+<ul>
+<li>Welche Faktoren gibt es? Beschreiben Sie die Faktoren (Faktorstufen, between-subject/within-subject) und das Design.</li>
+<li>Stellen Sie den Versuchsplan in einer Matrix dar.</li>
+</ul></li>
+<li>Formulieren Sie die statistischen Hypothesen.</li>
+</ol>
+</div>
+<div id="ezanova" class="section level1">
+<h1>ezANOVA()</h1>
+<p>Man kann die ezANOVA entweder mit der gesamten (bereinigten) Datentabelle (enthält einzelne Trials) oder für die aggregierte Datentabelle (enthält für jede VP Mittelwerte der AV pro Bedingung) rechnen. Die Ergebnisse beider Verfahren unterscheiden sich nicht. Wenn Sie mit der gesamten (bereinigten) Datentabelle rechnen, werden innerhalb des Befehls ezANOVA() die Daten über die Trials zusammengefasst.</p>
+<p>Folgende Schritte sind notwendig:</p>
+<ol style="list-style-type: decimal">
+<li>package ez laden</li>
+<li>Datensatz festlegen
+<ul>
+<li>aggregierter Datensatz (enthält keine Trials) oder</li>
+<li>bereinigter Datensatz (enthält Trials)</li>
+</ul></li>
+<li>Datenstruktur prüfen:
+<ul>
+<li>sind alle Faktoren als Faktor definiert? str(daten); ggf. factor()</li>
+<li>sind die Daten vollständig? mit ezDesign() prüfen</li>
+</ul></li>
+<li>ezANOVA() : Die ezANOVA() erzeugt häufig eine Reihe von Warnmeldungen. Viele davon können ignoriert werden. Prüfen Sie zunächst, ob sich das Ergebnis anzeigen lässt.</li>
+<li>Ergebnistabelle anzeigen</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Pakete laden</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ez)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## prüfen, ob Faktoren als Faktoren definiert sind</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(anovadaten)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ggf. Faktoren als Faktoren definieren</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># daten$id &lt;- factor(daten$id)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Design prüfen: hat jede VP in jeder Bedingung Daten?</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ezDesign</span>(<span class="at">data=</span> anovadaten, <span class="at">x =</span> UV1 , <span class="at">y =</span> vp, <span class="at">col=</span> UV2)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="do">## ANOVA rechnen</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>myanova <span class="ot">&lt;-</span> <span class="fu">ezANOVA</span>(<span class="at">data =</span> anovadaten  </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                    , <span class="at">dv =</span> AV   <span class="co"># dv = dependent Variabel (AV)</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                    , <span class="at">wid =</span> id  <span class="co"># Variable, die VP-Nummer enthaelt</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                    , <span class="at">within =</span> .(UV1, UV2)  <span class="co"># within-subject Faktoren</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                    )</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Ergebnistabelle anzeigen</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>myanova</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Ergebnisse anhand der deskriptiven Statistik interpretieren</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ezPlot</span>(</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> anovadaten</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  , <span class="at">dv =</span> .(av)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  , <span class="at">wid =</span> .(id)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  , <span class="at">within =</span> .(UV1,UV2)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  , <span class="at">x =</span> .(UV1)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  , <span class="at">split =</span> .(UV2)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div id="fehlersuche" class="section level2">
+<h2>Fehlersuche</h2>
+<div id="droplevels" class="section level3">
+<h3>1. droplevels()</h3>
+<p><strong><em>Problem:</em></strong> wenn man einen neuen Teildatensatz gebildet hat, z.B.</p>
+<ul>
+<li>durch Aufteilung der Daten in die Faktorstufen eines Faktors oder</li>
+<li>durch Ausschluss von VPs oder Faktorstufen,</li>
+</ul>
+<p>dann enthält der Faktor im neuen Teildatensatz noch die “alten” Faktorstufen aber keine Daten mehr für diese Faktorstufen.</p>
+<div style="page-break-after: always;"></div>
+<p><strong><em>Lösung:</em></strong> Den neuen Teildatensatz erneut faktorisieren oder mit droplevels(daten) die überflüssigen Faktorstufen entfernen.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>anovadaten <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(anovadaten)</span></code></pre></div>
+</div>
+<div id="ezdesign" class="section level3">
+<h3>2. ezDesign()</h3>
+<p>Die ezANOVA gibt folgende Fehlermeldung aus: “One or more cells is missing data”. Nach der Datenbereinigung haben manche Probanden in einzelnen Bedingungen keine Reaktionszeitdaten mehr. Diese Probanden müssen aus dem Datensatz entfernt werden.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ezDesign</span>(<span class="at">data=</span> anovadaten, <span class="at">x =</span> UV1 , <span class="at">y =</span> vp, <span class="at">col=</span> UV2)</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="post-hoc-tests" class="section level1">
+<h1>post-hoc Tests</h1>
+<p>Die ANOVA ist ein Globaltest und testet ob sich mindestens zwei Bedingungen (zwei Zellen) signifikant voneinander unterscheiden. In einem Datensatz, in denen Anzahl der Bedingungen &gt; 2 ist, muss man mit paarweisen Vergleichen (pairwise.t.test) anschließend testen, welche der Bedingungen sich voneinander unterscheiden.</p>
+<p>Dabei muss man das Problem der alpha-Fehler Kumulierung beachten, welches durch multiples Testen entsteht, beachten (wenn sie 100 Tests rechnen, werden 5 durch Zufall signifikant). Deshalb muss man die Anzahl der durchgeführten Tests bei der Bestimmung des p-Werts berücksichtigen. Dafür gibt es verschiedene Korrekturverfahren (z.B. Bonferroni, FDR, Holm).</p>
+<p><strong>WICHTIG: pairwise.t.test() muss mit dem aggregierten (= innerhalb der VP zusammengefassten) Datensatz gerechnet werden. Der Datensatz enthält keine Trials, sondern für jede VP die Mittelwerte pro Bedingung.</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># für einfaktorielle within-subject designs</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(RT.vp<span class="sc">$</span>AV, RT.vp<span class="sc">$</span>UV, <span class="at">paired =</span> T)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># für mehrfaktorielle within-subjectDesigns</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(RT.vp<span class="sc">$</span>AV, <span class="fu">interaction</span>(RT.vp<span class="sc">$</span>UV1, RT.vp<span class="sc">$</span>UV2), <span class="at">paired =</span> T)</span></code></pre></div>
+<p>Mit der Option p.adjust = … kann man die Korrekturmethode auswählen, z.B. “bonferroni”, “FDR”, holm",</p>
+<p>Der pairwise.t.test gibt nur die p-Werte aber keine t-Werte aus! Die Ergebnisse werden nach APA aber so berichtet: <em>t</em>(23) = 12.32, <em>p</em> &lt; 0.05</p>
+<div style="page-break-after: always;"></div>
+<p>So kann man an die t-Werte, Freiheitsgrade und korrigierte p-Werte bestimmen:</p>
+<ul>
+<li><p>Freiheitsgrade (df): df = n-1 (Anzahl VPs minus 1)</p></li>
+<li><p>t-Wert:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(RT.vp<span class="sc">$</span>AV, <span class="fu">interaction</span>(RT.vp<span class="sc">$</span>UV1, RT.vp<span class="sc">$</span>UV2),</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">paired =</span> T, <span class="at">adjust =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># p-Wert ablesen und in folgendem Befehl einsetzen:</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span> <span class="fl">0.5</span><span class="sc">*</span>pWert, df)</span></code></pre></div></li>
+<li><p>korrigierter p-Wert:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(RT.vp<span class="sc">$</span>AV, <span class="fu">interaction</span>(RT.vp<span class="sc">$</span>UV1, RT.vp<span class="sc">$</span>UV2), <span class="at">paired =</span> T)</span></code></pre></div></li>
+</ul>
+</div>
+</div>
+
+   
+      <div id="rmd-source-code">LS0tDQp0aXRsZTogIkluZmVyZW56c3RhdGlzdGlrIg0KaGVhZGVyLWluY2x1ZGVzOiANCi0gXHVzZXBhY2thZ2V7ZmFuY3loZHJ9IA0KLSBccGFnZXN0eWxle2ZhbmN5cGxhaW59IA0KLSBcZmFuY3loZnt9DQotIFxmYW5jeWhlYWRbTF17RHIuIENvcmR1bGEgSMO2bGlnfQ0KLSBcZmFuY3loZWFkW0Nde1VuaXZlcnNpdMOkdCBIYW1idXJnfQ0KLSBcZmFuY3loZWFkW1Jde0VFUCBJfQ0KLSBcZmFuY3lmb290W0Nde0RpZXNlcyBEb2t1bWVudCBpc3QgdXJoZWJlcnJlY2h0bGljaCBnZXNjaMO8dHp0Ln0gDQotIFxmYW5jeWZvb3RbUl17XHRoZXBhZ2V9IA0KLSBcc2V0bGVuZ3Roe1xoZWFkaGVpZ2h0fXsxNXB0fSANCm91dHB1dDoNCiAgcm1kZm9ybWF0czo6cmVhZHRoZWRvd246DQogICAgaGlnaGxpZ2h0OiBrYXRlDQogICAgc2VsZl9jb250YWluZWQ6IHRydWUNCiAgICB0aHVtYm5haWxzOiBmYWxzZQ0KICAgIGNvZGVfZm9sZGluZzogc2hvdw0KICAgIHRvY19kZXB0aDogNQ0KICAgIGZpZ193aWR0aDogMTIgDQogICAgZmlnX2hlaWdodDogMTINCiAgICBzb3VyY2VfY29kZTogZW1iZWQNCiAgICBkZl9wcmludDogcGFnZWQNCiAgICBrZWVwX21kOiB0cnVlDQogICAgY29kZV9kb3dubG9hZDogdHJ1ZQ0KZm9udHNpemU6IDE0cHQNCmVkaXRvcl9vcHRpb25zOiANCiAgY2h1bmtfb3V0cHV0X3R5cGU6IGlubGluZQ0KY3NzOiBzdHlsZS5jc3MNCi0tLQ0KDQoNCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfQ0KbGlicmFyeShrbml0cikNCmxpYnJhcnkocm1kZm9ybWF0cykNCmxpYnJhcnkocm1hcmtkb3duKQ0KbGlicmFyeSh0aWR5dmVyc2UpDQoNCiMjIEdsb2JhbCBvcHRpb25zDQpvcHRpb25zKG1heC5wcmludD0iNzUiKQ0Kb3B0c19jaHVuayRzZXQoZWNobz1UUlVFLA0KCSAgICAgICAgICAgICBjYWNoZT1GQUxTRSwNCiAgICAgICAgICAgICAgIHByb21wdD1GQUxTRSwNCiAgICAgICAgICAgICAgIHRpZHk9VFJVRSwNCiAgICAgICAgICAgICAgIGNvbW1lbnQ9TkEsDQogICAgICAgICAgICAgICBtZXNzYWdlPUZBTFNFLA0KICAgICAgICAgICAgICAgd2FybmluZz1GQUxTRSwgDQogICAgICAgICAgICAgICBmaWcud2lkdGggPSA2LCANCiAgICAgICAgICAgICAgIGZpZy5oZWlnaHQgPSA0Ljc1LCANCiAgICAgICAgICAgICAgIGZpZy5hbGlnbiA9ICJjZW50ZXIiLA0KICAgICAgICAgICAgICAgdGlkeSA9IEZBTFNFDQogICAgICAgICAgICAgICApDQoNCm9wdHNfa25pdCRzZXQoDQogICAgICAgICAgICAgICByb290LmRpciA9IHJwcm9qcm9vdDo6ZmluZF9yc3R1ZGlvX3Jvb3RfZmlsZSgpLA0KICAgICAgICAgICAgICAgYmFzZS5kaXIgPSBycHJvanJvb3Q6OmZpbmRfcnN0dWRpb19yb290X2ZpbGUoKQ0KICAgICAgICAgICAgICApDQoNCg0Kcm1hcmtkb3duOjpmaW5kX3BhbmRvYyhjYWNoZT1GKQ0KZGlyLmV4aXN0cygiUGFuZG9jMi8iKQ0KcGFuZG9jX3ZlcnNpb24oKQ0KDQpvcHRzX2tuaXQkZ2V0KCkNCmBgYA0KIyBWb3JiZXJlaXR1bmcNCg0KMS4gU2NoYXVlbiBTaWUgc2ljaCBkaWUgZW1waXJpc2NoZW4gSHlwb3RoZXNlbiBmw7xyIElociBFeHBlcmltZW50IGFuLiANCjIuIEJlc2NocmVpYmVuIFNpZSBkZW4gVmVyc3VjaHNwbGFuIElocmVzIEV4cGVyaW1lbnRzOiANCiAgICAqICAgIFdlbGNoZSBGYWt0b3JlbiBnaWJ0IGVzPyBCZXNjaHJlaWJlbiBTaWUgZGllIEZha3RvcmVuIChGYWt0b3JzdHVmZW4sIGJldHdlZW4tc3ViamVjdC93aXRoaW4tc3ViamVjdCkgdW5kIGRhcyBEZXNpZ24uDQogICAgKiAgICBTdGVsbGVuIFNpZSBkZW4gVmVyc3VjaHNwbGFuIGluIGVpbmVyIE1hdHJpeCBkYXIuDQoNCjMuIEZvcm11bGllcmVuIFNpZSBkaWUgc3RhdGlzdGlzY2hlbiBIeXBvdGhlc2VuLg0KDQoNCiMgZXpBTk9WQSgpDQoNCk1hbiBrYW5uIGRpZSBlekFOT1ZBIGVudHdlZGVyIG1pdCBkZXIgZ2VzYW10ZW4gKGJlcmVpbmlndGVuKSBEYXRlbnRhYmVsbGUgKGVudGjDpGx0IGVpbnplbG5lIFRyaWFscykNCm9kZXIgZsO8ciBkaWUgYWdncmVnaWVydGUgRGF0ZW50YWJlbGxlIChlbnRow6RsdCBmw7xyIGplZGUgVlAgTWl0dGVsd2VydGUgZGVyIEFWIHBybyBCZWRpbmd1bmcpIHJlY2huZW4uIERpZSBFcmdlYm5pc3NlIGJlaWRlciBWZXJmYWhyZW4gdW50ZXJzY2hlaWRlbiBzaWNoIG5pY2h0LiBXZW5uIFNpZSBtaXQgZGVyIGdlc2FtdGVuIChiZXJlaW5pZ3RlbikgRGF0ZW50YWJlbGxlIHJlY2huZW4sIHdlcmRlbiBpbm5lcmhhbGIgZGVzIEJlZmVobHMgZXpBTk9WQSgpIGRpZSBEYXRlbiDDvGJlciBkaWUgVHJpYWxzIHp1c2FtbWVuZ2VmYXNzdC4NCg0KRm9sZ2VuZGUgU2Nocml0dGUgc2luZCBub3R3ZW5kaWc6DQoNCjEuIHBhY2thZ2UgZXogbGFkZW4NCjIuIERhdGVuc2F0eiBmZXN0bGVnZW4NCiAgICArIGFnZ3JlZ2llcnRlciBEYXRlbnNhdHogKGVudGjDpGx0IGtlaW5lIFRyaWFscykgb2Rlcg0KICAgICsgYmVyZWluaWd0ZXIgRGF0ZW5zYXR6IChlbnRow6RsdCBUcmlhbHMpDQozLiBEYXRlbnN0cnVrdHVyIHByw7xmZW46IA0KICAgICsgc2luZCBhbGxlIEZha3RvcmVuIGFscyBGYWt0b3IgZGVmaW5pZXJ0PyBzdHIoZGF0ZW4pOyBnZ2YuIGZhY3RvcigpIA0KICAgICsgc2luZCBkaWUgRGF0ZW4gdm9sbHN0w6RuZGlnPyBtaXQgZXpEZXNpZ24oKSBwcsO8ZmVuDQo0LiBlekFOT1ZBKCkgOiBEaWUgZXpBTk9WQSgpIGVyemV1Z3QgaMOkdWZpZyBlaW5lIFJlaWhlIHZvbiBXYXJubWVsZHVuZ2VuLiBWaWVsZSBkYXZvbiBrw7ZubmVuIGlnbm9yaWVydCB3ZXJkZW4uIFByw7xmZW4gU2llIHp1bsOkY2hzdCwgb2Igc2ljaCBkYXMgRXJnZWJuaXMgYW56ZWlnZW4gbMOkc3N0Lg0KNS4gRXJnZWJuaXN0YWJlbGxlIGFuemVpZ2VuICANCg0KDQoNCmBgYHtyIEFub3ZhLCBldmFsID0gRn0gDQojIyBQYWtldGUgbGFkZW4NCmxpYnJhcnkoZXopDQoNCiMjIHByw7xmZW4sIG9iIEZha3RvcmVuIGFscyBGYWt0b3JlbiBkZWZpbmllcnQgc2luZA0Kc3RyKGFub3ZhZGF0ZW4pDQojIGdnZi4gRmFrdG9yZW4gYWxzIEZha3RvcmVuIGRlZmluaWVyZW4NCiMgZGF0ZW4kaWQgPC0gZmFjdG9yKGRhdGVuJGlkKQ0KDQojIyBEZXNpZ24gcHLDvGZlbjogaGF0IGplZGUgVlAgaW4gamVkZXIgQmVkaW5ndW5nIERhdGVuPw0KZXpEZXNpZ24oZGF0YT0gYW5vdmFkYXRlbiwgeCA9IFVWMSAsIHkgPSB2cCwgY29sPSBVVjIpDQoNCiMjIEFOT1ZBIHJlY2huZW4NCm15YW5vdmEgPC0gZXpBTk9WQShkYXRhID0gYW5vdmFkYXRlbiAgDQogICAgICAgICAgICAgICAgICAgICwgZHYgPSBBViAgICMgZHYgPSBkZXBlbmRlbnQgVmFyaWFiZWwgKEFWKQ0KICAgICAgICAgICAgICAgICAgICAsIHdpZCA9IGlkICAjIFZhcmlhYmxlLCBkaWUgVlAtTnVtbWVyIGVudGhhZWx0DQogICAgICAgICAgICAgICAgICAgICwgd2l0aGluID0gLihVVjEsIFVWMikgICMgd2l0aGluLXN1YmplY3QgRmFrdG9yZW4NCiAgICAgICAgICAgICAgICAgICAgKQ0KIyMgRXJnZWJuaXN0YWJlbGxlIGFuemVpZ2VuDQpteWFub3ZhDQoNCiMjIEVyZ2Vibmlzc2UgYW5oYW5kIGRlciBkZXNrcmlwdGl2ZW4gU3RhdGlzdGlrIGludGVycHJldGllcmVuDQplelBsb3QoDQogIGRhdGEgPSBhbm92YWRhdGVuDQogICwgZHYgPSAuKGF2KQ0KICAsIHdpZCA9IC4oaWQpDQogICwgd2l0aGluID0gLihVVjEsVVYyKQ0KICAsIHggPSAuKFVWMSkNCiAgLCBzcGxpdCA9IC4oVVYyKQ0KKQ0KYGBgDQoNCiMjIEZlaGxlcnN1Y2hlDQoNCiMjIyAxLiBkcm9wbGV2ZWxzKCkNCioqKlByb2JsZW06KioqIHdlbm4gbWFuIGVpbmVuIG5ldWVuIFRlaWxkYXRlbnNhdHogZ2ViaWxkZXQgaGF0LCB6LkIuIA0KDQoqICAgZHVyY2ggQXVmdGVpbHVuZyBkZXIgRGF0ZW4gaW4gZGllIEZha3RvcnN0dWZlbiBlaW5lcyBGYWt0b3JzIG9kZXIgDQoqICAgZHVyY2ggQXVzc2NobHVzcyB2b24gVlBzIG9kZXIgRmFrdG9yc3R1ZmVuLCANCg0KZGFubiBlbnRow6RsdCBkZXIgRmFrdG9yIGltIG5ldWVuIFRlaWxkYXRlbnNhdHogbm9jaCBkaWUgImFsdGVuIiBGYWt0b3JzdHVmZW4gYWJlciBrZWluZSBEYXRlbiBtZWhyIGbDvHIgZGllc2UgRmFrdG9yc3R1ZmVuLiAgDQoNClxuZXdwYWdlDQoqKipMw7ZzdW5nOioqKiBEZW4gbmV1ZW4gVGVpbGRhdGVuc2F0eiBlcm5ldXQgZmFrdG9yaXNpZXJlbiBvZGVyIG1pdCBkcm9wbGV2ZWxzKGRhdGVuKSBkaWUgw7xiZXJmbMO8c3NpZ2VuIEZha3RvcnN0dWZlbiBlbnRmZXJuZW4uDQoNCmBgYHtyIGRyb3BsZXZlbHMsIGV2YWwgPSBGfSANCmFub3ZhZGF0ZW4gPC0gZHJvcGxldmVscyhhbm92YWRhdGVuKQ0KYGBgDQojIyMgMi4gZXpEZXNpZ24oKQ0KRGllIGV6QU5PVkEgZ2lidCBmb2xnZW5kZSBGZWhsZXJtZWxkdW5nIGF1czogIk9uZSBvciBtb3JlIGNlbGxzIGlzIG1pc3NpbmcgZGF0YSIuIA0KTmFjaCBkZXIgRGF0ZW5iZXJlaW5pZ3VuZyBoYWJlbiBtYW5jaGUgUHJvYmFuZGVuIGluIGVpbnplbG5lbiBCZWRpbmd1bmdlbiBrZWluZSBSZWFrdGlvbnN6ZWl0ZGF0ZW4gbWVoci4gRGllc2UgUHJvYmFuZGVuIG3DvHNzZW4gYXVzIGRlbSBEYXRlbnNhdHogZW50ZmVybnQgd2VyZGVuLg0KDQpgYGB7ciBlekRlc2lnbiwgZXZhbCA9IEZ9IA0KZXpEZXNpZ24oZGF0YT0gYW5vdmFkYXRlbiwgeCA9IFVWMSAsIHkgPSB2cCwgY29sPSBVVjIpDQpgYGANCg0KIyBwb3N0LWhvYyBUZXN0cw0KRGllIEFOT1ZBIGlzdCBlaW4gR2xvYmFsdGVzdCB1bmQgdGVzdGV0IG9iIHNpY2ggbWluZGVzdGVucyB6d2VpIEJlZGluZ3VuZ2VuICh6d2VpIFplbGxlbikNCnNpZ25pZmlrYW50IHZvbmVpbmFuZGVyIHVudGVyc2NoZWlkZW4uIEluIGVpbmVtIERhdGVuc2F0eiwgaW4gZGVuZW4gQW56YWhsIGRlciBCZWRpbmd1bmdlbiA+IDIgaXN0LA0KbXVzcyBtYW4gbWl0IHBhYXJ3ZWlzZW4gVmVyZ2xlaWNoZW4gKHBhaXJ3aXNlLnQudGVzdCkgYW5zY2hsaWXDn2VuZCB0ZXN0ZW4sIHdlbGNoZSBkZXIgQmVkaW5ndW5nZW4gDQpzaWNoIHZvbmVpbmFuZGVyIHVudGVyc2NoZWlkZW4uIA0KDQpEYWJlaSBtdXNzIG1hbiBkYXMgUHJvYmxlbSBkZXIgYWxwaGEtRmVobGVyIEt1bXVsaWVydW5nIGJlYWNodGVuLCB3ZWxjaGVzIA0KZHVyY2ggbXVsdGlwbGVzIFRlc3RlbiBlbnRzdGVodCwgYmVhY2h0ZW4gKHdlbm4gc2llIDEwMCBUZXN0cyByZWNobmVuLCB3ZXJkZW4gNSBkdXJjaCBadWZhbGwgDQpzaWduaWZpa2FudCkuIERlc2hhbGIgbXVzcyBtYW4gZGllIEFuemFobCBkZXIgZHVyY2hnZWbDvGhydGVuIFRlc3RzIGJlaSBkZXIgQmVzdGltbXVuZyBkZXMgcC1XZXJ0cyANCmJlcsO8Y2tzaWNodGlnZW4uIERhZsO8ciBnaWJ0IGVzIHZlcnNjaGllZGVuZSBLb3JyZWt0dXJ2ZXJmYWhyZW4gKHouQi4gQm9uZmVycm9uaSwgRkRSLCBIb2xtKS4NCg0KDQoqKldJQ0hUSUc6IHBhaXJ3aXNlLnQudGVzdCgpIG11c3MgbWl0IGRlbSBhZ2dyZWdpZXJ0ZW4gKD0gaW5uZXJoYWxiIGRlciBWUCB6dXNhbW1lbmdlZmFzc3RlbikgRGF0ZW5zYXR6IGdlcmVjaG5ldCB3ZXJkZW4uIERlciBEYXRlbnNhdHogZW50aMOkbHQga2VpbmUgVHJpYWxzLCBzb25kZXJuIGbDvHIgamVkZSBWUCBkaWUgTWl0dGVsd2VydGUgcHJvIEJlZGluZ3VuZy4qKiANCg0KYGBge3IgcG9zdC1ob2MsIGV2YWwgPSBGfSANCiMgZsO8ciBlaW5mYWt0b3JpZWxsZSB3aXRoaW4tc3ViamVjdCBkZXNpZ25zDQpwYWlyd2lzZS50LnRlc3QoUlQudnAkQVYsIFJULnZwJFVWLCBwYWlyZWQgPSBUKQ0KDQojIGbDvHIgbWVocmZha3RvcmllbGxlIHdpdGhpbi1zdWJqZWN0RGVzaWducw0KcGFpcndpc2UudC50ZXN0KFJULnZwJEFWLCBpbnRlcmFjdGlvbihSVC52cCRVVjEsIFJULnZwJFVWMiksIHBhaXJlZCA9IFQpDQpgYGANCg0KTWl0IGRlciBPcHRpb24gcC5hZGp1c3QgPSAuLi4ga2FubiBtYW4gZGllIEtvcnJla3R1cm1ldGhvZGUgYXVzd8OkaGxlbiwgei5CLiAiYm9uZmVycm9uaSIsICJGRFIiLCBob2xtIiwgDQoNCkRlciBwYWlyd2lzZS50LnRlc3QgZ2lidCBudXIgZGllIHAtV2VydGUgYWJlciBrZWluZSB0LVdlcnRlIGF1cyEgRGllIEVyZ2Vibmlzc2Ugd2VyZGVuIG5hY2ggQVBBIGFiZXIgc28gYmVyaWNodGV0OiAqdCooMjMpID0gMTIuMzIsICpwKiA8IDAuMDUNCg0KXG5ld3BhZ2UNClNvIGthbm4gbWFuIGFuIGRpZSB0LVdlcnRlLCAgRnJlaWhlaXRzZ3JhZGUgdW5kIGtvcnJpZ2llcnRlIHAtV2VydGUgYmVzdGltbWVuOg0KDQoqIEZyZWloZWl0c2dyYWRlIChkZik6IGRmID0gbi0xIChBbnphaGwgVlBzIG1pbnVzIDEpDQoqIHQtV2VydDogDQogIGBgYHtyIHQtdmFsdWUsIGV2YWwgPSBGfSANCiAgcGFpcndpc2UudC50ZXN0KFJULnZwJEFWLCBpbnRlcmFjdGlvbihSVC52cCRVVjEsIFJULnZwJFVWMiksDQogIHBhaXJlZCA9IFQsIGFkanVzdCA9ICJub25lIikNCiAgIyBwLVdlcnQgYWJsZXNlbiB1bmQgaW4gZm9sZ2VuZGVtIEJlZmVobCBlaW5zZXR6ZW46DQogIHF0KDEtIDAuNSpwV2VydCwgZGYpDQogIGBgYA0KKiBrb3JyaWdpZXJ0ZXIgcC1XZXJ0OiANCiAgYGBge3IgcC12YWx1ZSwgZXZhbCA9IEZ9IA0KICBwYWlyd2lzZS50LnRlc3QoUlQudnAkQVYsIGludGVyYWN0aW9uKFJULnZwJFVWMSwgUlQudnAkVVYyKSwgcGFpcmVkID0gVCkNCiAgYGBg</div>
+   
+            
+      
+
+  <script>
+    $(document).ready(function () {
+
+			
+ 		
+	    });
+  </script>
+
+
+
+    <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+	var script = document.createElement("script");
+	script.type = "text/javascript";
+	script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+	document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  
+</body>
+</html>
