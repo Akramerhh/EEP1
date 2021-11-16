@@ -27,10 +27,21 @@ css: style.css
 
 
 
+
 \
 \
 
 # 1. Vorbereitung Datenanalyse
+## 0. Installation
+
+1. R 4.1.2 installieren **(Bitte unbedingt neu installieren!)**
+    * Windows: <https://cran.r-project.org/bin/windows/base/> \
+    * Mac: <https://cran.r-project.org/bin/macosx/> \
+2. RStudio Desktop installieren 
+    * <https://www.rstudio.com/products/rstudio/download/> \
+
+
+
 ## 1. RStudio Projekte
 
 Ausführliche Infos zu R-Projekten findet ihr hier:
@@ -158,7 +169,16 @@ Anhand der Überschriften wird sowohl im Editor, als auch im späteren Dokument 
 <style>
 div.red { background-color:#ffb8b8; border-radius: 5px; padding: 20px;}
 </style>
-<div class = "red">
+
+<style>
+div.green { background-color:#b8ffb8; border-radius: 5px; padding: 20px;}
+</style>
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+
+<div class = "green">
 
 **FANCY**
 
@@ -245,7 +265,7 @@ Um einen Chunk auszuführen gibt es zwei Möglichkeiten
 
 \
 
-<div class = "red">
+<div class = "green">
 
 **FANCY**
 
@@ -312,7 +332,8 @@ Wenn das Paket bereits installiert ist, kann es dabei zu Fehlermeldungen kommen.
 ```r
 lapply(paste('package:',names(sessionInfo()$otherPkgs),sep = ""),detach,character.only = TRUE, unload = TRUE)
 
-packages <- c(
+packages <- c("knitr",
+              "shiny",
               "Rmisc",
               "tidyverse",
               "ez",
@@ -339,7 +360,7 @@ library("ez")
 **Wichtig**: Damit euer Projekt ohne Probleme auf anderen Computern läuft, solltet ihr diesen Code-Chunk verwenden, denn wenn auf dem Computer Pakete fehlen, werden sie direkt installiert. Andernfalls würde es zu Fehlermeldungen kommen.
 
 
-<div class = "red">
+<div class = "green">
 
 **FANCY**
 
@@ -400,24 +421,25 @@ other attached packages:
 [13] lattice_0.20-41
 
 loaded via a namespace (and not attached):
- [1] httr_1.4.2        jsonlite_1.7.2    splines_3.6.0     carData_3.0-4    
- [5] modelr_0.1.8      assertthat_0.2.1  statmod_1.4.35    cellranger_1.1.0 
- [9] yaml_2.2.1        pillar_1.4.7      backports_1.2.1   glue_1.4.2       
-[13] digest_0.6.27     minqa_1.2.4       rvest_0.3.6       colorspace_2.0-0 
-[17] htmltools_0.5.2   Matrix_1.2-17     pkgconfig_2.0.3   broom_0.7.3      
-[21] haven_2.3.1       bookdown_0.21     scales_1.1.1      openxlsx_4.2.3   
-[25] rio_0.5.16        lme4_1.1-26       mgcv_1.8-28       generics_0.1.0   
-[29] car_3.0-10        ellipsis_0.3.1    withr_2.3.0       cli_2.2.0        
-[33] magrittr_2.0.1    crayon_1.3.4      readxl_1.3.1      evaluate_0.14    
-[37] fs_1.5.0          fansi_0.4.1       nlme_3.1-139      MASS_7.3-51.4    
-[41] xml2_1.3.2        foreign_0.8-71    tools_3.6.0       data.table_1.13.4
-[45] hms_0.5.3         lifecycle_0.2.0   munsell_0.5.0     reprex_0.3.0     
-[49] zip_2.1.1         compiler_3.6.0    rlang_0.4.10      nloptr_1.2.2.2   
-[53] grid_3.6.0        rstudioapi_0.13   rmarkdown_2.6.4   boot_1.3-25      
-[57] gtable_0.3.0      abind_1.4-5       DBI_1.1.0         curl_4.3         
-[61] reshape2_1.4.4    R6_2.5.0          lubridate_1.7.9.2 knitr_1.36       
-[65] fastmap_1.1.0     rprojroot_2.0.2   stringi_1.5.3     Rcpp_1.0.5       
-[69] vctrs_0.3.6       dbplyr_2.0.0      tidyselect_1.1.0  xfun_0.28        
+ [1] nlme_3.1-139      fs_1.5.0          lubridate_1.7.9.2 httr_1.4.2       
+ [5] rprojroot_2.0.2   tools_3.6.0       backports_1.2.1   bslib_0.3.1      
+ [9] R6_2.5.0          DBI_1.1.0         mgcv_1.8-28       colorspace_2.0-0 
+[13] withr_2.3.0       tidyselect_1.1.0  curl_4.3          compiler_3.6.0   
+[17] cli_2.2.0         rvest_0.3.6       xml2_1.3.2        bookdown_0.21    
+[21] sass_0.4.0        scales_1.1.1      digest_0.6.27     foreign_0.8-71   
+[25] minqa_1.2.4       rmarkdown_2.11    rio_0.5.16        pkgconfig_2.0.3  
+[29] htmltools_0.5.2   lme4_1.1-26       dbplyr_2.0.0      fastmap_1.1.0    
+[33] rlang_0.4.10      readxl_1.3.1      rstudioapi_0.13   jquerylib_0.1.4  
+[37] generics_0.1.0    jsonlite_1.7.2    zip_2.1.1         car_3.0-10       
+[41] magrittr_2.0.1    Matrix_1.2-17     Rcpp_1.0.5        munsell_0.5.0    
+[45] fansi_0.4.1       abind_1.4-5       lifecycle_0.2.0   stringi_1.5.3    
+[49] yaml_2.2.1        carData_3.0-4     MASS_7.3-51.4     grid_3.6.0       
+[53] crayon_1.3.4      haven_2.3.1       splines_3.6.0     hms_0.5.3        
+[57] knitr_1.36        pillar_1.4.7      boot_1.3-25       reshape2_1.4.4   
+[61] reprex_0.3.0      glue_1.4.2        evaluate_0.14     data.table_1.13.4
+[65] modelr_0.1.8      vctrs_0.3.6       nloptr_1.2.2.2    cellranger_1.1.0 
+[69] gtable_0.3.0      assertthat_0.2.1  xfun_0.28         openxlsx_4.2.3   
+[73] broom_0.7.3       statmod_1.4.35    ellipsis_0.3.1   
 ```
 
 ```r
@@ -481,23 +503,23 @@ character(0)
 
 # 2. Eine Beispiel-Studie
 
-![](Grafiken/StudieAbstract.png)
+![](Grafiken/StudieAbstract.PNG)
 
 Den Original Text zur findet ihr <a href="https://doi.apa.org/doiLanding?doi=10.1037%2F0022-3514.80.3.381" target="_blank">hier</a> 
 
 Die Studie hat einen ähnlichen Aufbau wie die meisten eurer Experimente. Abhängige Variablen sind Reaktionszeit und Antwortgenauigkeit. Allerdings gibt es drei unabhängige Variablen, Die Art der Distraktoren (`DisktraktorTyp`), Expositionszeit (`Expositionszeit`) sowie der Target-Typ (`TargetTyp`). 
 
 Die folgenden Stimuli wurden verwendet:
-![](Grafiken/StudieStimuli.png)
+![](Grafiken/StudieStimuli.PNG)
 
 
 Eine gute Übung ist es, die Ergebnisse der Studie in den Kleingruppen verbal zu beschreiben:
-![](Grafiken/StudieRes.png)
+![](Grafiken/StudieRes.PNG)
 
 Der Einfachheit halber beschränken wir uns auf die Auswertung für emotionale Distraktoren.
 
 
-# 2. Analyse einer VP
+# 3. Analyse einer VP
 \
 
 ![](Grafiken/workflow1.png)
@@ -607,10 +629,7 @@ daten3 = select(daten, Expositionszeit, TargetTyp ,  corr)
 ```
 
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
+<div class = "red">
 
 **WICHTIG**: Im Allgemeinen muss bei allen Funktionen als erstes Argument der Datensatz angegeben werden. Später verwenden wir [Pipes](#Pipes), dann ist dies nicht mehr nötig. Alle obigen Funktionen folgen der gleichen Struktur:
 
@@ -1075,7 +1094,7 @@ data.RT.df <- data.RT.df %>%
 
 \
 
-# 3. Automatisierte Auswertung für viele Versuchspersonen
+# 4. Automatisierte Auswertung für viele Versuchspersonen
 
 \
 
@@ -1131,10 +1150,8 @@ for (i in 1:3) {
 
 \
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
+
+<div class = "red">
 
 (i in 1:3) 
 
@@ -1181,7 +1198,7 @@ for (file in data.files){
 \
 \
 
-<div class = "red">
+<div class = "green">
 **FANCY**
 
 Alternativ kann dies auch mit `lapply()` und `do.call`geschehen. `lapply()` wendet eine Funktion auf jedes Element einer Liste an.
@@ -1301,7 +1318,7 @@ ggplot( data=data.id, aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()
 \
 
 
-<div class = "red">
+<div class = "green">
 
 **FANCY** 
 
@@ -1554,7 +1571,7 @@ factor(0)
 
 <a href="https://ep.mafiasi.de/p/EEP_J_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar J
 
-# 4. Inferenzstatistik
+# 5. Inferenzstatistik
 
 \
 
@@ -1649,7 +1666,11 @@ Eine einfache Auswertung würde für das Beispiel Experiment mit 2 faktoriellem 
 ```r
 library(ez)
 
-data.anova <- data.df  %>% filter(corr ==1) %>% group_by(id, Expositionszeit , TargetTyp) %>% dplyr::summarise(rt.mean = mean(rt, na.rm = T))
+data.anova <- data.df  %>% 
+  filter(corr ==1) %>% 
+  group_by(id, Expositionszeit , TargetTyp) %>% 
+  dplyr::summarise(rt.mean = mean(rt, na.rm = T),
+                   corr.mean = mean(corr, na.rm = T))
 
 ezDesign(data= data.anova, x = Expositionszeit, y = TargetTyp)
 ```
@@ -1856,7 +1877,7 @@ pairwise.t.test() gibt nur die p-Werte, aber keine t-Werte aus
 
 \
 
-<div class = "red">
+<div class = "green">
 
 **FANCY**
 
@@ -1911,7 +1932,7 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 <a href="https://ep.mafiasi.de/p/EEP_J_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar J
 
 
-# 5. Grafiken
+# 6. Grafiken
 \
 
 ## Allgemeine Hinweise
@@ -2011,12 +2032,10 @@ Alternative: Datenverteilung
 * Violinplot
 ... 
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
 
-**Bemerkung:** Es wird mittlerweile häufig verlangt, dass Grafiken nicht nur mittere Trends darstellen, sondern auch ersichtlich machen, ob die individuellen Daten durch den mittleren Trend gut repräsentiert sind. Dazu eignen sich z.B. Violinplots oder Boxplots mit individuellen Datenpunkten. 
+<div class = "red">
+
+**Wichtig:** Es wird mittlerweile häufig verlangt, dass Grafiken nicht nur mittlere Trends darstellen, sondern auch ersichtlich machen, ob die individuellen Daten durch den mittleren Trend gut repräsentiert sind. Dazu eignen sich z.B. Violinplots oder Boxplots mit individuellen Datenpunkten. 
 
 </div>
 
@@ -2040,10 +2059,8 @@ SEwithinRT
 
 \
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
+
+<div class = "red">
 
 **Achtung:** 
 * Rmisc-Funktionen stehen in Konflikt mit dplyr-Funktionen (z.B. rename(), summarise()) 
@@ -2238,8 +2255,7 @@ Baseplot <- ggplot2::ggplot(data= data.anova, ##Datensatz festlegen
                   y=rt.mean,
                   group = TargetTyp,
                   color = TargetTyp,
-                  shape = TargetTyp,
-                  linetype = TargetTyp
+                  shape = TargetTyp
                 )) 
 
 Interaction <- Baseplot + geom_point(alpha= 0.5) +
@@ -2294,7 +2310,7 @@ ezPlot(data.anova
 
 
 
-<div class = "red">
+<div class = "green">
 
 **FANCY**
 
@@ -2311,8 +2327,7 @@ Baseplot <- ggplot2::ggplot(data= data.anova, ##Datensatz festlegen
                   y=rt.mean,
                   group = TargetTyp,
                   color = TargetTyp,
-                  shape = TargetTyp,
-                  linetype = TargetTyp
+                  shape = TargetTyp
                 )) 
 
 Interaction <- Baseplot + 
@@ -2391,6 +2406,48 @@ Interaction  +
 
 <img src="index_files/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" />
 
+Hier nochmal alles zusammen für die Genauigkeit.
+
+
+```r
+pd <- position_jitter(0.2, seed=1)
+
+data.corr <- data.df  %>% 
+  group_by(id, Expositionszeit , TargetTyp) %>% 
+  dplyr::summarise(corr.mean = mean(corr, na.rm = T))
+
+Accplot <- ggplot2::ggplot(data= data.corr, ##Datensatz festlegen
+                aes(
+                  x=Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
+                  y=corr.mean,
+                  group = TargetTyp,
+                  color = TargetTyp,
+                  shape = TargetTyp
+                ))  +
+  geom_pointpath(mapping = aes(group = interaction(id, TargetTyp) ), 
+                            position = pd, alpha= 0.5) + 
+  stat_summary(fun=mean, mapping= aes(x=Expositionszeit,
+                                      y=corr.mean,
+                                      group =TargetTyp),
+               geom=c("point")) +
+  stat_summary(fun=mean, 
+                            mapping= aes(x=Expositionszeit,
+                                         y=corr.mean, 
+                                         group=TargetTyp), 
+                            geom=c("line"),  
+                            size=1.2)
+sem <- function(x) sd(x)/sqrt(length(x))
+
+
+Accplot  + stat_summary(fun.max=function(i) mean(i) + sem(i) ,
+                            fun.min=function(i) mean(i) - sem(i), 
+                            , mapping= aes(x=Expositionszeit,y=corr.mean, group=TargetTyp)
+                            , geom=c("errorbar"),  size=1.2, width = 0.15)
+```
+
+<img src="index_files/figure-html/unnamed-chunk-57-1.png" style="display: block; margin: auto;" />
+
+
 
 ### Boxplots
 
@@ -2416,7 +2473,7 @@ Boxplot + stat_summary(fun=mean, mapping= aes(x=Expositionszeit,y=rt.mean,
                                           )
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-59-1.png" style="display: block; margin: auto;" />
 
 
 
@@ -2453,7 +2510,7 @@ Balken <- Balken + geom_errorbar(data=ErrorData,
 Balken
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-60-1.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-61-1.png" style="display: block; margin: auto;" />
 
 ### Grafiken Formatiern
 #### Achsen Beschriften
@@ -2464,7 +2521,7 @@ Balken <- Balken + labs(x = "Unabhängige Variable", y= "Mittelwert abhängige V
 Balken
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-61-1.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-62-1.png" style="display: block; margin: auto;" />
 
 #### Farben ändern/ Bezeichnung in der Legende ändern
 
@@ -2485,7 +2542,7 @@ Balken <-
 Balken
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-62-1.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-63-1.png" style="display: block; margin: auto;" />
 **Verwendet mehrere Aesthetics (Color und Fill im Beispiel) in der Grafik, muss die Legende für alle  codiert werden, sonst entstehen mehrere Legenden**
 
 Allgemeine Hinweise zur Bearbeitung der Legende findet ihr<a href="http://www.cookbook-r.com/Graphs/Legends_%28ggplot2%29/" target="_blank">hier</a>
@@ -2509,7 +2566,7 @@ specplot(npg)                    # Zeichnet Luminanz, Chroma und HUE Verlauf
 specplot(npg)[c(1,4,7)]
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-63-1.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-64-1.png" style="display: block; margin: auto;" />
 
 ```
 $HCL
@@ -2552,7 +2609,7 @@ Balken <-
 Balken
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-64-1.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-65-1.png" style="display: block; margin: auto;" />
 
 ##### Perzeptuell gleichförmig
 
@@ -2574,7 +2631,7 @@ ggplot(data.frame(x = rnorm(10000), y = rnorm(10000)), aes(x = x, y = y)) +
   theme_bw()
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-65-1.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-66-1.png" style="display: block; margin: auto;" />
 
 
 
@@ -2582,13 +2639,13 @@ ggplot(data.frame(x = rnorm(10000), y = rnorm(10000)), aes(x = x, y = y)) +
 
 
 ```r
-Interaction + scale_shape_manual(values = c(16, 15, 17), 
+Interaction + scale_shape_manual(values = c(16, 15), 
                                  name = "TargetTyp") +
-              scale_linetype_manual(values = c("dotted", "dotted", "dotted"),
+              scale_linetype_manual(values = c("dotted", "dotted"),
                         name = "TargetTyp")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-66-1.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-67-1.png" style="display: block; margin: auto;" />
 
 Allgemeine Hinweise zur Bearbeitung der Symbole und Linientypen findet ihr <a href="http://www.cookbook-r.com/Graphs/Shapes_and_line_types/" target="_blank">hier</a>.
 
@@ -2601,7 +2658,7 @@ Balken <-
 Balken
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-67-1.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-68-1.png" style="display: block; margin: auto;" />
 
 
 #### Y-Limits setzen
@@ -2613,7 +2670,7 @@ Es gibt mehrere Möglichkeiten X und Y Limits zu setzen, z.B. `ylim()` oder `sca
 Balken +  ylim(250, 1250)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-68-1.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-69-1.png" style="display: block; margin: auto;" />
 
 ```r
 Balken <-
@@ -2621,7 +2678,7 @@ Balken <-
 Balken
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-68-2.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-69-2.png" style="display: block; margin: auto;" />
 
 
 #### Themes
@@ -2635,25 +2692,25 @@ Es gibt eine Reihe vordefinierter Themes die ihr z.B. <a href="https://ggplot2.t
 Balken
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-69-1.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-70-1.png" style="display: block; margin: auto;" />
 
 ```r
 Balken + theme_bw()
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-69-2.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-70-2.png" style="display: block; margin: auto;" />
 
 ```r
 Balken + theme_classic()
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-69-3.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-70-3.png" style="display: block; margin: auto;" />
 
 ```r
 Balken + theme_linedraw()
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-69-4.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-70-4.png" style="display: block; margin: auto;" />
 
 Es lohnt sich in der Regel sich ein Standard-Theme zu definieren, dass man dann für alle Plots verwendet, sodass die Grafiken ein einheitliches Layout haben und aufgeräumt aussehen.
 Wenn ein bestimmtes Element entfernt werden soll, kann dafür `element_blank()` verwendet werden.
@@ -2681,13 +2738,13 @@ StandardTheme <- theme(
 Interaction
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-70-1.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-71-1.png" style="display: block; margin: auto;" />
 
 ```r
 Interaction +  StandardTheme
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-70-2.png" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-71-2.png" style="display: block; margin: auto;" />
 
 
 ### Speichern/ exportieren
@@ -2728,7 +2785,7 @@ ggsave("Grafiken/experiment_grafik2.png", plot= Interaction, width = 18, height 
 
 
 
-# 6. Klausur Übungen
+# 7. Klausur Übungen
 \
 
 

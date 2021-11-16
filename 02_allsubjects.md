@@ -39,14 +39,15 @@ siehe singlesubject.pdf
 
 ```r
 # welche files (Dateien) sollen eingelesen werden?
-filelist <- list.files(pattern = "XXXX")
+data.files <- list.files("Alle Daten/", pattern = "XXXX")
+
 # eine leere Datentabelle anlegen
-daten <- data.frame()
+data.df <- data.frame()
 
 # Daten aller VPs einlesen
-for(singlefile in filelist){
-  vpfile <- read_csv(singlefile)
-  daten <- rbind(daten, vpfile)
+for (file in data.files){
+  data = read.csv(paste0("./Alle Daten/", file ), header=TRUE, fileEncoding = "UTF-8-BOM")
+  data.df = rbind(data.df, data)
 }
 ```
 # 3. Übungstrials entfernen

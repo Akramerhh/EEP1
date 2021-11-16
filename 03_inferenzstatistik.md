@@ -56,9 +56,8 @@ Folgende Schritte sind notwendig:
     + sind alle Faktoren als Faktor definiert? str(daten); ggf. factor() 
     + sind die Daten vollständig? mit ezDesign() prüfen
 4. ezANOVA() : Die ezANOVA() erzeugt häufig eine Reihe von Warnmeldungen. Viele davon können ignoriert werden. Prüfen Sie zunächst, ob sich das Ergebnis anzeigen lässt.
-5. Ergebnistabelle anzeigen  
-
-
+5. Ergebnistabelle anzeigen
+    
 
 
 ```r

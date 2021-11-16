@@ -24,7 +24,26 @@ css: style.css
 
 
 
+
 ```{r setup, include=FALSE}
+
+packages <- c("knitr",
+              "shiny",
+              "tidyverse",
+              "Rmisc",
+              "ez",
+              "rmdformats",
+              "rmarkdown",
+              "ggsci",
+              "viridis",
+              "lemon"
+              )
+
+if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
+  install.packages(setdiff(packages, rownames(installed.packages())))  
+}         
+
+
 library(knitr)
 library(rmdformats)
 library(rmarkdown)
@@ -62,6 +81,16 @@ opts_knit$get()
 \
 
 # 1. Vorbereitung Datenanalyse
+## 0. Installation
+
+1. R 4.1.2 installieren **(Bitte unbedingt neu installieren!)**
+    * Windows: <https://cran.r-project.org/bin/windows/base/> \
+    * Mac: <https://cran.r-project.org/bin/macosx/> \
+2. RStudio Desktop installieren 
+    * <https://www.rstudio.com/products/rstudio/download/> \
+
+
+
 ## 1. RStudio Projekte
 
 Ausführliche Infos zu R-Projekten findet ihr hier:
@@ -189,7 +218,16 @@ Anhand der Überschriften wird sowohl im Editor, als auch im späteren Dokument 
 <style>
 div.red { background-color:#ffb8b8; border-radius: 5px; padding: 20px;}
 </style>
-<div class = "red">
+
+<style>
+div.green { background-color:#b8ffb8; border-radius: 5px; padding: 20px;}
+</style>
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+
+<div class = "green">
 
 **FANCY**
 
@@ -276,7 +314,7 @@ Um einen Chunk auszuführen gibt es zwei Möglichkeiten
 
 \
 
-<div class = "red">
+<div class = "green">
 
 **FANCY**
 
@@ -341,7 +379,8 @@ Wenn das Paket bereits installiert ist, kann es dabei zu Fehlermeldungen kommen.
 ```{r, results = 'hide', message=FALSE, warning=FALSE}
 lapply(paste('package:',names(sessionInfo()$otherPkgs),sep = ""),detach,character.only = TRUE, unload = TRUE)
 
-packages <- c(
+packages <- c("knitr",
+              "shiny",
               "Rmisc",
               "tidyverse",
               "ez",
@@ -372,7 +411,7 @@ library("ez")
 **Wichtig**: Damit euer Projekt ohne Probleme auf anderen Computern läuft, solltet ihr diesen Code-Chunk verwenden, denn wenn auf dem Computer Pakete fehlen, werden sie direkt installiert. Andernfalls würde es zu Fehlermeldungen kommen.
 
 
-<div class = "red">
+<div class = "green">
 
 **FANCY**
 
@@ -454,23 +493,23 @@ ls()
 
 # 2. Eine Beispiel-Studie
 
-![](Grafiken/StudieAbstract.png)
+![](Grafiken/StudieAbstract.PNG)
 
 Den Original Text zur findet ihr <a href="https://doi.apa.org/doiLanding?doi=10.1037%2F0022-3514.80.3.381" target="_blank">hier</a> 
 
 Die Studie hat einen ähnlichen Aufbau wie die meisten eurer Experimente. Abhängige Variablen sind Reaktionszeit und Antwortgenauigkeit. Allerdings gibt es drei unabhängige Variablen, Die Art der Distraktoren (`DisktraktorTyp`), Expositionszeit (`Expositionszeit`) sowie der Target-Typ (`TargetTyp`). 
 
 Die folgenden Stimuli wurden verwendet:
-![](Grafiken/StudieStimuli.png)
+![](Grafiken/StudieStimuli.PNG)
 
 
 Eine gute Übung ist es, die Ergebnisse der Studie in den Kleingruppen verbal zu beschreiben:
-![](Grafiken/StudieRes.png)
+![](Grafiken/StudieRes.PNG)
 
 Der Einfachheit halber beschränken wir uns auf die Auswertung für emotionale Distraktoren.
 
 
-# 2. Analyse einer VP
+# 3. Analyse einer VP
 \
 
 ![](Grafiken/workflow1.png)
@@ -578,10 +617,7 @@ daten3 = select(daten, Expositionszeit, TargetTyp ,  corr)
 ```
 
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
+<div class = "red">
 
 **WICHTIG**: Im Allgemeinen muss bei allen Funktionen als erstes Argument der Datensatz angegeben werden. Später verwenden wir [Pipes](#Pipes), dann ist dies nicht mehr nötig. Alle obigen Funktionen folgen der gleichen Struktur:
 
@@ -993,7 +1029,7 @@ data.RT.df <- data.ohneFehler.df %>%
 
 \
 
-# 3. Automatisierte Auswertung für viele Versuchspersonen
+# 4. Automatisierte Auswertung für viele Versuchspersonen
 
 \
 
@@ -1048,10 +1084,8 @@ for (i in 1:3) {
 
 \
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
+
+<div class = "red">
 
 (i in 1:3) 
 
@@ -1097,7 +1131,7 @@ for (file in data.files){
 \
 \
 
-<div class = "red">
+<div class = "green">
 **FANCY**
 
 Alternativ kann dies auch mit `lapply()` und `do.call`geschehen. `lapply()` wendet eine Funktion auf jedes Element einer Liste an.
@@ -1202,7 +1236,7 @@ ggplot( data=data.id, aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()
 \
 
 
-<div class = "red">
+<div class = "green">
 
 **FANCY** 
 
@@ -1419,7 +1453,7 @@ data.alle.vps %>% filter(!(id %in% vp.err))
 
 <a href="https://ep.mafiasi.de/p/EEP_J_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar J
 
-# 4. Inferenzstatistik
+# 5. Inferenzstatistik
 
 \
 
@@ -1699,7 +1733,7 @@ pairwise.t.test() gibt nur die p-Werte, aber keine t-Werte aus
 
 \
 
-<div class = "red">
+<div class = "green">
 
 **FANCY**
 
@@ -1748,7 +1782,7 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 <a href="https://ep.mafiasi.de/p/EEP_J_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar J
 
 
-# 5. Grafiken
+# 6. Grafiken
 \
 
 ## Allgemeine Hinweise
@@ -1848,12 +1882,10 @@ Alternative: Datenverteilung
 * Violinplot
 ... 
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
 
-**Bemerkung:** Es wird mittlerweile häufig verlangt, dass Grafiken nicht nur mittere Trends darstellen, sondern auch ersichtlich machen, ob die individuellen Daten durch den mittleren Trend gut repräsentiert sind. Dazu eignen sich z.B. Violinplots oder Boxplots mit individuellen Datenpunkten. 
+<div class = "red">
+
+**Wichtig:** Es wird mittlerweile häufig verlangt, dass Grafiken nicht nur mittlere Trends darstellen, sondern auch ersichtlich machen, ob die individuellen Daten durch den mittleren Trend gut repräsentiert sind. Dazu eignen sich z.B. Violinplots oder Boxplots mit individuellen Datenpunkten. 
 
 </div>
 
@@ -1870,10 +1902,8 @@ SEwithinRT
 
 \
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
+
+<div class = "red">
 
 **Achtung:** 
 * Rmisc-Funktionen stehen in Konflikt mit dplyr-Funktionen (z.B. rename(), summarise()) 
@@ -2103,7 +2133,7 @@ ezPlot(data.anova
 
 
 
-<div class = "red">
+<div class = "green">
 
 **FANCY**
 
@@ -2200,8 +2230,7 @@ data.corr <- data.df  %>%
   group_by(id, Expositionszeit , TargetTyp) %>% 
   dplyr::summarise(corr.mean = mean(corr, na.rm = T))
 
-
-Baseplot <- ggplot2::ggplot(data= data.corr, ##Datensatz festlegen
+Accplot <- ggplot2::ggplot(data= data.corr, ##Datensatz festlegen
                 aes(
                   x=Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
                   y=corr.mean,
@@ -2224,7 +2253,7 @@ Baseplot <- ggplot2::ggplot(data= data.corr, ##Datensatz festlegen
 sem <- function(x) sd(x)/sqrt(length(x))
 
 
-Baseplot  + stat_summary(fun.max=function(i) mean(i) + sem(i) ,
+Accplot  + stat_summary(fun.max=function(i) mean(i) + sem(i) ,
                             fun.min=function(i) mean(i) - sem(i), 
                             , mapping= aes(x=Expositionszeit,y=corr.mean, group=TargetTyp)
                             , geom=c("errorbar"),  size=1.2, width = 0.15)
@@ -2508,7 +2537,7 @@ ggsave("Grafiken/experiment_grafik2.png", plot= Interaction, width = 18, height 
 
 
 
-# 6. Klausur Übungen
+# 7. Klausur Übungen
 \
 
 

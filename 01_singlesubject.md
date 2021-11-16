@@ -57,7 +57,9 @@ rm(list=ls())
 
 ```r
 # Daten einlesen
-daten <- read_csv("D07_Sternberg_2020_Dec_16_eep.csv") 
+data.files <- list.files("Alle Daten/")
+data.example <- data.files[1]
+daten <- read.csv(paste0("./Alle Daten/", data.example ), header=TRUE, fileEncoding = "UTF-8-BOM")
 
 # optional: Spaltenamen umbenennen, z.B.: 
 daten <- rename(daten, taste = key)
@@ -90,11 +92,11 @@ Auch Zwischenergebnisse können auf diese Weise weitergegeben werden. Der Code w
 # Datenstruktur pruefen
 str(daten) # Output betrachten: haben alle Spalten das richtig Format? 
 # ggf. Spalten als Faktoren definieren, Beispiele: 
-daten$id <- factor(daten$id)
-daten$gender <- factor(daten$gender, 
-                         levels = c("w","m", "d", "keine Angabe"), 
-                         labels = c("weiblich", "männlich","divers", 
-                                    "keine Angabe"))
+
+daten <- daten %>% mutate(id = factor(id),
+                          gender = recode_factor(gender, w = "weiblich", m = "männlich", d= "divers")) 
+
+str(daten)
 ```
 Als Faktoren sollten definiert sein:
 
