@@ -98,7 +98,7 @@ Der riesige Vorteil von Projekten liegt darin, dass ihr nun einfach euren Ordner
 
 ![](Grafiken/dateihochladen.png)
 
-Egal wo eure Komiliton_innen den Ordner speichern, das Projekt sollte genauso laufen. Das ist ideal im Sinne der **Replizierbarkeit**!
+Egal wo eure Komiliton_innen den Ordner speichern, das Projekt sollte genauso laufen. Das ist ideal im Sinne der **Reproduzierbarkeit**!
 
 \
 
@@ -452,11 +452,31 @@ ls()
 ```
 \
 
+# 2. Eine Beispiel-Studie
+
+![](Grafiken/StudieAbstract.png)
+
+Den Original Text zur findet ihr <a href="https://doi.apa.org/doiLanding?doi=10.1037%2F0022-3514.80.3.381" target="_blank">hier</a> 
+
+Die Studie hat einen ähnlichen Aufbau wie die meisten eurer Experimente. Abhängige Variablen sind Reaktionszeit und Antwortgenauigkeit. Allerdings gibt es drei unabhängige Variablen, Die Art der Distraktoren (`DisktraktorTyp`), Expositionszeit (`Expositionszeit`) sowie der Target-Typ (`TargetTyp`). 
+
+Die folgenden Stimuli wurden verwendet:
+![](Grafiken/StudieStimuli.png)
+
+
+Eine gute Übung ist es, die Ergebnisse der Studie in den Kleingruppen verbal zu beschreiben:
+![](Grafiken/StudieRes.png)
+
+Der Einfachheit halber beschränken wir uns auf die Auswertung für emotionale Distraktoren.
+
+
 # 2. Analyse einer VP
 \
 
 ![](Grafiken/workflow1.png)
 \
+
+
 
 **Bereinigung:**
 
@@ -546,9 +566,15 @@ Eine ausführliche Erläuterung findet ihr <a href="https://r4ds.had.co.nz/tidy-
 * `summarise(rt.mean = mean(rt))` aggregiert Spalten mit unterschiedlichen Funktionen  
 
 ```{r}
+daten<- daten %>% 
+  rename("Expositionszeit"= Condition1,
+                 "TargetTyp"= Condition2) %>%
+  mutate(Expositionszeit= as.factor(recode(Expositionszeit, "-1"= "1", "1"="2")),
+         TargetTyp= recode(TargetTyp, "-1"= "friendly", "1"="threating"))
+
 daten1 = filter(daten, rt>200)
-daten2 = filter(daten, Condition1 == "A")
-daten3 = select(daten, Condition1, Condition2 ,  corr)
+daten2 = filter(daten, Expositionszeit == "A")
+daten3 = select(daten, Expositionszeit, TargetTyp ,  corr)
 ```
 
 
@@ -579,7 +605,7 @@ Die Logik ist immer gleich. Als erstes übergeben wir einen Datensatz `daten` un
 ```{r}
 daten %>% 
   filter(rt>200) %>% 
-  group_by(Condition1) %>% 	
+  group_by(Expositionszeit) %>% 	
   dplyr::summarise(sum.err = sum(corr),
             mean.rt	= mean(rt),
             sd.rt 	= sd(rt),
@@ -612,15 +638,15 @@ daten %>% mutate(rt.sekunden = rt/1000,
 
 ![](Grafiken/grouping.PNG)
 
-Mit `group_by(Condition1)` könnt ihr den Datensatz gruppieren. Eine Gruppe umfasst dabei alle Zeilen, die den gleichen Wert in Spalte `Condition1` haben. `Condition1` kann natürlich eine beliebige Spalte in eurem Datensatz sein, in der Regel jedoch ein Faktor. Verwendet ihr mehrere Spalten z.B. `group_by(Condition1, Condition2)` wird eine Gruppe für jede Kombination aus Werten in `Condition1` und `Condition2` erstellt. Alle Funktionen in `mutate()` und `summarise()` werden dann separat pro Gruppe durchgeführt. Hier fürgen analog zu oben eine Spalte mit dem Mittelwert der Reaktionszeit an, diesmal jedoch separat für jede Bedingung in `Condition`.
+Mit `group_by(Expositionszeit)` könnt ihr den Datensatz gruppieren. Eine Gruppe umfasst dabei alle Zeilen, die den gleichen Wert in Spalte `Expositionszeit` haben. `Expositionszeit` kann natürlich eine beliebige Spalte in eurem Datensatz sein, in der Regel jedoch ein Faktor. Verwendet ihr mehrere Spalten z.B. `group_by(Expositionszeit, TargetTyp)` wird eine Gruppe für jede Kombination aus Werten in `Expositionszeit` und `TargetTyp` erstellt. Alle Funktionen in `mutate()` und `summarise()` werden dann separat pro Gruppe durchgeführt. Hier fürgen analog zu oben eine Spalte mit dem Mittelwert der Reaktionszeit an, diesmal jedoch separat für jede Bedingung in `Condition`.
 
 
 ```{r}
-daten %>% group_by(Condition1) %>% 
+daten %>% group_by(Expositionszeit) %>% 
           mutate(rt.mean = mean(rt))
   
 ```
-Wie ihr seht unterscheiden sich nun die Werte in `rt.mean` je nachdem, was in `Condition1` steht.
+Wie ihr seht unterscheiden sich nun die Werte in `rt.mean` je nachdem, was in `Expositionszeit` steht.
 
 \
 
@@ -630,7 +656,7 @@ Mit `summary()` können wir die Daten nun zusammenfassen. `summary()` akzeptiert
 
 ```{r}
 daten %>% 
-  group_by(Condition1, Condition2) %>% 	
+  group_by(Expositionszeit, TargetTyp) %>% 	
   dplyr::summarise(
             mean.rt	= mean(rt),
             sd.rt 	= sd(rt),
@@ -639,7 +665,7 @@ daten %>%
 
 
 ```
-Wie erwartet enthält der Output eine Zeile pro Kombinaiton aus Bedingungen in `Condition1` und `Condition2`. Spalten wie `id`, `phase` usw. wurden entfernt.
+Wie erwartet enthält der Output eine Zeile pro Kombinaiton aus Bedingungen in `Expositionszeit` und `TargetTyp`. Spalten wie `id`, `phase` usw. wurden entfernt.
 
 \
 
@@ -650,7 +676,7 @@ Später wenn mehrere VPs im Datensatz enthalten sind, wird häufig erst pro VP a
 # aggregieren pro VP und Bedingungen
 
 daten.vp <- daten %>%
-  group_by(id, Condition1, Condition2) %>%
+  group_by(id, Expositionszeit, TargetTyp) %>%
   dplyr::summarise(
     vp.mean.rt	= mean(rt),
     vp.sd.rt 	= sd(rt),
@@ -662,10 +688,10 @@ daten.vp <- daten %>%
 # wichtig: wir nehmen den pro VP aggregierten Datensatz daten.vp als Input und lassen id als Gruppierungsvariable weg.
 
 daten.agg <- daten.vp %>%
-  group_by(Condition1, Condition2) %>%
+  group_by(Expositionszeit, TargetTyp) %>%
   dplyr::summarise(
-    vp.mean.rt	= mean(rt),
-    vp.sd.rt 	= sd(rt),
+    vp.mean.rt	= mean(vp.mean.rt),
+    vp.sd.rt 	= sd(vp.mean.rt),
     vp.n 	= dplyr::n()
   )
 
@@ -683,7 +709,7 @@ daten.agg <- daten.vp %>%
 ```{r}
 str(daten)
 
-daten <- daten %>% mutate(id = factor(id),
+daten <- daten %>% mutate(TargetTyp = factor(TargetTyp),
                           gender = recode_factor(gender, w = "weiblich", m = "männlich", d= "divers")) 
 
 str(daten)
@@ -721,15 +747,15 @@ Prüfen Sie, ob die Versuchsperson das Experiment bis zum Ende bearbeitet hat, z
 daten %>% count()
 # Anzahl der Trials pro Bedingung
 daten %>% 
-  group_by(Condition1, Condition2) %>%  # UV: muss durch Spaltenname ersetzt werden
+  group_by(Expositionszeit, TargetTyp) %>%  # UV: muss durch Spaltenname ersetzt werden
   mutate(mean=mean(rt))
 
 daten %>% 
-  group_by(Condition1, Condition2) %>%  # UV: muss durch Spaltenname ersetzt werden
+  group_by(Expositionszeit, TargetTyp) %>%  # UV: muss durch Spaltenname ersetzt werden
   summarise(mean=mean(rt))
 ```
 
-`group_by()` mit dieser Funktion wird der Datensatz nach Faktorstufen des angegebenen Faktors gruppiert und alle nachfolgende Schritte werden getrennt nach den Faktorstufen durchgeführt. In diesem Fall: Anzahl der Trials für alle Stufenkombinationen von Condition1 und Condition2 werden mit count() gezählt. 
+`group_by()` mit dieser Funktion wird der Datensatz nach Faktorstufen des angegebenen Faktors gruppiert und alle nachfolgende Schritte werden getrennt nach den Faktorstufen durchgeführt. In diesem Fall: Anzahl der Trials für alle Stufenkombinationen von Expositionszeit und TargetTyp werden mit count() gezählt. 
 
 <a name="Antwortgenauigkeit"></a>
 
@@ -777,7 +803,7 @@ Wenn die Anzahl der praesentierten Trials sich zwischen den Bedingungen untersch
 
 ```{r Antwortgenauigkeit, eval = F} 
 daten %>% 
-  group_by(Condition1) %>% 
+  group_by(Expositionszeit) %>% 
   summarise(RA.Summe = sum(corr),  
             RA.Anteil = mean(corr)) 
 ```
@@ -857,7 +883,7 @@ data.ohneFehler.df <- daten %>%
 Verteilung der Reaktionszeiten - insgesamt (ohne Berücksichtigung der Bedingungen)
 ```{r, warning=FALSE}
 
-ggplot( data=data.ohneFehler.df, aes(x= rt)) + geom_histogram(binwidth=100) + facet_grid(~Condition1)
+ggplot( data=data.ohneFehler.df, aes(x= rt)) + geom_histogram(binwidth=100) + facet_grid(~Expositionszeit)
 
 ```
 
@@ -866,7 +892,7 @@ ggplot( data=data.ohneFehler.df, aes(x= rt)) + geom_histogram(binwidth=100) + fa
 Verteilung der Reaktionszeiten pro Bedingung
 ```{r, warning=FALSE}
 
-ggplot( data=data.ohneFehler.df, aes(x= rt)) + geom_histogram(binwidth=100) + facet_grid(Condition1~Condition2)
+ggplot( data=data.ohneFehler.df, aes(x= rt)) + geom_histogram(binwidth=100) + facet_grid(Expositionszeit~TargetTyp)
 
 ```
 
@@ -876,7 +902,7 @@ ggplot( data=data.ohneFehler.df, aes(x= rt)) + geom_histogram(binwidth=100) + fa
 Boxplot der Reaktionszeiten pro Bedingung
 ```{r, warning=FALSE}
 
-ggplot( data=data.ohneFehler.df, aes(x= Condition2 , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Condition1)
+ggplot( data=data.ohneFehler.df, aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Expositionszeit)
 
 ```
 
@@ -928,7 +954,7 @@ data.RT.df <- data.RT.df %>%
 ```{r, echo=F, eval = T}
 data.RT.df <- data.ohneFehler.df %>% 
   filter(rt > 200) %>% 
-  group_by(Condition1,Condition2) %>% 
+  group_by(Expositionszeit,TargetTyp) %>% 
   filter(rt < mean(rt) + 3*sd(rt)) %>% 
   count()
 
@@ -1115,6 +1141,11 @@ data.list <- lapply(data.files, function(x){
 
 data.df = do.call(rbind, data.list)
 
+data.df<- data.df %>% 
+  rename("Expositionszeit"= Condition1,
+                 "TargetTyp"= Condition2) %>%
+  mutate(Expositionszeit= as.factor(recode(Expositionszeit, "-1"= "1", "1"="2")),
+         TargetTyp= recode(TargetTyp, "-1"= "friendly", "1"="threating"))
 
 ```
 
@@ -1130,7 +1161,7 @@ data.df = do.call(rbind, data.list)
 Eure Skripte müssen nun an den veränderten Datensatz angepasst werden
 
 * Spalte __id__ als Gruppierungsfaktor in `group_by(..., id)` einfügen
-* in Grafiken: `facets=id~`, `facets=id~Condition1`,`facets=Condition1~id`
+* in Grafiken: `facets=id~`, `facets=id~Expositionszeit`,`facets=Expositionszeit~id`
 
 \
 ```{r}
@@ -1138,7 +1169,7 @@ data.df %>%
   filter(rt>200) %>% 
   mutate(id = factor(id),
          gender = recode_factor(gender, m = "männlich", w = "weiblich", d= "divers")) %>% 
-  group_by(id, Condition1) %>% 	
+  group_by(id, Expositionszeit) %>% 	
   dplyr::summarise(sum.err = sum(corr),
             mean.rt	= mean(rt),
             sd.rt 	= sd(rt),
@@ -1150,9 +1181,9 @@ Histogramme pro VP:
 
 
 ```{r, warning=FALSE}
-qplot(x=Condition2, y=rt, data=data.df, geom=c("boxplot", "jitter"), binwidth=100, facets=id~Condition1) 
+qplot(x=TargetTyp, y=rt, data=data.df, geom=c("boxplot", "jitter"), binwidth=100, facets=id~Expositionszeit) 
 
-ggplot( data=data.df, aes(x= Condition2 , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(id~Condition1)
+ggplot( data=data.df, aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(id~Expositionszeit)
 
 ```
 \
@@ -1162,10 +1193,10 @@ Wie ihr seht werden Plots pro VP sehr schnell unübersichtlich wenn ihr facets v
 
 
 ```{r, warning=FALSE}
-VP = "10"
+VP = "K10"
 data.id = data.df %>% filter(id == VP)
 
-ggplot( data=data.id, aes(x= Condition2 , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(id~Condition1)
+ggplot( data=data.id, aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(id~Expositionszeit)
 ```
 
 \
@@ -1181,7 +1212,7 @@ Alternativ könnt ihr auch eine Grafik pro VP mit dplyr und `%>%` erstellen.
 
 plots <- data.df %>% 
          group_by(id) %>% 
-         do( plots= ggplot( data=., aes(x= Condition2 , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Condition1) + ggtitle(paste0("VP:", .$id))
+         do( plots= ggplot( data=., aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Expositionszeit) + ggtitle(paste0("VP:", .$id))
 )
 
 print(plots$plots)
@@ -1195,7 +1226,7 @@ print(plots$plots)
 
 plots <- data.df %>% 
          group_by(id) %>% 
-         do( plots= ggplot( data=., aes(x= Condition2 , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Condition1) + ggtitle(paste0("VP:", .$id))
+         do( plots= ggplot( data=., aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Expositionszeit) + ggtitle(paste0("VP:", .$id))
 )
 
 
@@ -1272,7 +1303,7 @@ data.alle.vps <- data.df %>%
   filter(rt>200) %>% 
   mutate(id = factor(id),
          gender = recode_factor(gender, m = "männlich", w = "weiblich", d= "divers")) %>% 
-  group_by(id, Condition1, Condition2) %>% 	
+  group_by(id, Expositionszeit, TargetTyp) %>% 	
   dplyr::summarise(mean.err = mean(corr),
             mean.rt	= mean(rt),
             sd.rt 	= sd(rt),
@@ -1285,7 +1316,7 @@ data.alle.vps <- data.df %>%
 
 ```{r, warning=FALSE}
 
-ggplot( data=data.alle.vps, aes(x= Condition2 , y=mean.rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Condition1)
+ggplot( data=data.alle.vps, aes(x= TargetTyp , y=mean.rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Expositionszeit)
 
 ```
 
@@ -1295,7 +1326,7 @@ ggplot( data=data.alle.vps, aes(x= Condition2 , y=mean.rt)) + geom_boxplot() + g
 
 ```{r, warning=FALSE}
 
-ggplot( data=data.alle.vps, aes(x= Condition2 , y=mean.err)) + geom_boxplot() + geom_jitter()+ facet_grid(~Condition1)
+ggplot( data=data.alle.vps, aes(x= TargetTyp , y=mean.err)) + geom_boxplot() + geom_jitter()+ facet_grid(~Expositionszeit)
 
 ```
 
@@ -1304,7 +1335,7 @@ ggplot( data=data.alle.vps, aes(x= Condition2 , y=mean.err)) + geom_boxplot() + 
 ```{r, warning=FALSE}
 pd = position_jitter(0.25)
 
-ggplot( data=data.alle.vps, aes(x= Condition2 , y=mean.rt, label= id)) + geom_boxplot() + geom_point(position=pd)+ facet_grid(~Condition1) + geom_text(position = pd, hjust =1.5)
+ggplot( data=data.alle.vps, aes(x= TargetTyp , y=mean.rt, label= id)) + geom_boxplot() + geom_point(position=pd)+ facet_grid(~Expositionszeit) + geom_text(position = pd, hjust =1.5)
 
 ```
 
@@ -1482,14 +1513,18 @@ Eine einfache Auswertung würde für das Beispiel Experiment mit 2 faktoriellem 
 ```{r}
 library(ez)
 
-data.anova <- data.df  %>% filter(corr ==1) %>% group_by(id, Condition1 , Condition2) %>% dplyr::summarise(rt.mean = mean(rt, na.rm = T))
+data.anova <- data.df  %>% 
+  filter(corr ==1) %>% 
+  group_by(id, Expositionszeit , TargetTyp) %>% 
+  dplyr::summarise(rt.mean = mean(rt, na.rm = T),
+                   corr.mean = mean(corr, na.rm = T))
 
-ezDesign(data= data.anova, x = Condition1, y = Condition2)
+ezDesign(data= data.anova, x = Expositionszeit, y = TargetTyp)
 
 myanova <- ezANOVA(data.anova
 , dv = rt.mean 
 , wid = id 
-, within = .(Condition1,Condition2) 
+, within = .(Expositionszeit,TargetTyp) 
 )
 
 myanova
@@ -1508,14 +1543,16 @@ Dies ist die einfachste Version einen Interaktionsplot zu erstellen. Leider sind
 #?ezPlot
 
 ezPlot(data.anova
-, dv = rt.mean 
-, wid = id 
-, x= .(Condition1)
-, within = .(Condition1,Condition2) 
-, split =.(Condition2)
-, x_lab = "Condition1"
-  	, y_lab = "Reaktionszeiten (ms)"
-
+, dv = .(rt.mean)
+, wid = .(id) 
+, x= .(Expositionszeit)
+, within = .(Expositionszeit,TargetTyp) 
+, split =.(TargetTyp)
+, x_lab = "Expositionszeit"
+  	, y_lab = "Reaktionszeiten (ms)", 
+#do_bars = FALSE,
+type = 2
+#print_code=T
 )
 
 ```
@@ -1631,7 +1668,7 @@ p.adjust: Auswahl der Korrekturmethode (z.B. “none”, “holm”, “bonferro
 
 ```{r}
 
-pttest <- pairwise.t.test(data.anova$rt.mean, interaction(data.anova$Condition1, data.anova$Condition2), paired= T , p.adj = "bonf")
+pttest <- pairwise.t.test(data.anova$rt.mean, interaction(data.anova$Expositionszeit, data.anova$TargetTyp), paired= T , p.adj = "bonf")
 
 pttest
 ```
@@ -1676,7 +1713,7 @@ Mit `apply` können wir `lookupT`auf jeden p-Wert in der Output-Matrix von `pair
 
 ```{r}
 
-pttest <- pairwise.t.test(data.anova$rt.mean, interaction(data.anova$Condition1, data.anova$Condition2), paired= T , p.adj = "none")
+pttest <- pairwise.t.test(data.anova$rt.mean, interaction(data.anova$Expositionszeit, data.anova$TargetTyp), paired= T , p.adj = "none")
 
 lookupT <- function(p, df, sign=1){
   if (sign < 0){
@@ -1826,7 +1863,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 
 
 ```{r}
-SEwithinRT <- Rmisc::summarySEwithin(data.anova, measure = "rt.mean", withinvars = c("Condition1", "Condition2"), idvar="id", conf.interval = .95)
+SEwithinRT <- Rmisc::summarySEwithin(data.anova, measure = "rt.mean", withinvars = c("Expositionszeit", "TargetTyp"), idvar="id", conf.interval = .95)
 
 SEwithinRT
 ```
@@ -1867,17 +1904,17 @@ Grundsätzlich ist die Idee hinter ggplot ähnlich der von dplyr. Ihr legt eine 
 **Wichtig:** wir verwenden tidy data, also jede VP*Bedingung in einer Zeile. Zu den wichtigsten aesthetics:
 
 ```
-x=Condition1       **Variable für X-Koordinaten im Plot**
+x=Expositionszeit       **Variable für X-Koordinaten im Plot**
 y=rt.mean          **Variable für Y-Koordinaten**
-color = Condition2 **Unterschiedliche Farben (der Ränder von `geoms`) für Unterschiedliche Ausprägungen von Condition2**
-group= Condition2  **Nach welchen Variablen sollen die Daten gruppiert werden (ähnlich dplyr)**
-fill = Condition2  **wie color nur bezogen auf die Füllfarbe der `geoms`
+color = TargetTyp **Unterschiedliche Farben (der Ränder von `geoms`) für Unterschiedliche Ausprägungen von TargetTyp**
+group= TargetTyp  **Nach welchen Variablen sollen die Daten gruppiert werden (ähnlich dplyr)**
+fill = TargetTyp  **wie color nur bezogen auf die Füllfarbe der `geoms`
 ```
 
 ```{r}
 
 plot <- ggplot2::ggplot(data = data.anova, ##Datensatz festlegen
-                        aes(x = Condition1,           ##Datenstruktur (“aesthetics”) definieren
+                        aes(x = Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
                             y = rt.mean,))
 
 print(plot)                               ##Plotten
@@ -1920,11 +1957,11 @@ Eine erschöpfende Liste findet ihr <a href="https://ggplot2.tidyverse.org/refer
 
 ### Summary Statistics hinzufügen
 
-Das sieht unerwartet aus. Der Grund ist, dass mehrere Werte pro VP und Condition1 gibt, nämlich einen für jede Ausprägung von Condition2. Das heißt wir hatten auch zu viele Punkte im Plot oben. Wir können die Daten direkt in ggplot zusammenfassen mit `stat_summary()`. Diese Funktion kann Daten ähnlich zu `dplyr::summarise()` aggregieren. Wir übergeben eine Funktion zum aggregieren durch `fun=mean` wenn wir z.B. den Mittelwert verwenden wollen.
+Das sieht unerwartet aus. Der Grund ist, dass mehrere Werte pro VP und Expositionszeit gibt, nämlich einen für jede Ausprägung von TargetTyp. Das heißt wir hatten auch zu viele Punkte im Plot oben. Wir können die Daten direkt in ggplot zusammenfassen mit `stat_summary()`. Diese Funktion kann Daten ähnlich zu `dplyr::summarise()` aggregieren. Wir übergeben eine Funktion zum aggregieren durch `fun=mean` wenn wir z.B. den Mittelwert verwenden wollen.
 
 ```{r}
 plot <- ggplot2::ggplot(data = data.anova, ##Datensatz festlegen
-                        aes(x = Condition1,           ##Datenstruktur (“aesthetics”) definieren
+                        aes(x = Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
                             y = rt.mean, ))
 
 
@@ -1946,13 +1983,13 @@ Analog können wir den Mittelwert hinzufügen. Wir können die Farbe über `colo
 plot <-
   plot + stat_summary(
     fun = mean,
-    mapping = aes(x = Condition1, y = rt.mean),
+    mapping = aes(x = Expositionszeit, y = rt.mean),
     geom = c("point"),
     color = "red",
     size = 2
   ) + stat_summary(
     fun = mean,
-    mapping = aes(x = Condition1, y = rt.mean, group = 1),
+    mapping = aes(x = Expositionszeit, y = rt.mean, group = 1),
     geom = c("line"),
     color = "red",
     size = 1
@@ -1979,7 +2016,7 @@ plot <-
   plot + stat_summary(
     fun = mean,
     mapping = aes(
-      x = Condition1,
+      x = Expositionszeit,
       y = rt.mean,
       group = id,
       color = id
@@ -1990,7 +2027,7 @@ plot <-
   stat_summary(
     fun = mean,
     mapping = aes(
-      x = Condition1,
+      x = Expositionszeit,
       y = rt.mean,
       group = id,
       color = id
@@ -2007,21 +2044,20 @@ plot
 ### Interaction-Plot
 
 
-Das solltet ihr später natürlich nicht machen, ein sinnvolleres Beispiel ist, dass wir zusätzlich Condition2 plotten wollen, also einen Interaction-Plot. Dafür gruppieren wir nach **inteaction(id,Condition2)**, denn wir wollen auch die individuellen Daten sehen
+Das solltet ihr später natürlich nicht machen, ein sinnvolleres Beispiel ist, dass wir zusätzlich TargetTyp plotten wollen, also einen Interaction-Plot. Dafür gruppieren wir nach **inteaction(id,TargetTyp)**, denn wir wollen auch die individuellen Daten sehen
 
 ```{r}
 Baseplot <- ggplot2::ggplot(data= data.anova, ##Datensatz festlegen
                 aes(
-                  x=Condition1,           ##Datenstruktur (“aesthetics”) definieren
+                  x=Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
                   y=rt.mean,
-                  group = Condition2,
-                  color = Condition2,
-                  shape = Condition2,
-                  linetype = Condition2
+                  group = TargetTyp,
+                  color = TargetTyp,
+                  shape = TargetTyp
                 )) 
 
 Interaction <- Baseplot + geom_point(alpha= 0.5) +
-             geom_line(mapping = aes(group = interaction(id, Condition2) ), alpha= 0.5)
+             geom_line(mapping = aes(group = interaction(id, TargetTyp) ), alpha= 0.5)
 
 ```
 
@@ -2029,15 +2065,15 @@ Wir fügen wieder Mittelwerte hinzu.
  
 ```{r}
 Interaction <- Interaction + stat_summary(fun=mean, 
-                                          mapping= aes(x=Condition1,
+                                          mapping= aes(x=Expositionszeit,
                                                        y=rt.mean,
-                                                       group =Condition2), 
+                                                       group =TargetTyp), 
                                           geom=c("point") 
                                           ) + 
                stat_summary(fun=mean, 
-                            mapping= aes(x=Condition1,
+                            mapping= aes(x=Expositionszeit,
                                          y=rt.mean, 
-                                         group=Condition2), 
+                                         group=TargetTyp), 
                             geom=c("line"),  
                             size=1.2)
 
@@ -2056,10 +2092,10 @@ Dies ist die einfachste Version einen Interaktionsplot zu erstellen. Leider sind
 ezPlot(data.anova
 , dv = rt.mean 
 , wid = id 
-, x= .(Condition1)
-, within = .(Condition1,Condition2) 
-, split =.(Condition2)
-, x_lab = "Condition1"
+, x= .(Expositionszeit)
+, within = .(Expositionszeit,TargetTyp) 
+, split =.(TargetTyp)
+, x_lab = "Expositionszeit"
   	, y_lab = "Reaktionszeiten (ms)"
 
 )
@@ -2079,25 +2115,24 @@ pd <- position_jitter(0.2, seed=1)
 
 Baseplot <- ggplot2::ggplot(data= data.anova, ##Datensatz festlegen
                 aes(
-                  x=Condition1,           ##Datenstruktur (“aesthetics”) definieren
+                  x=Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
                   y=rt.mean,
-                  group = Condition2,
-                  color = Condition2,
-                  shape = Condition2,
-                  linetype = Condition2
+                  group = TargetTyp,
+                  color = TargetTyp,
+                  shape = TargetTyp
                 )) 
 
 Interaction <- Baseplot + 
-             geom_pointpath(mapping = aes(group = interaction(id, Condition2) ), position = pd, alpha= 0.5) + stat_summary(fun=mean, 
-                                          mapping= aes(x=Condition1,
+             geom_pointpath(mapping = aes(group = interaction(id, TargetTyp) ), position = pd, alpha= 0.5) + stat_summary(fun=mean, 
+                                          mapping= aes(x=Expositionszeit,
                                                        y=rt.mean,
-                                                       group =Condition2), 
+                                                       group =TargetTyp), 
                                           geom=c("point") 
                                           ) + 
                stat_summary(fun=mean, 
-                            mapping= aes(x=Condition1,
+                            mapping= aes(x=Expositionszeit,
                                          y=rt.mean, 
-                                         group=Condition2), 
+                                         group=TargetTyp), 
                             geom=c("line"),  
                             size=1.2)
 
@@ -2113,7 +2148,7 @@ Wenn individuelle Daten in einem Interaction-Plot dargestellt werden, kann es sc
 
 ```{r}
 
-Interaction + facet_grid(cols= vars(Condition2))
+Interaction + facet_grid(cols= vars(TargetTyp))
 
 ```
 
@@ -2123,15 +2158,15 @@ Im Within-Design müssen wir die Daten erst zusammenfassen mit `Rmisc::summarySE
 
 
 ```{r}
-ErrorData <- Rmisc::summarySEwithin(data.anova, measure = "rt.mean", withinvars = c("Condition1", "Condition2"), idvar="id", conf.interval = .95)
+ErrorData <- Rmisc::summarySEwithin(data.anova, measure = "rt.mean", withinvars = c("Expositionszeit", "TargetTyp"), idvar="id", conf.interval = .95)
 
 
 Interaction  + geom_errorbar(data=ErrorData,
-                              mapping = aes(x= Condition1, 
+                              mapping = aes(x= Expositionszeit, 
                                             ymin = rt.mean - se, 
                                             ymax=rt.mean + se ,
-                                            color = Condition2,
-                                            group= Condition2 ),
+                                            color = TargetTyp,
+                                            group= TargetTyp ),
                               size = 1.2, 
                               width=.2, 
                               position=position_dodge(0.1), 
@@ -2151,22 +2186,63 @@ sem <- function(x) sd(x)/sqrt(length(x))
 Interaction  + 
                stat_summary(fun.max=function(i) mean(i) + sem(i) ,
                             fun.min=function(i) mean(i) - sem(i), 
-                            , mapping= aes(x=Condition1,y=rt.mean, group=Condition2)
+                            , mapping= aes(x=Expositionszeit,y=rt.mean, group=TargetTyp)
+                            , geom=c("errorbar"),  size=1.2, width = 0.15)
+
+```
+
+Hier nochmal alles zusammen für die Genauigkeit.
+
+```{r}
+pd <- position_jitter(0.2, seed=1)
+
+data.corr <- data.df  %>% 
+  group_by(id, Expositionszeit , TargetTyp) %>% 
+  dplyr::summarise(corr.mean = mean(corr, na.rm = T))
+
+
+Baseplot <- ggplot2::ggplot(data= data.corr, ##Datensatz festlegen
+                aes(
+                  x=Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
+                  y=corr.mean,
+                  group = TargetTyp,
+                  color = TargetTyp,
+                  shape = TargetTyp
+                ))  +
+  geom_pointpath(mapping = aes(group = interaction(id, TargetTyp) ), 
+                            position = pd, alpha= 0.5) + 
+  stat_summary(fun=mean, mapping= aes(x=Expositionszeit,
+                                      y=corr.mean,
+                                      group =TargetTyp),
+               geom=c("point")) +
+  stat_summary(fun=mean, 
+                            mapping= aes(x=Expositionszeit,
+                                         y=corr.mean, 
+                                         group=TargetTyp), 
+                            geom=c("line"),  
+                            size=1.2)
+sem <- function(x) sd(x)/sqrt(length(x))
+
+
+Baseplot  + stat_summary(fun.max=function(i) mean(i) + sem(i) ,
+                            fun.min=function(i) mean(i) - sem(i), 
+                            , mapping= aes(x=Expositionszeit,y=corr.mean, group=TargetTyp)
                             , geom=c("errorbar"),  size=1.2, width = 0.15)
 
 ```
 
 
+
 ### Boxplots
 
-Wenn wir die Darstellungsart unseres Plots ändern wollen, wird der Vorteil davon `tidy` zu arbeiten deutlich. Denn im Grunde müssen wir kaum etwas am Code ändern  als die `geoms` und gruppieren nach `interaction(Condition1, Condition2)` um eine Box pro Bedingung zu bekommen.
+Wenn wir die Darstellungsart unseres Plots ändern wollen, wird der Vorteil davon `tidy` zu arbeiten deutlich. Denn im Grunde müssen wir kaum etwas am Code ändern  als die `geoms` und gruppieren nach `interaction(Expositionszeit, TargetTyp)` um eine Box pro Bedingung zu bekommen.
 
 
 ```{r}
 
 Boxplot <-
-  Baseplot + geom_boxplot(aes(group = interaction(Condition1, Condition2)) ,
-                          position = position_dodge(0.7),         ## Boxplots Condition1 sollen nebeneinander stehen für ein Level von Condition1
+  Baseplot + geom_boxplot(aes(group = interaction(Expositionszeit, TargetTyp)) ,
+                          position = position_dodge(0.7),         ## Boxplots Expositionszeit sollen nebeneinander stehen für ein Level von Expositionszeit
                           width = 0.5) 
 
 ```
@@ -2175,8 +2251,8 @@ Boxplot <-
 Auch den Mittelwert können wir wieder analog hinzufügen.
 
 ```{r}
-Boxplot + stat_summary(fun=mean, mapping= aes(x=Condition1,y=rt.mean, 
-                                          group =Condition2), geom=c("point") ,
+Boxplot + stat_summary(fun=mean, mapping= aes(x=Expositionszeit,y=rt.mean, 
+                                          group =TargetTyp), geom=c("point") ,
                        position=position_dodge(0.7) ## Stellt sicher, dass die Mittelwerte in den Boxen zentriert sind
                                           )
 ```
@@ -2190,8 +2266,8 @@ Für Barplots sind die Anpassung noch einfacher, wir können direkt die Mittelwe
 ```{r}
 
 Balken <-
-  Baseplot + stat_summary(fun=mean, mapping= aes(x=Condition1,y=rt.mean, 
-                                          group =Condition2,  fill= Condition2), linetype=1, geom=c("bar") ,
+  Baseplot + stat_summary(fun=mean, mapping= aes(x=Expositionszeit,y=rt.mean, 
+                                          group =TargetTyp,  fill= TargetTyp), linetype=1, geom=c("bar") ,
                        position=position_dodge(0.7) ## Stellt sicher, dass die Mittelwerte in den Boxen zentriert sind
                                           )
 
@@ -2202,10 +2278,10 @@ Fehlerbalken werden wieder analog eingefügt. Wir ändern nur color und linetype
 ```{r}
 
 Balken <- Balken + geom_errorbar(data=ErrorData,
-                              mapping = aes(x= Condition1, 
+                              mapping = aes(x= Expositionszeit, 
                                             ymin = rt.mean - se, 
                                             ymax=rt.mean + se ,
-                                            group= Condition2 ),
+                                            group= TargetTyp ),
                               color = "black",
                               linetype = 1,
                               size = 1.2, 
@@ -2315,10 +2391,10 @@ ggplot(data.frame(x = rnorm(10000), y = rnorm(10000)), aes(x = x, y = y)) +
 
 ```{r}
 
-Interaction + scale_shape_manual(values = c(16, 15, 17), 
-                                 name = "Condition2") +
-              scale_linetype_manual(values = c("dotted", "dotted", "dotted"),
-                        name = "Condition2")
+Interaction + scale_shape_manual(values = c(16, 15), 
+                                 name = "TargetTyp") +
+              scale_linetype_manual(values = c("dotted", "dotted"),
+                        name = "TargetTyp")
 
 ```
 
@@ -2439,8 +2515,7 @@ ggsave("Grafiken/experiment_grafik2.png", plot= Interaction, width = 18, height 
 ```{r, echo=F}
 library(shiny)
 
-knitr::include_app("https://alexanderkramer.shinyapps.io/trainingsapp/",
-  height = "700px")
+knitr::include_app("https://alexanderkramer.shinyapps.io/trainingsapp/", height = "700px")
 
 
 ```
