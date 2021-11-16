@@ -1,0 +1,11 @@
+name: trainingsapp
+title:
+username:
+account: alexanderkramer
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4626874
+bundleId: 5019662
+url: https://alexanderkramer.shinyapps.io/trainingsapp/
+when: 1631280165.2267
+lastSyncTime: 1631280165.2267
