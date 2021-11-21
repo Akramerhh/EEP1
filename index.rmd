@@ -27,7 +27,7 @@ url <- 'https://github.com/Akramerhh/EEP1/blob/master/'
 gh_edit_path <- paste0(url, knitr::current_input())
 
 edit_btn <- paste0('<a href="', gh_edit_path, '">',
-                   '<img src="Grafiken/GitHub-Mark-32px.PNG" ',
+                   '<img src="Grafiken/GitHub-Mark-32px.png" ',
                    'alt="fa-edit" ',
                    'width="20" height="20" ',
                    'class="edit"></a>')

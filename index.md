@@ -31,7 +31,7 @@ css: style.css
 
 \
 \
-<div style="text-align: right"> <a href="https://github.com/Akramerhh/EEP1/blob/master/index.rmd"><img src="Grafiken/GitHub-Mark-32px.PNG" alt="fa-edit" width="20" height="20" class="edit"></a> </div>                                                
+<div style="text-align: right"> <a href="https://github.com/Akramerhh/EEP1/blob/master/index.Rmd"><img src="Grafiken/GitHub-Mark-32px.png" alt="fa-edit" width="20" height="20" class="edit"></a> </div>                                                
 
 # 1. Vorbereitung Datenanalyse                    
 
