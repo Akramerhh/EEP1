@@ -28,10 +28,31 @@ css: style.css
 
 
 
+
+\
+\
+<div style="text-align: right"> <a href="https://github.com/Akramerhh/EEP1/blob/master/index.rmd"><img src="Grafiken/GitHub-Mark-32px.PNG" alt="fa-edit" width="20" height="20" class="edit"></a> </div>                                                
+
+# 1. Vorbereitung Datenanalyse                    
+
+\
+
+![](Grafiken/Folie5.PNG)
 \
 \
 
-# 1. Vorbereitung Datenanalyse
+**Ziel** 
+
+1. Überlegen Sie anhand Ihrer Hypothesen, welche Ergebnisse Sie für Ihr Experiment erwarten.\ 
+2. Entwerfen Sie eine Ergebnisgrafik und speichern sie diese digital (Foto, Paint o.ä.). \
+3. Überlegen Sie, wie Sie die Daten bearbeiten müssen. Welche Schritte sind erforderlich? 
+
+\
+
+![](Grafiken/Folie7.PNG)
+
+\
+
 ## 0. Installation
 
 1. R 4.1.2 installieren **(Bitte unbedingt neu installieren!)**
@@ -49,6 +70,8 @@ Ausführliche Infos zu R-Projekten findet ihr hier:
 
 
 Damit ihr die Beispiele einfach auf eure Experimente übertragen könnt, empfehle ich folgende Ordnerstruktur zu erstellen, wobei ihr *Experiment Name* durch euer Experiment ersetzt:
+
+<a name="Ordner"></a>
 
 ![](Grafiken/Ordner.png){width="65%"}
 
@@ -103,6 +126,12 @@ Gezippte Ordner könnt Ihr, wie oben beschrieben, auf Olat hochladen für eure K
 ## 2. R Markdown
 \
 
+### Warum R Markdown
+
+<a name="RMarkdown"></a>
+
+![](Grafiken/Folie8.PNG)
+
 Mit Hilfe von R Markdown können wir unseren `R-Code` in einen Text eingliedern.
 
 Damit wird es einfacher eure Auswertung zu kommentieren und Grafiken und Tabellen können z.B. direkt aus dem Dokument in euren Bericht übernommen werden.
@@ -119,7 +148,7 @@ Und dieses unter einem aussagekräftigem Namen speicher **File -> save as ...** 
 
 Zusätzlich muss eine Option angepasst werden. Mit der folgenden Einstellung sorgt ihr dafür das R-Markdown euren Projekt-Ordner als Working-Directory verwendet:
 
-![RMarkdown Working Directory](MarkdownWD.PNG)
+![RMarkdown Working Directory](Grafiken/MarkdownWD.PNG)
 
 Nun können alle Pfade relativ zu eurem Projektordner angegeben werden.
 
@@ -147,6 +176,8 @@ Ganze Abschnitte in denen ihr mehrere Sonderzeichen verwendet, könnt ihr mit ``
 
 ### Überschriften
 
+<a name="headings"></a>
+
 Durch ein bzw. mehrere **\#** könnt Überschriften erzeugen. Die Anzahl der **\#** bestimmt das Level in der Überschriftenhierarchie:
 
 \#\#\#  Level 4
@@ -165,6 +196,8 @@ Anhand der Überschriften wird sowohl im Editor, als auch im späteren Dokument 
 
 
 ### Verlinkung
+
+<a name="links"></a>
 
 <style>
 div.red { background-color:#ffb8b8; border-radius: 5px; padding: 20px;}
@@ -206,6 +239,8 @@ In html haben wir zusätzlich die Möglichkeit, *innerhalb eines Dokuments* zu v
 \
 
 ### Output Dokument erzeugen
+
+<a name="HTMLHeader"></a>
 
 Im Header könnt ihr Output-Formate angeben. Ich empfehle euch für den Start bei HTML zu bleiben. Dafür könnt ihr folgenden Header verwenden:
 
@@ -293,6 +328,21 @@ Zudem könnt ihr Text hervorheben, wenn ihr ihn mit ```` `...` ```` umschließt.
 
 \
 \
+
+## **Aufgaben**
+
+1. Erstellt die [Ordnerstuktur](#Ordner) \
+2. Erstellt ein R-Markdown [HTML](#RMarkdown) \
+    * Datei erstellen
+    * [Header](#HTMLHeader) anpassen (AutorInnen usw.)
+    * Erstellt durch [Überschriften](#headings) eine Struktur, die die notwendigen Arbeitsschritte abbildet \
+        - Erster Abschnitt enthält Kurzbeschreibung und Entwurf der Ergebnisgrafik ([link](#links) einfügen)
+        - Zweiter heißt `R Setup` und enthält einen leeren Code-Chunk
+
+<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
+
+<a href="https://ep.mafiasi.de/p/EEP_J_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar J
+
 
 ## 3 R Setup
 \
@@ -488,7 +538,8 @@ ls()
 ```
 
 ```
-[1] "packages" "vec"      "wd"      
+[1] "edit_btn"     "gh_edit_path" "packages"     "url"          "vec"         
+[6] "wd"          
 ```
 
 ```r
@@ -1065,7 +1116,7 @@ data.RT.df <- data.RT.df %>%
 
 <a name="Aufgaben2"></a>
   
-## Aufgaben 
+## **Aufgaben** 
 
 1. Daten [importieren](#Import)
 2. [Datenstruktur](#Struktur) prüfen
@@ -1087,7 +1138,7 @@ data.RT.df <- data.RT.df %>%
         - ähnliche Vorgehensweise wie Analyse der [Antwortgenauigkeit](#Antwortgenauigkeit)
 
 
-<a href="https://ep.mafiasi.de/p/EEP_H_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar H
+<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
 
 <a href="https://ep.mafiasi.de/p/EEP_J_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar J
 
@@ -1547,7 +1598,7 @@ factor(0)
 
 
 
-## Aufgaben
+## **Aufgaben**
 
 1. Rohdatensatz erstellen 
     * enthält logfiles aller VPs
@@ -1567,7 +1618,7 @@ factor(0)
 
 \
 
-<a href="https://ep.mafiasi.de/p/EEP_H_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar H
+<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
 
 <a href="https://ep.mafiasi.de/p/EEP_J_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar J
 
@@ -1917,7 +1968,7 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 
 \
 
-## Aufgaben
+## **Aufgaben**
 
 
 * Wie lassen sich eure Hypothesen in statistische Hypothesen im Anova Design umsetzen?
@@ -1927,7 +1978,7 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 
 \
 
-<a href="https://ep.mafiasi.de/p/EEP_H_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar H
+<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
 
 <a href="https://ep.mafiasi.de/p/EEP_J_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar J
 
@@ -2774,12 +2825,12 @@ ggsave("Grafiken/experiment_grafik2.png", plot= Interaction, width = 18, height 
 
 \
 
-## Aufgaben
+## **Aufgaben**
 
 1. Erstellt für jede Kern-Hypothese eine aussagekräftige Grafik!
     *
 
-<a href="https://ep.mafiasi.de/p/EEP_H_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar H
+<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
 
 <a href="https://ep.mafiasi.de/p/EEP_J_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar J
 
