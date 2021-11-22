@@ -31,7 +31,7 @@ css: style.css
 
 \
 \
-<div style="text-align: right"> <a href="https://github.com/Akramerhh/EEP1/blob/master/index.Rmd"><img src="Grafiken/GitHub-Mark-32px.png" alt="fa-edit" width="20" height="20" class="edit"></a> </div>                                                
+<div style="text-align: right"> <a href="https://github.com/Akramerhh/EEP1/blob/master/index.rmd"><img src="Grafiken/GitHub-Mark-32px.png" alt="fa-edit" width="20" height="20" class="edit"></a> </div>                                                
 
 # 1. Vorbereitung Datenanalyse                    
 
@@ -341,7 +341,7 @@ Zudem könnt ihr Text hervorheben, wenn ihr ihn mit ```` `...` ```` umschließt.
 
 <a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
 
-<a href="https://ep.mafiasi.de/p/EEP_J_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar J
+<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
 
 
 ## 3 R Setup
@@ -1140,7 +1140,7 @@ data.RT.df <- data.RT.df %>%
 
 <a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
 
-<a href="https://ep.mafiasi.de/p/EEP_J_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar J
+<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
 
 
 \
@@ -1620,7 +1620,7 @@ factor(0)
 
 <a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
 
-<a href="https://ep.mafiasi.de/p/EEP_J_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar J
+<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
 
 # 5. Inferenzstatistik
 
@@ -1980,7 +1980,7 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 
 <a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
 
-<a href="https://ep.mafiasi.de/p/EEP_J_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar J
+<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
 
 
 # 6. Grafiken
@@ -2832,7 +2832,7 @@ ggsave("Grafiken/experiment_grafik2.png", plot= Interaction, width = 18, height 
 
 <a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
 
-<a href="https://ep.mafiasi.de/p/EEP_J_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar J
+<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
 
 
 
