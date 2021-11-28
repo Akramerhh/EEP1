@@ -625,9 +625,9 @@ graph [layout = dot,
        rankdir = LR,
        newrank=true,
        compound=true,
-       label='Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit',
-       labelloc  =  t // t: Place the graph's title on top.
-        fontsize  = 25 ]
+       label='Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n',
+       labelloc  =  t, // t: Place the graph's title on top.
+        fontsize  = 25]
 
 node [shape = rect,
       style = filled,
@@ -637,7 +637,7 @@ edge [color=black]
 
 node [fillcolor = red]
 Import Bereingiung 
-Ergebnispräsentation [label= 'z.B. Grafiken, Tabellen usw']
+Ergebnispräsentation [label= 'Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)']
 
 node [fillcolor = white]
 Zusammenfassen[label= 'Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP'] 
