@@ -19,14 +19,17 @@ fontsize: 14pt
 editor_options: 
   chunk_output_type: inline
 css: style.css
-#runtime: shiny
 ---
+
+
+
+
+
 
 ```{r Github-Button, include=FALSE}
 url <- 'https://github.com/Akramerhh/EEP1/blob/master/'
 gh_edit_path <- paste0(url, knitr::current_input())
 gh_edit_path < gsub(".Rmd", ".rmd", gh_edit_path)
-
 edit_btn <- paste0('<a href="', gh_edit_path, '">',
                    '<img src="Grafiken/GitHub-Mark-32px.png" ',
                    'alt="fa-edit" ',
@@ -50,7 +53,8 @@ packages <- c("knitr",
               "rmarkdown",
               "ggsci",
               "viridis",
-              "lemon"
+              "lemon",
+              "DiagrammeR"
               )
 
 if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
@@ -179,9 +183,18 @@ Gezippte Ordner könnt Ihr, wie oben beschrieben, auf Olat hochladen für eure K
 
 \
 
-#### Screencast
+### Screencasts
+
+**Windows**
+Zippen und Projekte auf Olat teilen:
 
 <iframe src="https://player.vimeo.com/video/499989775" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
+**Mac**
+Ordner erstellen, Projekt erstellen, komprimieren und Projekte auf Olat teilen:
+
+<iframe src="https://player.vimeo.com/video/650904290" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
 
 \
 
@@ -210,7 +223,7 @@ Und dieses unter einem aussagekräftigem Namen speicher **File -> save as ...** 
 
 Zusätzlich muss eine Option angepasst werden. Mit der folgenden Einstellung sorgt ihr dafür das R-Markdown euren Projekt-Ordner als Working-Directory verwendet:
 
-![RMarkdown Working Directory](Grafiken/MarkdownWD.PNG)
+![RMarkdown Working Directory](Grafiken/MarkdownWD.png)
 
 Nun können alle Pfade relativ zu eurem Projektordner angegeben werden.
 
@@ -292,9 +305,9 @@ In html haben wir zusätzlich die Möglichkeit, *innerhalb eines Dokuments* zu v
 Ähnlich zu Links könnt ihr Bilder einfügen:
 `![Name des Bildes](/Pfad/zum/Bild)`, z.B. einen Screenshot aus den Kurs-Folien: \
 
-![Projekt erstellen](ProjektErstellen.PNG){width="100%"}
+![Projekt erstellen](Grafiken/ProjektErstellen.PNG){width="100%"}
 
-**Packt dazu unbedingt die Bilder in den Skript-Ordner.**
+**Benutzt dazu unbedingt den Header aus diesem Skript, ansonsten müsst ihr die Bilder in den Skript-Ordner packen.**
 \
 </div>
 
@@ -302,7 +315,13 @@ In html haben wir zusätzlich die Möglichkeit, *innerhalb eines Dokuments* zu v
 
 ### Output Dokument erzeugen
 
+#### Header
+
 <a name="HTMLHeader"></a>
+
+Im Header können diverse Argumente angegeben werden, die bestimmen, wie euer Output-Dokument gerendert wird (d.h. wie das Output-Dokument am Ende aussieht). Hier findet ihr eine kurze Einleitung:
+
+<https://zsmith27.github.io/rmarkdown_crash-course/lesson-4-yaml-headers.html> 
 
 Im Header könnt ihr Output-Formate angeben. Ich empfehle euch für den Start bei HTML zu bleiben. Dafür könnt ihr folgenden Header verwenden:
 
@@ -311,6 +330,9 @@ Im Header könnt ihr Output-Formate angeben. Ich empfehle euch für den Start be
 title: "Untitled"
 author: ""
 date: ""
+knit: (function(inputFile, encoding) {
+    rmarkdown::render(inputFile, encoding = encoding, output_dir = "./")
+  })
 output: 
   html_document:
     numbered: yes
@@ -323,6 +345,8 @@ editor_options:
 ---
 
 ````
+
+Die Zeile `knit: (function(inputFile, encoding) {rmarkdown::render(inputFile, encoding = encoding, output_dir = "./")}` sorgt dafür, dass auch Bildpfade relativ zum Projektordner angegeben werden können. Eure Output-Dateien werden dann auch im Projektordner gespeichert.fgraph
 
 
 
@@ -358,7 +382,7 @@ Um einen Chunk auszuführen gibt es zwei Möglichkeiten
 * Das Tastenkürzel `Strg + Shift + Enter` führt den Chunk aus
 * Ihr klickt auf den grünen Pfeil rechts oben
 
-![Chunk einfügen](Run.png)
+![Chunk einfügen](Grafiken/Run.png)
 
 \
 
@@ -409,6 +433,19 @@ Zudem könnt ihr Text hervorheben, wenn ihr ihn mit ```` `...` ```` umschließt.
 ## 3 R Setup
 \
 
+Damit unser Projekt vernünftig läuft. Müsst ihr ganz am Anfang folgenden Chunk einfügen:
+
+
+```{r}
+library(knitr)
+opts_knit$set(
+               root.dir = rprojroot::find_rstudio_root_file(),
+               base.dir = rprojroot::find_rstudio_root_file()
+              )
+```
+
+Dieser sorgt dafür, dass eure `Rmarkdown`-Dokumente im Projektordner ausgeführt werden und alle Pfade vernünftig funktionieren.
+
 
 Zu Beginn des Skripts müssen Pakete einmalig installiert werden über eine der folgenden Möglichkeiten:
 
@@ -451,7 +488,8 @@ packages <- c("knitr",
               "rmarkdown",
               "ggsci",
               "viridis",
-              "lemon"
+              "lemon",
+              "posterdown"
               )
            
 
@@ -575,9 +613,57 @@ Der Einfachheit halber beschränken wir uns auf die Auswertung für emotionale D
 # 3. Analyse einer VP
 \
 
-![](Grafiken/workflow1.png)
+<!-- ![](Grafiken/workflow1.png) -->
 \
 
+```{r , eval=TRUE, echo=FALSE}
+library(DiagrammeR)
+DiagrammeR::grViz("
+digraph dot {
+
+graph [layout = dot,
+       rankdir = LR,
+       newrank=true,
+       compound=true,
+       label='Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit',
+       labelloc  =  t // t: Place the graph's title on top.
+        fontsize  = 25 ]
+
+node [shape = rect,
+      style = filled,
+      color = black]
+
+edge [color=black]
+
+node [fillcolor = red]
+Import Bereingiung 
+Ergebnispräsentation [label= 'z.B. Grafiken, Tabellen usw']
+
+node [fillcolor = white]
+Zusammenfassen[label= 'Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP'] 
+Deskriptive [label= 'Deskriptive Statistik\n für die Stichprobe berechnen'] 
+Inferenzstatistik 
+
+subgraph cluster_0 {
+    rankdir=TB;
+    rank=same;
+		style=filled;
+		color=red;
+		node [style=filled,color=white,fillcolor = white ];
+		Zusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];
+		label = 'Analyse';
+		fontsize  = 20;
+	} 
+
+Import -> Bereingiung
+Bereingiung -> Deskriptive [lhead=cluster_0] ;
+Deskriptive-> Ergebnispräsentation [ltail=cluster_0];
+Zusammenfassen [fillcolor= green]
+Import [fillcolor= green]
+Bereingiung [fillcolor= green]
+
+}", width="100%", heigh="100%")
+```
 
 
 **Bereinigung:**
@@ -620,7 +706,7 @@ daten <- read.csv(paste0("./Alle Daten/", data.example ), header=TRUE, fileEncod
 
 Dplyr bietet umfangreiche Funktionen zur Bearbeitung von Datensätzen, eine Übersicht über die wichtigsten Features findet ihr im <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf" target="_blank">dplyr Cheatsheet</a>.
 
-Meiner Meinung nach ist es das derzeit beste Tool zur Datenbereinigung und Aggregation in R.
+Meiner Meinung nach ist es das derzeit beste Tool zur DatenBereinigung und Aggregation in R.
 
 Einer der Gründe dafür ist die Verwendung von <a href="https://seananderson.ca/2014/09/13/dplyr-intro/" target="_blank">Pipes</a>
 
@@ -1393,7 +1479,7 @@ for(i in seq_along(plots[[1]])){
 
 ## Boxplot alle VPs
 
-Zuerst Daten bereinigen und aggregieren. **Dies ist nur ein Beispiel, es sind nicht alle Schritte zur Datenbereinigung realisiert**
+Zuerst Daten bereinigen und aggregieren. **Dies ist nur ein Beispiel, es sind nicht alle Schritte zur DatenBereinigung realisiert**
 
 ```{r}
 data.alle.vps <- data.df %>% 
