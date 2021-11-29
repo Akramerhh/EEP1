@@ -1,0 +1,17 @@
+name: "EEP-Datenauswertung"
+output_dir: "."
+navbar:
+  title: "EEP-Datenauswertung"
+  left:
+    - text: "Seminar Skript"
+      href: index.html
+    - text: "Templates"
+      menu:
+        - text: "Eine VP"
+          href: 01_singlesubject.html
+        - text: "Alle VPs"
+          href: 02_allsubjects.html
+        - text: "Inferenz Statistik"
+          href: 03_inferenzstatistik.html
+        - text: "Abbildungen"
+          href: 04_abbildungen.html

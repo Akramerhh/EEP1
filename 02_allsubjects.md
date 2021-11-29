@@ -10,6 +10,9 @@ header-includes:
 - \fancyfoot[C]{Dieses Dokument ist urheberrechtlich geschützt.}
 - \fancyfoot[R]{\thepage}
 - \setlength{\headheight}{15pt}
+knit: (function(inputFile, encoding) {
+    rmarkdown::render(inputFile, encoding = encoding, output_dir = "./")
+  })
 output:
   rmdformats::readthedown:
     highlight: kate

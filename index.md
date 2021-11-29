@@ -2,10 +2,13 @@
 title: "Datenauswertung EEP"
 author: "Alexander Kramer"
 date: "02.01.2021"
+knit: (function(inputFile, encoding) {
+    rmarkdown::render(inputFile, encoding = encoding, output_dir = "./")
+  })
 output:
   rmdformats::readthedown:
     highlight: kate
-    self_contained: true
+    self_contained: false
     thumbnails: false
     code_folding: show
     toc_depth: 5
@@ -418,7 +421,7 @@ Wenn das Paket bereits installiert ist, kann es dabei zu Fehlermeldungen kommen.
 
 
 ```r
-lapply(paste('package:',names(sessionInfo()$otherPkgs),sep = ""),detach,character.only = TRUE, unload = TRUE)
+#lapply(paste('package:',names(sessionInfo()$otherPkgs),sep = ""),detach,character.only = TRUE, unload = TRUE)
 
 packages <- c("knitr",
               "shiny",
@@ -504,10 +507,10 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] ez_4.4-0        forcats_0.5.1   stringr_1.4.0   dplyr_1.0.7    
- [5] purrr_0.3.4     readr_2.1.0     tidyr_1.1.4     tibble_3.1.6   
- [9] ggplot2_3.3.5   tidyverse_1.3.1 Rmisc_1.5       plyr_1.8.6     
-[13] lattice_0.20-45
+ [1] ez_4.4-0         forcats_0.5.1    stringr_1.4.0    dplyr_1.0.7     
+ [5] purrr_0.3.4      readr_2.1.0      tidyr_1.1.4      tibble_3.1.6    
+ [9] ggplot2_3.3.5    tidyverse_1.3.1  Rmisc_1.5        plyr_1.8.6      
+[13] lattice_0.20-45  rmarkdown_2.11   rmdformats_1.0.3 knitr_1.36      
 
 loaded via a namespace (and not attached):
  [1] httr_1.4.2       sass_0.4.0       jsonlite_1.7.2   splines_4.1.2   
@@ -523,11 +526,10 @@ loaded via a namespace (and not attached):
 [41] xml2_1.3.2       tools_4.1.2      hms_1.1.1        lifecycle_1.0.1 
 [45] munsell_0.5.0    reprex_2.0.1     compiler_4.1.2   jquerylib_0.1.4 
 [49] rlang_0.4.12     grid_4.1.2       nloptr_1.2.2.3   rstudioapi_0.13 
-[53] rmarkdown_2.11   boot_1.3-28      gtable_0.3.0     abind_1.4-5     
-[57] DBI_1.1.1        reshape2_1.4.4   R6_2.5.1         lubridate_1.8.0 
-[61] knitr_1.36       fastmap_1.1.0    utf8_1.2.2       rprojroot_2.0.2 
-[65] stringi_1.7.5    Rcpp_1.0.7       vctrs_0.3.8      dbplyr_2.1.1    
-[69] tidyselect_1.1.1 xfun_0.28       
+[53] boot_1.3-28      gtable_0.3.0     abind_1.4-5      DBI_1.1.1       
+[57] reshape2_1.4.4   R6_2.5.1         lubridate_1.8.0  fastmap_1.1.0   
+[61] utf8_1.2.2       rprojroot_2.0.2  stringi_1.7.5    Rcpp_1.0.7      
+[65] vctrs_0.3.8      dbplyr_2.1.1     tidyselect_1.1.1 xfun_0.28       
 ```
 
 ```r
@@ -559,7 +561,7 @@ print(wd)
 ```
 
 ```
-[1] "C:/Users/Alexander Kramer/Documents/PHD/Lehre/WS2020/EEP1_Datenauswertung/EEP1"
+[1] "C:/Users/Alexander Kramer/Documents/PHD/Lehre/EEP1_Datenauswertung/EEP1"
 ```
 
 ```r
@@ -576,8 +578,8 @@ ls()
 ```
 
 ```
-[1] "edit_btn"     "gh_edit_path" "packages"     "url"          "vec"         
-[6] "wd"          
+[1] "edit_btn"     "encoding"     "gh_edit_path" "inputFile"    "packages"    
+[6] "url"          "vec"          "wd"          
 ```
 
 ```r
@@ -616,8 +618,8 @@ Der Einfachheit halber beschränken wir uns auf die Auswertung für emotionale D
 
 
 ```{=html}
-<div id="htmlwidget-ed282545bbaf07272908" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ed282545bbaf07272908">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0];\nZusammenfassen [fillcolor= green]\nImport [fillcolor= green]\nBereingiung [fillcolor= green]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-ed4196de2eea4f1f0954" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ed4196de2eea4f1f0954">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0];\nZusammenfassen [fillcolor= green]\nImport [fillcolor= green]\nBereingiung [fillcolor= green]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 
@@ -1084,7 +1086,7 @@ Verteilung der Reaktionszeiten - insgesamt (ohne Berücksichtigung der Bedingung
 ggplot( data=data.ohneFehler.df, aes(x= rt)) + geom_histogram(binwidth=100) + facet_grid(~Expositionszeit)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
 
 \
 
@@ -1094,7 +1096,7 @@ Verteilung der Reaktionszeiten pro Bedingung
 ggplot( data=data.ohneFehler.df, aes(x= rt)) + geom_histogram(binwidth=100) + facet_grid(Expositionszeit~TargetTyp)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" />
 
 \
 
@@ -1105,7 +1107,7 @@ Boxplot der Reaktionszeiten pro Bedingung
 ggplot( data=data.ohneFehler.df, aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Expositionszeit)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" />
 
 \
 
@@ -1386,13 +1388,13 @@ Histogramme pro VP:
 qplot(x=TargetTyp, y=rt, data=data.df, geom=c("boxplot", "jitter"), binwidth=100, facets=id~Expositionszeit) 
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" />
 
 ```r
 ggplot( data=data.df, aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(id~Expositionszeit)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-26-2.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-26-2.png" style="display: block; margin: auto;" />
 \
 
 Wie ihr seht werden Plots pro VP sehr schnell unübersichtlich wenn ihr facets verwendet. Ihr könnt euch in dem Chunk einen Filter setzen mit dem ihr euch flexibel einzelne VPs ansehen könnt. 
@@ -1407,7 +1409,7 @@ data.id = data.df %>% filter(id == VP)
 ggplot( data=data.id, aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(id~Expositionszeit)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" />
 
 \
 
@@ -1476,64 +1478,64 @@ Diese Variante funktioniert nur für HTML-Output und erfordert ein fortgeschritt
 #### Plotten in Tabs {.tabset}
 
 ##### VP:  K1 
-<img src="index_files/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" />
 
 ##### VP:  K10 
-<img src="index_files/figure-html/unnamed-chunk-30-2.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-2.png" style="display: block; margin: auto;" />
 
 ##### VP:  K11 
-<img src="index_files/figure-html/unnamed-chunk-30-3.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-3.png" style="display: block; margin: auto;" />
 
 ##### VP:  K12 
-<img src="index_files/figure-html/unnamed-chunk-30-4.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-4.png" style="display: block; margin: auto;" />
 
 ##### VP:  K13 
-<img src="index_files/figure-html/unnamed-chunk-30-5.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-5.png" style="display: block; margin: auto;" />
 
 ##### VP:  K14 
-<img src="index_files/figure-html/unnamed-chunk-30-6.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-6.png" style="display: block; margin: auto;" />
 
 ##### VP:  K15 
-<img src="index_files/figure-html/unnamed-chunk-30-7.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-7.png" style="display: block; margin: auto;" />
 
 ##### VP:  K16 
-<img src="index_files/figure-html/unnamed-chunk-30-8.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-8.png" style="display: block; margin: auto;" />
 
 ##### VP:  K17 
-<img src="index_files/figure-html/unnamed-chunk-30-9.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-9.png" style="display: block; margin: auto;" />
 
 ##### VP:  K18 
-<img src="index_files/figure-html/unnamed-chunk-30-10.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-10.png" style="display: block; margin: auto;" />
 
 ##### VP:  K19 
-<img src="index_files/figure-html/unnamed-chunk-30-11.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-11.png" style="display: block; margin: auto;" />
 
 ##### VP:  K2 
-<img src="index_files/figure-html/unnamed-chunk-30-12.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-12.png" style="display: block; margin: auto;" />
 
 ##### VP:  K20 
-<img src="index_files/figure-html/unnamed-chunk-30-13.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-13.png" style="display: block; margin: auto;" />
 
 ##### VP:  K3 
-<img src="index_files/figure-html/unnamed-chunk-30-14.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-14.png" style="display: block; margin: auto;" />
 
 ##### VP:  K4 
-<img src="index_files/figure-html/unnamed-chunk-30-15.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-15.png" style="display: block; margin: auto;" />
 
 ##### VP:  K5 
-<img src="index_files/figure-html/unnamed-chunk-30-16.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-16.png" style="display: block; margin: auto;" />
 
 ##### VP:  K6 
-<img src="index_files/figure-html/unnamed-chunk-30-17.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-17.png" style="display: block; margin: auto;" />
 
 ##### VP:  K7 
-<img src="index_files/figure-html/unnamed-chunk-30-18.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-18.png" style="display: block; margin: auto;" />
 
 ##### VP:  K8 
-<img src="index_files/figure-html/unnamed-chunk-30-19.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-19.png" style="display: block; margin: auto;" />
 
 ##### VP:  K9 
-<img src="index_files/figure-html/unnamed-chunk-30-20.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-30-20.png" style="display: block; margin: auto;" />
 
 \
 
@@ -1568,7 +1570,7 @@ data.alle.vps <- data.df %>%
 ggplot( data=data.alle.vps, aes(x= TargetTyp , y=mean.rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Expositionszeit)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" />
 
 \
 
@@ -1579,7 +1581,7 @@ ggplot( data=data.alle.vps, aes(x= TargetTyp , y=mean.rt)) + geom_boxplot() + ge
 ggplot( data=data.alle.vps, aes(x= TargetTyp , y=mean.err)) + geom_boxplot() + geom_jitter()+ facet_grid(~Expositionszeit)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-33-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-33-1.png" style="display: block; margin: auto;" />
 
 **Boxplot Label**
 
@@ -1590,7 +1592,7 @@ pd = position_jitter(0.25)
 ggplot( data=data.alle.vps, aes(x= TargetTyp , y=mean.rt, label= id)) + geom_boxplot() + geom_point(position=pd)+ facet_grid(~Expositionszeit) + geom_text(position = pd, hjust =1.5)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-34-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-34-1.png" style="display: block; margin: auto;" />
 
 
 
@@ -1769,7 +1771,7 @@ data.anova <- data.df  %>%
 ezDesign(data= data.anova, x = Expositionszeit, y = TargetTyp)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-38-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-38-1.png" style="display: block; margin: auto;" />
 
 ```r
 myanova <- ezANOVA(data.anova
@@ -1815,7 +1817,7 @@ type = 2
 )
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-39-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-39-1.png" style="display: block; margin: auto;" />
 
 \
 Der Output beinhaltet drei Tabellen:
@@ -2201,7 +2203,7 @@ plot <- ggplot2::ggplot(data = data.anova, ##Datensatz festlegen
 print(plot)                               ##Plotten
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-46-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-46-1.png" style="display: block; margin: auto;" />
 
 \
 
@@ -2216,7 +2218,7 @@ plot <- plot + geom_point()
 print(plot)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-47-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-47-1.png" style="display: block; margin: auto;" />
 
 
 Wenn wir kontrollieren wollen, ob alle VPs dem globalen Trend folgen (B>A) können wir Linien hinzufügen pro VP. Dafür müssen wir die Daten aber gruppieren. Das können wir in den globalen aesthetics machen (`ggplot(data= , aes())`) oder für einzelne Layers festlegen, wie im Beispiel unten:
@@ -2226,7 +2228,7 @@ Wenn wir kontrollieren wollen, ob alle VPs dem globalen Trend folgen (B>A) könn
 plot + geom_line(aes(group=id))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-48-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-48-1.png" style="display: block; margin: auto;" />
 
 #### Liste von `geoms`
 
@@ -2265,7 +2267,7 @@ plot <-
 plot
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-49-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-49-1.png" style="display: block; margin: auto;" />
 
 Analog können wir den Mittelwert hinzufügen. Wir können die Farbe über `color="farbe"` oder die Größe über `size=xx` verändern und den Mittelwert so abheben.
 
@@ -2289,7 +2291,7 @@ plot <-
 plot
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-50-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-50-1.png" style="display: block; margin: auto;" />
 
 
 **Wichtig:** `geoms` lassen sich anpassen über Argumente wie:
@@ -2332,7 +2334,7 @@ plot <-
 plot
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-51-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-51-1.png" style="display: block; margin: auto;" />
 
 
 
@@ -2376,7 +2378,7 @@ Interaction <- Interaction + stat_summary(fun=mean,
 Interaction
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-53-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-53-1.png" style="display: block; margin: auto;" />
 
 
 ### Interaction mit ezPlot
@@ -2400,7 +2402,7 @@ ezPlot(data.anova
 )
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-54-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-54-1.png" style="display: block; margin: auto;" />
 
 
 
@@ -2441,7 +2443,7 @@ Interaction <- Baseplot +
 Interaction
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-55-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-55-1.png" style="display: block; margin: auto;" />
 
 </div>
 
@@ -2455,7 +2457,7 @@ Wenn individuelle Daten in einem Interaction-Plot dargestellt werden, kann es sc
 Interaction + facet_grid(cols= vars(TargetTyp))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" />
 
 
 ### Fehlerbalken
@@ -2480,7 +2482,7 @@ Interaction  + geom_errorbar(data=ErrorData,
                               )
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-57-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-57-1.png" style="display: block; margin: auto;" />
 
 Das ist zugegeben nicht ganz `tidy`, da wir einen neuen Datensatz erstellen müssen. Das liegt daran, dass wir im Within-Design nicht auf gruppenbasis die *Standard Error of the Mean* berechnen können, sondern immer den kompletten Datensatz brauchen.
 
@@ -2498,7 +2500,7 @@ Interaction  +
                             , geom=c("errorbar"),  size=1.2, width = 0.15)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" />
 
 Hier nochmal alles zusammen für die Genauigkeit.
 
@@ -2539,7 +2541,7 @@ Accplot  + stat_summary(fun.max=function(i) mean(i) + sem(i) ,
                             , geom=c("errorbar"),  size=1.2, width = 0.15)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-59-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-59-1.png" style="display: block; margin: auto;" />
 
 
 
@@ -2567,7 +2569,7 @@ Boxplot + stat_summary(fun=mean, mapping= aes(x=Expositionszeit,y=rt.mean,
                                           )
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-61-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-61-1.png" style="display: block; margin: auto;" />
 
 
 
@@ -2604,7 +2606,7 @@ Balken <- Balken + geom_errorbar(data=ErrorData,
 Balken
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-63-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-63-1.png" style="display: block; margin: auto;" />
 
 ### Grafiken Formatiern
 #### Achsen Beschriften
@@ -2615,7 +2617,7 @@ Balken <- Balken + labs(x = "Unabhängige Variable", y= "Mittelwert abhängige V
 Balken
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-64-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-64-1.png" style="display: block; margin: auto;" />
 
 #### Farben ändern/ Bezeichnung in der Legende ändern
 
@@ -2636,7 +2638,7 @@ Balken <-
 Balken
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-65-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-65-1.png" style="display: block; margin: auto;" />
 **Verwendet mehrere Aesthetics (Color und Fill im Beispiel) in der Grafik, muss die Legende für alle  codiert werden, sonst entstehen mehrere Legenden**
 
 Allgemeine Hinweise zur Bearbeitung der Legende findet ihr<a href="http://www.cookbook-r.com/Graphs/Legends_%28ggplot2%29/" target="_blank">hier</a>
@@ -2660,7 +2662,7 @@ specplot(npg)                    # Zeichnet Luminanz, Chroma und HUE Verlauf
 specplot(npg)[c(1,4,7)]
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-66-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-66-1.png" style="display: block; margin: auto;" />
 
 ```
 $HCL
@@ -2703,7 +2705,7 @@ Balken <-
 Balken
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-67-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-67-1.png" style="display: block; margin: auto;" />
 
 ##### Perzeptuell gleichförmig
 
@@ -2725,7 +2727,7 @@ ggplot(data.frame(x = rnorm(10000), y = rnorm(10000)), aes(x = x, y = y)) +
   theme_bw()
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-68-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-68-1.png" style="display: block; margin: auto;" />
 
 
 
@@ -2739,7 +2741,7 @@ Interaction + scale_shape_manual(values = c(16, 15),
                         name = "TargetTyp")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-69-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-69-1.png" style="display: block; margin: auto;" />
 
 Allgemeine Hinweise zur Bearbeitung der Symbole und Linientypen findet ihr <a href="http://www.cookbook-r.com/Graphs/Shapes_and_line_types/" target="_blank">hier</a>.
 
@@ -2752,7 +2754,7 @@ Balken <-
 Balken
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-70-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-70-1.png" style="display: block; margin: auto;" />
 
 
 #### Y-Limits setzen
@@ -2764,7 +2766,7 @@ Es gibt mehrere Möglichkeiten X und Y Limits zu setzen, z.B. `ylim()` oder `sca
 Balken +  ylim(250, 1250)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-71-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-71-1.png" style="display: block; margin: auto;" />
 
 ```r
 Balken <-
@@ -2772,7 +2774,7 @@ Balken <-
 Balken
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-71-2.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-71-2.png" style="display: block; margin: auto;" />
 
 
 #### Themes
@@ -2786,25 +2788,25 @@ Es gibt eine Reihe vordefinierter Themes die ihr z.B. <a href="https://ggplot2.t
 Balken
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-72-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-72-1.png" style="display: block; margin: auto;" />
 
 ```r
 Balken + theme_bw()
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-72-2.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-72-2.png" style="display: block; margin: auto;" />
 
 ```r
 Balken + theme_classic()
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-72-3.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-72-3.png" style="display: block; margin: auto;" />
 
 ```r
 Balken + theme_linedraw()
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-72-4.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-72-4.png" style="display: block; margin: auto;" />
 
 Es lohnt sich in der Regel sich ein Standard-Theme zu definieren, dass man dann für alle Plots verwendet, sodass die Grafiken ein einheitliches Layout haben und aufgeräumt aussehen.
 Wenn ein bestimmtes Element entfernt werden soll, kann dafür `element_blank()` verwendet werden.
@@ -2832,13 +2834,13 @@ StandardTheme <- theme(
 Interaction
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-73-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-73-1.png" style="display: block; margin: auto;" />
 
 ```r
 Interaction +  StandardTheme
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-73-2.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-73-2.png" style="display: block; margin: auto;" />
 
 
 ### Speichern/ exportieren

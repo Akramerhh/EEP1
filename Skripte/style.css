@@ -1,0 +1,46 @@
+
+
+
+html{
+   margin-top: 40px;
+   scroll-margin-top:40px;
+   scroll-padding-top: 40px;
+}
+
+#nav-top {
+    margin-top: 40px;
+    margin-bottom: 2em;
+    border-radius: 5px;
+    font-family:"Roboto Slab","ff-tisa-web-pro","Georgia",Arial,sans-serif;
+    font-weight:700;
+}
+
+#sidebar {
+    position:fixed;
+    top:40px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height:100%;
+    background:#211103;
+    z-index:200;
+    font-size: 16px;
+}
+
+a {
+  word-wrap: break-word;
+}
+
+a:link img.edit { 
+  display:inline-block;
+  height:0.5em;
+  margin-bottom:0;
+}
+
+a:hover img.edit {
+  display:inline-block;
+  height:0.7em;
+  margin-bottom:0;
+}
+
+
