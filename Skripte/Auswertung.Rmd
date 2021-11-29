@@ -1,0 +1,116 @@
+---
+title: "Auswertung FITC"
+author: "Alexander Kramer"
+date: ""
+knit: (function(inputFile, encoding) {
+    rmarkdown::render(inputFile, encoding = encoding, output_dir = "./")
+  })
+output: 
+  html_document:
+    numbered: yes
+    df_print: paged
+    toc: yes
+    toc_float: true
+    self_contained: false
+    source_code: embed
+    code_download: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+\
+
+
+# Setup R
+
+```{r setup, results = 'hide', message=FALSE, warning=FALSE}
+packages <- c("knitr",
+              "shiny",
+              "Rmisc",
+              "tidyverse",
+              "ez",
+              "rmdformats",
+              "rmarkdown",
+              "ggsci",
+              "viridis",
+              "lemon",
+              "posterdown"
+              )
+           
+
+if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
+  install.packages(setdiff(packages, rownames(installed.packages())))  
+}
+
+#library("Rmisc")
+library("tidyverse")
+library("ez")
+
+writeLines(capture.output(sessionInfo()), paste0(format(Sys.time(), "%Y%b%d"),"sessionInfo.txt"))
+```
+
+\
+
+# Empirische Hypothesen und Skizze
+
+
+
+**Skizze** \ 
+
+
+![Skizze](Grafiken/StudieRes.PNG)
+
+
+```{r}
+
+```
+
+\
+
+# Import
+
+```{r}
+
+```
+
+\
+
+# Bereingiung
+
+```{r}
+
+```
+
+\
+
+# Aggregation Einer VP
+
+```{r}
+
+```
+
+\
+
+# Aggregation Aller VP
+
+```{r}
+
+```
+
+\
+
+# Inferenzstatistik
+
+```{r}
+
+```
+
+\
+
+# Finale Grafik
+
+```{r}
+
+```
+
+ 
