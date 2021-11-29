@@ -31,7 +31,7 @@ url <- 'https://github.com/Akramerhh/EEP1/blob/master/'
 gh_edit_path <- paste0(url, knitr::current_input())
 gh_edit_path < gsub(".Rmd", ".rmd", gh_edit_path)
 edit_btn <- paste0('<a href="', gh_edit_path, '">',
-                   '<img src="Grafiken/GitHub-Mark-32px.png" ',
+                   '<img src="Grafiken/GitHub-Mark-32px.PNG" ',
                    'alt="fa-edit" ',
                    'width="20" height="20" ',
                    'class="edit"></a>')
@@ -139,12 +139,12 @@ Damit ihr die Beispiele einfach auf eure Experimente übertragen könnt, empfehl
 
 <a name="Ordner"></a>
 
-![](Grafiken/Ordner.png){width="65%"}
+![](Grafiken/Ordner.PNG){width="65%"}
 
 Danach könnt ihr im Menü über **File -> New Project** ein Project erstellen. Wählt die Option **Existing Directory**:
 
 
-![](Grafiken/projekt.png)
+![](Grafiken/projekt.PNG)
 
 Und navigiert danach zu eurem **Experiment Ordner**.
 
@@ -152,11 +152,11 @@ Folgende Einstellungen solltet ihr vornehmen:
 
 1. **Unter Tools -> Project Options**
 
-![](Grafiken/projektoptionen.png)
+![](Grafiken/projektoptionen.PNG)
 
 2. **Unter Tools -> Global Options**
 
-![](Grafiken/globaloptions.png)
+![](Grafiken/globaloptions.PNG)
 
 
 In der Regel sollte Rstudio nun direkt zu Beginn euer Projekt laden und der Workspace von **R** sollte leer sein.
@@ -165,7 +165,7 @@ In der Regel sollte Rstudio nun direkt zu Beginn euer Projekt laden und der Work
 
 Der riesige Vorteil von Projekten liegt darin, dass ihr nun einfach euren Ordner *Experiment Name* zippen und z.B. über OpenOlat euren Komiliton_innen zur Verfügung stellen könnt, z.B. in euren Ordner **Gruppenarbeit** über :
 
-![](Grafiken/dateihochladen.png)
+![](Grafiken/dateihochladen.PNG)
 
 Egal wo eure Komiliton_innen den Ordner speichern, das Projekt sollte genauso laufen. Das ist ideal im Sinne der **Reproduzierbarkeit**!
 
@@ -179,7 +179,7 @@ Hier findet ihr ein Tutorial zur Verwendung von 7-Zip.
 
 Gezippte Ordner könnt Ihr, wie oben beschrieben, auf Olat hochladen für eure Komiliton_innen und ggfs. wieder entzippen. Dann wird aus dem Zip-Ordner ein Olat-Ordner erstellt:
 
-![](Grafiken/entzippen.png)
+![](Grafiken/entzippen.PNG)
 
 \
 
@@ -215,15 +215,15 @@ Darüberhinaus könnt ihr euren Code in Chunks gliedern und den Output direkt un
 
 Das macht es sehr einfach Zwischenergebnisse zu kontrollieren und ihr habt den Output immer dort, wo er erzeugt wird.
 
-Zuerst müsst ihr ein R Notebook erstellen. 
+Zuerst müsst ihr ein R Markdown erstellen. 
 
-![](Grafiken/createNB.png)
+![](Grafiken/createNB.PNG)
 
 Und dieses unter einem aussagekräftigem Namen speicher **File -> save as ...** in **Experiment Name/Skripte**
 
 Zusätzlich muss eine Option angepasst werden. Mit der folgenden Einstellung sorgt ihr dafür das R-Markdown euren Projekt-Ordner als Working-Directory verwendet:
 
-![RMarkdown Working Directory](Grafiken/MarkdownWD.png)
+![RMarkdown Working Directory](Grafiken/MarkdownWD.PNG)
 
 Nun können alle Pfade relativ zu eurem Projektordner angegeben werden.
 
@@ -235,7 +235,7 @@ R Markdown bietet eine Reihe von Möglichkeiten eure Dokumente zu formatieren. S
 
 Zwei Sterne (\*\*fett\*\*) oder Unterstriche (\_\_fett\_\_) erzeugen **fetten** Text. 
 
-Einzelne Zeilenumbrüche im Notebook werden nicht in den Output übernommen. Dafür muss am Ende der Zeile ein \\ hinzugefügt werden. 
+Einzelne Zeilenumbrüche im Markdown werden nicht in den Output übernommen. Dafür muss am Ende der Zeile ein \\ hinzugefügt werden. 
 
 Hier \
 sollte ein Zeilenumbruch sein. Hier 
@@ -266,7 +266,7 @@ Durch ein bzw. mehrere **\#** könnt Überschriften erzeugen. Die Anzahl der **\
 ###### Level 6 {.unlisted .unnumbered}
 
 
-Anhand der Überschriften wird sowohl im Editor, als auch im späteren Dokument (dafür müsst ihr im Header die Option `toc: yes` hinzufügen unter `output:  html_notebook:`) ein Inhaltsverzeichnis angelegt.  
+Anhand der Überschriften wird sowohl im Editor, als auch im späteren Dokument (dafür müsst ihr im Header die Option `toc: yes` hinzufügen unter `output:  html_document:`) ein Inhaltsverzeichnis angelegt.  
 
 
 
@@ -375,14 +375,14 @@ In R-Markdown wird der Code durch Chunks gegliedert, in diesen könnt ihr *R* ga
 
 * Im Menü fügt  **Insert** -> **R** einen Chunk ein \
 
-![Chunk einfügen](Chunk.png)
+![Chunk einfügen](Chunk.PNG)
 
 
 Um einen Chunk auszuführen gibt es zwei Möglichkeiten
 * Das Tastenkürzel `Strg + Shift + Enter` führt den Chunk aus
 * Ihr klickt auf den grünen Pfeil rechts oben
 
-![Chunk einfügen](Grafiken/Run.png)
+![Chunk einfügen](Grafiken/Run.PNG)
 
 \
 
@@ -613,7 +613,7 @@ Der Einfachheit halber beschränken wir uns auf die Auswertung für emotionale D
 # 3. Analyse einer VP
 \
 
-<!-- ![](Grafiken/workflow1.png) -->
+<!-- ![](Grafiken/workflow1.PNG) -->
 \
 
 ```{r , eval=TRUE, echo=FALSE}
@@ -674,9 +674,9 @@ Bereingiung [fillcolor= green]
 * Auffällige Versuchspersonen
 
 
-### Skript/Notebook schreiben
+### Skript/Markdown schreiben
 
-In ein R-Skript/Notebook gehören alle Befehle, die die Analyse reproduzierbar machen. Das Skript sollte so geschrieben sein, dass es für jeden beliebigen Datensatz anwendbar ist. Wenn es z.B. im aktuellen Datensatz keine Reaktionszeiten schneller als 200 ms gibt, dann sollten die Befehle zum Ausschließen von Trials mit kürzeren Reaktionszeiten trotzdem im Skript enthalten sein.
+In ein R-Skript/ gehören alle Befehle, die die Analyse reproduzierbar machen. Das Skript sollte so geschrieben sein, dass es für jeden beliebigen Datensatz anwendbar ist. Wenn es z.B. im aktuellen Datensatz keine Reaktionszeiten schneller als 200 ms gibt, dann sollten die Befehle zum Ausschließen von Trials mit kürzeren Reaktionszeiten trotzdem im Skript enthalten sein.
 
 
 <a name="Import"></a>
@@ -734,7 +734,7 @@ Eine ausführliche Erläuterung findet ihr <a href="https://r4ds.had.co.nz/tidy-
 
 #### Ebenen der Datenanalyse
 
-![](Grafiken/EbenenDatenanalyse.png)
+![](Grafiken/EbenenDatenanalyse.PNG)
 
 \
 
@@ -1182,7 +1182,7 @@ data.RT.df <- data.ohneFehler.df %>%
 
 \
 
-![](Grafiken/workflow2.png)
+![](Grafiken/workflow2.PNG)
 \
 **Import**
 Daten aller VPs in einen Datensatz
@@ -1199,7 +1199,7 @@ Statistische Kennzahlen (z.B. M, SD, Median, .. ) für alle AVs (Reaktionszeiten
 ## Datenebene
 \
 
-![](Grafiken/datenebeneAlleVP.png)
+![](Grafiken/datenebeneAlleVP.PNG)
 \
 
 
@@ -1606,26 +1606,26 @@ data.alle.vps %>% filter(!(id %in% vp.err))
 
 \
 
-![](Grafiken/workflow3.png)
+![](Grafiken/workflow3.PNG)
 
 \
 
 
 ## Prinzip der Anova
 
-![](Grafiken/ANOVA.png)
+![](Grafiken/ANOVA.PNG)
 
 \
 
 ## Anova mit Messwiederholung 
 
-![](Grafiken/rmANOVA.png)
+![](Grafiken/rmANOVA.PNG)
 
 \
 
 ## Mehrfaktorielle Anova
 
-![](Grafiken/ANOVA2F.png)
+![](Grafiken/ANOVA2F.PNG)
 
 
 \
@@ -1634,7 +1634,7 @@ data.alle.vps %>% filter(!(id %in% vp.err))
 
 ## Hypothesen der Anova
 
-![](Grafiken/Hypothesen.png)
+![](Grafiken/Hypothesen.PNG)
 
 \
 
@@ -1663,7 +1663,7 @@ data.alle.vps %>% filter(!(id %in% vp.err))
 
 ## Datenebene
 
-![](Grafiken/datenebeneInferenz.png)
+![](Grafiken/datenebeneInferenz.PNG)
 \
 
 <a name="ezAnova"></a>
@@ -1764,7 +1764,7 @@ myanova
 
 Zuerst müssen wir kontrollieren, ob die Voraussetzungen für die Anova erfüllt sind mit dem `Mauchly's Test for Sphericity`.
 
-![](Grafiken/Mauchly.png)
+![](Grafiken/Mauchly.PNG)
 
 \
 
@@ -1940,7 +1940,7 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 
 **Negativbeispiel 1**
 
-![](Grafiken/Negativbeispiel1.png)
+![](Grafiken/Negativbeispiel1.PNG)
 \
 \
 \
@@ -1950,7 +1950,7 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 
 **Negativbeispiel 2**
 
-![](Grafiken/Negativbeispiel2.png)
+![](Grafiken/Negativbeispiel2.PNG)
 \
 \
 \
@@ -1960,7 +1960,7 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 
 **Besseres Beispiel**
 
-![](Grafiken/Positivbeispiel1.png)
+![](Grafiken/Positivbeispiel1.PNG)
 \
 \
 
@@ -2011,7 +2011,7 @@ The standards for good figures are simplicity, clarity, continuity and (of cours
 
 ## Welche Grafik?
 
-![](Grafiken/Beispiele.png)
+![](Grafiken/Beispiele.PNG)
 \
 \
 \
@@ -2667,8 +2667,8 @@ Das Format wird über die Endung des Dateinamen festgelegt.
 
 ```{r}
 
-ggsave("Grafiken/experiment_grafik.png", width = 18, height = 12, units = "cm", dpi = 300)
-ggsave("Grafiken/experiment_grafik2.png", plot= Interaction, width = 18, height = 12, units = "cm", dpi = 300)
+ggsave("Grafiken/experiment_grafik.PNG", width = 18, height = 12, units = "cm", dpi = 300)
+ggsave("Grafiken/experiment_grafik2.PNG", plot= Interaction, width = 18, height = 12, units = "cm", dpi = 300)
 
 ```
 

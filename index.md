@@ -35,7 +35,7 @@ css: style.css
 
 \
 \
-<div style="text-align: right"> <a href="https://github.com/Akramerhh/EEP1/blob/master/index.Rmd"><img src="Grafiken/GitHub-Mark-32px.png" alt="fa-edit" width="20" height="20" class="edit"></a> </div>                                                
+<div style="text-align: right"> <a href="https://github.com/Akramerhh/EEP1/blob/master/index.rmd"><img src="Grafiken/GitHub-Mark-32px.PNG" alt="fa-edit" width="20" height="20" class="edit"></a> </div>                                                
 
 # 1. Vorbereitung Datenanalyse                    
 
@@ -77,12 +77,12 @@ Damit ihr die Beispiele einfach auf eure Experimente übertragen könnt, empfehl
 
 <a name="Ordner"></a>
 
-![](Grafiken/Ordner.png){width="65%"}
+![](Grafiken/Ordner.PNG){width="65%"}
 
 Danach könnt ihr im Menü über **File -> New Project** ein Project erstellen. Wählt die Option **Existing Directory**:
 
 
-![](Grafiken/projekt.png)
+![](Grafiken/projekt.PNG)
 
 Und navigiert danach zu eurem **Experiment Ordner**.
 
@@ -90,11 +90,11 @@ Folgende Einstellungen solltet ihr vornehmen:
 
 1. **Unter Tools -> Project Options**
 
-![](Grafiken/projektoptionen.png)
+![](Grafiken/projektoptionen.PNG)
 
 2. **Unter Tools -> Global Options**
 
-![](Grafiken/globaloptions.png)
+![](Grafiken/globaloptions.PNG)
 
 
 In der Regel sollte Rstudio nun direkt zu Beginn euer Projekt laden und der Workspace von **R** sollte leer sein.
@@ -103,7 +103,7 @@ In der Regel sollte Rstudio nun direkt zu Beginn euer Projekt laden und der Work
 
 Der riesige Vorteil von Projekten liegt darin, dass ihr nun einfach euren Ordner *Experiment Name* zippen und z.B. über OpenOlat euren Komiliton_innen zur Verfügung stellen könnt, z.B. in euren Ordner **Gruppenarbeit** über :
 
-![](Grafiken/dateihochladen.png)
+![](Grafiken/dateihochladen.PNG)
 
 Egal wo eure Komiliton_innen den Ordner speichern, das Projekt sollte genauso laufen. Das ist ideal im Sinne der **Reproduzierbarkeit**!
 
@@ -117,7 +117,7 @@ Hier findet ihr ein Tutorial zur Verwendung von 7-Zip.
 
 Gezippte Ordner könnt Ihr, wie oben beschrieben, auf Olat hochladen für eure Komiliton_innen und ggfs. wieder entzippen. Dann wird aus dem Zip-Ordner ein Olat-Ordner erstellt:
 
-![](Grafiken/entzippen.png)
+![](Grafiken/entzippen.PNG)
 
 \
 
@@ -153,15 +153,15 @@ Darüberhinaus könnt ihr euren Code in Chunks gliedern und den Output direkt un
 
 Das macht es sehr einfach Zwischenergebnisse zu kontrollieren und ihr habt den Output immer dort, wo er erzeugt wird.
 
-Zuerst müsst ihr ein R Notebook erstellen. 
+Zuerst müsst ihr ein R Markdown erstellen. 
 
-![](Grafiken/createNB.png)
+![](Grafiken/createNB.PNG)
 
 Und dieses unter einem aussagekräftigem Namen speicher **File -> save as ...** in **Experiment Name/Skripte**
 
 Zusätzlich muss eine Option angepasst werden. Mit der folgenden Einstellung sorgt ihr dafür das R-Markdown euren Projekt-Ordner als Working-Directory verwendet:
 
-![RMarkdown Working Directory](Grafiken/MarkdownWD.png)
+![RMarkdown Working Directory](Grafiken/MarkdownWD.PNG)
 
 Nun können alle Pfade relativ zu eurem Projektordner angegeben werden.
 
@@ -173,7 +173,7 @@ R Markdown bietet eine Reihe von Möglichkeiten eure Dokumente zu formatieren. S
 
 Zwei Sterne (\*\*fett\*\*) oder Unterstriche (\_\_fett\_\_) erzeugen **fetten** Text. 
 
-Einzelne Zeilenumbrüche im Notebook werden nicht in den Output übernommen. Dafür muss am Ende der Zeile ein \\ hinzugefügt werden. 
+Einzelne Zeilenumbrüche im Markdown werden nicht in den Output übernommen. Dafür muss am Ende der Zeile ein \\ hinzugefügt werden. 
 
 Hier \
 sollte ein Zeilenumbruch sein. Hier 
@@ -204,7 +204,7 @@ Durch ein bzw. mehrere **\#** könnt Überschriften erzeugen. Die Anzahl der **\
 ###### Level 6 {.unlisted .unnumbered}
 
 
-Anhand der Überschriften wird sowohl im Editor, als auch im späteren Dokument (dafür müsst ihr im Header die Option `toc: yes` hinzufügen unter `output:  html_notebook:`) ein Inhaltsverzeichnis angelegt.  
+Anhand der Überschriften wird sowohl im Editor, als auch im späteren Dokument (dafür müsst ihr im Header die Option `toc: yes` hinzufügen unter `output:  html_document:`) ein Inhaltsverzeichnis angelegt.  
 
 
 
@@ -313,14 +313,14 @@ In R-Markdown wird der Code durch Chunks gegliedert, in diesen könnt ihr *R* ga
 
 * Im Menü fügt  **Insert** -> **R** einen Chunk ein \
 
-![Chunk einfügen](Chunk.png)
+![Chunk einfügen](Chunk.PNG)
 
 
 Um einen Chunk auszuführen gibt es zwei Möglichkeiten
 * Das Tastenkürzel `Strg + Shift + Enter` führt den Chunk aus
 * Ihr klickt auf den grünen Pfeil rechts oben
 
-![Chunk einfügen](Grafiken/Run.png)
+![Chunk einfügen](Grafiken/Run.PNG)
 
 \
 
@@ -611,13 +611,13 @@ Der Einfachheit halber beschränken wir uns auf die Auswertung für emotionale D
 # 3. Analyse einer VP
 \
 
-<!-- ![](Grafiken/workflow1.png) -->
+<!-- ![](Grafiken/workflow1.PNG) -->
 \
 
 
 ```{=html}
-<div id="htmlwidget-5fc4a7edeb58c11bd0e0" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5fc4a7edeb58c11bd0e0">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0];\nZusammenfassen [fillcolor= green]\nImport [fillcolor= green]\nBereingiung [fillcolor= green]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-cadb50b3412a75a8e5f0" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cadb50b3412a75a8e5f0">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0];\nZusammenfassen [fillcolor= green]\nImport [fillcolor= green]\nBereingiung [fillcolor= green]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 
@@ -629,9 +629,9 @@ Der Einfachheit halber beschränken wir uns auf die Auswertung für emotionale D
 * Auffällige Versuchspersonen
 
 
-### Skript/Notebook schreiben
+### Skript/Markdown schreiben
 
-In ein R-Skript/Notebook gehören alle Befehle, die die Analyse reproduzierbar machen. Das Skript sollte so geschrieben sein, dass es für jeden beliebigen Datensatz anwendbar ist. Wenn es z.B. im aktuellen Datensatz keine Reaktionszeiten schneller als 200 ms gibt, dann sollten die Befehle zum Ausschließen von Trials mit kürzeren Reaktionszeiten trotzdem im Skript enthalten sein.
+In ein R-Skript/ gehören alle Befehle, die die Analyse reproduzierbar machen. Das Skript sollte so geschrieben sein, dass es für jeden beliebigen Datensatz anwendbar ist. Wenn es z.B. im aktuellen Datensatz keine Reaktionszeiten schneller als 200 ms gibt, dann sollten die Befehle zum Ausschließen von Trials mit kürzeren Reaktionszeiten trotzdem im Skript enthalten sein.
 
 
 <a name="Import"></a>
@@ -690,7 +690,7 @@ Eine ausführliche Erläuterung findet ihr <a href="https://r4ds.had.co.nz/tidy-
 
 #### Ebenen der Datenanalyse
 
-![](Grafiken/EbenenDatenanalyse.png)
+![](Grafiken/EbenenDatenanalyse.PNG)
 
 \
 
@@ -1192,7 +1192,7 @@ data.RT.df <- data.RT.df %>%
 
 \
 
-![](Grafiken/workflow2.png)
+![](Grafiken/workflow2.PNG)
 \
 **Import**
 Daten aller VPs in einen Datensatz
@@ -1209,7 +1209,7 @@ Statistische Kennzahlen (z.B. M, SD, Median, .. ) für alle AVs (Reaktionszeiten
 ## Datenebene
 \
 
-![](Grafiken/datenebeneAlleVP.png)
+![](Grafiken/datenebeneAlleVP.PNG)
 \
 
 
@@ -1669,26 +1669,26 @@ factor(0)
 
 \
 
-![](Grafiken/workflow3.png)
+![](Grafiken/workflow3.PNG)
 
 \
 
 
 ## Prinzip der Anova
 
-![](Grafiken/ANOVA.png)
+![](Grafiken/ANOVA.PNG)
 
 \
 
 ## Anova mit Messwiederholung 
 
-![](Grafiken/rmANOVA.png)
+![](Grafiken/rmANOVA.PNG)
 
 \
 
 ## Mehrfaktorielle Anova
 
-![](Grafiken/ANOVA2F.png)
+![](Grafiken/ANOVA2F.PNG)
 
 
 \
@@ -1697,7 +1697,7 @@ factor(0)
 
 ## Hypothesen der Anova
 
-![](Grafiken/Hypothesen.png)
+![](Grafiken/Hypothesen.PNG)
 
 \
 
@@ -1726,7 +1726,7 @@ factor(0)
 
 ## Datenebene
 
-![](Grafiken/datenebeneInferenz.png)
+![](Grafiken/datenebeneInferenz.PNG)
 \
 
 <a name="ezAnova"></a>
@@ -1843,7 +1843,7 @@ $ANOVA
 
 Zuerst müssen wir kontrollieren, ob die Voraussetzungen für die Anova erfüllt sind mit dem `Mauchly's Test for Sphericity`.
 
-![](Grafiken/Mauchly.png)
+![](Grafiken/Mauchly.PNG)
 
 \
 
@@ -2035,7 +2035,7 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 
 **Negativbeispiel 1**
 
-![](Grafiken/Negativbeispiel1.png)
+![](Grafiken/Negativbeispiel1.PNG)
 \
 \
 \
@@ -2045,7 +2045,7 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 
 **Negativbeispiel 2**
 
-![](Grafiken/Negativbeispiel2.png)
+![](Grafiken/Negativbeispiel2.PNG)
 \
 \
 \
@@ -2055,7 +2055,7 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 
 **Besseres Beispiel**
 
-![](Grafiken/Positivbeispiel1.png)
+![](Grafiken/Positivbeispiel1.PNG)
 \
 \
 
@@ -2106,7 +2106,7 @@ The standards for good figures are simplicity, clarity, continuity and (of cours
 
 ## Welche Grafik?
 
-![](Grafiken/Beispiele.png)
+![](Grafiken/Beispiele.PNG)
 \
 \
 \
@@ -2861,8 +2861,8 @@ Das Format wird über die Endung des Dateinamen festgelegt.
 
 
 ```r
-ggsave("Grafiken/experiment_grafik.png", width = 18, height = 12, units = "cm", dpi = 300)
-ggsave("Grafiken/experiment_grafik2.png", plot= Interaction, width = 18, height = 12, units = "cm", dpi = 300)
+ggsave("Grafiken/experiment_grafik.PNG", width = 18, height = 12, units = "cm", dpi = 300)
+ggsave("Grafiken/experiment_grafik2.PNG", plot= Interaction, width = 18, height = 12, units = "cm", dpi = 300)
 ```
 
 
