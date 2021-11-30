@@ -596,18 +596,35 @@ character(0)
 
 ![](Grafiken/StudieAbstract.PNG)
 
+\
+
 Den Original Text zur findet ihr <a href="https://doi.apa.org/doiLanding?doi=10.1037%2F0022-3514.80.3.381" target="_blank">hier</a> 
 
-Die Studie hat einen ähnlichen Aufbau wie die meisten eurer Experimente. Abhängige Variablen sind Reaktionszeit und Antwortgenauigkeit. Allerdings gibt es drei unabhängige Variablen, Die Art der Distraktoren (`DisktraktorTyp`), Expositionszeit (`Expositionszeit`) sowie der Target-Typ (`TargetTyp`). 
+\
+
+
+Die Studie hat einen ähnlichen Aufbau wie die meisten eurer Experimente. Abhängige Variablen sind Reaktionszeit und Antwortgenauigkeit. Allerdings gibt es drei unabhängige Variablen, die Art der Distraktoren (`DisktraktorTyp`), Expositionszeit (`Expositionszeit`) sowie der Target-Typ (`TargetTyp`). Der Einfachheit halber beschränken wir uns auf die Auswertung für emotionale Distraktoren. Die Aufgabe bestand darin anzugeben, ob sich in einer Menge von Gesichtern ein Zielreiz befand (Gesicht mit unterschiedlichem Ausdruck) oder nicht.
+
+
+**Empirische Hypothesen** \
+
+Bedrohliche Gesichter werden in einer Menge emotionaler Distraktoren schneller gefunden.
+
+\
 
 Die folgenden Stimuli wurden verwendet:
 ![](Grafiken/StudieStimuli.PNG)
 
+\
 
-Eine gute Übung ist es, die Ergebnisse der Studie in den Kleingruppen verbal zu beschreiben:
+**Ergebnisse**
+
 ![](Grafiken/StudieRes.PNG)
 
-Der Einfachheit halber beschränken wir uns auf die Auswertung für emotionale Distraktoren.
+
+Eine gute Übung ist es, die Ergebnisse der Studie in den Kleingruppen verbal zu beschreiben!
+
+Passen die Ergebnisse zu den Hypothesen?
 
 
 # 3. Analyse einer VP
@@ -618,8 +635,8 @@ Der Einfachheit halber beschränken wir uns auf die Auswertung für emotionale D
 
 
 ```{=html}
-<div id="htmlwidget-869c630e09aa789c4296" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-869c630e09aa789c4296">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0];\nZusammenfassen [fillcolor= green]\nImport [fillcolor= green]\nBereingiung [fillcolor= green]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-74f36d88f44fae5fe913" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-74f36d88f44fae5fe913">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0];\nZusammenfassen [fillcolor= green]\nImport [fillcolor= green]\nBereingiung [fillcolor= green]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 
@@ -2131,40 +2148,42 @@ Alternative: Datenverteilung
 
 <div class = "red">
 
-**Wichtig:** Es wird mittlerweile häufig verlangt, dass Grafiken nicht nur mittlere Trends darstellen, sondern auch ersichtlich machen, ob die individuellen Daten durch den mittleren Trend gut repräsentiert sind. Dazu eignen sich z.B. Violinplots oder Boxplots mit individuellen Datenpunkten. 
+**Wichtig:** Es wird mittlerweile häufig verlangt, dass Grafiken nicht nur mittlere Trends darstellen, sondern auch ersichtlich machen, ob die individuellen Daten durch den mittleren Trend gut repräsentiert sind. Dazu eignen sich z.B. Raincloudplots, Violinplots oder Boxplots mit individuellen Datenpunkten. 
 
-</div>
+
+Boxplots (ohne individuelle Daten) oder Balkendiagramme werden immernoch häufig verwendet, sind aber in einigen Stiuationen sehr problematisch. Hier ein Beispiel aus: \
+<https://www.cedricscherer.com/2021/06/06/visualizing-distributions-with-raincloud-plots-and-how-to-create-them-with-ggplot2/>
+
+![](Grafiken/boxplot-1.PNG)
+
+Es ist nicht klar, ob alle Grupppen ungefähr gleich besetzt waren und ob die Daten bis auf dem Mittelwert überhaupt dem selben Muster folgen.
 
 \
 
-## Confidence Intervalle Within-Designs
+![](Grafiken/boxplot-with-n-1.PNG)
+
+\
+
+Selbst wenn wir die Gruppengröße wissen, ist immer noch nicht klar ob die Gruppen dem selben Muster folgen. Hierzu sind individuelle Datenpunkte nötig:
+
+\
+
+![](Grafiken/boxplot-raw-1.PNG)
+
+\
+
+Wir sehen, dass in diesem Beispiel die individuellen Daten sehr unterschiedlich verteilt sind. Gruppe 2 und 3 scheinen eher aus mehreren Untergruppen zu bestehen.Zu schwerwigenderen Fehlinterpretationen kommt es, wenn Mittelwertunterschiede zwischen den Gruppen eigentlich auf Unterschieden in den Untergruppen innerhalb der Gruppen beruhen.Wenn nur Mittelwerte und Fehlerbalken dargestellt werden, entsteht also häufig ein falscher Eindruck von Homogenität innerhalb von Gruppen oder Bedingungen.
+
+\
 
 
+```{=html}
+<blockquote class="twitter-tweet" data-width="550" data-lang="en" data-dnt="true" data-theme="light"><p lang="en" dir="ltr">That moment when you review a journal submission and you see dynamite plots: rage and joy at the same time! <a href="https://twitter.com/hashtag/dataviz?src=hash&amp;ref_src=twsrc%5Etfw">#dataviz</a> <a href="https://twitter.com/hashtag/datavisualization?src=hash&amp;ref_src=twsrc%5Etfw">#datavisualization</a> <a href="https://twitter.com/hashtag/barbarplot?src=hash&amp;ref_src=twsrc%5Etfw">#barbarplot</a> <a href="https://twitter.com/hashtag/DoBetter?src=hash&amp;ref_src=twsrc%5Etfw">#DoBetter</a> <a href="https://t.co/ncuxquEoAF">pic.twitter.com/ncuxquEoAF</a></p>&mdash; Cédric Scherer (@CedScherer) <a href="https://twitter.com/CedScherer/status/1375438100298674179?ref_src=twsrc%5Etfw">March 26, 2021</a></blockquote>
 
-```r
-SEwithinRT <- Rmisc::summarySEwithin(data.anova, measure = "rt.mean", withinvars = c("Expositionszeit", "TargetTyp"), idvar="id", conf.interval = .95)
-
-SEwithinRT
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Expositionszeit"],"name":[1],"type":["fct"],"align":["left"]},{"label":["TargetTyp"],"name":[2],"type":["fct"],"align":["left"]},{"label":["N"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["rt.mean"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["ci"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"friendly","3":"20","4":"1170.351","5":"25.58042","6":"5.719956","7":"11.97201"},{"1":"1","2":"threating","3":"20","4":"1194.021","5":"40.16434","6":"8.981021","7":"18.79749"},{"1":"2","2":"friendly","3":"20","4":"1223.744","5":"26.44639","6":"5.913592","7":"12.37729"},{"1":"2","2":"threating","3":"20","4":"1190.079","5":"44.54935","6":"9.961539","7":"20.84974"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
 </div>
 
-\
-
-
-<div class = "red">
-
-**Achtung:** 
-* Rmisc-Funktionen stehen in Konflikt mit dplyr-Funktionen (z.B. rename(), summarise()) 
-* deswegen Rmisc nicht über library(Rmisc) in den Workspace laden, sondern nur für die genutzte Funktion (siehe oben im Beispiel)
-
-
-</div>
-\
 \
 
 ## ggplot
@@ -2336,9 +2355,9 @@ plot
 
 <img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-51-1.png" style="display: block; margin: auto;" />
 
+\
 
-
-### Interaction-Plot
+## **Interaction-Plot**
 
 
 Das solltet ihr später natürlich nicht machen, ein sinnvolleres Beispiel ist, dass wir zusätzlich TargetTyp plotten wollen, also einen Interaction-Plot. Dafür gruppieren wir nach **inteaction(id,TargetTyp)**, denn wir wollen auch die individuellen Daten sehen
@@ -2461,7 +2480,40 @@ Interaction + facet_grid(cols= vars(TargetTyp))
 
 
 ### Fehlerbalken
+
+
+
+\
+
+**Confidence Intervalle Within-Designs**
+
 Im Within-Design müssen wir die Daten erst zusammenfassen mit `Rmisc::summarySEwithin`. Den neuen Datensatz können wir an `geom_errorbar()` übergeben. Wir müssen dann die aesthetics `ymin` und `ymax` angeben, welche den Start- und Endpunkt der Balken definieren. 
+
+
+```r
+SEwithinRT <- Rmisc::summarySEwithin(data.anova, measure = "rt.mean", withinvars = c("Expositionszeit", "TargetTyp"), idvar="id", conf.interval = .95)
+
+SEwithinRT
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Expositionszeit"],"name":[1],"type":["fct"],"align":["left"]},{"label":["TargetTyp"],"name":[2],"type":["fct"],"align":["left"]},{"label":["N"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["rt.mean"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["ci"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"friendly","3":"20","4":"1170.351","5":"25.58042","6":"5.719956","7":"11.97201"},{"1":"1","2":"threating","3":"20","4":"1194.021","5":"40.16434","6":"8.981021","7":"18.79749"},{"1":"2","2":"friendly","3":"20","4":"1223.744","5":"26.44639","6":"5.913592","7":"12.37729"},{"1":"2","2":"threating","3":"20","4":"1190.079","5":"44.54935","6":"9.961539","7":"20.84974"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+\
+
+
+<div class = "red">
+
+**Achtung:** 
+* Rmisc-Funktionen stehen in Konflikt mit dplyr-Funktionen (z.B. rename(), summarise()) 
+* deswegen Rmisc nicht über library(Rmisc) in den Workspace laden, sondern nur für die genutzte Funktion (siehe oben im Beispiel)
+
+
+</div>
+\
 
 
 
@@ -2482,7 +2534,7 @@ Interaction  + geom_errorbar(data=ErrorData,
                               )
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-57-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" />
 
 Das ist zugegeben nicht ganz `tidy`, da wir einen neuen Datensatz erstellen müssen. Das liegt daran, dass wir im Within-Design nicht auf gruppenbasis die *Standard Error of the Mean* berechnen können, sondern immer den kompletten Datensatz brauchen.
 
@@ -2500,7 +2552,7 @@ Interaction  +
                             , geom=c("errorbar"),  size=1.2, width = 0.15)
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-59-1.png" style="display: block; margin: auto;" />
 
 Hier nochmal alles zusammen für die Genauigkeit.
 
@@ -2518,7 +2570,8 @@ Accplot <- ggplot2::ggplot(data= data.corr, ##Datensatz festlegen
                   y=corr.mean,
                   group = TargetTyp,
                   color = TargetTyp,
-                  shape = TargetTyp
+                  shape = TargetTyp,
+                  linetype = TargetTyp
                 ))  +
   geom_pointpath(mapping = aes(group = interaction(id, TargetTyp) ), 
                             position = pd, alpha= 0.5) + 
@@ -2541,11 +2594,11 @@ Accplot  + stat_summary(fun.max=function(i) mean(i) + sem(i) ,
                             , geom=c("errorbar"),  size=1.2, width = 0.15)
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-59-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-60-1.png" style="display: block; margin: auto;" />
 
 
 
-### Boxplots
+## Boxplots
 
 Wenn wir die Darstellungsart unseres Plots ändern wollen, wird der Vorteil davon `tidy` zu arbeiten deutlich. Denn im Grunde müssen wir kaum etwas am Code ändern  als die `geoms` und gruppieren nach `interaction(Expositionszeit, TargetTyp)` um eine Box pro Bedingung zu bekommen.
 
@@ -2569,13 +2622,109 @@ Boxplot + stat_summary(fun=mean, mapping= aes(x=Expositionszeit,y=rt.mean,
                                           )
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-61-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-62-1.png" style="display: block; margin: auto;" />
 
 
+\
 
-### Balkendiagramme
+## **Raincloud Plots**
 
-Für Barplots sind die Anpassung noch einfacher, wir können direkt die Mittelwerte hinzufügen, und ändern nur die Füllungsfarbe.
+Raincloud-Plots sind häufig eine der besten Varianten, werden allerdings bei mehr als drei Bedingungen für eine UV sehr schwer zu implementieren. Für jeden Fakorstufe des Faktors auf der X-Achse müssen einzeln Halb-Violin- und Boxplots eingefügt werden. 
+ 
+
+```r
+library(gghalves)
+
+Raincloudplot <- Accplot +
+  geom_pointpath(mapping = aes(y = corr.mean, group = interaction(id, TargetTyp)),
+                 
+                 alpha = 0.5) +
+  stat_summary(
+    fun = mean,
+    mapping = aes(x = Expositionszeit,
+                  y = corr.mean,
+                  group = TargetTyp),
+    geom = c("point")
+  ) +
+  stat_summary(
+    fun = mean,
+    mapping = aes(x = Expositionszeit,
+                  y = corr.mean,
+                  group = TargetTyp),
+    geom = c("line"),
+    size = 1.2
+  ) +
+  
+  geom_half_violin(
+    data = . %>% dplyr::filter(Expositionszeit == "1"),
+    aes(fill = TargetTyp),
+    position = position_nudge(x = -.2),
+    side = "l",
+    color = NA,
+    alpha = 0.3,
+    #draw_quantiles=c(0.25, 0.5)
+  ) +
+  geom_half_violin(
+    data = . %>% dplyr::filter(Expositionszeit == "2"),
+    aes(fill = TargetTyp),
+    position = position_nudge(x = .2),
+    side = "r",
+    color = NA,
+    alpha = 0.3,
+    #draw_quantiles=c(0.25, 0.75)
+  ) +
+  geom_boxplot(
+    data = . %>% dplyr::filter(Expositionszeit == "1"),
+    aes(
+      group = interaction(Expositionszeit, TargetTyp),
+      fill = TargetTyp
+    ),
+    alpha = 0.5,
+    width = .1,
+    outlier.shape = NA,
+    position = position_nudge(x = -.12),
+    notch = T
+  ) +
+  geom_boxplot(
+    data = . %>% dplyr::filter(Expositionszeit == "2"),
+    aes(
+      group = interaction(Expositionszeit, TargetTyp),
+      fill = TargetTyp
+    ),
+    alpha = 0.5,
+    width = .1,
+    outlier.shape = NA,
+    position = position_nudge(x = .12),
+    notch = T
+  ) + stat_summary(
+    fun.max = function(i)
+      mean(i) + sem(i) ,
+    fun.min = function(i)
+      mean(i) - sem(i),
+    ,
+    mapping = aes(x = Expositionszeit, y = corr.mean, group = TargetTyp)
+    ,
+    geom = c("errorbar"),
+    size = 1.2,
+    width = 0.1
+  )
+
+
+Raincloudplot
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-63-1.png" style="display: block; margin: auto;" />
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-64-1.png" style="display: block; margin: auto;" />
+\
+
+\
+
+
+## Balkendiagramme
+
+Balkendiagramme sind hier nur der Vollständigkeit halber aufgeführt. 
+Für Balkendiagramme sind die Anpassung noch einfacher, wir können direkt die Mittelwerte hinzufügen, und ändern nur die Füllungsfarbe.
 
 
 ```r
@@ -2606,40 +2755,42 @@ Balken <- Balken + geom_errorbar(data=ErrorData,
 Balken
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-63-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-66-1.png" style="display: block; margin: auto;" />
 
-### Grafiken Formatiern
-#### Achsen Beschriften
+## Grafiken Formatiern
+### Achsen Beschriften
 
 
 ```r
-Balken <- Balken + labs(x = "Unabhängige Variable", y= "Mittelwert abhängige Variable (Einheit)")
-Balken
+Raincloudplot <- Raincloudplot + labs(x = "Expositionszeit (s)", y= "Reaktionszeit in ms")
+Raincloudplot
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-64-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-67-1.png" style="display: block; margin: auto;" />
 
-#### Farben ändern/ Bezeichnung in der Legende ändern
+### Farben ändern/ Bezeichnung in der Legende ändern
 
 
 
 ```r
-Balken <-
-  Balken + scale_fill_brewer(
-    name = "Unabhängige\nVariable 2",
-    palette = "Set1",
-    labels = c("Stufe1", "Stufe2", "Stufe3")
+Raincloudplot <-
+  Raincloudplot + scale_fill_brewer(
+    name = "TargetTyp",
+    palette = "Set2",
+    labels = c("freundlich", "bedrohlich")
   ) +
   scale_color_brewer(
-    name = "Unabhängige\nVariable 2",
-    palette = "Set1",
-    labels = c("Stufe1", "Stufe2", "Stufe3")
+    name = "TargetTyp",
+    palette = "Set2",
+    labels = c("freundlich", "bedrohlich")
   )
-Balken
+Raincloudplot
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-65-1.png" style="display: block; margin: auto;" />
-**Verwendet mehrere Aesthetics (Color und Fill im Beispiel) in der Grafik, muss die Legende für alle  codiert werden, sonst entstehen mehrere Legenden**
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-68-1.png" style="display: block; margin: auto;" />
+\
+
+**Verwendet ihr mehrere Aesthetics (Color und Fill im Beispiel) in der Grafik, muss die Legende für alle  codiert werden, sonst entstehen mehrere Legenden**
 
 Allgemeine Hinweise zur Bearbeitung der Legende findet ihr<a href="http://www.cookbook-r.com/Graphs/Legends_%28ggplot2%29/" target="_blank">hier</a>
 
@@ -2662,7 +2813,7 @@ specplot(npg)                    # Zeichnet Luminanz, Chroma und HUE Verlauf
 specplot(npg)[c(1,4,7)]
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-66-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-69-1.png" style="display: block; margin: auto;" />
 
 ```
 $HCL
@@ -2691,21 +2842,21 @@ In unserem Fall benötigen wir drei Farben (1,4 und 7 unterscheiden sich deutlic
 ```r
 colors <- pal_npg("nrc")(10)[c(1,4,7)]
 
-Balken <-
-  Balken + scale_fill_manual(
-    name = "Unabhängige\nVariable 2",
-    values= colors,
-    labels = c("Stufe1", "Stufe2", "Stufe3")
+Raincloudplot <-
+  Raincloudplot + scale_fill_manual(
+    name = "TargetTyp",
+    values = colors,
+    labels = c("freundlich", "bedrohlich")
   ) +
   scale_color_manual(
-    name = "Unabhängige\nVariable 2",
-    values= colors,
-    labels = c("Stufe1", "Stufe2", "Stufe3")
+    name = "TargetTyp",
+    values = colors,
+    labels = c("freundlich", "bedrohlich")
   )
-Balken
+Raincloudplot
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-67-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-70-1.png" style="display: block; margin: auto;" />
 
 ##### Perzeptuell gleichförmig
 
@@ -2727,57 +2878,80 @@ ggplot(data.frame(x = rnorm(10000), y = rnorm(10000)), aes(x = x, y = y)) +
   theme_bw()
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-68-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-71-1.png" style="display: block; margin: auto;" />
 
 
 
-#### Symbole und Linientyp ändern
+### Symbole und Linientyp ändern
 
 
 ```r
-Interaction + scale_shape_manual(values = c(16, 15), 
-                                 name = "TargetTyp") +
-              scale_linetype_manual(values = c("dotted", "dotted"),
-                        name = "TargetTyp")
+Accplot + scale_shape_manual(
+  values = c(20, 21),
+  name = "TargetTyp",
+  labels = c("freundlich", "bedrohlich")
+) +
+  scale_linetype_manual(
+    values = c("12", "11"),
+    name = "TargetTyp",
+    labels = c("freundlich", "bedrohlich")
+  )
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-69-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-72-1.png" style="display: block; margin: auto;" />
+
+```r
+Raincloudplot <-
+  Raincloudplot + scale_shape_manual(
+    values = c(16, 15),
+    name = "TargetTyp",
+    labels = c("freundlich", "bedrohlich")
+  ) +
+  scale_linetype_manual(
+    values = c("12", "11"),
+    name = "TargetTyp",
+    labels = c("freundlich", "bedrohlich")
+  )
+Raincloudplot
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-72-2.png" style="display: block; margin: auto;" />
+
+Vielleicht habt ihr bemerkt, dass nun im Raincloudplot eine Legende verschwunden ist. Wie oben beschrieben legt ggplot für jede Ästhetik eine neue Legende an, es sei denn Name und Labels stimmen überein. Wir haben die Labels für Farben und Shapes vereinheitlicht, deshalb hat ggplot die Legenden zusammengeführt. `scale_linetype_manual` hat auf den Raincloudplot keinen Einfluss, da wir keine Ästhetik für `linetype` definiert haben (z.B. `aes(..., linetype= TargetTyp)`).
+
 
 Allgemeine Hinweise zur Bearbeitung der Symbole und Linientypen findet ihr <a href="http://www.cookbook-r.com/Graphs/Shapes_and_line_types/" target="_blank">hier</a>.
 
-#### Stufen der Variable X auf der X-Achse benennen
+### Stufen der Variable X auf der X-Achse benennen
 
 
 ```r
 Balken <-
-  Balken + scale_x_discrete(breaks=c("A", "B"),labels=c("Stufe1", "Stufe2"))
+  Balken + scale_x_discrete(breaks = c("1", "2"),
+                            labels = c("Stufe1", "Stufe2"))
 Balken
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-70-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-73-1.png" style="display: block; margin: auto;" />
 
 
-#### Y-Limits setzen
+### Y-Limits setzen
 
-Es gibt mehrere Möglichkeiten X und Y Limits zu setzen, z.B. `ylim()` oder `scale_y_continuous(limits = c(min, max))`, bei diesen werden aber Datenpunkte außerhalb der Limits entfernt und `stat_summary` funktioniert nicht mehr. Deshalb ist es ratsam `coord_cartesian(ylim=c(min, max))` zu verwenden.
+Es gibt mehrere Möglichkeiten X und Y Limits zu setzen, z.B. `ylim()` oder `scale_y_continuous(limits = c(min, max))`, bei diesen werden aber Datenpunkte außerhalb der Limits entfernt und `stat_summary` gibt nicht mehr die korrekten Werte aus. Deshalb ist es ratsam `coord_cartesian(ylim=c(min, max))` zu verwenden.
 
 
 ```r
-Balken +  ylim(250, 1250)
-```
+Balken +  ylim(1100, 1300)
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-71-1.png" style="display: block; margin: auto;" />
-
-```r
 Balken <-
-  Balken +  coord_cartesian(ylim=c(250, 1250))
+  Balken +  coord_cartesian(ylim = c(1100, 1300))
 Balken
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-71-2.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/figures-side-1.png" width="45%" style="display: block; margin: auto;" /><img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/figures-side-2.png" width="45%" style="display: block; margin: auto;" />
 
 
-#### Themes
+### Themes
 
 Mit `theme()` könnte ihr Komponenten des Layouts verändern, die sich nicht direkt auf die Daten beziehen, d.h. Titel, Achsen, Legende usw.. Mit `theme_get()`könnt ihr alle Optionen betrachten.
 
@@ -2785,28 +2959,28 @@ Es gibt eine Reihe vordefinierter Themes die ihr z.B. <a href="https://ggplot2.t
 
 
 ```r
-Balken
+Raincloudplot
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-72-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-74-1.png" style="display: block; margin: auto;" />
 
 ```r
-Balken + theme_bw()
+Raincloudplot + theme_bw()
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-72-2.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-74-2.png" style="display: block; margin: auto;" />
 
 ```r
-Balken + theme_classic()
+Raincloudplot + theme_classic()
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-72-3.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-74-3.png" style="display: block; margin: auto;" />
 
 ```r
-Balken + theme_linedraw()
+Raincloudplot + theme_linedraw()
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-72-4.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-74-4.png" style="display: block; margin: auto;" />
 
 Es lohnt sich in der Regel sich ein Standard-Theme zu definieren, dass man dann für alle Plots verwendet, sodass die Grafiken ein einheitliches Layout haben und aufgeräumt aussehen.
 Wenn ein bestimmtes Element entfernt werden soll, kann dafür `element_blank()` verwendet werden.
@@ -2828,22 +3002,22 @@ StandardTheme <- theme(
             axis.text = element_text( size=12),
             legend.background = element_rect(colour = "black"), # Rahmen um Legende
             legend.key = element_blank(),
-            legend.key.size = unit(3, "lines"))
+            legend.key.size = unit(1, "lines"))
 
 
-Interaction
+Raincloudplot
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-73-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-75-1.png" style="display: block; margin: auto;" />
 
 ```r
-Interaction +  StandardTheme
+Raincloudplot +  StandardTheme
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-73-2.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-75-2.png" style="display: block; margin: auto;" />
 
 
-### Speichern/ exportieren
+## Speichern/ exportieren
 
 `ggsave` speichert automatisch euren letzten `ggplot`, ihr könnt aber auch explizit den Plot als Argument übergeben. 
 
