@@ -109,9 +109,9 @@ VPs mit auffälligen Antwortmuster identifizieren und ausschließen (Ausschlussk
   + [Boxplot](index.html#boxplot-alle-vps) für Antwortgenauigkeit und Reaktionszeit (Beobachtung=VP-Ebene)
   + [Beispiel-Chunk](Auswertung.html#Ausreisser) auf Trial-Ebene, der auf VP-Ebene angepasst werden muss
   + VPs [ausschließen](index.html#VPsausschließen) mit:
-    + auffällig vielen Fehlern ausschließem
-    + auffällig langsamen Reaktionszeiten ausschließem
-    + geringen Anzahl an gültigen Trials ausschließem
+    + auffällig vielen Fehlern
+    + auffällig langsamen Reaktionszeiten
+    + geringen Anzahl an gültigen Trials
   + Aufällige VPs vorher einzeln anschauen ([Boxplot](index.html#BoxplotFilter) oder Histogramm)
   + Auszählen wieviele VPs noch im Datensatz sind
   
