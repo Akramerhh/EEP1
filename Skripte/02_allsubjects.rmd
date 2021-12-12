@@ -66,8 +66,9 @@ pandoc_version()
 
 opts_knit$get()
 ```
+
 # 1. Skript: 
-siehe singlesubject.pdf
+siehe [singlesubject](01_singlesubject.html)
 
 # 2. Daten importieren
 
@@ -86,6 +87,7 @@ for (file in data.files){
 
 
 ```
+
 # 3. Übungstrials entfernen
 siehe singlesubject.pdf 
 
@@ -99,10 +101,27 @@ siehe singlesubject.pdf
 * Die Variable "id" muss bei vielen Befehlen als weiterer Gruppierungsfaktor eingegeben werden
   + in %>% pipes: "group_by(.., id)" 
   + in Grafiken: "facet_grid(~id)", "facet_grid(UV2~id)" oder "facet_grid(id~UV2)";  facet_grid(Spalte~Zeile)
-* weiterer Schritt der Datenbereinigung: VPs mit auffälligen Antwortmuster identifizieren und ausschließen (Ausschlusskritierien müssen gut begründet sein:
-  + VPs mit auffällig vielen Fehlern 
-  + VPs mit auffällig langsamen Reaktionszeiten
-  + VPs mit geringen Anzahl an gültigen Trials
-* Aggregation (=Zusammenfassen) der Antwortgenauigkeit und Reaktionszeit in zwei Schritten:
+
+# 9. Weitere Datenbereinigung 
+
+VPs mit auffälligen Antwortmuster identifizieren und ausschließen (Ausschlusskritierien müssen gut begründet sein):
+
+  + [Boxplot](index.html#boxplot-alle-vps) für Antwortgenauigkeit und Reaktionszeit (Beobachtung=VP-Ebene)
+  + [Beispiel-Chunk](Auswertung.html#Ausreisser) auf Trial-Ebene, der auf VP-Ebene angepasst werden muss
+  + VPs [ausschließen](index.html#VPsausschließen) mit:
+    + auffällig vielen Fehlern ausschließem
+    + auffällig langsamen Reaktionszeiten ausschließem
+    + geringen Anzahl an gültigen Trials ausschließem
+  + Aufällige VPs vorher einzeln anschauen ([Boxplot](index.html#BoxplotFilter) oder Histogramm)
+  + Auszählen wieviele VPs noch im Datensatz sind
+  
+
+# 10. Aggregation 
+
+(=Zusammenfassen) der Antwortgenauigkeit und Reaktionszeit in zwei Schritten:
+
   + 1. Mittelwerte pro Bedingung UND Versuchsperson: für jede VP werden die Trials pro Bedingung in einer neuen Tabelle zusammengefasst (Mittelwert aller Trials pro Bedingung innerhalb der VP)
   + 2. Mittelwerte pro Bedingung (gemittelt ueber alle VPs). Input für diese Berechnung ist die Tabelle, die vorigen Schritt (Schritt 1 der Aggregation) erstellt wurde.
+
+
+

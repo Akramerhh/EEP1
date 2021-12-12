@@ -1222,6 +1222,53 @@ Statistische Kennzahlen (z.B. M, SD, Median, .. ) für alle AVs (Reaktionszeiten
 ![](Grafiken/datenebeneAlleVP.PNG)
 \
 
+```{r , eval=TRUE, echo=FALSE}
+library(DiagrammeR)
+DiagrammeR::grViz("
+digraph dot {
+
+graph [layout = dot,
+       rankdir = LR,
+       newrank=true,
+       compound=true,
+       label='Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n',
+       labelloc  =  t, // t: Place the graph's title on top.
+        fontsize  = 25]
+
+node [shape = rect,
+      style = filled,
+      color = black]
+
+edge [color=black]
+
+node [fillcolor = red]
+Import Bereingiung 
+Ergebnispräsentation [label= 'Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)']
+
+node [fillcolor = white]
+Zusammenfassen[label= 'Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP'] 
+Deskriptive [label= 'Deskriptive Statistik\n für die Stichprobe berechnen'] 
+Inferenzstatistik 
+
+subgraph cluster_0 {
+    rankdir=TB;
+    rank=same;
+		style=filled;
+		color=red;
+		node [style=filled,color=white,fillcolor = white ];
+		Zusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];
+		label = 'Analyse';
+		fontsize  = 20;
+	} 
+
+Import -> Bereingiung
+Bereingiung -> Deskriptive [lhead=cluster_0] ;
+Deskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];
+Zusammenfassen [fillcolor= green]
+Deskriptive [fillcolor= green];
+}", width="100%", heigh="100%")
+```
+
 
 1.Einlesen aller logfiles in eine Datentabelle (für jede neue VP kommen neue Zeilen dazu)
 
@@ -1394,12 +1441,16 @@ ggplot( data=data.df, aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()
 Wie ihr seht werden Plots pro VP sehr schnell unübersichtlich wenn ihr facets verwendet. Ihr könnt euch in dem Chunk einen Filter setzen mit dem ihr euch flexibel einzelne VPs ansehen könnt. 
 \
 
+<a id="BoxplotFilter"></a>
 
 ```{r, warning=FALSE}
 VP = "K10"
 data.id = data.df %>% filter(id == VP)
 
-ggplot( data=data.id, aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(id~Expositionszeit)
+ggplot( data=data.id, aes(x= TargetTyp , y=rt)) + 
+  geom_boxplot() + 
+  geom_jitter()+ 
+  facet_grid(id~Expositionszeit)
 ```
 
 \
@@ -1429,7 +1480,11 @@ print(plots$plots)
 
 plots <- data.df %>% 
          group_by(id) %>% 
-         do( plots= ggplot( data=., aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Expositionszeit) + ggtitle(paste0("VP:", .$id))
+         do( plots= ggplot( data=., aes(x= TargetTyp , y=rt)) + 
+               geom_boxplot() + 
+               geom_jitter()+ 
+               facet_grid(~Expositionszeit) + 
+               ggtitle(paste0("VP:", .$id))
 )
 
 
@@ -1519,7 +1574,10 @@ data.alle.vps <- data.df %>%
 
 ```{r, warning=FALSE}
 
-ggplot( data=data.alle.vps, aes(x= TargetTyp , y=mean.rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Expositionszeit)
+ggplot( data=data.alle.vps, aes(x= TargetTyp , y=mean.rt)) + 
+  geom_boxplot() + 
+  geom_jitter()+ 
+  facet_grid(~Expositionszeit)
 
 ```
 
@@ -1529,16 +1587,21 @@ ggplot( data=data.alle.vps, aes(x= TargetTyp , y=mean.rt)) + geom_boxplot() + ge
 
 ```{r, warning=FALSE}
 
-ggplot( data=data.alle.vps, aes(x= TargetTyp , y=mean.err)) + geom_boxplot() + geom_jitter()+ facet_grid(~Expositionszeit)
+ggplot(data = data.alle.vps, aes(x = TargetTyp , y = mean.err)) + 
+  geom_boxplot() + 
+  geom_jitter() + 
+  facet_grid( ~Expositionszeit)
 
 ```
 
-**Boxplot Label**
+**Boxplot Label** {#BoxLabel}
 
 ```{r, warning=FALSE}
 pd = position_jitter(0.25)
 
-ggplot( data=data.alle.vps, aes(x= TargetTyp , y=mean.rt, label= id)) + geom_boxplot() + geom_point(position=pd)+ facet_grid(~Expositionszeit) + geom_text(position = pd, hjust =1.5)
+ggplot(data = data.alle.vps, aes(x = TargetTyp , y = mean.rt, label = id)) + geom_boxplot() + geom_point(position =
+                                                                                                           pd) + facet_grid( ~ Expositionszeit) + geom_text(position = pd, hjust =
+                                                                                                                                                              1.5)
 
 ```
 
@@ -1546,7 +1609,7 @@ ggplot( data=data.alle.vps, aes(x= TargetTyp , y=mean.rt, label= id)) + geom_box
 
 <a name="VPsausschließen"></a>
 
-## VPs ausschließen
+## VPs ausschließen {#VPsausschließen}
 
 VPs ausschließen die manuell selektiert wurden (**Kriterien dokumentieren**).
 
@@ -1566,8 +1629,11 @@ VPs ausschließen nach Reaktionszeiten, Fehlerhäufigkeiten... (**Kriterien doku
 
 vp.err<- data.alle.vps %>% 
   group_by(id) %>% 
-  filter(rt > "Formel obere Grenze" |                     # wichtig: größer als obere Grenze 
-         rt < "Cutoff zu schnelle Reaktionszeiten") %>%  # wichtig: kleiner als untere Grenze 
+  summarise("AV Mittelwerte usw.")
+  filter(mean.rt > "Formel obere Grenze" ,                     # wichtig: größer als obere Grenze 
+         mean.rt < "Cutoff zu schnelle Reaktionszeiten",# wichtig: kleiner als untere Grenze 
+         mean.corr < "Cutoff Minimum korrekte trials" # Muss ggf. pro VP und Bedingung geprüft werden!
+         ) %>%  
   select(id) %>%
   distinct() %>% 
   pull(id)

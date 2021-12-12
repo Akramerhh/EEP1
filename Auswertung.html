@@ -396,7 +396,8 @@ div.tocify {
               &quot;ggsci&quot;,
               &quot;viridis&quot;,
               &quot;lemon&quot;,
-              &quot;posterdown&quot;
+              &quot;posterdown&quot;,
+              &quot;rprojroot&quot;
               )
            
 
@@ -404,16 +405,26 @@ if (length(setdiff(packages, rownames(installed.packages()))) &gt; 0) {
   install.packages(setdiff(packages, rownames(installed.packages())))  
 }
 
-#library(&quot;Rmisc&quot;)
 library(&quot;tidyverse&quot;)
-library(&quot;ez&quot;)
+library(knitr)
 
-writeLines(capture.output(sessionInfo()), paste0(format(Sys.time(), &quot;%Y%b%d&quot;),&quot;sessionInfo.txt&quot;))</code></pre>
+writeLines(capture.output(sessionInfo()), paste0(format(Sys.time(), &quot;%Y%b%d&quot;),&quot;sessionInfo.txt&quot;))
+
+
+
+opts_knit$set(
+               root.dir = rprojroot::find_rstudio_root_file(),
+               base.dir = rprojroot::find_rstudio_root_file()
+              )</code></pre>
 <p><br />
 </p>
 </div>
 <div id="empirische-hypothesen-und-skizze" class="section level1">
 <h1>Empirische Hypothesen und Skizze</h1>
+<p><br />
+Bedrohliche Gesichter werden in einer Menge emotionaler Distraktoren schneller gefunden als freundliche Gesichter. Zudem ist die Antwortgenauigkeit bei Trials mit bedrohlichen Gesichtern höher.</p>
+<p><br />
+</p>
 <p><strong>Skizze</strong>  </p>
 <div class="figure">
 <img src="Grafiken/StudieRes.PNG" alt="" />
@@ -424,18 +435,158 @@ writeLines(capture.output(sessionInfo()), paste0(format(Sys.time(), &quot;%Y%b%d
 </div>
 <div id="import" class="section level1">
 <h1>Import</h1>
+<pre class="r"><code>data.files &lt;- list.files(&quot;Alle Daten/&quot;)
+data.example &lt;- data.files[1]
+daten &lt;- read.csv(paste0(&quot;Alle Daten/&quot;, data.example ), header=TRUE, fileEncoding = &quot;UTF-8-BOM&quot;)</code></pre>
 <p><br />
 </p>
 </div>
 <div id="bereingiung" class="section level1">
 <h1>Bereingiung</h1>
+<div id="übungstrials-entfernen" class="section level2">
+<h2>Übungstrials entfernen</h2>
+<pre class="r"><code>daten &lt;- daten %&gt;%
+  filter(phase != &quot;uebung&quot;)</code></pre>
+</div>
+<div id="datenstruktur-prüfen-und-faktoren-definieren" class="section level2">
+<h2>Datenstruktur prüfen und Faktoren definieren</h2>
+<pre class="r"><code>str(daten)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    216 obs. of  12 variables:
+##  $ X         : int  7 8 9 10 11 12 13 14 15 16 ...
+##  $ Condition1: int  -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 ...
+##  $ Condition2: int  -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 ...
+##  $ id        : chr  &quot;K1&quot; &quot;K1&quot; &quot;K1&quot; &quot;K1&quot; ...
+##  $ rt        : num  1161 874 969 954 1196 ...
+##  $ p         : num  0.7 0.7 0.7 0.7 0.7 0.7 0.7 0.7 0.7 0.7 ...
+##  $ corr      : int  1 0 0 0 1 1 1 1 1 1 ...
+##  $ vpnr      : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ phase     : chr  &quot;experiment&quot; &quot;experiment&quot; &quot;experiment&quot; &quot;experiment&quot; ...
+##  $ age       : int  40 40 40 40 40 40 40 40 40 40 ...
+##  $ gender    : chr  &quot;w&quot; &quot;w&quot; &quot;w&quot; &quot;w&quot; ...
+##  $ hand      : chr  &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; ...</code></pre>
+<pre class="r"><code>daten &lt;- daten %&gt;%
+  rename(&quot;Expositionszeit&quot; = Condition1,
+         &quot;TargetTyp&quot; = Condition2) %&gt;%
+  mutate(
+    id = factor(id),
+    Expositionszeit= recode_factor(Expositionszeit, &quot;-1&quot;= &quot;1&quot;, &quot;1&quot;=&quot;2&quot;),
+    TargetTyp = recode_factor(TargetTyp, &quot;-1&quot;= &quot;friendly&quot;, &quot;1&quot;=&quot;threating&quot;),
+    gender = recode_factor(gender, w = &quot;weiblich&quot;, m = &quot;männlich&quot;, d = &quot;divers&quot;)
+  )
+
+str(daten)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    216 obs. of  12 variables:
+##  $ X              : int  7 8 9 10 11 12 13 14 15 16 ...
+##  $ Expositionszeit: Factor w/ 2 levels &quot;1&quot;,&quot;2&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ TargetTyp      : Factor w/ 2 levels &quot;friendly&quot;,&quot;threating&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ id             : Factor w/ 1 level &quot;K1&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ rt             : num  1161 874 969 954 1196 ...
+##  $ p              : num  0.7 0.7 0.7 0.7 0.7 0.7 0.7 0.7 0.7 0.7 ...
+##  $ corr           : int  1 0 0 0 1 1 1 1 1 1 ...
+##  $ vpnr           : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ phase          : chr  &quot;experiment&quot; &quot;experiment&quot; &quot;experiment&quot; &quot;experiment&quot; ...
+##  $ age            : int  40 40 40 40 40 40 40 40 40 40 ...
+##  $ gender         : Factor w/ 1 level &quot;weiblich&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ hand           : chr  &quot;r&quot; &quot;r&quot; &quot;r&quot; &quot;r&quot; ...</code></pre>
 <p><br />
 </p>
 </div>
+<div id="vollständigkeit-der-daten-prüfen" class="section level2">
+<h2>Vollständigkeit der Daten prüfen</h2>
+<pre class="r"><code># Anzahl der Zeilen im Datensatz
+daten %&gt;% count()</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["n"],"name":[1],"type":["int"],"align":["right"]}],"data":[{"1":"216"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code># Anzahl der Trials pro Bedingung
+
+daten %&gt;%
+  group_by(Expositionszeit, TargetTyp) %&gt;%  # UV: muss durch Spaltenname ersetzt werden
+  summarise(n=n())</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;Expositionszeit&#39;. You can override using the `.groups` argument.</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Expositionszeit"],"name":[1],"type":["fct"],"align":["left"]},{"label":["TargetTyp"],"name":[2],"type":["fct"],"align":["left"]},{"label":["n"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"friendly","3":"54"},{"1":"1","2":"threating","3":"54"},{"1":"2","2":"friendly","3":"54"},{"1":"2","2":"threating","3":"54"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>daten %&gt;%
+  group_by(Expositionszeit, TargetTyp) %&gt;%  # UV: muss durch Spaltenname ersetzt werden
+  count()</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Expositionszeit"],"name":[1],"type":["fct"],"align":["left"]},{"label":["TargetTyp"],"name":[2],"type":["fct"],"align":["left"]},{"label":["n"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"friendly","3":"54"},{"1":"1","2":"threating","3":"54"},{"1":"2","2":"friendly","3":"54"},{"1":"2","2":"threating","3":"54"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
 <div id="aggregation-einer-vp" class="section level1">
 <h1>Aggregation Einer VP</h1>
+<div id="analyse-der-antwortgenauigkeit" class="section level2">
+<h2>Analyse der Antwortgenauigkeit</h2>
+<p>Die Analyse der Antwortgenauigkeit (RA - Response Accuracy) soll pro Bedingung erfolgen. Die Antwortgenauigkeit kann berechnet werden als…</p>
+<ul>
+<li>Summe richtiger Antworten</li>
+<li>Anteil richtiger Antworten an allen Trials einer Bedingung</li>
+</ul>
+<pre class="r"><code>daten %&gt;%
+  group_by(Expositionszeit, TargetTyp) %&gt;%
+  summarise(RA.Summe = sum(corr),
+            RA.Anteil = mean(corr),
+            RA.Anteil2 =sum(corr)/n() )</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;Expositionszeit&#39;. You can override using the `.groups` argument.</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Expositionszeit"],"name":[1],"type":["fct"],"align":["left"]},{"label":["TargetTyp"],"name":[2],"type":["fct"],"align":["left"]},{"label":["RA.Summe"],"name":[3],"type":["int"],"align":["right"]},{"label":["RA.Anteil"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["RA.Anteil2"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"friendly","3":"43","4":"0.7962963","5":"0.7962963"},{"1":"1","2":"threating","3":"42","4":"0.7777778","5":"0.7777778"},{"1":"2","2":"friendly","3":"41","4":"0.7592593","5":"0.7592593"},{"1":"2","2":"threating","3":"47","4":"0.8703704","5":"0.8703704"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p><br />
 </p>
+</div>
+<div id="analyse-der-reaktionszeiten" class="section level2">
+<h2>Analyse der Reaktionszeiten</h2>
+<div id="visuelle-inspektion" class="section level3">
+<h3>visuelle Inspektion</h3>
+<p>Daten filtern: Ausschluss von Trials, in denen die VP falsch reagiert hat</p>
+<pre class="r"><code># Daten filtern: Ausschluss von Trials, in denen die VP falsch reagiert hat
+data.ohneFehler.df &lt;- daten %&gt;%
+  filter(corr == 1)</code></pre>
+<p><br />
+</p>
+<p><strong>Verteilung der Reaktionszeiten pro Bedingung</strong></p>
+<p><br />
+</p>
+<pre class="r"><code>ggplot( data=data.ohneFehler.df, aes(x= rt)) + geom_histogram(binwidth=100) + facet_grid(Expositionszeit~TargetTyp)</code></pre>
+<p><img src="Auswertung_files/figure-html/Histogramm-1.png" width="672" /></p>
+<p><br />
+</p>
+<p><strong>Boxplot der Reaktionszeiten pro Bedingung</strong><br />
+</p>
+<pre class="r"><code>ggplot( data=data.ohneFehler.df, aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Expositionszeit)</code></pre>
+<p><img src="Auswertung_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><br />
+</p>
+</div>
+<div id="Ausreisser" class="section level3">
+<h3>Ausreißer</h3>
+<pre class="r"><code>data.ohneFehler.df %&gt;%
+  filter(rt &gt; 200) %&gt;%
+  group_by(Expositionszeit,TargetTyp) %&gt;%
+  mutate(remain = (rt &lt; mean(rt) + 3*sd(rt))) %&gt;%
+  group_by(Expositionszeit,TargetTyp) %&gt;%
+  summarise(RA.remain = sum(remain)/n())</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Expositionszeit"],"name":[1],"type":["fct"],"align":["left"]},{"label":["TargetTyp"],"name":[2],"type":["fct"],"align":["left"]},{"label":["RA.remain"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"friendly","3":"0.9767442"},{"1":"1","2":"threating","3":"0.9761905"},{"1":"2","2":"friendly","3":"1.0000000"},{"1":"2","2":"threating","3":"1.0000000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>data.RT.df &lt;- data.ohneFehler.df %&gt;%
+  filter(rt &gt; 200) %&gt;%
+  group_by(Expositionszeit,TargetTyp) %&gt;%
+  filter(rt &lt; mean(rt) + 3*sd(rt))</code></pre>
+</div>
+</div>
 </div>
 <div id="aggregation-aller-vp" class="section level1">
 <h1>Aggregation Aller VP</h1>
@@ -451,7 +602,7 @@ writeLines(capture.output(sessionInfo()), paste0(format(Sys.time(), &quot;%Y%b%d
 <h1>Finale Grafik</h1>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkF1c3dlcnR1bmcgRklUQyINCmF1dGhvcjogIkFsZXhhbmRlciBLcmFtZXIiDQpkYXRlOiAiIg0Ka25pdDogKGZ1bmN0aW9uKGlucHV0RmlsZSwgZW5jb2RpbmcpIHsNCiAgICBybWFya2Rvd246OnJlbmRlcihpbnB1dEZpbGUsIGVuY29kaW5nID0gZW5jb2RpbmcsIG91dHB1dF9kaXIgPSAiLi8iKQ0KICB9KQ0Kb3V0cHV0OiANCiAgaHRtbF9kb2N1bWVudDoNCiAgICBudW1iZXJlZDogeWVzDQogICAgZGZfcHJpbnQ6IHBhZ2VkDQogICAgdG9jOiB5ZXMNCiAgICB0b2NfZmxvYXQ6IHRydWUNCiAgICBzZWxmX2NvbnRhaW5lZDogZmFsc2UNCiAgICBzb3VyY2VfY29kZTogZW1iZWQNCiAgICBjb2RlX2Rvd25sb2FkOiB0cnVlDQplZGl0b3Jfb3B0aW9uczogDQogIGNodW5rX291dHB1dF90eXBlOiBpbmxpbmUNCi0tLQ0KDQpcDQoNCg0KIyBTZXR1cCBSDQoNCmBgYHtyIHNldHVwLCByZXN1bHRzID0gJ2hpZGUnLCBtZXNzYWdlPUZBTFNFLCB3YXJuaW5nPUZBTFNFfQ0KcGFja2FnZXMgPC0gYygia25pdHIiLA0KICAgICAgICAgICAgICAic2hpbnkiLA0KICAgICAgICAgICAgICAiUm1pc2MiLA0KICAgICAgICAgICAgICAidGlkeXZlcnNlIiwNCiAgICAgICAgICAgICAgImV6IiwNCiAgICAgICAgICAgICAgInJtZGZvcm1hdHMiLA0KICAgICAgICAgICAgICAicm1hcmtkb3duIiwNCiAgICAgICAgICAgICAgImdnc2NpIiwNCiAgICAgICAgICAgICAgInZpcmlkaXMiLA0KICAgICAgICAgICAgICAibGVtb24iLA0KICAgICAgICAgICAgICAicG9zdGVyZG93biINCiAgICAgICAgICAgICAgKQ0KICAgICAgICAgICANCg0KaWYgKGxlbmd0aChzZXRkaWZmKHBhY2thZ2VzLCByb3duYW1lcyhpbnN0YWxsZWQucGFja2FnZXMoKSkpKSA+IDApIHsNCiAgaW5zdGFsbC5wYWNrYWdlcyhzZXRkaWZmKHBhY2thZ2VzLCByb3duYW1lcyhpbnN0YWxsZWQucGFja2FnZXMoKSkpKSAgDQp9DQoNCiNsaWJyYXJ5KCJSbWlzYyIpDQpsaWJyYXJ5KCJ0aWR5dmVyc2UiKQ0KbGlicmFyeSgiZXoiKQ0KDQp3cml0ZUxpbmVzKGNhcHR1cmUub3V0cHV0KHNlc3Npb25JbmZvKCkpLCBwYXN0ZTAoZm9ybWF0KFN5cy50aW1lKCksICIlWSViJWQiKSwic2Vzc2lvbkluZm8udHh0IikpDQpgYGANCg0KXA0KDQojIEVtcGlyaXNjaGUgSHlwb3RoZXNlbiB1bmQgU2tpenplDQoNCg0KDQoqKlNraXp6ZSoqIFwgDQoNCg0KIVtTa2l6emVdKEdyYWZpa2VuL1N0dWRpZVJlcy5QTkcpDQoNCg0KYGBge3J9DQoNCmBgYA0KDQpcDQoNCiMgSW1wb3J0DQoNCmBgYHtyfQ0KDQpgYGANCg0KXA0KDQojIEJlcmVpbmdpdW5nDQoNCmBgYHtyfQ0KDQpgYGANCg0KXA0KDQojIEFnZ3JlZ2F0aW9uIEVpbmVyIFZQDQoNCmBgYHtyfQ0KDQpgYGANCg0KXA0KDQojIEFnZ3JlZ2F0aW9uIEFsbGVyIFZQDQoNCmBgYHtyfQ0KDQpgYGANCg0KXA0KDQojIEluZmVyZW56c3RhdGlzdGlrDQoNCmBgYHtyfQ0KDQpgYGANCg0KXA0KDQojIEZpbmFsZSBHcmFmaWsNCg0KYGBge3J9DQoNCmBgYA0KDQog</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkF1c3dlcnR1bmcgRklUQyINCmF1dGhvcjogIkFsZXhhbmRlciBLcmFtZXIiDQpkYXRlOiAiIg0Ka25pdDogKGZ1bmN0aW9uKGlucHV0RmlsZSwgZW5jb2RpbmcpIHsNCiAgICBybWFya2Rvd246OnJlbmRlcihpbnB1dEZpbGUsIGVuY29kaW5nID0gZW5jb2RpbmcsIG91dHB1dF9kaXIgPSAiLi8iKQ0KICB9KQ0Kb3V0cHV0OiANCiAgaHRtbF9kb2N1bWVudDoNCiAgICBudW1iZXJlZDogeWVzDQogICAgZGZfcHJpbnQ6IHBhZ2VkDQogICAgdG9jOiB5ZXMNCiAgICB0b2NfZmxvYXQ6IHRydWUNCiAgICBzZWxmX2NvbnRhaW5lZDogZmFsc2UNCiAgICBzb3VyY2VfY29kZTogZW1iZWQNCiAgICBjb2RlX2Rvd25sb2FkOiB0cnVlDQplZGl0b3Jfb3B0aW9uczogDQogIGNodW5rX291dHB1dF90eXBlOiBpbmxpbmUNCi0tLQ0KDQpcDQoNCg0KIyBTZXR1cCBSDQoNCmBgYHtyIHNldHVwLCByZXN1bHRzID0gJ2hpZGUnLCBtZXNzYWdlPUZBTFNFLCB3YXJuaW5nPUZBTFNFfQ0KcGFja2FnZXMgPC0gYygia25pdHIiLA0KICAgICAgICAgICAgICAic2hpbnkiLA0KICAgICAgICAgICAgICAiUm1pc2MiLA0KICAgICAgICAgICAgICAidGlkeXZlcnNlIiwNCiAgICAgICAgICAgICAgImV6IiwNCiAgICAgICAgICAgICAgInJtZGZvcm1hdHMiLA0KICAgICAgICAgICAgICAicm1hcmtkb3duIiwNCiAgICAgICAgICAgICAgImdnc2NpIiwNCiAgICAgICAgICAgICAgInZpcmlkaXMiLA0KICAgICAgICAgICAgICAibGVtb24iLA0KICAgICAgICAgICAgICAicG9zdGVyZG93biIsDQogICAgICAgICAgICAgICJycHJvanJvb3QiDQogICAgICAgICAgICAgICkNCiAgICAgICAgICAgDQoNCmlmIChsZW5ndGgoc2V0ZGlmZihwYWNrYWdlcywgcm93bmFtZXMoaW5zdGFsbGVkLnBhY2thZ2VzKCkpKSkgPiAwKSB7DQogIGluc3RhbGwucGFja2FnZXMoc2V0ZGlmZihwYWNrYWdlcywgcm93bmFtZXMoaW5zdGFsbGVkLnBhY2thZ2VzKCkpKSkgIA0KfQ0KDQpsaWJyYXJ5KCJ0aWR5dmVyc2UiKQ0KbGlicmFyeShrbml0cikNCg0Kd3JpdGVMaW5lcyhjYXB0dXJlLm91dHB1dChzZXNzaW9uSW5mbygpKSwgcGFzdGUwKGZvcm1hdChTeXMudGltZSgpLCAiJVklYiVkIiksInNlc3Npb25JbmZvLnR4dCIpKQ0KDQoNCg0Kb3B0c19rbml0JHNldCgNCiAgICAgICAgICAgICAgIHJvb3QuZGlyID0gcnByb2pyb290OjpmaW5kX3JzdHVkaW9fcm9vdF9maWxlKCksDQogICAgICAgICAgICAgICBiYXNlLmRpciA9IHJwcm9qcm9vdDo6ZmluZF9yc3R1ZGlvX3Jvb3RfZmlsZSgpDQogICAgICAgICAgICAgICkNCmBgYA0KDQpcDQoNCg0KIyBFbXBpcmlzY2hlIEh5cG90aGVzZW4gdW5kIFNraXp6ZQ0KDQpcDQpCZWRyb2hsaWNoZSBHZXNpY2h0ZXIgd2VyZGVuIGluIGVpbmVyIE1lbmdlIGVtb3Rpb25hbGVyIERpc3RyYWt0b3JlbiBzY2huZWxsZXIgZ2VmdW5kZW4gYWxzIGZyZXVuZGxpY2hlIEdlc2ljaHRlci4gWnVkZW0gaXN0IGRpZSBBbnR3b3J0Z2VuYXVpZ2tlaXQgYmVpIFRyaWFscyBtaXQgYmVkcm9obGljaGVuIEdlc2ljaHRlcm4gaMO2aGVyLg0KDQpcDQoNCioqU2tpenplKiogXCANCg0KDQohW1NraXp6ZV0oR3JhZmlrZW4vU3R1ZGllUmVzLlBORykNCg0KDQpcDQoNCiMgSW1wb3J0DQoNCmBgYHtyfQ0KZGF0YS5maWxlcyA8LSBsaXN0LmZpbGVzKCJBbGxlIERhdGVuLyIpDQpkYXRhLmV4YW1wbGUgPC0gZGF0YS5maWxlc1sxXQ0KZGF0ZW4gPC0gcmVhZC5jc3YocGFzdGUwKCJBbGxlIERhdGVuLyIsIGRhdGEuZXhhbXBsZSApLCBoZWFkZXI9VFJVRSwgZmlsZUVuY29kaW5nID0gIlVURi04LUJPTSIpDQpgYGANCg0KXA0KDQojIEJlcmVpbmdpdW5nDQoNCiMjIMOcYnVuZ3N0cmlhbHMgZW50ZmVybmVuDQoNCmBgYHtyfQ0KZGF0ZW4gPC0gZGF0ZW4gJT4lDQogIGZpbHRlcihwaGFzZSAhPSAidWVidW5nIikNCmBgYA0KDQojIyBEYXRlbnN0cnVrdHVyIHByw7xmZW4gdW5kIEZha3RvcmVuIGRlZmluaWVyZW4NCg0KYGBge3J9DQpzdHIoZGF0ZW4pDQoNCmRhdGVuIDwtIGRhdGVuICU+JQ0KICByZW5hbWUoIkV4cG9zaXRpb25zemVpdCIgPSBDb25kaXRpb24xLA0KICAgICAgICAgIlRhcmdldFR5cCIgPSBDb25kaXRpb24yKSAlPiUNCiAgbXV0YXRlKA0KICAgIGlkID0gZmFjdG9yKGlkKSwNCiAgICBFeHBvc2l0aW9uc3plaXQ9IHJlY29kZV9mYWN0b3IoRXhwb3NpdGlvbnN6ZWl0LCAiLTEiPSAiMSIsICIxIj0iMiIpLA0KICAgIFRhcmdldFR5cCA9IHJlY29kZV9mYWN0b3IoVGFyZ2V0VHlwLCAiLTEiPSAiZnJpZW5kbHkiLCAiMSI9InRocmVhdGluZyIpLA0KICAgIGdlbmRlciA9IHJlY29kZV9mYWN0b3IoZ2VuZGVyLCB3ID0gIndlaWJsaWNoIiwgbSA9ICJtw6RubmxpY2giLCBkID0gImRpdmVycyIpDQogICkNCg0Kc3RyKGRhdGVuKQ0KDQoNCmBgYA0KDQpcDQoNCiMjIFZvbGxzdMOkbmRpZ2tlaXQgZGVyIERhdGVuIHByw7xmZW4NCg0KDQoNCmBgYHtyIFZvbGxzdGFlbmRpZ2tlaXR9DQojIEFuemFobCBkZXIgWmVpbGVuIGltIERhdGVuc2F0eg0KZGF0ZW4gJT4lIGNvdW50KCkNCiMgQW56YWhsIGRlciBUcmlhbHMgcHJvIEJlZGluZ3VuZw0KDQpkYXRlbiAlPiUNCiAgZ3JvdXBfYnkoRXhwb3NpdGlvbnN6ZWl0LCBUYXJnZXRUeXApICU+JSAgIyBVVjogbXVzcyBkdXJjaCBTcGFsdGVubmFtZSBlcnNldHp0IHdlcmRlbg0KICBzdW1tYXJpc2Uobj1uKCkpDQoNCmRhdGVuICU+JQ0KICBncm91cF9ieShFeHBvc2l0aW9uc3plaXQsIFRhcmdldFR5cCkgJT4lICAjIFVWOiBtdXNzIGR1cmNoIFNwYWx0ZW5uYW1lIGVyc2V0enQgd2VyZGVuDQogIGNvdW50KCkNCg0KYGBgDQoNCiMgQWdncmVnYXRpb24gRWluZXIgVlANCg0KIyMgQW5hbHlzZSBkZXIgQW50d29ydGdlbmF1aWdrZWl0DQoNCkRpZSBBbmFseXNlIGRlciBBbnR3b3J0Z2VuYXVpZ2tlaXQgKFJBIC0gUmVzcG9uc2UgQWNjdXJhY3kpIHNvbGwgcHJvIEJlZGluZ3VuZyBlcmZvbGdlbi4gRGllIEFudHdvcnRnZW5hdWlna2VpdCBrYW5uIGJlcmVjaG5ldCB3ZXJkZW4gYWxzLi4uDQoNCiogU3VtbWUgcmljaHRpZ2VyIEFudHdvcnRlbg0KKiBBbnRlaWwgcmljaHRpZ2VyIEFudHdvcnRlbiBhbiBhbGxlbiBUcmlhbHMgZWluZXIgQmVkaW5ndW5nDQoNCg0KDQpgYGB7ciBBbnR3b3J0Z2VuYXVpZ2tlaXR9DQpkYXRlbiAlPiUNCiAgZ3JvdXBfYnkoRXhwb3NpdGlvbnN6ZWl0LCBUYXJnZXRUeXApICU+JQ0KICBzdW1tYXJpc2UoUkEuU3VtbWUgPSBzdW0oY29yciksDQogICAgICAgICAgICBSQS5BbnRlaWwgPSBtZWFuKGNvcnIpLA0KICAgICAgICAgICAgUkEuQW50ZWlsMiA9c3VtKGNvcnIpL24oKSApDQoNCmBgYA0KDQpcDQoNCiMjIEFuYWx5c2UgZGVyIFJlYWt0aW9uc3plaXRlbg0KDQojIyMgdmlzdWVsbGUgSW5zcGVrdGlvbg0KDQpEYXRlbiBmaWx0ZXJuOiBBdXNzY2hsdXNzIHZvbiBUcmlhbHMsIGluIGRlbmVuIGRpZSBWUCBmYWxzY2ggcmVhZ2llcnQgaGF0DQpgYGB7ciBSZWFrdGlvbnN6ZWl0IEZpbHRlciwgZXZhbCA9IFR9DQoNCiMgRGF0ZW4gZmlsdGVybjogQXVzc2NobHVzcyB2b24gVHJpYWxzLCBpbiBkZW5lbiBkaWUgVlAgZmFsc2NoIHJlYWdpZXJ0IGhhdA0KZGF0YS5vaG5lRmVobGVyLmRmIDwtIGRhdGVuICU+JQ0KICBmaWx0ZXIoY29yciA9PSAxKQ0KYGBgDQoNCg0KXA0KDQoqKlZlcnRlaWx1bmcgZGVyIFJlYWt0aW9uc3plaXRlbiBwcm8gQmVkaW5ndW5nKioNCg0KXA0KDQpgYGB7ciBIaXN0b2dyYW1tLCB3YXJuaW5nPUZBTFNFfQ0KDQpnZ3Bsb3QoIGRhdGE9ZGF0YS5vaG5lRmVobGVyLmRmLCBhZXMoeD0gcnQpKSArIGdlb21faGlzdG9ncmFtKGJpbndpZHRoPTEwMCkgKyBmYWNldF9ncmlkKEV4cG9zaXRpb25zemVpdH5UYXJnZXRUeXApDQoNCmBgYA0KDQpcDQoNCioqQm94cGxvdCBkZXIgUmVha3Rpb25zemVpdGVuIHBybyBCZWRpbmd1bmcqKg0KXA0KDQpgYGB7ciwgd2FybmluZz1GQUxTRX0NCg0KZ2dwbG90KCBkYXRhPWRhdGEub2huZUZlaGxlci5kZiwgYWVzKHg9IFRhcmdldFR5cCAsIHk9cnQpKSArIGdlb21fYm94cGxvdCgpICsgZ2VvbV9qaXR0ZXIoKSsgZmFjZXRfZ3JpZCh+RXhwb3NpdGlvbnN6ZWl0KQ0KDQpgYGANCg0KXA0KDQojIyMgQXVzcmVpw59lciB7I0F1c3JlaXNzZXJ9DQoNCg0KYGBge3IsIGVjaG89VCwgZXZhbCA9IFQsIG1lc3NhZ2U9RkFMU0UsIHdhcm5pbmc9RkFMU0V9DQpkYXRhLm9obmVGZWhsZXIuZGYgJT4lDQogIGZpbHRlcihydCA+IDIwMCkgJT4lDQogIGdyb3VwX2J5KEV4cG9zaXRpb25zemVpdCxUYXJnZXRUeXApICU+JQ0KICBtdXRhdGUocmVtYWluID0gKHJ0IDwgbWVhbihydCkgKyAzKnNkKHJ0KSkpICU+JQ0KICBncm91cF9ieShFeHBvc2l0aW9uc3plaXQsVGFyZ2V0VHlwKSAlPiUNCiAgc3VtbWFyaXNlKFJBLnJlbWFpbiA9IHN1bShyZW1haW4pL24oKSkNCg0KZGF0YS5SVC5kZiA8LSBkYXRhLm9obmVGZWhsZXIuZGYgJT4lDQogIGZpbHRlcihydCA+IDIwMCkgJT4lDQogIGdyb3VwX2J5KEV4cG9zaXRpb25zemVpdCxUYXJnZXRUeXApICU+JQ0KICBmaWx0ZXIocnQgPCBtZWFuKHJ0KSArIDMqc2QocnQpKQ0KDQpgYGANCg0KDQojIEFnZ3JlZ2F0aW9uIEFsbGVyIFZQDQoNCmBgYHtyfQ0KDQpgYGANCg0KXA0KDQojIEluZmVyZW56c3RhdGlzdGlrDQoNCmBgYHtyfQ0KDQpgYGANCg0KXA0KDQojIEZpbmFsZSBHcmFmaWsNCg0KYGBge3J9DQoNCmBgYA0KDQo=</div>
 
 
 </div>
