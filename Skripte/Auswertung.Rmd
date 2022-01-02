@@ -203,11 +203,12 @@ plots <- data.df %>%
 ```{r, echo=F, results='asis'}
 
 for(i in seq_along(plots[[1]])){
-  cat("##### VP: ",plots[[1]][[i]] , "\n")
+  cat("##### VP: ", as.character(plots[[1]][[i]]) , "\n")
   print(plots[[2]][[i]])
   cat("\n\n")
 }
 
+    
 
 ```
 
