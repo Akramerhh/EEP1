@@ -1466,7 +1466,11 @@ Alternativ könnt ihr auch eine Grafik pro VP mit dplyr und `%>%` erstellen.
 
 plots <- data.df %>% 
          group_by(id) %>% 
-         do( plots= ggplot( data=., aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Expositionszeit) + ggtitle(paste0("VP:", .$id))
+         do( plots= ggplot( data=., aes(x= TargetTyp , y=rt)) + 
+               geom_boxplot() + 
+               geom_jitter()+ 
+               facet_grid(~Expositionszeit) + 
+               ggtitle(paste0("VP:", .$id))
 )
 
 print(plots$plots)
@@ -1688,337 +1692,15 @@ data.alle.vps %>% filter(!(id %in% vp.err))
 
 <a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
 
-# 5. Inferenzstatistik
-
+# 5. Grafiken
 \
 
-![](Grafiken/workflow3.PNG)
+## Zwischenfeedback
 
-\
+<a href="https://ep.mafiasi.de/p/EEP_K_Zwischenfeedback" target="_blank">Zwischenfeedback</a> Seminar K
 
+<a href="https://ep.mafiasi.de/p/EEP_E_Zwischenfeedback" target="_blank">Zwischenfeedback</a> Seminar E
 
-## Prinzip der Anova
-
-![](Grafiken/ANOVA.PNG)
-
-\
-
-## Anova mit Messwiederholung 
-
-![](Grafiken/rmANOVA.PNG)
-
-\
-
-## Mehrfaktorielle Anova
-
-![](Grafiken/ANOVA2F.PNG)
-
-
-\
-
-<a name="HypothesenAnova"></a>
-
-## Hypothesen der Anova
-
-![](Grafiken/Hypothesen.PNG)
-
-\
-
-## Annahmen der Anova
-
-* AV: mindestens intervallskaliert
-
-* UV: kategorial (nominalskaliert)
-
-* Normalverteilung der Fehler (Residuen) innerhalb jeder Faktorstufe
-\
-
-**within-subject ANOVA:**
-
-* Abhängigkeit der Messungen
-
-* Sphärizität bei mehr als zwei Stufen des within-subject Faktors (= Gleichheit der Varianzen der paarweisen Differenzen zwischen den Messwiederholungen)
-\
-
-**between-subject ANOVA:**
-
-* Unabhängigkeit der Messungen
-
-* Varianzhomogenität
-\ 
-
-## Datenebene
-
-![](Grafiken/datenebeneInferenz.PNG)
-\
-
-<a name="ezAnova"></a>
-
-
-## ezAnova
-
-Mit ezAnova lassen sich die gängigsten ANOVA-Designs komfortabel auswerten.
-
-Die Syntax des Befehls sieht folgendermaßen aus:
-
-\
-
-```
-myanova <- ezANOVA(daten
-, dv = AV  **Abhängige Variable**
-, wid = vp **Variable die VP-Nummer enthält**
-, within = .(A,B) **Within-subject Faktoren**
-, between = .(C,D) **Between-subject Faktoren**
-)
-```
-
-\
-
-Eine einfache Auswertung würde für das Beispiel Experiment mit 2 faktoriellem  Within-Design also so aussehen:
-
-\
-
-
-```{r}
-library(ez)
-
-data.anova <- data.df  %>% 
-  filter(corr ==1) %>% 
-  group_by(id, Expositionszeit , TargetTyp) %>% 
-  dplyr::summarise(rt.mean = mean(rt, na.rm = T),
-                   corr.mean = mean(corr, na.rm = T))
-
-ezDesign(data= data.anova, x = Expositionszeit, y = TargetTyp)
-
-myanova <- ezANOVA(data.anova
-, dv = rt.mean 
-, wid = id 
-, within = .(Expositionszeit,TargetTyp) 
-)
-
-myanova
-
-```
-
-\
-
-
-### Interaction mit ezPlot
-
-Dies ist die einfachste Version einen Interaktionsplot zu erstellen. Leider sind hier die Fehlerbalken in within-Designs nicht korrekt
-
-\
-```{r}
-#?ezPlot
-
-ezPlot(data.anova
-, dv = .(rt.mean)
-, wid = .(id) 
-, x= .(Expositionszeit)
-, within = .(Expositionszeit,TargetTyp) 
-, split =.(TargetTyp)
-, x_lab = "Expositionszeit"
-  	, y_lab = "Reaktionszeiten (ms)", 
-#do_bars = FALSE,
-type = 2
-#print_code=T
-)
-
-```
-
-\
-Der Output beinhaltet drei Tabellen:
-
-1. Die Zusammenfassung der Ergebnisse der Anova
-
-2. Mauchly's Test auf Spherizität
-
-3. Spherizität-Korrekturen nach Greenhouse-Geisser und Huynh-Feldt 
-
-Schaut euch die Bedeutung der Spalten mit `?ezANOVA` einmal an.
-
-\
-
-
-```{r, eval=TRUE, echo= FALSE}
-library(ez)
-
-myanova
-
-```
-\
-
-Zuerst müssen wir kontrollieren, ob die Voraussetzungen für die Anova erfüllt sind mit dem `Mauchly's Test for Sphericity`.
-
-![](Grafiken/Mauchly.PNG)
-
-\
-
-In diesem Beispiel wird der Test auf Spherizität signifikant für die Effekte **B** und **A:B**, für **A** gibt es keine Werte, da **A** nur zwei Faktorstufen hat.
-
-\
-```{r, eval=TRUE, echo= FALSE}
-library(ez)
-
-myanova$`Mauchly's Test for Sphericity`
-
-```
-
-\
-
-Das heißt es müssen die korrigierten Werte betrachtet werden für **B** und **A:B** ( `p[GG]` für Greenhouse-Geisser oder `p[HF]` für Huynh-Feldt . 
-
-\
-```{r, eval=TRUE, echo= FALSE}
-library(ez)
-
-myanova$`Sphericity Corrections`
-
-```
-
-\
-
-An den **p-Werten** (Spalten `p <.05`,  `p[GG] <.05`) erkennen wir, dass **A** und **B** signifikant sind.
-
-Sehr kleine Werte werden in **scientific notation** wiedergegebn: Xe-05 = X * 0.00001 (Komma 5 Stellen nach links verschieben)
-
-
-**Effektstärke** `ges`: generalized eta squared ($\eta ^2 _G$)
-
-* Maß für die Effektstärke 
-
-* wie viel Varianz an der Gesamtvarianz wird durch diesen Effekt aufgeklärt?
-
-* $\eta ^2 _G$ ist maximal 1 
-
-\
-**Ergebnisnotation**: $F$(6, 264) = 19.71, $p$ < .001, $\eta ^2$  = .05
-  
-\
-
-<a name="Post-Hoc-Tests"></a>
-
-## Post-Hoc Tests 
-
-* ANOVA: testet bei Haupteffekten und Interaktionen ob sich mindestens zwei Faktorstufen oder Bedingungen signifikant voneinander unterscheiden
-
-* Ist die Anzahl der Faktorstufen > 2, vergleicht man anschließend mit paarweisen t-Tests, welche der Bedingungen sich voneinander unterscheiden
-
-* Problem der Alpha-Fehler Kumulierung
-
-\
-
-`pairwise.t.test()`
-* paarweise Vergleiche aller Faktorstufen
-
-* Korrektur für multiples Testen (z.B. Bonferroni, FDR, Holm etc.)
-
-* Datensatz muss aggregiert sein (keine einzelnen Trials, enthält für jede VP den Mittelwert jeder Bedingung)
-
-\
-
-
-
-### pairwise.t.test()
-
-pairwise.t.test(daten$rt, daten$Faktor1, paired=T)
-
-`paired = T` : within-subject factors
-
-Zwei Faktoren:
-
-`pairwise.t.test(daten$rt, interaction(daten$Faktor1,daten$Faktor2), paired=T)`
-
-p.adjust: Auswahl der Korrekturmethode (z.B. “none”, “holm”, “bonferroni”)
-
-`pairwise.t.test(daten$rt, daten$Faktor1, paired=T, p.adj = „bonf“)`
-
-\
-
-```{r}
-
-pttest <- pairwise.t.test(data.anova$rt.mean, interaction(data.anova$Expositionszeit, data.anova$TargetTyp), paired= T , p.adj = "bonf")
-
-pttest
-```
-
-\
-**Wichtig**: Einige P-Werte sind in diesem Beispiel 1. Das liegt an der Bonferroni-Methode. Wenn wir $n$ Tests durchführen liefert diese $p*n$ als neuen P-Wert. Dieser Wert kann dann größer als 1 werden (und wird von **R** dann als 1 gelistet). 
-
-
-\
-pairwise.t.test() gibt nur die p-Werte, aber keine t-Werte aus
-
-1. p-Wert: pairwise.t.test() mit Korrektur für multiple Vergleiche ausführen
-
-2. `Freiheitsgrade df` (degrees of freedom): Anzahl VPs minus 1
-
-3. t-Wert: 
-  
-    1. pairwise.t.test() mit p.adjust=„none“ ausführen, pWert ablesen
-
-    2. t-Wert: aus t-Verteilung ablesen mit:
-    
-		   * `qt(0.5*pWert, df)` negativer t-Wert
-		   
-		   * oder `qt(1-0.5*pWert, df)`   positiver t-Wert
-
-
-**Bemerkung:** Ihr könnt obiges Vorgehen manuell für die P-Werte von Interesse durchführen. In der Regel sind es nur einige Vergleiche, die wirklich interessieren.
-
-\
-
-<div class = "green">
-
-**FANCY**
-
-Wir können es aber auch für alle P-Werte automatisch machen.
-
-`pairwise.t.test()` speichert die p-Werte in einer Matrix. 
-
-Wir können eine Funktion definieren `lookupT`, der wir den P-Wert(`p`), die Freiheitsgrade (`df`) und eine Zahl übergeben (`sign`), die angibt, ob wir den positiven oder negative t-Wert berechnen wollen.
-
-Mit `apply` können wir `lookupT`auf jeden p-Wert in der Output-Matrix von `pairwise.t.test()` anwenden.
-
-```{r}
-
-pttest <- pairwise.t.test(data.anova$rt.mean, interaction(data.anova$Expositionszeit, data.anova$TargetTyp), paired= T , p.adj = "none")
-
-lookupT <- function(p, df, sign=1){
-  if (sign < 0){
-    return(qt(0.5*p, df))
-  } else {
-    return(qt(1 - 0.5*p, df))
-  }
-}
-
-apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
-
-```
-
-
-</div>
-
-
-\
-
-## **Aufgaben**
-
-
-* Wie lassen sich eure Hypothesen in statistische Hypothesen im Anova Design umsetzen?
-    * Welche Haupt- und Interaktionseffekte erwartet ihr? [link](#HypothesenAnova)
-    * Welche Post-hoc Tests sind sinnvoll? [link](#Post-Hoc-Tests)            
-* Wertet eure Daten mit `ezAnova()` und `pairwise.t.test()` aus.
-
-\
-
-<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
-
-<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
-
-
-# 6. Grafiken
-\
 
 ## Allgemeine Hinweise
 
@@ -2108,14 +1790,16 @@ The standards for good figures are simplicity, clarity, continuity and (of cours
 **Minimaler Informationsgehalt**
 
 Mittelwert + Streuungsmaß:
+
 * Standardabweichung
-* Standard Error of the Mean   (s /     )
+* Standard Error of the Mean
 * 95% Confidence Intervals
 
 Alternative: Datenverteilung	
+
 * Boxplot
 * Violinplot
-... 
+* ... 
 
 
 <div class = "red">
@@ -2148,7 +1832,7 @@ Wir sehen, dass in diesem Beispiel die individuellen Daten sehr unterschiedlich 
 
 \
 
-```{r echo=FALSE}
+```{r echo=FALSE , eval=FALSE}
 library(tweetrmd)
 tweet_embed("https://twitter.com/CedScherer/status/1375438100298674179?s=20")
 
@@ -2185,9 +1869,16 @@ group= TargetTyp  **Nach welchen Variablen sollen die Daten gruppiert werden (ä
 fill = TargetTyp  **wie color nur bezogen auf die Füllfarbe der `geoms`
 ```
 
-```{r}
 
-plot <- ggplot2::ggplot(data = data.anova, ##Datensatz festlegen
+
+```{r}
+data.plot <- data.df  %>% 
+  filter(corr ==1) %>% 
+  group_by(id, Expositionszeit , TargetTyp) %>% 
+  dplyr::summarise(rt.mean = mean(rt, na.rm = T),
+                   corr.mean = mean(corr, na.rm = T))
+
+plot <- ggplot2::ggplot(data = data.plot, ##Datensatz festlegen
                         aes(x = Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
                             y = rt.mean,))
 
@@ -2234,7 +1925,7 @@ Eine erschöpfende Liste findet ihr <a href="https://ggplot2.tidyverse.org/refer
 Das sieht unerwartet aus. Der Grund ist, dass mehrere Werte pro VP und Expositionszeit gibt, nämlich einen für jede Ausprägung von TargetTyp. Das heißt wir hatten auch zu viele Punkte im Plot oben. Wir können die Daten direkt in ggplot zusammenfassen mit `stat_summary()`. Diese Funktion kann Daten ähnlich zu `dplyr::summarise()` aggregieren. Wir übergeben eine Funktion zum aggregieren durch `fun=mean` wenn wir z.B. den Mittelwert verwenden wollen.
 
 ```{r}
-plot <- ggplot2::ggplot(data = data.anova, ##Datensatz festlegen
+plot <- ggplot2::ggplot(data = data.plot, ##Datensatz festlegen
                         aes(x = Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
                             y = rt.mean, ))
 
@@ -2321,7 +2012,8 @@ plot
 Das solltet ihr später natürlich nicht machen, ein sinnvolleres Beispiel ist, dass wir zusätzlich TargetTyp plotten wollen, also einen Interaction-Plot. Dafür gruppieren wir nach **inteaction(id,TargetTyp)**, denn wir wollen auch die individuellen Daten sehen
 
 ```{r}
-Baseplot <- ggplot2::ggplot(data= data.anova, ##Datensatz festlegen
+library(lemon)
+Baseplot <- ggplot2::ggplot(data= data.plot, ##Datensatz festlegen
                 aes(
                   x=Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
                   y=rt.mean,
@@ -2330,9 +2022,16 @@ Baseplot <- ggplot2::ggplot(data= data.anova, ##Datensatz festlegen
                   shape = TargetTyp
                 )) 
 
-Interaction <- Baseplot + geom_point(alpha= 0.5) +
-             geom_line(mapping = aes(group = interaction(id, TargetTyp) ), alpha= 0.5)
+pd = position_jitter(seed=1)
+Baseplot + 
+  geom_point(alpha= 0.5, position= pd) +
+  geom_line(mapping = aes(group = interaction(id, TargetTyp) ), alpha= 0.50, position= pd)
 
+
+
+Interaction <-Baseplot + 
+             geom_pointpath(mapping = aes(group = interaction(id, TargetTyp) ), position = pd, alpha= 0.5)
+Interaction
 ```
 
 Wir fügen wieder Mittelwerte hinzu.
@@ -2363,7 +2062,10 @@ Dies ist die einfachste Version einen Interaktionsplot zu erstellen. Leider sind
 ```{r}
 #?ezPlot
 
-ezPlot(data.anova
+
+
+
+ezPlot(data.plot
 , dv = rt.mean 
 , wid = id 
 , x= .(Expositionszeit)
@@ -2383,11 +2085,11 @@ ezPlot(data.anova
 
 
 ```{r}
-library(lemon)
+
 
 pd <- position_jitter(0.2, seed=1)
 
-Baseplot <- ggplot2::ggplot(data= data.anova, ##Datensatz festlegen
+Baseplot <- ggplot2::ggplot(data= data.plot, ##Datensatz festlegen
                 aes(
                   x=Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
                   y=rt.mean,
@@ -2438,7 +2140,7 @@ Interaction + facet_grid(cols= vars(TargetTyp))
 Im Within-Design müssen wir die Daten erst zusammenfassen mit `Rmisc::summarySEwithin`. Den neuen Datensatz können wir an `geom_errorbar()` übergeben. Wir müssen dann die aesthetics `ymin` und `ymax` angeben, welche den Start- und Endpunkt der Balken definieren. 
 
 ```{r}
-SEwithinRT <- Rmisc::summarySEwithin(data.anova, measure = "rt.mean", withinvars = c("Expositionszeit", "TargetTyp"), idvar="id", conf.interval = .95)
+SEwithinRT <- Rmisc::summarySEwithin(data.plot, measure = "rt.mean", withinvars = c("Expositionszeit", "TargetTyp"), idvar="id", conf.interval = .95)
 
 SEwithinRT
 ```
@@ -2458,7 +2160,7 @@ SEwithinRT
 
 
 ```{r}
-ErrorData <- Rmisc::summarySEwithin(data.anova, measure = "rt.mean", withinvars = c("Expositionszeit", "TargetTyp"), idvar="id", conf.interval = .95)
+ErrorData <- Rmisc::summarySEwithin(data.plot, measure = "rt.mean", withinvars = c("Expositionszeit", "TargetTyp"), idvar="id", conf.interval = .95)
 
 
 Interaction  + geom_errorbar(data=ErrorData,
@@ -2644,6 +2346,7 @@ Raincloudplot <- Accplot +
 
 Raincloudplot
 ```
+
 
 ```{r echo=FALSE}
 
@@ -3005,6 +2708,337 @@ ggsave("Grafiken/experiment_grafik2.PNG", plot= Interaction, width = 18, height 
 <a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
 
 <a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
+
+
+
+# 6. Inferenzstatistik
+
+\
+
+![](Grafiken/workflow3.PNG)
+
+\
+
+
+## Prinzip der Anova
+
+![](Grafiken/ANOVA.PNG)
+
+\
+
+## Anova mit Messwiederholung 
+
+![](Grafiken/rmANOVA.PNG)
+
+\
+
+## Mehrfaktorielle Anova
+
+![](Grafiken/ANOVA2F.PNG)
+
+
+\
+
+<a name="HypothesenAnova"></a>
+
+## Hypothesen der Anova
+
+![](Grafiken/Hypothesen.PNG)
+
+\
+
+## Annahmen der Anova
+
+* AV: mindestens intervallskaliert
+
+* UV: kategorial (nominalskaliert)
+
+* Normalverteilung der Fehler (Residuen) innerhalb jeder Faktorstufe
+\
+
+**within-subject ANOVA:**
+
+* Abhängigkeit der Messungen
+
+* Sphärizität bei mehr als zwei Stufen des within-subject Faktors (= Gleichheit der Varianzen der paarweisen Differenzen zwischen den Messwiederholungen)
+\
+
+**between-subject ANOVA:**
+
+* Unabhängigkeit der Messungen
+
+* Varianzhomogenität
+\ 
+
+## Datenebene
+
+![](Grafiken/datenebeneInferenz.PNG)
+\
+
+<a name="ezAnova"></a>
+
+
+## ezAnova
+
+Mit ezAnova lassen sich die gängigsten ANOVA-Designs komfortabel auswerten.
+
+Die Syntax des Befehls sieht folgendermaßen aus:
+
+\
+
+```
+myanova <- ezANOVA(daten
+, dv = AV  **Abhängige Variable**
+, wid = vp **Variable die VP-Nummer enthält**
+, within = .(A,B) **Within-subject Faktoren**
+, between = .(C,D) **Between-subject Faktoren**
+)
+```
+
+\
+
+Eine einfache Auswertung würde für das Beispiel Experiment mit 2 faktoriellem  Within-Design also so aussehen:
+
+\
+
+
+```{r}
+library(ez)
+
+data.anova <- data.df  %>% 
+  filter(corr ==1) %>% 
+  group_by(id, Expositionszeit , TargetTyp) %>% 
+  dplyr::summarise(rt.mean = mean(rt, na.rm = T),
+                   corr.mean = mean(corr, na.rm = T))
+
+ezDesign(data= data.anova, x = Expositionszeit, y = TargetTyp)
+
+myanova <- ezANOVA(data.anova
+, dv = rt.mean 
+, wid = id 
+, within = .(Expositionszeit,TargetTyp) 
+)
+
+myanova
+
+```
+
+\
+
+
+### Interaction mit ezPlot
+
+Dies ist die einfachste Version einen Interaktionsplot zu erstellen. Leider sind hier die Fehlerbalken in within-Designs nicht korrekt
+
+\
+```{r}
+#?ezPlot
+
+ezPlot(data.anova
+, dv = .(rt.mean)
+, wid = .(id) 
+, x= .(Expositionszeit)
+, within = .(Expositionszeit,TargetTyp) 
+, split =.(TargetTyp)
+, x_lab = "Expositionszeit"
+  	, y_lab = "Reaktionszeiten (ms)", 
+#do_bars = FALSE,
+type = 2
+#print_code=T
+)
+
+```
+
+\
+Der Output beinhaltet drei Tabellen:
+
+1. Die Zusammenfassung der Ergebnisse der Anova
+
+2. Mauchly's Test auf Spherizität
+
+3. Spherizität-Korrekturen nach Greenhouse-Geisser und Huynh-Feldt 
+
+Schaut euch die Bedeutung der Spalten mit `?ezANOVA` einmal an.
+
+\
+
+
+```{r, eval=TRUE, echo= FALSE}
+library(ez)
+
+myanova
+
+```
+\
+
+Zuerst müssen wir kontrollieren, ob die Voraussetzungen für die Anova erfüllt sind mit dem `Mauchly's Test for Sphericity`.
+
+![](Grafiken/Mauchly.PNG)
+
+\
+
+In diesem Beispiel wird der Test auf Spherizität signifikant für die Effekte **B** und **A:B**, für **A** gibt es keine Werte, da **A** nur zwei Faktorstufen hat.
+
+\
+```{r, eval=TRUE, echo= FALSE}
+library(ez)
+
+myanova$`Mauchly's Test for Sphericity`
+
+```
+
+\
+
+Das heißt es müssen die korrigierten Werte betrachtet werden für **B** und **A:B** ( `p[GG]` für Greenhouse-Geisser oder `p[HF]` für Huynh-Feldt . 
+
+\
+```{r, eval=TRUE, echo= FALSE}
+library(ez)
+
+myanova$`Sphericity Corrections`
+
+```
+
+\
+
+An den **p-Werten** (Spalten `p <.05`,  `p[GG] <.05`) erkennen wir, dass **A** und **B** signifikant sind.
+
+Sehr kleine Werte werden in **scientific notation** wiedergegebn: Xe-05 = X * 0.00001 (Komma 5 Stellen nach links verschieben)
+
+
+**Effektstärke** `ges`: generalized eta squared ($\eta ^2 _G$)
+
+* Maß für die Effektstärke 
+
+* wie viel Varianz an der Gesamtvarianz wird durch diesen Effekt aufgeklärt?
+
+* $\eta ^2 _G$ ist maximal 1 
+
+\
+**Ergebnisnotation**: $F$(6, 264) = 19.71, $p$ < .001, $\eta ^2$  = .05
+  
+\
+
+<a name="Post-Hoc-Tests"></a>
+
+## Post-Hoc Tests 
+
+* ANOVA: testet bei Haupteffekten und Interaktionen ob sich mindestens zwei Faktorstufen oder Bedingungen signifikant voneinander unterscheiden
+
+* Ist die Anzahl der Faktorstufen > 2, vergleicht man anschließend mit paarweisen t-Tests, welche der Bedingungen sich voneinander unterscheiden
+
+* Problem der Alpha-Fehler Kumulierung
+
+\
+
+`pairwise.t.test()`
+* paarweise Vergleiche aller Faktorstufen
+
+* Korrektur für multiples Testen (z.B. Bonferroni, FDR, Holm etc.)
+
+* Datensatz muss aggregiert sein (keine einzelnen Trials, enthält für jede VP den Mittelwert jeder Bedingung)
+
+\
+
+
+
+### pairwise.t.test()
+
+pairwise.t.test(daten$rt, daten$Faktor1, paired=T)
+
+`paired = T` : within-subject factors
+
+Zwei Faktoren:
+
+`pairwise.t.test(daten$rt, interaction(daten$Faktor1,daten$Faktor2), paired=T)`
+
+p.adjust: Auswahl der Korrekturmethode (z.B. “none”, “holm”, “bonferroni”)
+
+`pairwise.t.test(daten$rt, daten$Faktor1, paired=T, p.adj = „bonf“)`
+
+\
+
+```{r}
+
+pttest <- pairwise.t.test(data.anova$rt.mean, interaction(data.anova$Expositionszeit, data.anova$TargetTyp), paired= T , p.adj = "bonf")
+
+pttest
+```
+
+\
+**Wichtig**: Einige P-Werte sind in diesem Beispiel 1. Das liegt an der Bonferroni-Methode. Wenn wir $n$ Tests durchführen liefert diese $p*n$ als neuen P-Wert. Dieser Wert kann dann größer als 1 werden (und wird von **R** dann als 1 gelistet). 
+
+
+\
+pairwise.t.test() gibt nur die p-Werte, aber keine t-Werte aus
+
+1. p-Wert: pairwise.t.test() mit Korrektur für multiple Vergleiche ausführen
+
+2. `Freiheitsgrade df` (degrees of freedom): Anzahl VPs minus 1
+
+3. t-Wert: 
+  
+    1. pairwise.t.test() mit p.adjust=„none“ ausführen, pWert ablesen
+
+    2. t-Wert: aus t-Verteilung ablesen mit:
+    
+		   * `qt(0.5*pWert, df)` negativer t-Wert
+		   
+		   * oder `qt(1-0.5*pWert, df)`   positiver t-Wert
+
+
+**Bemerkung:** Ihr könnt obiges Vorgehen manuell für die P-Werte von Interesse durchführen. In der Regel sind es nur einige Vergleiche, die wirklich interessieren.
+
+\
+
+<div class = "green">
+
+**FANCY**
+
+Wir können es aber auch für alle P-Werte automatisch machen.
+
+`pairwise.t.test()` speichert die p-Werte in einer Matrix. 
+
+Wir können eine Funktion definieren `lookupT`, der wir den P-Wert(`p`), die Freiheitsgrade (`df`) und eine Zahl übergeben (`sign`), die angibt, ob wir den positiven oder negative t-Wert berechnen wollen.
+
+Mit `apply` können wir `lookupT`auf jeden p-Wert in der Output-Matrix von `pairwise.t.test()` anwenden.
+
+```{r}
+
+pttest <- pairwise.t.test(data.anova$rt.mean, interaction(data.anova$Expositionszeit, data.anova$TargetTyp), paired= T , p.adj = "none")
+
+lookupT <- function(p, df, sign=1){
+  if (sign < 0){
+    return(qt(0.5*p, df))
+  } else {
+    return(qt(1 - 0.5*p, df))
+  }
+}
+
+apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
+
+```
+
+
+</div>
+
+
+\
+
+## **Aufgaben**
+
+
+* Wie lassen sich eure Hypothesen in statistische Hypothesen im Anova Design umsetzen?
+    * Welche Haupt- und Interaktionseffekte erwartet ihr? [link](#HypothesenAnova)
+    * Welche Post-hoc Tests sind sinnvoll? [link](#Post-Hoc-Tests)            
+* Wertet eure Daten mit `ezAnova()` und `pairwise.t.test()` aus.
+
+\
+
+<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
+
+<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
+
 
 
 

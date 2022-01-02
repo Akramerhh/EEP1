@@ -1,0 +1,238 @@
+---
+title: "Auswertung FITC"
+author: "Alexander Kramer"
+date: ""
+knit: (function(inputFile, encoding) {
+    rmarkdown::render(inputFile, encoding = encoding, output_dir = "./")
+  })
+output: 
+  html_document:
+    numbered: yes
+    df_print: paged
+    toc: yes
+    toc_float: true
+    self_contained: false
+    source_code: embed
+    code_download: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+\
+
+
+# Setup R
+
+```{r setup, results = 'hide', message=FALSE, warning=FALSE}
+packages <- c("knitr",
+              "shiny",
+              "Rmisc",
+              "tidyverse",
+              "ez",
+              "rmdformats",
+              "rmarkdown",
+              "ggsci",
+              "viridis",
+              "lemon",
+              "posterdown",
+              "rprojroot"
+              )
+           
+
+if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
+  install.packages(setdiff(packages, rownames(installed.packages())))  
+}
+
+library("tidyverse")
+library(knitr)
+
+writeLines(capture.output(sessionInfo()), paste0(format(Sys.time(), "%Y%b%d"),"sessionInfo.txt"))
+
+
+
+opts_knit$set(
+               root.dir = rprojroot::find_rstudio_root_file(),
+               base.dir = rprojroot::find_rstudio_root_file()
+              )
+```
+
+\
+
+
+# Empirische Hypothesen und Skizze
+
+\
+Bedrohliche Gesichter werden in einer Menge emotionaler Distraktoren schneller gefunden als freundliche Gesichter. Zudem ist die Antwortgenauigkeit bei Trials mit bedrohlichen Gesichtern höher.
+
+\
+
+**Skizze** \ 
+
+
+![Skizze](Grafiken/StudieRes.PNG)
+
+
+\
+
+# Import
+
+```{r}
+data.files <- list.files("Alle Daten/")
+data.example <- data.files[1]
+daten <- read.csv(paste0("Alle Daten/", data.example ), header=TRUE, fileEncoding = "UTF-8-BOM")
+```
+
+\
+
+# Bereingiung
+
+## Übungstrials entfernen
+
+```{r}
+daten <- daten %>%
+  filter(phase != "uebung")
+daten
+```
+
+## Datenstruktur prüfen und Faktoren definieren
+
+```{r}
+str(daten)
+
+daten <- daten %>%
+  rename("Expositionszeit" = Condition1,
+         "TargetTyp" = Condition2) %>%
+  mutate(
+    id = factor(id),
+    Expositionszeit= recode_factor(Expositionszeit, "-1"= "1", "1"="2"),
+    TargetTyp = recode_factor(TargetTyp, "-1"= "friendly", "1"="threating"),
+    gender = recode_factor(gender, w = "weiblich", m = "männlich", d = "divers")
+  )
+
+str(daten)
+
+
+```
+
+\
+
+## Vollständigkeit der Daten prüfen
+
+
+
+```{r Vollstaendigkeit}
+# Anzahl der Zeilen im Datensatz
+daten %>% count()
+# Anzahl der Trials pro Bedingung
+
+daten %>%
+  group_by(Expositionszeit, TargetTyp) %>%  # UV: muss durch Spaltenname ersetzt werden
+  summarise(n=n())
+
+daten %>%
+  group_by(Expositionszeit, TargetTyp) %>%  # UV: muss durch Spaltenname ersetzt werden
+  count()
+
+```
+
+# Aggregation Einer VP
+
+## Analyse der Antwortgenauigkeit
+
+Die Analyse der Antwortgenauigkeit (RA - Response Accuracy) soll pro Bedingung erfolgen. Die Antwortgenauigkeit kann berechnet werden als...
+
+* Summe richtiger Antworten
+* Anteil richtiger Antworten an allen Trials einer Bedingung
+
+
+
+```{r Antwortgenauigkeit}
+daten %>%
+  group_by(Expositionszeit, TargetTyp) %>%
+  summarise(RA.Summe = sum(corr),
+            RA.Anteil = mean(corr),
+            RA.Anteil2 =sum(corr)/n() )
+
+```
+
+\
+
+## Analyse der Reaktionszeiten
+
+### visuelle Inspektion
+
+Daten filtern: Ausschluss von Trials, in denen die VP falsch reagiert hat
+```{r Reaktionszeit Filter, eval = T}
+
+# Daten filtern: Ausschluss von Trials, in denen die VP falsch reagiert hat
+data.ohneFehler.df <- daten %>%
+  filter(corr == 1)
+```
+
+
+\
+
+**Verteilung der Reaktionszeiten pro Bedingung**
+
+\
+
+```{r Histogramm, warning=FALSE}
+
+ggplot( data=data.ohneFehler.df, aes(x= rt)) + geom_histogram(binwidth=100) + facet_grid(Expositionszeit~TargetTyp)
+
+```
+
+\
+
+**Boxplot der Reaktionszeiten pro Bedingung**
+\
+
+```{r, warning=FALSE}
+
+ggplot( data=data.ohneFehler.df, aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Expositionszeit)
+
+```
+
+\
+
+### Ausreißer {#Ausreisser}
+
+
+```{r, echo=T, eval = T, message=FALSE, warning=FALSE}
+data.ohneFehler.df %>%
+  filter(rt > 200) %>%
+  group_by(Expositionszeit,TargetTyp) %>%
+  mutate(remain = (rt < mean(rt) + 3*sd(rt))) %>%
+  group_by(Expositionszeit,TargetTyp) %>%
+  summarise(RA.remain = sum(remain)/n())
+
+data.RT.df <- data.ohneFehler.df %>%
+  filter(rt > 200) %>%
+  group_by(Expositionszeit,TargetTyp) %>%
+  filter(rt < mean(rt) + 3*sd(rt))
+
+```
+
+
+# Aggregation Aller VP
+
+```{r}
+
+```
+
+\
+
+# Inferenzstatistik
+
+```{r}
+
+```
+
+\
+
+# Finale Grafik
+
+```{r}
+
+```
+

@@ -635,8 +635,8 @@ Passen die Ergebnisse zu den Hypothesen?
 
 
 ```{=html}
-<div id="htmlwidget-e11d844b3b9be6235d70" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e11d844b3b9be6235d70">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0];\nZusammenfassen [fillcolor= green]\nImport [fillcolor= green]\nBereingiung [fillcolor= green]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-fc193a91413550d4ce81" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fc193a91413550d4ce81">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0];\nZusammenfassen [fillcolor= green]\nImport [fillcolor= green]\nBereingiung [fillcolor= green]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 
@@ -1233,8 +1233,8 @@ Statistische Kennzahlen (z.B. M, SD, Median, .. ) für alle AVs (Reaktionszeiten
 
 
 ```{=html}
-<div id="htmlwidget-513478360b5f6d5b5cc7" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-513478360b5f6d5b5cc7">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nZusammenfassen [fillcolor= green]\nDeskriptive [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-50b5cb1a684b3e3212d4" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-50b5cb1a684b3e3212d4">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nZusammenfassen [fillcolor= green]\nDeskriptive [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 
@@ -1451,7 +1451,11 @@ Alternativ könnt ihr auch eine Grafik pro VP mit dplyr und `%>%` erstellen.
 ```r
 plots <- data.df %>% 
          group_by(id) %>% 
-         do( plots= ggplot( data=., aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Expositionszeit) + ggtitle(paste0("VP:", .$id))
+         do( plots= ggplot( data=., aes(x= TargetTyp , y=rt)) + 
+               geom_boxplot() + 
+               geom_jitter()+ 
+               facet_grid(~Expositionszeit) + 
+               ggtitle(paste0("VP:", .$id))
 )
 
 print(plots$plots)
@@ -1705,7 +1709,1038 @@ factor(0)
 
 <a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
 
-# 5. Inferenzstatistik
+# 5. Grafiken
+\
+
+## Allgemeine Hinweise
+
+### Beispiele
+
+**Negativbeispiel 1**
+
+![](Grafiken/Negativbeispiel1.PNG)
+\
+\
+\
+\
+\
+\
+
+**Negativbeispiel 2**
+
+![](Grafiken/Negativbeispiel2.PNG)
+\
+\
+\
+\
+\
+\
+
+**Besseres Beispiel**
+
+![](Grafiken/Positivbeispiel1.PNG)
+\
+\
+
+### Häufige Schwächen von Grafiken
+
+* Mangelnde / unverständliche Beschriftung
+    * Keine Achsenbeschriftungen
+    * Einheiten fehlen (z.B. ms bei Reaktionszeiten)
+    * Was zeigen Fehlerbalken?
+* wenig informativ
+* Unübersichtlich
+* unnötiger Einsatz von Farbe, 3D Effekten, etc.
+* zu geringe Auflösung („pixelig“)
+
+\
+\
+
+### APA Richtlinien
+
+The standards for good figures are simplicity, clarity, continuity and (of course ) information value. 
+
+*A good figure:
+
+* augments rather than duplicates the text ,
+* conveys only essential facts, 
+* omits visually distracting details,
+* is easy to read -  its elements (type, lines, labels, symbols, etc.) are large enough to be read with   ease,
+* is easy  to understand [...], 
+* [...] is carefully planned and prepared .
+
+*APA Manual 6th Edition, pp. 152*
+
+\
+\
+
+**Auf folgendes achten:**
+
+* scharfe und gleichmäßige Linien
+* leicht zu unterscheidende Symbole
+* lesbare Schrift: einfache Schriftart (ohne Serifen), Schriftgröße
+* Messeinheiten angeben
+* klare Beschriftung der Achsen
+* alle Bestandteile der Abbildung sind beschriftet und erklärt, so dass die Abbildung selbsterklärend     ist
+* Größe sollte Verwendungszweck angepasst sein
+
+\
+\
+
+## Welche Grafik?
+
+![](Grafiken/Beispiele.PNG)
+\
+\
+\
+\
+\
+\
+
+**Minimaler Informationsgehalt**
+
+Mittelwert + Streuungsmaß:
+
+* Standardabweichung
+* Standard Error of the Mean
+* 95% Confidence Intervals
+
+Alternative: Datenverteilung	
+
+* Boxplot
+* Violinplot
+* ... 
+
+
+<div class = "red">
+
+**Wichtig:** Es wird mittlerweile häufig verlangt, dass Grafiken nicht nur mittlere Trends darstellen, sondern auch ersichtlich machen, ob die individuellen Daten durch den mittleren Trend gut repräsentiert sind. Dazu eignen sich z.B. Raincloudplots, Violinplots oder Boxplots mit individuellen Datenpunkten. 
+
+
+Boxplots (ohne individuelle Daten) oder Balkendiagramme werden immernoch häufig verwendet, sind aber in einigen Stiuationen sehr problematisch. Hier ein Beispiel aus: \
+<https://www.cedricscherer.com/2021/06/06/visualizing-distributions-with-raincloud-plots-and-how-to-create-them-with-ggplot2/>
+
+![](Grafiken/boxplot-1.PNG)
+
+Es ist nicht klar, ob alle Grupppen ungefähr gleich besetzt waren und ob die Daten bis auf dem Mittelwert überhaupt dem selben Muster folgen.
+
+\
+
+![](Grafiken/boxplot-with-n-1.PNG)
+
+\
+
+Selbst wenn wir die Gruppengröße wissen, ist immer noch nicht klar ob die Gruppen dem selben Muster folgen. Hierzu sind individuelle Datenpunkte nötig:
+
+\
+
+![](Grafiken/boxplot-raw-1.PNG)
+
+\
+
+Wir sehen, dass in diesem Beispiel die individuellen Daten sehr unterschiedlich verteilt sind. Gruppe 2 und 3 scheinen eher aus mehreren Untergruppen zu bestehen.Zu schwerwigenderen Fehlinterpretationen kommt es, wenn Mittelwertunterschiede zwischen den Gruppen eigentlich auf Unterschieden in den Untergruppen innerhalb der Gruppen beruhen.Wenn nur Mittelwerte und Fehlerbalken dargestellt werden, entsteht also häufig ein falscher Eindruck von Homogenität innerhalb von Gruppen oder Bedingungen.
+
+\
+
+
+
+</div>
+
+\
+
+## ggplot
+
+\
+
+Die Idee hinter `ggplot` ist auf den ersten Blick schwer zu greifen. Im Gegensatz zu Standard Plot-Bibliotheken arbeitet ggplot mit Dataframes anstatt Vektoren oder Matrizen. In der Regel arbeitet ggplot sehr gut mit [Tidy-Data](#tidy) zusammen. 
+
+Die wichtigsten Befehle und Grundlegende Konzepte findet ihr im <a href="https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf" target="_blank">Cheat Sheet</a>. Eine gute Dokumentation findet ihr auch <a href="http://www.cookbook-r.com/Graphs/" target="_blank">hier</a>
+
+Grundsätzlich ist die Idee hinter ggplot ähnlich der von dplyr. Ihr legt eine Grundstruktur fest und könnt dann Schrittweise Komponenten hinzufügen. Der Aufbau von Grafiken folgt einer bestimmten Grammati. Mit Hilfe eines Datensatzes, einer Reihe von `geoms` und einer Datenstruktur (`aesthetics`)  lassen sich nahezu alle Grafiken realisieren. Datensatz und Koordinatensystem legen die Grundstruktur fest und mit `geoms` legt ihr fest, wie die Daten visualiert werden (Punkte, Linien, Boxplot ...).
+
+`geoms` arbeiten layerbasiert. Das heißt ihr könnt `geoms` in mehreren Lagen übereinander zeichnen z.B.: 1. individuelle Datenpunkte
+2. Mittelwerte und Streuungsmaße
+3. Labels, kommentare usw.
+\
+
+### Datensatz und Struktur festlegen
+
+**Wichtig:** wir verwenden tidy data, also jede VP*Bedingung in einer Zeile. Zu den wichtigsten aesthetics:
+
+```
+x=Expositionszeit       **Variable für X-Koordinaten im Plot**
+y=rt.mean          **Variable für Y-Koordinaten**
+color = TargetTyp **Unterschiedliche Farben (der Ränder von `geoms`) für Unterschiedliche Ausprägungen von TargetTyp**
+group= TargetTyp  **Nach welchen Variablen sollen die Daten gruppiert werden (ähnlich dplyr)**
+fill = TargetTyp  **wie color nur bezogen auf die Füllfarbe der `geoms`
+```
+
+
+
+
+```r
+data.plot <- data.df  %>% 
+  filter(corr ==1) %>% 
+  group_by(id, Expositionszeit , TargetTyp) %>% 
+  dplyr::summarise(rt.mean = mean(rt, na.rm = T),
+                   corr.mean = mean(corr, na.rm = T))
+
+plot <- ggplot2::ggplot(data = data.plot, ##Datensatz festlegen
+                        aes(x = Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
+                            y = rt.mean,))
+
+print(plot)                               ##Plotten
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-40-1.png" style="display: block; margin: auto;" />
+
+\
+
+### Geom-Layers hinzufügen
+
+Damit ist die Grunddatenstruktur festgelegt, aber der Plot ist erstmal leer, denn wir haben keine `geoms` zur Visualisierung festgelegt. Da wir den Plot in `plot` gespeichert haben, können wir ihn und weiter modifizieren und ein Layer hinzufügen.
+
+
+
+```r
+plot <- plot + geom_point()
+print(plot)
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-41-1.png" style="display: block; margin: auto;" />
+
+
+Wenn wir kontrollieren wollen, ob alle VPs dem globalen Trend folgen (B>A) können wir Linien hinzufügen pro VP. Dafür müssen wir die Daten aber gruppieren. Das können wir in den globalen aesthetics machen (`ggplot(data= , aes())`) oder für einzelne Layers festlegen, wie im Beispiel unten:
+
+
+```r
+plot + geom_line(aes(group=id))
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-42-1.png" style="display: block; margin: auto;" />
+
+#### Liste von `geoms`
+
+geom_boxplot()
+geom_violin()
+geom_bar()
+geom_histogram()
+geom_point()
+geom_line()
+geom_errorbar()
+geom_abline()
+geom_hline()
+geom_vline()
+
+Eine erschöpfende Liste findet ihr <a href="https://ggplot2.tidyverse.org/reference/index.html" target="_blank">hier</a>
+
+
+### Summary Statistics hinzufügen
+
+Das sieht unerwartet aus. Der Grund ist, dass mehrere Werte pro VP und Expositionszeit gibt, nämlich einen für jede Ausprägung von TargetTyp. Das heißt wir hatten auch zu viele Punkte im Plot oben. Wir können die Daten direkt in ggplot zusammenfassen mit `stat_summary()`. Diese Funktion kann Daten ähnlich zu `dplyr::summarise()` aggregieren. Wir übergeben eine Funktion zum aggregieren durch `fun=mean` wenn wir z.B. den Mittelwert verwenden wollen.
+
+
+```r
+plot <- ggplot2::ggplot(data = data.plot, ##Datensatz festlegen
+                        aes(x = Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
+                            y = rt.mean, ))
+
+
+plot <-
+  plot + stat_summary(fun = mean,
+                      mapping = aes(group = id),
+                      geom = c("point")) +
+  stat_summary(fun = mean,
+               mapping = aes(group = id),
+               geom = c("line"))
+plot
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-43-1.png" style="display: block; margin: auto;" />
+
+Analog können wir den Mittelwert hinzufügen. Wir können die Farbe über `color="farbe"` oder die Größe über `size=xx` verändern und den Mittelwert so abheben.
+
+
+```r
+plot <-
+  plot + stat_summary(
+    fun = mean,
+    mapping = aes(x = Expositionszeit, y = rt.mean),
+    geom = c("point"),
+    color = "red",
+    size = 2
+  ) + stat_summary(
+    fun = mean,
+    mapping = aes(x = Expositionszeit, y = rt.mean, group = 1),
+    geom = c("line"),
+    color = "red",
+    size = 1
+  )
+
+plot
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-44-1.png" style="display: block; margin: auto;" />
+
+
+**Wichtig:** `geoms` lassen sich anpassen über Argumente wie:
+*size          Größe von Punkte, Dicke von Linien
+*color         Farbe der Konture
+*fill          Füllfarbe
+*alpha         Transparenz
+*linetype     Linienart
+*shape         Punktart
+
+Wenn ihr das Argument an ein Layer übergebt, gilt es für das gesamte Layer wie im obigen Beispiel.
+Übergebt ihr es jedoch als aesthic (z.B. `color = id`) weißt ggplot für jede Ausprägung der Variable eine andere Farbe, Linienart usw. usf. zu. In folgendem Beispiel weisen wir jeder VP eine Farbe zu.
+
+
+```r
+plot <-
+  plot + stat_summary(
+    fun = mean,
+    mapping = aes(
+      x = Expositionszeit,
+      y = rt.mean,
+      group = id,
+      color = id
+    ),
+    geom = c("point"),
+    size = 2
+  ) +
+  stat_summary(
+    fun = mean,
+    mapping = aes(
+      x = Expositionszeit,
+      y = rt.mean,
+      group = id,
+      color = id
+    ),
+    geom = c("line"),
+    size = 1
+  )
+
+plot
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-45-1.png" style="display: block; margin: auto;" />
+
+\
+
+## **Interaction-Plot**
+
+
+Das solltet ihr später natürlich nicht machen, ein sinnvolleres Beispiel ist, dass wir zusätzlich TargetTyp plotten wollen, also einen Interaction-Plot. Dafür gruppieren wir nach **inteaction(id,TargetTyp)**, denn wir wollen auch die individuellen Daten sehen
+
+
+```r
+library(lemon)
+Baseplot <- ggplot2::ggplot(data= data.plot, ##Datensatz festlegen
+                aes(
+                  x=Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
+                  y=rt.mean,
+                  group = TargetTyp,
+                  color = TargetTyp,
+                  shape = TargetTyp
+                )) 
+
+pd = position_jitter(seed=1)
+Baseplot + 
+  geom_point(alpha= 0.5, position= pd) +
+  geom_line(mapping = aes(group = interaction(id, TargetTyp) ), alpha= 0.50, position= pd)
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-46-1.png" style="display: block; margin: auto;" />
+
+```r
+Interaction <-Baseplot + 
+             geom_pointpath(mapping = aes(group = interaction(id, TargetTyp) ), position = pd, alpha= 0.5)
+Interaction
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-46-2.png" style="display: block; margin: auto;" />
+
+Wir fügen wieder Mittelwerte hinzu.
+ 
+
+```r
+Interaction <- Interaction + stat_summary(fun=mean, 
+                                          mapping= aes(x=Expositionszeit,
+                                                       y=rt.mean,
+                                                       group =TargetTyp), 
+                                          geom=c("point") 
+                                          ) + 
+               stat_summary(fun=mean, 
+                            mapping= aes(x=Expositionszeit,
+                                         y=rt.mean, 
+                                         group=TargetTyp), 
+                            geom=c("line"),  
+                            size=1.2)
+
+Interaction
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-47-1.png" style="display: block; margin: auto;" />
+
+
+### Interaction mit ezPlot
+
+Dies ist die einfachste Version einen Interaktionsplot zu erstellen. Leider sind hier die Fehlerbalken in within-Designs nicht korrekt
+
+\
+
+```r
+#?ezPlot
+
+
+
+
+ezPlot(data.plot
+, dv = rt.mean 
+, wid = id 
+, x= .(Expositionszeit)
+, within = .(Expositionszeit,TargetTyp) 
+, split =.(TargetTyp)
+, x_lab = "Expositionszeit"
+  	, y_lab = "Reaktionszeiten (ms)"
+
+)
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-48-1.png" style="display: block; margin: auto;" />
+
+
+
+<div class = "green">
+
+**FANCY**
+
+
+
+```r
+pd <- position_jitter(0.2, seed=1)
+
+Baseplot <- ggplot2::ggplot(data= data.plot, ##Datensatz festlegen
+                aes(
+                  x=Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
+                  y=rt.mean,
+                  group = TargetTyp,
+                  color = TargetTyp,
+                  shape = TargetTyp
+                )) 
+
+Interaction <- Baseplot + 
+             geom_pointpath(mapping = aes(group = interaction(id, TargetTyp) ), position = pd, alpha= 0.5) + stat_summary(fun=mean, 
+                                          mapping= aes(x=Expositionszeit,
+                                                       y=rt.mean,
+                                                       group =TargetTyp), 
+                                          geom=c("point") 
+                                          ) + 
+               stat_summary(fun=mean, 
+                            mapping= aes(x=Expositionszeit,
+                                         y=rt.mean, 
+                                         group=TargetTyp), 
+                            geom=c("line"),  
+                            size=1.2)
+
+Interaction
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-49-1.png" style="display: block; margin: auto;" />
+
+</div>
+
+
+### Facets
+
+Wenn individuelle Daten in einem Interaction-Plot dargestellt werden, kann es schnell unübersichtlich werden. Eine Alternative ist die Bedingungen einer Variable in unterschiedlichen Plots darzustellen. Dazu eignet sich die Funktion `facet_grid`, die wir oben schon verwendet haben. Die Funktion erlaubt mehrere Grafiken in Spalten und Reihen zu organisiern. Dafür müsst ihr angeben, welche Variablen auf die Reihen bzw. Spalten aufgeteilt werden soll. Die Variablen müssen mit `vars()` umschlossen sein.
+
+
+```r
+Interaction + facet_grid(cols= vars(TargetTyp))
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-50-1.png" style="display: block; margin: auto;" />
+
+
+### Fehlerbalken
+
+
+
+\
+
+**Confidence Intervalle Within-Designs**
+
+Im Within-Design müssen wir die Daten erst zusammenfassen mit `Rmisc::summarySEwithin`. Den neuen Datensatz können wir an `geom_errorbar()` übergeben. Wir müssen dann die aesthetics `ymin` und `ymax` angeben, welche den Start- und Endpunkt der Balken definieren. 
+
+
+```r
+SEwithinRT <- Rmisc::summarySEwithin(data.plot, measure = "rt.mean", withinvars = c("Expositionszeit", "TargetTyp"), idvar="id", conf.interval = .95)
+
+SEwithinRT
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Expositionszeit"],"name":[1],"type":["fct"],"align":["left"]},{"label":["TargetTyp"],"name":[2],"type":["fct"],"align":["left"]},{"label":["N"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["rt.mean"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["ci"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"friendly","3":"20","4":"1170.351","5":"25.58042","6":"5.719956","7":"11.97201"},{"1":"1","2":"threating","3":"20","4":"1194.021","5":"40.16434","6":"8.981021","7":"18.79749"},{"1":"2","2":"friendly","3":"20","4":"1223.744","5":"26.44639","6":"5.913592","7":"12.37729"},{"1":"2","2":"threating","3":"20","4":"1190.079","5":"44.54935","6":"9.961539","7":"20.84974"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+\
+
+
+<div class = "red">
+
+**Achtung:** 
+* Rmisc-Funktionen stehen in Konflikt mit dplyr-Funktionen (z.B. rename(), summarise()) 
+* deswegen Rmisc nicht über library(Rmisc) in den Workspace laden, sondern nur für die genutzte Funktion (siehe oben im Beispiel)
+
+
+</div>
+\
+
+
+
+```r
+ErrorData <- Rmisc::summarySEwithin(data.plot, measure = "rt.mean", withinvars = c("Expositionszeit", "TargetTyp"), idvar="id", conf.interval = .95)
+
+
+Interaction  + geom_errorbar(data=ErrorData,
+                              mapping = aes(x= Expositionszeit, 
+                                            ymin = rt.mean - se, 
+                                            ymax=rt.mean + se ,
+                                            color = TargetTyp,
+                                            group= TargetTyp ),
+                              size = 1.2, 
+                              width=.2, 
+                              position=position_dodge(0.1), 
+                              show.legend = F,
+                              )
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-52-1.png" style="display: block; margin: auto;" />
+
+Das ist zugegeben nicht ganz `tidy`, da wir einen neuen Datensatz erstellen müssen. Das liegt daran, dass wir im Within-Design nicht auf gruppenbasis die *Standard Error of the Mean* berechnen können, sondern immer den kompletten Datensatz brauchen.
+
+Im Between-Design ist das nicht so und wir können `tidy`arbeiten. Wir definieren eine Hilfsfunktion, die den *Standard Error of the Mean* berechnet `sem <- function(x) sd(x)/sqrt(length(x))` und verwenden diese in `stat_summary`. Im Unterschied zu `geom_errorbar`, wo wir die Werte übergeben haben, müssen wir hier eine Funktion übergeben, die die Werte berechnet `function(i) mean(i) + sem(i)` für die obere Grenze und `function(i) mean(i) - sem(i)` für die untere Grenze.
+
+
+```r
+sem <- function(x) sd(x)/sqrt(length(x))
+
+
+Interaction  + 
+               stat_summary(fun.max=function(i) mean(i) + sem(i) ,
+                            fun.min=function(i) mean(i) - sem(i), 
+                            , mapping= aes(x=Expositionszeit,y=rt.mean, group=TargetTyp)
+                            , geom=c("errorbar"),  size=1.2, width = 0.15)
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-53-1.png" style="display: block; margin: auto;" />
+
+Hier nochmal alles zusammen für die Genauigkeit.
+
+
+```r
+pd <- position_jitter(0.2, seed=1)
+
+data.corr <- data.df  %>% 
+  group_by(id, Expositionszeit , TargetTyp) %>% 
+  dplyr::summarise(corr.mean = mean(corr, na.rm = T))
+
+Accplot <- ggplot2::ggplot(data= data.corr, ##Datensatz festlegen
+                aes(
+                  x=Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
+                  y=corr.mean,
+                  group = TargetTyp,
+                  color = TargetTyp,
+                  shape = TargetTyp,
+                  linetype = TargetTyp
+                ))  +
+  geom_pointpath(mapping = aes(group = interaction(id, TargetTyp) ), 
+                            position = pd, alpha= 0.5) + 
+  stat_summary(fun=mean, mapping= aes(x=Expositionszeit,
+                                      y=corr.mean,
+                                      group =TargetTyp),
+               geom=c("point")) +
+  stat_summary(fun=mean, 
+                            mapping= aes(x=Expositionszeit,
+                                         y=corr.mean, 
+                                         group=TargetTyp), 
+                            geom=c("line"),  
+                            size=1.2)
+sem <- function(x) sd(x)/sqrt(length(x))
+
+
+Accplot  + stat_summary(fun.max=function(i) mean(i) + sem(i) ,
+                            fun.min=function(i) mean(i) - sem(i), 
+                            , mapping= aes(x=Expositionszeit,y=corr.mean, group=TargetTyp)
+                            , geom=c("errorbar"),  size=1.2, width = 0.15)
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-54-1.png" style="display: block; margin: auto;" />
+
+
+
+## Boxplots
+
+Wenn wir die Darstellungsart unseres Plots ändern wollen, wird der Vorteil davon `tidy` zu arbeiten deutlich. Denn im Grunde müssen wir kaum etwas am Code ändern  als die `geoms` und gruppieren nach `interaction(Expositionszeit, TargetTyp)` um eine Box pro Bedingung zu bekommen.
+
+
+
+```r
+Boxplot <-
+  Baseplot + geom_boxplot(aes(group = interaction(Expositionszeit, TargetTyp)) ,
+                          position = position_dodge(0.7),         ## Boxplots Expositionszeit sollen nebeneinander stehen für ein Level von Expositionszeit
+                          width = 0.5) 
+```
+
+
+Auch den Mittelwert können wir wieder analog hinzufügen.
+
+
+```r
+Boxplot + stat_summary(fun=mean, mapping= aes(x=Expositionszeit,y=rt.mean, 
+                                          group =TargetTyp), geom=c("point") ,
+                       position=position_dodge(0.7) ## Stellt sicher, dass die Mittelwerte in den Boxen zentriert sind
+                                          )
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" />
+
+
+\
+
+## **Raincloud Plots**
+
+Raincloud-Plots sind häufig eine der besten Varianten, werden allerdings bei mehr als drei Bedingungen für eine UV sehr schwer zu implementieren. Für jeden Fakorstufe des Faktors auf der X-Achse müssen einzeln Halb-Violin- und Boxplots eingefügt werden. 
+ 
+
+```r
+library(gghalves)
+
+Raincloudplot <- Accplot +
+  geom_pointpath(mapping = aes(y = corr.mean, group = interaction(id, TargetTyp)),
+                 
+                 alpha = 0.5) +
+  stat_summary(
+    fun = mean,
+    mapping = aes(x = Expositionszeit,
+                  y = corr.mean,
+                  group = TargetTyp),
+    geom = c("point")
+  ) +
+  stat_summary(
+    fun = mean,
+    mapping = aes(x = Expositionszeit,
+                  y = corr.mean,
+                  group = TargetTyp),
+    geom = c("line"),
+    size = 1.2
+  ) +
+  
+  geom_half_violin(
+    data = . %>% dplyr::filter(Expositionszeit == "1"),
+    aes(fill = TargetTyp),
+    position = position_nudge(x = -.2),
+    side = "l",
+    color = NA,
+    alpha = 0.3,
+    #draw_quantiles=c(0.25, 0.5)
+  ) +
+  geom_half_violin(
+    data = . %>% dplyr::filter(Expositionszeit == "2"),
+    aes(fill = TargetTyp),
+    position = position_nudge(x = .2),
+    side = "r",
+    color = NA,
+    alpha = 0.3,
+    #draw_quantiles=c(0.25, 0.75)
+  ) +
+  geom_boxplot(
+    data = . %>% dplyr::filter(Expositionszeit == "1"),
+    aes(
+      group = interaction(Expositionszeit, TargetTyp),
+      fill = TargetTyp
+    ),
+    alpha = 0.5,
+    width = .1,
+    outlier.shape = NA,
+    position = position_nudge(x = -.12),
+    notch = T
+  ) +
+  geom_boxplot(
+    data = . %>% dplyr::filter(Expositionszeit == "2"),
+    aes(
+      group = interaction(Expositionszeit, TargetTyp),
+      fill = TargetTyp
+    ),
+    alpha = 0.5,
+    width = .1,
+    outlier.shape = NA,
+    position = position_nudge(x = .12),
+    notch = T
+  ) + stat_summary(
+    fun.max = function(i)
+      mean(i) + sem(i) ,
+    fun.min = function(i)
+      mean(i) - sem(i),
+    ,
+    mapping = aes(x = Expositionszeit, y = corr.mean, group = TargetTyp)
+    ,
+    geom = c("errorbar"),
+    size = 1.2,
+    width = 0.1
+  )
+
+
+Raincloudplot
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-57-1.png" style="display: block; margin: auto;" />
+
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" />
+\
+
+\
+
+
+## Balkendiagramme
+
+Balkendiagramme sind hier nur der Vollständigkeit halber aufgeführt. 
+Für Balkendiagramme sind die Anpassung noch einfacher, wir können direkt die Mittelwerte hinzufügen, und ändern nur die Füllungsfarbe.
+
+
+```r
+Balken <-
+  Baseplot + stat_summary(fun=mean, mapping= aes(x=Expositionszeit,y=rt.mean, 
+                                          group =TargetTyp,  fill= TargetTyp), linetype=1, geom=c("bar") ,
+                       position=position_dodge(0.7) ## Stellt sicher, dass die Mittelwerte in den Boxen zentriert sind
+                                          )
+```
+
+Fehlerbalken werden wieder analog eingefügt. Wir ändern nur color und linetype.
+
+
+```r
+Balken <- Balken + geom_errorbar(data=ErrorData,
+                              mapping = aes(x= Expositionszeit, 
+                                            ymin = rt.mean - se, 
+                                            ymax=rt.mean + se ,
+                                            group= TargetTyp ),
+                              color = "black",
+                              linetype = 1,
+                              size = 1.2, 
+                              width=.2, 
+                              position=position_dodge(0.7), 
+                              show.legend = F,
+                              )
+
+Balken
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-60-1.png" style="display: block; margin: auto;" />
+
+## Grafiken Formatiern
+### Achsen Beschriften
+
+
+```r
+Raincloudplot <- Raincloudplot + labs(x = "Expositionszeit (s)", y= "Reaktionszeit in ms")
+Raincloudplot
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-61-1.png" style="display: block; margin: auto;" />
+
+### Farben ändern/ Bezeichnung in der Legende ändern
+
+
+
+```r
+Raincloudplot <-
+  Raincloudplot + scale_fill_brewer(
+    name = "TargetTyp",
+    palette = "Set2",
+    labels = c("freundlich", "bedrohlich")
+  ) +
+  scale_color_brewer(
+    name = "TargetTyp",
+    palette = "Set2",
+    labels = c("freundlich", "bedrohlich")
+  )
+Raincloudplot
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-62-1.png" style="display: block; margin: auto;" />
+\
+
+**Verwendet ihr mehrere Aesthetics (Color und Fill im Beispiel) in der Grafik, muss die Legende für alle  codiert werden, sonst entstehen mehrere Legenden**
+
+Allgemeine Hinweise zur Bearbeitung der Legende findet ihr<a href="http://www.cookbook-r.com/Graphs/Legends_%28ggplot2%29/" target="_blank">hier</a>
+
+
+#### Welche Farben??
+##### Druckerfreundlich
+
+Papers werden resourcenschonend häufig in Grau gedruckt. Dabei bestimmt oft nur die Helligkeit (Luminanz) der Farbe den Grauton. Wenn gleichhelle (isoluminante) Farben verwendet werden, sind eure Graphen nicht mehr unterscheidbar. Es müssen also Farben gefunden werden, die sich in ihrer Luminanz unterscheiden. 
+
+Das Paket `ggsci` bietet eine Ganze Reihe an Farbpalleten, mitunter auch eine Palette (`pal_npg`) die sich an Publikationen in **Nature** orientiert. Wir suchen manuell Farben aus `pal_npg` die sich in ihrer Luminanz unterscheiden. Dies können wir mit  `specplot` aus dem Paket `colorspaces` machen. 
+
+
+```r
+library(colorspace)
+library(ggsci)
+
+
+npg <- pal_npg("nrc")(10)        # gibt die RGB-Werte der kompletten Palette
+specplot(npg)                    # Zeichnet Luminanz, Chroma und HUE Verlauf
+specplot(npg)[c(1,4,7)]
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-63-1.png" style="display: block; margin: auto;" />
+
+```
+$HCL
+              H         C        L
+ [1,]  15.69080 127.41065 54.15136
+ [2,] 216.35958  53.48331 70.81504
+ [3,] 167.59379  49.23039 58.87119
+ [4,] 255.37721  46.46563 36.13420
+ [5,]  25.93758  70.93779 72.25127
+ [6,] 254.44871  31.61807 60.29376
+ [7,] 170.28967  31.63907 79.33613
+ [8,]  12.17395 154.47322 45.93504
+ [9,]  45.06235  29.17539 43.43904
+[10,]  54.64014  23.87747 65.51562
+
+$<NA>
+NULL
+
+$<NA>
+NULL
+```
+
+In unserem Fall benötigen wir drei Farben (1,4 und 7 unterscheiden sich deutlich), die wir manuell auswählen und dann in `scale_color_manual` und  `scale_fill_manual` verwenden
+
+
+```r
+colors <- pal_npg("nrc")(10)[c(1,4,7)]
+
+Raincloudplot <-
+  Raincloudplot + scale_fill_manual(
+    name = "TargetTyp",
+    values = colors,
+    labels = c("freundlich", "bedrohlich")
+  ) +
+  scale_color_manual(
+    name = "TargetTyp",
+    values = colors,
+    labels = c("freundlich", "bedrohlich")
+  )
+Raincloudplot
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-64-1.png" style="display: block; margin: auto;" />
+
+##### Perzeptuell gleichförmig
+
+Will man einen numerischen Verlauf durch Farben darstellen sollte man darauf achten, dass die Farbpalette perzeptuell gleichförmig ist, das heißt grob, dass ähnliche Unterschiede in den Daten zu ähnlichen Unterschieden in der Farbwahrnehmung führen sollten.
+
+Die <a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html" target="_blank">Viridis-Farbpaletten</a> erfüllen genau diesen Zweck. Darüberhinaus sind hier Farbpaletten enthalten die für Personen mit Farbfehlsichtigkeit ebenfalls perzeptuell gleichförmig sind.
+
+Die Paletten können in `ggplot` über `scale_fill_viridis()` und `scale_color_viridis()` eingebunden werden.
+
+
+```r
+#install.packages("viridis")
+library(viridis)
+
+ggplot(data.frame(x = rnorm(10000), y = rnorm(10000)), aes(x = x, y = y)) +
+  geom_hex() + 
+  coord_fixed() +
+  scale_fill_viridis() + 
+  theme_bw()
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-65-1.png" style="display: block; margin: auto;" />
+
+
+
+### Symbole und Linientyp ändern
+
+
+```r
+Accplot + scale_shape_manual(
+  values = c(20, 21),
+  name = "TargetTyp",
+  labels = c("freundlich", "bedrohlich")
+) +
+  scale_linetype_manual(
+    values = c("12", "11"),
+    name = "TargetTyp",
+    labels = c("freundlich", "bedrohlich")
+  )
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-66-1.png" style="display: block; margin: auto;" />
+
+```r
+Raincloudplot <-
+  Raincloudplot + scale_shape_manual(
+    values = c(16, 15),
+    name = "TargetTyp",
+    labels = c("freundlich", "bedrohlich")
+  ) +
+  scale_linetype_manual(
+    values = c("12", "11"),
+    name = "TargetTyp",
+    labels = c("freundlich", "bedrohlich")
+  )
+Raincloudplot
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-66-2.png" style="display: block; margin: auto;" />
+
+Vielleicht habt ihr bemerkt, dass nun im Raincloudplot eine Legende verschwunden ist. Wie oben beschrieben legt ggplot für jede Ästhetik eine neue Legende an, es sei denn Name und Labels stimmen überein. Wir haben die Labels für Farben und Shapes vereinheitlicht, deshalb hat ggplot die Legenden zusammengeführt. `scale_linetype_manual` hat auf den Raincloudplot keinen Einfluss, da wir keine Ästhetik für `linetype` definiert haben (z.B. `aes(..., linetype= TargetTyp)`).
+
+
+Allgemeine Hinweise zur Bearbeitung der Symbole und Linientypen findet ihr <a href="http://www.cookbook-r.com/Graphs/Shapes_and_line_types/" target="_blank">hier</a>.
+
+### Stufen der Variable X auf der X-Achse benennen
+
+
+```r
+Balken <-
+  Balken + scale_x_discrete(breaks = c("1", "2"),
+                            labels = c("Stufe1", "Stufe2"))
+Balken
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-67-1.png" style="display: block; margin: auto;" />
+
+
+### Y-Limits setzen
+
+Es gibt mehrere Möglichkeiten X und Y Limits zu setzen, z.B. `ylim()` oder `scale_y_continuous(limits = c(min, max))`, bei diesen werden aber Datenpunkte außerhalb der Limits entfernt und `stat_summary` gibt nicht mehr die korrekten Werte aus. Deshalb ist es ratsam `coord_cartesian(ylim=c(min, max))` zu verwenden.
+
+
+```r
+Balken +  ylim(1100, 1300)
+
+Balken <-
+  Balken +  coord_cartesian(ylim = c(1100, 1300))
+Balken
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/figures-side-1.png" width="45%" style="display: block; margin: auto;" /><img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/figures-side-2.png" width="45%" style="display: block; margin: auto;" />
+
+
+### Themes
+
+Mit `theme()` könnte ihr Komponenten des Layouts verändern, die sich nicht direkt auf die Daten beziehen, d.h. Titel, Achsen, Legende usw.. Mit `theme_get()`könnt ihr alle Optionen betrachten.
+
+Es gibt eine Reihe vordefinierter Themes die ihr z.B. <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" target="_blank">hier</a> findet. Diese könnt ihr sehr einfach verwenden
+
+
+```r
+Raincloudplot
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-68-1.png" style="display: block; margin: auto;" />
+
+```r
+Raincloudplot + theme_bw()
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-68-2.png" style="display: block; margin: auto;" />
+
+```r
+Raincloudplot + theme_classic()
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-68-3.png" style="display: block; margin: auto;" />
+
+```r
+Raincloudplot + theme_linedraw()
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-68-4.png" style="display: block; margin: auto;" />
+
+Es lohnt sich in der Regel sich ein Standard-Theme zu definieren, dass man dann für alle Plots verwendet, sodass die Grafiken ein einheitliches Layout haben und aufgeräumt aussehen.
+Wenn ein bestimmtes Element entfernt werden soll, kann dafür `element_blank()` verwendet werden.
+
+Unter `?element_blank` findet ihr alle gängigen Element-Typen die verwendet werden können und welche Argumente übergeben werden können.
+
+
+```r
+StandardTheme <- theme(
+            axis.line = element_line(colour = "black"), # Hauptachsenfarbe schwarz
+            panel.grid.major = element_blank(),  # Hauptgitterlinien entfernen
+            panel.grid.minor = element_blank(),  # Untergitterlinien entfernen
+            panel.border = element_blank(),      # Rahmen entfernen
+            panel.background = element_blank(),  # Hintergrund leer, d.h. weiß
+            text=element_text(size=14),          # allgemeine Schriftgröße auf 14 setzen
+            axis.title.x = element_text( size=14, face="bold", colour = "black"), # Farbe schwarz und Fett
+            axis.title.y = element_text( size=14, face="bold", colour = "black"),
+            strip.text =  element_text( size=12),
+            axis.text = element_text( size=12),
+            legend.background = element_rect(colour = "black"), # Rahmen um Legende
+            legend.key = element_blank(),
+            legend.key.size = unit(1, "lines"))
+
+
+Raincloudplot
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-69-1.png" style="display: block; margin: auto;" />
+
+```r
+Raincloudplot +  StandardTheme
+```
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-69-2.png" style="display: block; margin: auto;" />
+
+
+## Speichern/ exportieren
+
+`ggsave` speichert automatisch euren letzten `ggplot`, ihr könnt aber auch explizit den Plot als Argument übergeben. 
+
+
+
+
+```r
+ggsave("Grafiken/experiment_grafik.pdf", width = 18, height = 12, units = "cm", dpi = 300)
+ggsave("Grafiken/experiment_grafik2.pdf", plot= Interaction, width = 18, height = 12, units = "cm", dpi = 300)
+```
+
+In diesem Beispiel wurden die Grafiken als PDFs gespeichert. Das hat den Vorteil, dass die Dateien als <a href="https://de.wikipedia.org/wiki/Vektorgrafik" target="_blank">Vektorgrafiken</a> vorliegen. Im wesentlichen heißt das, dass ihr die Größe der Grafik im nachhinein beliebig verändern könnt, ohne das die Grafik unscharf wird.
+
+In der Form können die Grafiken allerdings nicht in Word oder Powerpoint eingebunden werden (**Ausnahme Mac**). Dafür solltet ihr direkt das PNG-Format wählen mit einer hohen Auflösung (Journals verlangen **300 dpi** Minimum).
+
+Das Format wird über die Endung des Dateinamen festgelegt.
+
+
+```r
+ggsave("Grafiken/experiment_grafik.PNG", width = 18, height = 12, units = "cm", dpi = 300)
+ggsave("Grafiken/experiment_grafik2.PNG", plot= Interaction, width = 18, height = 12, units = "cm", dpi = 300)
+```
+
+
+\
+
+## **Aufgaben**
+
+1. Erstellt für jede Kern-Hypothese eine aussagekräftige Grafik!
+    *
+
+<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
+
+<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
+
+
+
+# 6. Inferenzstatistik
 
 \
 
@@ -1809,7 +2844,7 @@ data.anova <- data.df  %>%
 ezDesign(data= data.anova, x = Expositionszeit, y = TargetTyp)
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-39-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-72-1.png" style="display: block; margin: auto;" />
 
 ```r
 myanova <- ezANOVA(data.anova
@@ -1855,7 +2890,7 @@ type = 2
 )
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-40-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-73-1.png" style="display: block; margin: auto;" />
 
 \
 Der Output beinhaltet drei Tabellen:
@@ -2065,1014 +3100,6 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 
 <a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
 
-
-# 6. Grafiken
-\
-
-## Allgemeine Hinweise
-
-### Beispiele
-
-**Negativbeispiel 1**
-
-![](Grafiken/Negativbeispiel1.PNG)
-\
-\
-\
-\
-\
-\
-
-**Negativbeispiel 2**
-
-![](Grafiken/Negativbeispiel2.PNG)
-\
-\
-\
-\
-\
-\
-
-**Besseres Beispiel**
-
-![](Grafiken/Positivbeispiel1.PNG)
-\
-\
-
-### Häufige Schwächen von Grafiken
-
-* Mangelnde / unverständliche Beschriftung
-    * Keine Achsenbeschriftungen
-    * Einheiten fehlen (z.B. ms bei Reaktionszeiten)
-    * Was zeigen Fehlerbalken?
-* wenig informativ
-* Unübersichtlich
-* unnötiger Einsatz von Farbe, 3D Effekten, etc.
-* zu geringe Auflösung („pixelig“)
-
-\
-\
-
-### APA Richtlinien
-
-The standards for good figures are simplicity, clarity, continuity and (of course ) information value. 
-
-*A good figure:
-
-* augments rather than duplicates the text ,
-* conveys only essential facts, 
-* omits visually distracting details,
-* is easy to read -  its elements (type, lines, labels, symbols, etc.) are large enough to be read with   ease,
-* is easy  to understand [...], 
-* [...] is carefully planned and prepared .
-
-*APA Manual 6th Edition, pp. 152*
-
-\
-\
-
-**Auf folgendes achten:**
-
-* scharfe und gleichmäßige Linien
-* leicht zu unterscheidende Symbole
-* lesbare Schrift: einfache Schriftart (ohne Serifen), Schriftgröße
-* Messeinheiten angeben
-* klare Beschriftung der Achsen
-* alle Bestandteile der Abbildung sind beschriftet und erklärt, so dass die Abbildung selbsterklärend     ist
-* Größe sollte Verwendungszweck angepasst sein
-
-\
-\
-
-## Welche Grafik?
-
-![](Grafiken/Beispiele.PNG)
-\
-\
-\
-\
-\
-\
-
-**Minimaler Informationsgehalt**
-
-Mittelwert + Streuungsmaß:
-* Standardabweichung
-* Standard Error of the Mean   (s /     )
-* 95% Confidence Intervals
-
-Alternative: Datenverteilung	
-* Boxplot
-* Violinplot
-... 
-
-
-<div class = "red">
-
-**Wichtig:** Es wird mittlerweile häufig verlangt, dass Grafiken nicht nur mittlere Trends darstellen, sondern auch ersichtlich machen, ob die individuellen Daten durch den mittleren Trend gut repräsentiert sind. Dazu eignen sich z.B. Raincloudplots, Violinplots oder Boxplots mit individuellen Datenpunkten. 
-
-
-Boxplots (ohne individuelle Daten) oder Balkendiagramme werden immernoch häufig verwendet, sind aber in einigen Stiuationen sehr problematisch. Hier ein Beispiel aus: \
-<https://www.cedricscherer.com/2021/06/06/visualizing-distributions-with-raincloud-plots-and-how-to-create-them-with-ggplot2/>
-
-![](Grafiken/boxplot-1.PNG)
-
-Es ist nicht klar, ob alle Grupppen ungefähr gleich besetzt waren und ob die Daten bis auf dem Mittelwert überhaupt dem selben Muster folgen.
-
-\
-
-![](Grafiken/boxplot-with-n-1.PNG)
-
-\
-
-Selbst wenn wir die Gruppengröße wissen, ist immer noch nicht klar ob die Gruppen dem selben Muster folgen. Hierzu sind individuelle Datenpunkte nötig:
-
-\
-
-![](Grafiken/boxplot-raw-1.PNG)
-
-\
-
-Wir sehen, dass in diesem Beispiel die individuellen Daten sehr unterschiedlich verteilt sind. Gruppe 2 und 3 scheinen eher aus mehreren Untergruppen zu bestehen.Zu schwerwigenderen Fehlinterpretationen kommt es, wenn Mittelwertunterschiede zwischen den Gruppen eigentlich auf Unterschieden in den Untergruppen innerhalb der Gruppen beruhen.Wenn nur Mittelwerte und Fehlerbalken dargestellt werden, entsteht also häufig ein falscher Eindruck von Homogenität innerhalb von Gruppen oder Bedingungen.
-
-\
-
-
-```{=html}
-<blockquote class="twitter-tweet" data-width="550" data-lang="en" data-dnt="true" data-theme="light"><p lang="en" dir="ltr">That moment when you review a journal submission and you see dynamite plots: rage and joy at the same time! <a href="https://twitter.com/hashtag/dataviz?src=hash&amp;ref_src=twsrc%5Etfw">#dataviz</a> <a href="https://twitter.com/hashtag/datavisualization?src=hash&amp;ref_src=twsrc%5Etfw">#datavisualization</a> <a href="https://twitter.com/hashtag/barbarplot?src=hash&amp;ref_src=twsrc%5Etfw">#barbarplot</a> <a href="https://twitter.com/hashtag/DoBetter?src=hash&amp;ref_src=twsrc%5Etfw">#DoBetter</a> <a href="https://t.co/ncuxquEoAF">pic.twitter.com/ncuxquEoAF</a></p>&mdash; Cédric Scherer (@CedScherer) <a href="https://twitter.com/CedScherer/status/1375438100298674179?ref_src=twsrc%5Etfw">March 26, 2021</a></blockquote>
-
-```
-
-</div>
-
-\
-
-## ggplot
-
-\
-
-Die Idee hinter `ggplot` ist auf den ersten Blick schwer zu greifen. Im Gegensatz zu Standard Plot-Bibliotheken arbeitet ggplot mit Dataframes anstatt Vektoren oder Matrizen. In der Regel arbeitet ggplot sehr gut mit [Tidy-Data](#tidy) zusammen. 
-
-Die wichtigsten Befehle und Grundlegende Konzepte findet ihr im <a href="https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf" target="_blank">Cheat Sheet</a>. Eine gute Dokumentation findet ihr auch <a href="http://www.cookbook-r.com/Graphs/" target="_blank">hier</a>
-
-Grundsätzlich ist die Idee hinter ggplot ähnlich der von dplyr. Ihr legt eine Grundstruktur fest und könnt dann Schrittweise Komponenten hinzufügen. Der Aufbau von Grafiken folgt einer bestimmten Grammati. Mit Hilfe eines Datensatzes, einer Reihe von `geoms` und einer Datenstruktur (`aesthetics`)  lassen sich nahezu alle Grafiken realisieren. Datensatz und Koordinatensystem legen die Grundstruktur fest und mit `geoms` legt ihr fest, wie die Daten visualiert werden (Punkte, Linien, Boxplot ...).
-
-`geoms` arbeiten layerbasiert. Das heißt ihr könnt `geoms` in mehreren Lagen übereinander zeichnen z.B.: 1. individuelle Datenpunkte
-2. Mittelwerte und Streuungsmaße
-3. Labels, kommentare usw.
-\
-
-### Datensatz und Struktur festlegen
-
-**Wichtig:** wir verwenden tidy data, also jede VP*Bedingung in einer Zeile. Zu den wichtigsten aesthetics:
-
-```
-x=Expositionszeit       **Variable für X-Koordinaten im Plot**
-y=rt.mean          **Variable für Y-Koordinaten**
-color = TargetTyp **Unterschiedliche Farben (der Ränder von `geoms`) für Unterschiedliche Ausprägungen von TargetTyp**
-group= TargetTyp  **Nach welchen Variablen sollen die Daten gruppiert werden (ähnlich dplyr)**
-fill = TargetTyp  **wie color nur bezogen auf die Füllfarbe der `geoms`
-```
-
-
-```r
-plot <- ggplot2::ggplot(data = data.anova, ##Datensatz festlegen
-                        aes(x = Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
-                            y = rt.mean,))
-
-print(plot)                               ##Plotten
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-47-1.png" style="display: block; margin: auto;" />
-
-\
-
-### Geom-Layers hinzufügen
-
-Damit ist die Grunddatenstruktur festgelegt, aber der Plot ist erstmal leer, denn wir haben keine `geoms` zur Visualisierung festgelegt. Da wir den Plot in `plot` gespeichert haben, können wir ihn und weiter modifizieren und ein Layer hinzufügen.
-
-
-
-```r
-plot <- plot + geom_point()
-print(plot)
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-48-1.png" style="display: block; margin: auto;" />
-
-
-Wenn wir kontrollieren wollen, ob alle VPs dem globalen Trend folgen (B>A) können wir Linien hinzufügen pro VP. Dafür müssen wir die Daten aber gruppieren. Das können wir in den globalen aesthetics machen (`ggplot(data= , aes())`) oder für einzelne Layers festlegen, wie im Beispiel unten:
-
-
-```r
-plot + geom_line(aes(group=id))
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-49-1.png" style="display: block; margin: auto;" />
-
-#### Liste von `geoms`
-
-geom_boxplot()
-geom_violin()
-geom_bar()
-geom_histogram()
-geom_point()
-geom_line()
-geom_errorbar()
-geom_abline()
-geom_hline()
-geom_vline()
-
-Eine erschöpfende Liste findet ihr <a href="https://ggplot2.tidyverse.org/reference/index.html" target="_blank">hier</a>
-
-
-### Summary Statistics hinzufügen
-
-Das sieht unerwartet aus. Der Grund ist, dass mehrere Werte pro VP und Expositionszeit gibt, nämlich einen für jede Ausprägung von TargetTyp. Das heißt wir hatten auch zu viele Punkte im Plot oben. Wir können die Daten direkt in ggplot zusammenfassen mit `stat_summary()`. Diese Funktion kann Daten ähnlich zu `dplyr::summarise()` aggregieren. Wir übergeben eine Funktion zum aggregieren durch `fun=mean` wenn wir z.B. den Mittelwert verwenden wollen.
-
-
-```r
-plot <- ggplot2::ggplot(data = data.anova, ##Datensatz festlegen
-                        aes(x = Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
-                            y = rt.mean, ))
-
-
-plot <-
-  plot + stat_summary(fun = mean,
-                      mapping = aes(group = id),
-                      geom = c("point")) +
-  stat_summary(fun = mean,
-               mapping = aes(group = id),
-               geom = c("line"))
-plot
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-50-1.png" style="display: block; margin: auto;" />
-
-Analog können wir den Mittelwert hinzufügen. Wir können die Farbe über `color="farbe"` oder die Größe über `size=xx` verändern und den Mittelwert so abheben.
-
-
-```r
-plot <-
-  plot + stat_summary(
-    fun = mean,
-    mapping = aes(x = Expositionszeit, y = rt.mean),
-    geom = c("point"),
-    color = "red",
-    size = 2
-  ) + stat_summary(
-    fun = mean,
-    mapping = aes(x = Expositionszeit, y = rt.mean, group = 1),
-    geom = c("line"),
-    color = "red",
-    size = 1
-  )
-
-plot
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-51-1.png" style="display: block; margin: auto;" />
-
-
-**Wichtig:** `geoms` lassen sich anpassen über Argumente wie:
-*size          Größe von Punkte, Dicke von Linien
-*color         Farbe der Konture
-*fill          Füllfarbe
-*alpha         Transparenz
-*linetype     Linienart
-*shape         Punktart
-
-Wenn ihr das Argument an ein Layer übergebt, gilt es für das gesamte Layer wie im obigen Beispiel.
-Übergebt ihr es jedoch als aesthic (z.B. `color = id`) weißt ggplot für jede Ausprägung der Variable eine andere Farbe, Linienart usw. usf. zu. In folgendem Beispiel weisen wir jeder VP eine Farbe zu.
-
-
-```r
-plot <-
-  plot + stat_summary(
-    fun = mean,
-    mapping = aes(
-      x = Expositionszeit,
-      y = rt.mean,
-      group = id,
-      color = id
-    ),
-    geom = c("point"),
-    size = 2
-  ) +
-  stat_summary(
-    fun = mean,
-    mapping = aes(
-      x = Expositionszeit,
-      y = rt.mean,
-      group = id,
-      color = id
-    ),
-    geom = c("line"),
-    size = 1
-  )
-
-plot
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-52-1.png" style="display: block; margin: auto;" />
-
-\
-
-## **Interaction-Plot**
-
-
-Das solltet ihr später natürlich nicht machen, ein sinnvolleres Beispiel ist, dass wir zusätzlich TargetTyp plotten wollen, also einen Interaction-Plot. Dafür gruppieren wir nach **inteaction(id,TargetTyp)**, denn wir wollen auch die individuellen Daten sehen
-
-
-```r
-Baseplot <- ggplot2::ggplot(data= data.anova, ##Datensatz festlegen
-                aes(
-                  x=Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
-                  y=rt.mean,
-                  group = TargetTyp,
-                  color = TargetTyp,
-                  shape = TargetTyp
-                )) 
-
-Interaction <- Baseplot + geom_point(alpha= 0.5) +
-             geom_line(mapping = aes(group = interaction(id, TargetTyp) ), alpha= 0.5)
-```
-
-Wir fügen wieder Mittelwerte hinzu.
- 
-
-```r
-Interaction <- Interaction + stat_summary(fun=mean, 
-                                          mapping= aes(x=Expositionszeit,
-                                                       y=rt.mean,
-                                                       group =TargetTyp), 
-                                          geom=c("point") 
-                                          ) + 
-               stat_summary(fun=mean, 
-                            mapping= aes(x=Expositionszeit,
-                                         y=rt.mean, 
-                                         group=TargetTyp), 
-                            geom=c("line"),  
-                            size=1.2)
-
-Interaction
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-54-1.png" style="display: block; margin: auto;" />
-
-
-### Interaction mit ezPlot
-
-Dies ist die einfachste Version einen Interaktionsplot zu erstellen. Leider sind hier die Fehlerbalken in within-Designs nicht korrekt
-
-\
-
-```r
-#?ezPlot
-
-ezPlot(data.anova
-, dv = rt.mean 
-, wid = id 
-, x= .(Expositionszeit)
-, within = .(Expositionszeit,TargetTyp) 
-, split =.(TargetTyp)
-, x_lab = "Expositionszeit"
-  	, y_lab = "Reaktionszeiten (ms)"
-
-)
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-55-1.png" style="display: block; margin: auto;" />
-
-
-
-<div class = "green">
-
-**FANCY**
-
-
-
-```r
-library(lemon)
-
-pd <- position_jitter(0.2, seed=1)
-
-Baseplot <- ggplot2::ggplot(data= data.anova, ##Datensatz festlegen
-                aes(
-                  x=Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
-                  y=rt.mean,
-                  group = TargetTyp,
-                  color = TargetTyp,
-                  shape = TargetTyp
-                )) 
-
-Interaction <- Baseplot + 
-             geom_pointpath(mapping = aes(group = interaction(id, TargetTyp) ), position = pd, alpha= 0.5) + stat_summary(fun=mean, 
-                                          mapping= aes(x=Expositionszeit,
-                                                       y=rt.mean,
-                                                       group =TargetTyp), 
-                                          geom=c("point") 
-                                          ) + 
-               stat_summary(fun=mean, 
-                            mapping= aes(x=Expositionszeit,
-                                         y=rt.mean, 
-                                         group=TargetTyp), 
-                            geom=c("line"),  
-                            size=1.2)
-
-Interaction
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" />
-
-</div>
-
-
-### Facets
-
-Wenn individuelle Daten in einem Interaction-Plot dargestellt werden, kann es schnell unübersichtlich werden. Eine Alternative ist die Bedingungen einer Variable in unterschiedlichen Plots darzustellen. Dazu eignet sich die Funktion `facet_grid`, die wir oben schon verwendet haben. Die Funktion erlaubt mehrere Grafiken in Spalten und Reihen zu organisiern. Dafür müsst ihr angeben, welche Variablen auf die Reihen bzw. Spalten aufgeteilt werden soll. Die Variablen müssen mit `vars()` umschlossen sein.
-
-
-```r
-Interaction + facet_grid(cols= vars(TargetTyp))
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-57-1.png" style="display: block; margin: auto;" />
-
-
-### Fehlerbalken
-
-
-
-\
-
-**Confidence Intervalle Within-Designs**
-
-Im Within-Design müssen wir die Daten erst zusammenfassen mit `Rmisc::summarySEwithin`. Den neuen Datensatz können wir an `geom_errorbar()` übergeben. Wir müssen dann die aesthetics `ymin` und `ymax` angeben, welche den Start- und Endpunkt der Balken definieren. 
-
-
-```r
-SEwithinRT <- Rmisc::summarySEwithin(data.anova, measure = "rt.mean", withinvars = c("Expositionszeit", "TargetTyp"), idvar="id", conf.interval = .95)
-
-SEwithinRT
-```
-
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Expositionszeit"],"name":[1],"type":["fct"],"align":["left"]},{"label":["TargetTyp"],"name":[2],"type":["fct"],"align":["left"]},{"label":["N"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["rt.mean"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["ci"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"friendly","3":"20","4":"1170.351","5":"25.58042","6":"5.719956","7":"11.97201"},{"1":"1","2":"threating","3":"20","4":"1194.021","5":"40.16434","6":"8.981021","7":"18.79749"},{"1":"2","2":"friendly","3":"20","4":"1223.744","5":"26.44639","6":"5.913592","7":"12.37729"},{"1":"2","2":"threating","3":"20","4":"1190.079","5":"44.54935","6":"9.961539","7":"20.84974"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-
-\
-
-
-<div class = "red">
-
-**Achtung:** 
-* Rmisc-Funktionen stehen in Konflikt mit dplyr-Funktionen (z.B. rename(), summarise()) 
-* deswegen Rmisc nicht über library(Rmisc) in den Workspace laden, sondern nur für die genutzte Funktion (siehe oben im Beispiel)
-
-
-</div>
-\
-
-
-
-```r
-ErrorData <- Rmisc::summarySEwithin(data.anova, measure = "rt.mean", withinvars = c("Expositionszeit", "TargetTyp"), idvar="id", conf.interval = .95)
-
-
-Interaction  + geom_errorbar(data=ErrorData,
-                              mapping = aes(x= Expositionszeit, 
-                                            ymin = rt.mean - se, 
-                                            ymax=rt.mean + se ,
-                                            color = TargetTyp,
-                                            group= TargetTyp ),
-                              size = 1.2, 
-                              width=.2, 
-                              position=position_dodge(0.1), 
-                              show.legend = F,
-                              )
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-59-1.png" style="display: block; margin: auto;" />
-
-Das ist zugegeben nicht ganz `tidy`, da wir einen neuen Datensatz erstellen müssen. Das liegt daran, dass wir im Within-Design nicht auf gruppenbasis die *Standard Error of the Mean* berechnen können, sondern immer den kompletten Datensatz brauchen.
-
-Im Between-Design ist das nicht so und wir können `tidy`arbeiten. Wir definieren eine Hilfsfunktion, die den *Standard Error of the Mean* berechnet `sem <- function(x) sd(x)/sqrt(length(x))` und verwenden diese in `stat_summary`. Im Unterschied zu `geom_errorbar`, wo wir die Werte übergeben haben, müssen wir hier eine Funktion übergeben, die die Werte berechnet `function(i) mean(i) + sem(i)` für die obere Grenze und `function(i) mean(i) - sem(i)` für die untere Grenze.
-
-
-```r
-sem <- function(x) sd(x)/sqrt(length(x))
-
-
-Interaction  + 
-               stat_summary(fun.max=function(i) mean(i) + sem(i) ,
-                            fun.min=function(i) mean(i) - sem(i), 
-                            , mapping= aes(x=Expositionszeit,y=rt.mean, group=TargetTyp)
-                            , geom=c("errorbar"),  size=1.2, width = 0.15)
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-60-1.png" style="display: block; margin: auto;" />
-
-Hier nochmal alles zusammen für die Genauigkeit.
-
-
-```r
-pd <- position_jitter(0.2, seed=1)
-
-data.corr <- data.df  %>% 
-  group_by(id, Expositionszeit , TargetTyp) %>% 
-  dplyr::summarise(corr.mean = mean(corr, na.rm = T))
-
-Accplot <- ggplot2::ggplot(data= data.corr, ##Datensatz festlegen
-                aes(
-                  x=Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
-                  y=corr.mean,
-                  group = TargetTyp,
-                  color = TargetTyp,
-                  shape = TargetTyp,
-                  linetype = TargetTyp
-                ))  +
-  geom_pointpath(mapping = aes(group = interaction(id, TargetTyp) ), 
-                            position = pd, alpha= 0.5) + 
-  stat_summary(fun=mean, mapping= aes(x=Expositionszeit,
-                                      y=corr.mean,
-                                      group =TargetTyp),
-               geom=c("point")) +
-  stat_summary(fun=mean, 
-                            mapping= aes(x=Expositionszeit,
-                                         y=corr.mean, 
-                                         group=TargetTyp), 
-                            geom=c("line"),  
-                            size=1.2)
-sem <- function(x) sd(x)/sqrt(length(x))
-
-
-Accplot  + stat_summary(fun.max=function(i) mean(i) + sem(i) ,
-                            fun.min=function(i) mean(i) - sem(i), 
-                            , mapping= aes(x=Expositionszeit,y=corr.mean, group=TargetTyp)
-                            , geom=c("errorbar"),  size=1.2, width = 0.15)
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-61-1.png" style="display: block; margin: auto;" />
-
-
-
-## Boxplots
-
-Wenn wir die Darstellungsart unseres Plots ändern wollen, wird der Vorteil davon `tidy` zu arbeiten deutlich. Denn im Grunde müssen wir kaum etwas am Code ändern  als die `geoms` und gruppieren nach `interaction(Expositionszeit, TargetTyp)` um eine Box pro Bedingung zu bekommen.
-
-
-
-```r
-Boxplot <-
-  Baseplot + geom_boxplot(aes(group = interaction(Expositionszeit, TargetTyp)) ,
-                          position = position_dodge(0.7),         ## Boxplots Expositionszeit sollen nebeneinander stehen für ein Level von Expositionszeit
-                          width = 0.5) 
-```
-
-
-Auch den Mittelwert können wir wieder analog hinzufügen.
-
-
-```r
-Boxplot + stat_summary(fun=mean, mapping= aes(x=Expositionszeit,y=rt.mean, 
-                                          group =TargetTyp), geom=c("point") ,
-                       position=position_dodge(0.7) ## Stellt sicher, dass die Mittelwerte in den Boxen zentriert sind
-                                          )
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-63-1.png" style="display: block; margin: auto;" />
-
-
-\
-
-## **Raincloud Plots**
-
-Raincloud-Plots sind häufig eine der besten Varianten, werden allerdings bei mehr als drei Bedingungen für eine UV sehr schwer zu implementieren. Für jeden Fakorstufe des Faktors auf der X-Achse müssen einzeln Halb-Violin- und Boxplots eingefügt werden. 
- 
-
-```r
-library(gghalves)
-
-Raincloudplot <- Accplot +
-  geom_pointpath(mapping = aes(y = corr.mean, group = interaction(id, TargetTyp)),
-                 
-                 alpha = 0.5) +
-  stat_summary(
-    fun = mean,
-    mapping = aes(x = Expositionszeit,
-                  y = corr.mean,
-                  group = TargetTyp),
-    geom = c("point")
-  ) +
-  stat_summary(
-    fun = mean,
-    mapping = aes(x = Expositionszeit,
-                  y = corr.mean,
-                  group = TargetTyp),
-    geom = c("line"),
-    size = 1.2
-  ) +
-  
-  geom_half_violin(
-    data = . %>% dplyr::filter(Expositionszeit == "1"),
-    aes(fill = TargetTyp),
-    position = position_nudge(x = -.2),
-    side = "l",
-    color = NA,
-    alpha = 0.3,
-    #draw_quantiles=c(0.25, 0.5)
-  ) +
-  geom_half_violin(
-    data = . %>% dplyr::filter(Expositionszeit == "2"),
-    aes(fill = TargetTyp),
-    position = position_nudge(x = .2),
-    side = "r",
-    color = NA,
-    alpha = 0.3,
-    #draw_quantiles=c(0.25, 0.75)
-  ) +
-  geom_boxplot(
-    data = . %>% dplyr::filter(Expositionszeit == "1"),
-    aes(
-      group = interaction(Expositionszeit, TargetTyp),
-      fill = TargetTyp
-    ),
-    alpha = 0.5,
-    width = .1,
-    outlier.shape = NA,
-    position = position_nudge(x = -.12),
-    notch = T
-  ) +
-  geom_boxplot(
-    data = . %>% dplyr::filter(Expositionszeit == "2"),
-    aes(
-      group = interaction(Expositionszeit, TargetTyp),
-      fill = TargetTyp
-    ),
-    alpha = 0.5,
-    width = .1,
-    outlier.shape = NA,
-    position = position_nudge(x = .12),
-    notch = T
-  ) + stat_summary(
-    fun.max = function(i)
-      mean(i) + sem(i) ,
-    fun.min = function(i)
-      mean(i) - sem(i),
-    ,
-    mapping = aes(x = Expositionszeit, y = corr.mean, group = TargetTyp)
-    ,
-    geom = c("errorbar"),
-    size = 1.2,
-    width = 0.1
-  )
-
-
-Raincloudplot
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-64-1.png" style="display: block; margin: auto;" />
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-65-1.png" style="display: block; margin: auto;" />
-\
-
-\
-
-
-## Balkendiagramme
-
-Balkendiagramme sind hier nur der Vollständigkeit halber aufgeführt. 
-Für Balkendiagramme sind die Anpassung noch einfacher, wir können direkt die Mittelwerte hinzufügen, und ändern nur die Füllungsfarbe.
-
-
-```r
-Balken <-
-  Baseplot + stat_summary(fun=mean, mapping= aes(x=Expositionszeit,y=rt.mean, 
-                                          group =TargetTyp,  fill= TargetTyp), linetype=1, geom=c("bar") ,
-                       position=position_dodge(0.7) ## Stellt sicher, dass die Mittelwerte in den Boxen zentriert sind
-                                          )
-```
-
-Fehlerbalken werden wieder analog eingefügt. Wir ändern nur color und linetype.
-
-
-```r
-Balken <- Balken + geom_errorbar(data=ErrorData,
-                              mapping = aes(x= Expositionszeit, 
-                                            ymin = rt.mean - se, 
-                                            ymax=rt.mean + se ,
-                                            group= TargetTyp ),
-                              color = "black",
-                              linetype = 1,
-                              size = 1.2, 
-                              width=.2, 
-                              position=position_dodge(0.7), 
-                              show.legend = F,
-                              )
-
-Balken
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-67-1.png" style="display: block; margin: auto;" />
-
-## Grafiken Formatiern
-### Achsen Beschriften
-
-
-```r
-Raincloudplot <- Raincloudplot + labs(x = "Expositionszeit (s)", y= "Reaktionszeit in ms")
-Raincloudplot
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-68-1.png" style="display: block; margin: auto;" />
-
-### Farben ändern/ Bezeichnung in der Legende ändern
-
-
-
-```r
-Raincloudplot <-
-  Raincloudplot + scale_fill_brewer(
-    name = "TargetTyp",
-    palette = "Set2",
-    labels = c("freundlich", "bedrohlich")
-  ) +
-  scale_color_brewer(
-    name = "TargetTyp",
-    palette = "Set2",
-    labels = c("freundlich", "bedrohlich")
-  )
-Raincloudplot
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-69-1.png" style="display: block; margin: auto;" />
-\
-
-**Verwendet ihr mehrere Aesthetics (Color und Fill im Beispiel) in der Grafik, muss die Legende für alle  codiert werden, sonst entstehen mehrere Legenden**
-
-Allgemeine Hinweise zur Bearbeitung der Legende findet ihr<a href="http://www.cookbook-r.com/Graphs/Legends_%28ggplot2%29/" target="_blank">hier</a>
-
-
-#### Welche Farben??
-##### Druckerfreundlich
-
-Papers werden resourcenschonend häufig in Grau gedruckt. Dabei bestimmt oft nur die Helligkeit (Luminanz) der Farbe den Grauton. Wenn gleichhelle (isoluminante) Farben verwendet werden, sind eure Graphen nicht mehr unterscheidbar. Es müssen also Farben gefunden werden, die sich in ihrer Luminanz unterscheiden. 
-
-Das Paket `ggsci` bietet eine Ganze Reihe an Farbpalleten, mitunter auch eine Palette (`pal_npg`) die sich an Publikationen in **Nature** orientiert. Wir suchen manuell Farben aus `pal_npg` die sich in ihrer Luminanz unterscheiden. Dies können wir mit  `specplot` aus dem Paket `colorspaces` machen. 
-
-
-```r
-library(colorspace)
-library(ggsci)
-
-
-npg <- pal_npg("nrc")(10)        # gibt die RGB-Werte der kompletten Palette
-specplot(npg)                    # Zeichnet Luminanz, Chroma und HUE Verlauf
-specplot(npg)[c(1,4,7)]
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-70-1.png" style="display: block; margin: auto;" />
-
-```
-$HCL
-              H         C        L
- [1,]  15.69080 127.41065 54.15136
- [2,] 216.35958  53.48331 70.81504
- [3,] 167.59379  49.23039 58.87119
- [4,] 255.37721  46.46563 36.13420
- [5,]  25.93758  70.93779 72.25127
- [6,] 254.44871  31.61807 60.29376
- [7,] 170.28967  31.63907 79.33613
- [8,]  12.17395 154.47322 45.93504
- [9,]  45.06235  29.17539 43.43904
-[10,]  54.64014  23.87747 65.51562
-
-$<NA>
-NULL
-
-$<NA>
-NULL
-```
-
-In unserem Fall benötigen wir drei Farben (1,4 und 7 unterscheiden sich deutlich), die wir manuell auswählen und dann in `scale_color_manual` und  `scale_fill_manual` verwenden
-
-
-```r
-colors <- pal_npg("nrc")(10)[c(1,4,7)]
-
-Raincloudplot <-
-  Raincloudplot + scale_fill_manual(
-    name = "TargetTyp",
-    values = colors,
-    labels = c("freundlich", "bedrohlich")
-  ) +
-  scale_color_manual(
-    name = "TargetTyp",
-    values = colors,
-    labels = c("freundlich", "bedrohlich")
-  )
-Raincloudplot
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-71-1.png" style="display: block; margin: auto;" />
-
-##### Perzeptuell gleichförmig
-
-Will man einen numerischen Verlauf durch Farben darstellen sollte man darauf achten, dass die Farbpalette perzeptuell gleichförmig ist, das heißt grob, dass ähnliche Unterschiede in den Daten zu ähnlichen Unterschieden in der Farbwahrnehmung führen sollten.
-
-Die <a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html" target="_blank">Viridis-Farbpaletten</a> erfüllen genau diesen Zweck. Darüberhinaus sind hier Farbpaletten enthalten die für Personen mit Farbfehlsichtigkeit ebenfalls perzeptuell gleichförmig sind.
-
-Die Paletten können in `ggplot` über `scale_fill_viridis()` und `scale_color_viridis()` eingebunden werden.
-
-
-```r
-#install.packages("viridis")
-library(viridis)
-
-ggplot(data.frame(x = rnorm(10000), y = rnorm(10000)), aes(x = x, y = y)) +
-  geom_hex() + 
-  coord_fixed() +
-  scale_fill_viridis() + 
-  theme_bw()
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-72-1.png" style="display: block; margin: auto;" />
-
-
-
-### Symbole und Linientyp ändern
-
-
-```r
-Accplot + scale_shape_manual(
-  values = c(20, 21),
-  name = "TargetTyp",
-  labels = c("freundlich", "bedrohlich")
-) +
-  scale_linetype_manual(
-    values = c("12", "11"),
-    name = "TargetTyp",
-    labels = c("freundlich", "bedrohlich")
-  )
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-73-1.png" style="display: block; margin: auto;" />
-
-```r
-Raincloudplot <-
-  Raincloudplot + scale_shape_manual(
-    values = c(16, 15),
-    name = "TargetTyp",
-    labels = c("freundlich", "bedrohlich")
-  ) +
-  scale_linetype_manual(
-    values = c("12", "11"),
-    name = "TargetTyp",
-    labels = c("freundlich", "bedrohlich")
-  )
-Raincloudplot
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-73-2.png" style="display: block; margin: auto;" />
-
-Vielleicht habt ihr bemerkt, dass nun im Raincloudplot eine Legende verschwunden ist. Wie oben beschrieben legt ggplot für jede Ästhetik eine neue Legende an, es sei denn Name und Labels stimmen überein. Wir haben die Labels für Farben und Shapes vereinheitlicht, deshalb hat ggplot die Legenden zusammengeführt. `scale_linetype_manual` hat auf den Raincloudplot keinen Einfluss, da wir keine Ästhetik für `linetype` definiert haben (z.B. `aes(..., linetype= TargetTyp)`).
-
-
-Allgemeine Hinweise zur Bearbeitung der Symbole und Linientypen findet ihr <a href="http://www.cookbook-r.com/Graphs/Shapes_and_line_types/" target="_blank">hier</a>.
-
-### Stufen der Variable X auf der X-Achse benennen
-
-
-```r
-Balken <-
-  Balken + scale_x_discrete(breaks = c("1", "2"),
-                            labels = c("Stufe1", "Stufe2"))
-Balken
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-74-1.png" style="display: block; margin: auto;" />
-
-
-### Y-Limits setzen
-
-Es gibt mehrere Möglichkeiten X und Y Limits zu setzen, z.B. `ylim()` oder `scale_y_continuous(limits = c(min, max))`, bei diesen werden aber Datenpunkte außerhalb der Limits entfernt und `stat_summary` gibt nicht mehr die korrekten Werte aus. Deshalb ist es ratsam `coord_cartesian(ylim=c(min, max))` zu verwenden.
-
-
-```r
-Balken +  ylim(1100, 1300)
-
-Balken <-
-  Balken +  coord_cartesian(ylim = c(1100, 1300))
-Balken
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/figures-side-1.png" width="45%" style="display: block; margin: auto;" /><img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/figures-side-2.png" width="45%" style="display: block; margin: auto;" />
-
-
-### Themes
-
-Mit `theme()` könnte ihr Komponenten des Layouts verändern, die sich nicht direkt auf die Daten beziehen, d.h. Titel, Achsen, Legende usw.. Mit `theme_get()`könnt ihr alle Optionen betrachten.
-
-Es gibt eine Reihe vordefinierter Themes die ihr z.B. <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" target="_blank">hier</a> findet. Diese könnt ihr sehr einfach verwenden
-
-
-```r
-Raincloudplot
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-75-1.png" style="display: block; margin: auto;" />
-
-```r
-Raincloudplot + theme_bw()
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-75-2.png" style="display: block; margin: auto;" />
-
-```r
-Raincloudplot + theme_classic()
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-75-3.png" style="display: block; margin: auto;" />
-
-```r
-Raincloudplot + theme_linedraw()
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-75-4.png" style="display: block; margin: auto;" />
-
-Es lohnt sich in der Regel sich ein Standard-Theme zu definieren, dass man dann für alle Plots verwendet, sodass die Grafiken ein einheitliches Layout haben und aufgeräumt aussehen.
-Wenn ein bestimmtes Element entfernt werden soll, kann dafür `element_blank()` verwendet werden.
-
-Unter `?element_blank` findet ihr alle gängigen Element-Typen die verwendet werden können und welche Argumente übergeben werden können.
-
-
-```r
-StandardTheme <- theme(
-            axis.line = element_line(colour = "black"), # Hauptachsenfarbe schwarz
-            panel.grid.major = element_blank(),  # Hauptgitterlinien entfernen
-            panel.grid.minor = element_blank(),  # Untergitterlinien entfernen
-            panel.border = element_blank(),      # Rahmen entfernen
-            panel.background = element_blank(),  # Hintergrund leer, d.h. weiß
-            text=element_text(size=14),          # allgemeine Schriftgröße auf 14 setzen
-            axis.title.x = element_text( size=14, face="bold", colour = "black"), # Farbe schwarz und Fett
-            axis.title.y = element_text( size=14, face="bold", colour = "black"),
-            strip.text =  element_text( size=12),
-            axis.text = element_text( size=12),
-            legend.background = element_rect(colour = "black"), # Rahmen um Legende
-            legend.key = element_blank(),
-            legend.key.size = unit(1, "lines"))
-
-
-Raincloudplot
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-76-1.png" style="display: block; margin: auto;" />
-
-```r
-Raincloudplot +  StandardTheme
-```
-
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-76-2.png" style="display: block; margin: auto;" />
-
-
-## Speichern/ exportieren
-
-`ggsave` speichert automatisch euren letzten `ggplot`, ihr könnt aber auch explizit den Plot als Argument übergeben. 
-
-
-
-
-```r
-ggsave("Grafiken/experiment_grafik.pdf", width = 18, height = 12, units = "cm", dpi = 300)
-ggsave("Grafiken/experiment_grafik2.pdf", plot= Interaction, width = 18, height = 12, units = "cm", dpi = 300)
-```
-
-In diesem Beispiel wurden die Grafiken als PDFs gespeichert. Das hat den Vorteil, dass die Dateien als <a href="https://de.wikipedia.org/wiki/Vektorgrafik" target="_blank">Vektorgrafiken</a> vorliegen. Im wesentlichen heißt das, dass ihr die Größe der Grafik im nachhinein beliebig verändern könnt, ohne das die Grafik unscharf wird.
-
-In der Form können die Grafiken allerdings nicht in Word oder Powerpoint eingebunden werden (**Ausnahme Mac**). Dafür solltet ihr direkt das PNG-Format wählen mit einer hohen Auflösung (Journals verlangen **300 dpi** Minimum).
-
-Das Format wird über die Endung des Dateinamen festgelegt.
-
-
-```r
-ggsave("Grafiken/experiment_grafik.PNG", width = 18, height = 12, units = "cm", dpi = 300)
-ggsave("Grafiken/experiment_grafik2.PNG", plot= Interaction, width = 18, height = 12, units = "cm", dpi = 300)
-```
-
-
-\
-
-## **Aufgaben**
-
-1. Erstellt für jede Kern-Hypothese eine aussagekräftige Grafik!
-    *
-
-<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
-
-<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
 
 
 

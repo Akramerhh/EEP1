@@ -78,8 +78,13 @@ Bedrohliche Gesichter werden in einer Menge emotionaler Distraktoren schneller g
 
 ```{r}
 data.files <- list.files("Alle Daten/")
-data.example <- data.files[1]
-daten <- read.csv(paste0("Alle Daten/", data.example ), header=TRUE, fileEncoding = "UTF-8-BOM")
+data.df <- data.frame()
+
+# data.df aller VPs einlesen
+for (file in data.files){
+  data = read.csv(paste0("./Alle Daten/", file ), header=TRUE, fileEncoding = "UTF-8-BOM")
+  data.df = rbind(data.df, data)
+}
 ```
 
 \
@@ -89,16 +94,17 @@ daten <- read.csv(paste0("Alle Daten/", data.example ), header=TRUE, fileEncodin
 ## Übungstrials entfernen
 
 ```{r}
-daten <- daten %>%
+data.df <- data.df %>%
   filter(phase != "uebung")
+data.df
 ```
 
-## Datenstruktur prüfen und Faktoren definieren
+## data.dfstruktur prüfen und Faktoren definieren
 
 ```{r}
-str(daten)
+str(data.df)
 
-daten <- daten %>%
+data.df <- data.df %>%
   rename("Expositionszeit" = Condition1,
          "TargetTyp" = Condition2) %>%
   mutate(
@@ -108,28 +114,28 @@ daten <- daten %>%
     gender = recode_factor(gender, w = "weiblich", m = "männlich", d = "divers")
   )
 
-str(daten)
+str(data.df)
 
 
 ```
 
 \
 
-## Vollständigkeit der Daten prüfen
+## Vollständigkeit der data.df prüfen
 
 
 
 ```{r Vollstaendigkeit}
-# Anzahl der Zeilen im Datensatz
-daten %>% count()
+# Anzahl der Zeilen im data.dfsatz
+data.df %>% count()
 # Anzahl der Trials pro Bedingung
 
-daten %>%
-  group_by(Expositionszeit, TargetTyp) %>%  # UV: muss durch Spaltenname ersetzt werden
+data.df %>%
+  group_by(id, Expositionszeit, TargetTyp) %>%  # UV: muss durch Spaltenname ersetzt werden
   summarise(n=n())
 
-daten %>%
-  group_by(Expositionszeit, TargetTyp) %>%  # UV: muss durch Spaltenname ersetzt werden
+data.df %>%
+  group_by(id, Expositionszeit, TargetTyp) %>%  # UV: muss durch Spaltenname ersetzt werden
   count()
 
 ```
@@ -146,8 +152,8 @@ Die Analyse der Antwortgenauigkeit (RA - Response Accuracy) soll pro Bedingung e
 
 
 ```{r Antwortgenauigkeit}
-daten %>%
-  group_by(Expositionszeit, TargetTyp) %>%
+data.df %>%
+  group_by(id, Expositionszeit, TargetTyp) %>%
   summarise(RA.Summe = sum(corr),
             RA.Anteil = mean(corr),
             RA.Anteil2 =sum(corr)/n() )
@@ -160,60 +166,164 @@ daten %>%
 
 ### visuelle Inspektion
 
-Daten filtern: Ausschluss von Trials, in denen die VP falsch reagiert hat
+data.df filtern: Ausschluss von Trials, in denen die VP falsch reagiert hat
 ```{r Reaktionszeit Filter, eval = T}
 
-# Daten filtern: Ausschluss von Trials, in denen die VP falsch reagiert hat
-data.ohneFehler.df <- daten %>%
+# data.df filtern: Ausschluss von Trials, in denen die VP falsch reagiert hat
+data.ohneFehler.df <- data.df %>%
   filter(corr == 1)
 ```
 
 
 \
 
-**Verteilung der Reaktionszeiten pro Bedingung**
+**Verteilung der Reaktionszeiten pro Bedingung und VP** 
+
+#### {.tabset}
 
 \
 
-```{r Histogramm, warning=FALSE}
+```{r,  eval = T, echo = F, warning=FALSE}
 
-ggplot( data=data.ohneFehler.df, aes(x= rt)) + geom_histogram(binwidth=100) + facet_grid(Expositionszeit~TargetTyp)
+
+plots <- data.df %>% 
+         group_by(id) %>% 
+         do( plots= ggplot( data=., aes(x= TargetTyp , y=rt)) + 
+               geom_boxplot() + 
+               geom_jitter()+ 
+               facet_grid(~Expositionszeit) + 
+               ggtitle(paste0("VP:", .$id))
+)
+
 
 ```
 
 \
 
-**Boxplot der Reaktionszeiten pro Bedingung**
-\
+```{r, echo=F, results='asis'}
 
-```{r, warning=FALSE}
+for(i in seq_along(plots[[1]])){
+  cat("##### VP: ",plots[[1]][[i]] , "\n")
+  print(plots[[2]][[i]])
+  cat("\n\n")
+}
 
-ggplot( data=data.ohneFehler.df, aes(x= TargetTyp , y=rt)) + geom_boxplot() + geom_jitter()+ facet_grid(~Expositionszeit)
 
 ```
 
+#### {.unlisted}
+
+
 \
 
-### Ausreißer {#Ausreisser}
+### Ausreißer Reaktionszeiten {#Ausreisser}
 
 
 ```{r, echo=T, eval = T, message=FALSE, warning=FALSE}
 data.ohneFehler.df %>%
   filter(rt > 200) %>%
-  group_by(Expositionszeit,TargetTyp) %>%
+  group_by(id, Expositionszeit,TargetTyp) %>%
   mutate(remain = (rt < mean(rt) + 3*sd(rt))) %>%
-  group_by(Expositionszeit,TargetTyp) %>%
+  group_by(id, Expositionszeit,TargetTyp) %>%
   summarise(RA.remain = sum(remain)/n())
+
 
 data.RT.df <- data.ohneFehler.df %>%
   filter(rt > 200) %>%
-  group_by(Expositionszeit,TargetTyp) %>%
+  group_by(id, Expositionszeit,TargetTyp) %>%
   filter(rt < mean(rt) + 3*sd(rt))
+
+```
+
+### VPs ausschließen
+
+#### Boxplot alle Vps
+
+```{r}
+data.boxplot <- data.RT.df %>% 
+  group_by(id, Expositionszeit, TargetTyp) %>% 	
+  dplyr::summarise(
+            mean.rt	= mean(rt),
+            sd.rt 	= sd(rt),
+            n 	= dplyr::n()
+            )
+
+pd = position_jitter(0.4, seed=1)
+
+ggplot(data = data.boxplot, aes(x = TargetTyp , y = mean.rt, label = id)) + 
+  geom_boxplot() + 
+  geom_point(position = pd) + 
+  facet_grid( ~ Expositionszeit) + 
+  geom_text(position = pd, hjust = 1.5)
+```
+
+```{r, warning=FALSE}
+data.CORR.df <- data.df %>%
+  filter(rt > 200) %>%
+  group_by(id, Expositionszeit,TargetTyp) %>%
+  filter(rt < mean(rt) + 3*sd(rt))
+
+data.boxplot.corr <- data.CORR.df %>% 
+  group_by(id, Expositionszeit, TargetTyp) %>% 	
+  dplyr::summarise(mean.corr = mean(corr),
+            n 	= dplyr::n())
+
+pd = position_jitter(0.25, seed=1)
+ggplot(data = data.boxplot.corr, aes(x = TargetTyp , y = mean.corr, label = id)) + 
+  geom_boxplot() + 
+  geom_point(position = pd) + 
+  facet_grid( ~ Expositionszeit) + 
+  geom_text(position = pd, hjust = 1.5)
+
+```
+
+####  zu wenig Trials / Auffällige Reaktionszeiten
+
+
+```{r}
+vp.err<- data.ohneFehler.df %>% 
+  group_by(Expositionszeit, TargetTyp) %>%
+  mutate(mean.rt = mean(rt),
+         sd.rt = sd(rt)) %>%
+  group_by(id, Expositionszeit, TargetTyp) %>%
+  mutate(nTrials = n())%>%
+  filter(mean(rt) > mean.rt + 3*sd.rt |                     # wichtig: größer als obere Grenze 
+         mean(rt) < mean.rt -  3*sd.rt|# wichtig: kleiner als untere Grenze 
+         nTrials < 0.55*54 # Muss ggf. pro VP und Bedingung geprüft werden!
+         ) %>%  
+  select(id) %>%
+  distinct() %>% 
+  pull(id)
+
+vp.err
+
+data.clean.rt <- data.ohneFehler.df %>% filter(!(id %in% vp.err))
+data.clean.corr <- data.CORR.df %>% filter(!(id %in% vp.err))
 
 ```
 
 
 # Aggregation Aller VP
+
+```{r}
+data.clean.corr.sum <- data.clean.corr %>%
+  group_by(id, Expositionszeit, TargetTyp) %>% 	
+  dplyr::summarise(mean.corr = mean(corr),
+                   sd.corr = sd(corr),
+                   n 	= dplyr::n(),
+                   sem.corr = sd.corr/sqrt(n))
+
+data.clean.rt.sum <- data.clean.rt %>%
+  group_by(id, Expositionszeit, TargetTyp) %>% 	
+  dplyr::summarise(mean.rt = mean(rt),
+                   sd.rt = sd(rt),
+                   n 	= dplyr::n(),
+                   sem.rt = sd.rt/sqrt(n))
+```
+
+\
+
+# Finale Grafik
 
 ```{r}
 
@@ -227,11 +337,5 @@ data.RT.df <- data.ohneFehler.df %>%
 
 ```
 
-\
 
-# Finale Grafik
-
-```{r}
-
-```
 
