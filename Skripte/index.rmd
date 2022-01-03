@@ -1699,7 +1699,7 @@ data.alle.vps %>% filter(!(id %in% vp.err))
 ## Screencast
 
 
-<iframe src="https://player.vimeo.com/video/661913783?h=41404ada9d&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="640" height="564" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="2022-01-03 10-50-22"></iframe>
+<iframe src="https://player.vimeo.com/video/661913783?h=41404ada9d&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen title="2022-01-03 10-50-22"></iframe>
 
 \
 
