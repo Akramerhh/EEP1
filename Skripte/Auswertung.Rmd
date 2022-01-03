@@ -35,7 +35,8 @@ packages <- c("knitr",
               "viridis",
               "lemon",
               "posterdown",
-              "rprojroot"
+              "rprojroot",
+              "gghalves"
               )
            
 
@@ -140,7 +141,7 @@ data.df %>%
 
 ```
 
-# Aggregation Einer VP
+# Aggregation und Analyse
 
 ## Analyse der Antwortgenauigkeit
 
@@ -217,7 +218,7 @@ for(i in seq_along(plots[[1]])){
 
 \
 
-### Ausreißer Reaktionszeiten {#Ausreisser}
+### Datenbereinigung Trial-Ebene {#Ausreisser}
 
 
 ```{r, echo=T, eval = T, message=FALSE, warning=FALSE}
@@ -236,7 +237,7 @@ data.RT.df <- data.ohneFehler.df %>%
 
 ```
 
-### VPs ausschließen
+### Datenbereinigung VP-Ebene
 
 #### Boxplot alle Vps
 
@@ -304,22 +305,52 @@ data.clean.corr <- data.CORR.df %>% filter(!(id %in% vp.err))
 ```
 
 
-# Aggregation Aller VP
+# Aggregierter Datensatz VP-Ebene
 
 ```{r}
-data.clean.corr.sum <- data.clean.corr %>%
+data.clean.corr.vp <- data.clean.corr %>%
   group_by(id, Expositionszeit, TargetTyp) %>% 	
   dplyr::summarise(mean.corr = mean(corr),
                    sd.corr = sd(corr),
-                   n 	= dplyr::n(),
-                   sem.corr = sd.corr/sqrt(n))
+                   nTrials 	= dplyr::n(),
+                   sem.corr = sd.corr/sqrt(nTrials))
 
-data.clean.rt.sum <- data.clean.rt %>%
+data.clean.rt.vp <- data.clean.rt %>%
   group_by(id, Expositionszeit, TargetTyp) %>% 	
   dplyr::summarise(mean.rt = mean(rt),
                    sd.rt = sd(rt),
-                   n 	= dplyr::n(),
-                   sem.rt = sd.rt/sqrt(n))
+                   nTrials 	= dplyr::n(),
+                   sem.rt = sd.rt/sqrt(nTrials))
+
+
+
+ErrorData <- Rmisc::summarySEwithin(data.clean.corr.vp, measure = "mean.corr", withinvars = c("Expositionszeit", "TargetTyp"), idvar="id", conf.interval = .95)
+
+
+```
+
+\
+
+# Aggregierter Datensatz UV-Ebene
+
+```{r}
+data.clean.corr.uv <- data.clean.corr.vp %>%
+  group_by( Expositionszeit, TargetTyp) %>% 	
+  dplyr::summarise(
+                   sd.corr = sd(mean.corr), # WICHTIG: Erst sd berechnen, dann MW !
+                   mean.corr = mean(mean.corr),
+                   nVPs 	= dplyr::n(),
+                   sem.corr = sd.corr/sqrt(nVPs))
+
+data.clean.rt.uv <- data.clean.rt.vp %>%
+  group_by( Expositionszeit, TargetTyp) %>% 	
+  dplyr::summarise(sd.rt = sd(mean.rt),
+                   mean.rt = mean(mean.rt),
+                   nVPs 	= dplyr::n(),
+                   sem.rt = sd.rt/sqrt(nVPs))
+
+
+
 ```
 
 \
@@ -327,6 +358,64 @@ data.clean.rt.sum <- data.clean.rt %>%
 # Finale Grafik
 
 ```{r}
+library(lemon)
+library(gghalves)
+
+Baseplot <- ggplot2::ggplot(data= data.clean.corr.vp, ##Datensatz festlegen
+                mapping=aes(
+                  x=Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
+                  y=mean.corr,
+                  group = TargetTyp,
+                  color = TargetTyp,
+                  shape = TargetTyp
+                )) 
+
+interactionPlot <- Baseplot + 
+  geom_pointpath(mapping = aes(group = interaction(id, TargetTyp) ), 
+                 position = pd, 
+                 alpha= 0.5) + 
+  stat_summary(fun=mean,
+               geom=c("point"),
+               size =3) + 
+  stat_summary(fun=mean,
+               geom=c("line"),
+               size =1.5 ) + 
+  labs(x = "Expositionszeit (s)", y= "Antwortgenauigkeit (rel. Häufigkeit korrekt)") + 
+  geom_errorbar(data=ErrorData,
+                              mapping = aes(x= Expositionszeit, 
+                                            ymin = mean.corr - se, 
+                                            ymax=mean.corr + se ,
+                                            color = TargetTyp,
+                                            group= TargetTyp ),
+                              size = 1.2, 
+                              width=.2, 
+                              position=position_dodge(0.1), 
+                              show.legend = F,
+                              ) +
+
+  geom_half_violin(
+    data = . %>% dplyr::filter(Expositionszeit == "1"),
+    aes(fill = TargetTyp),
+    position = position_nudge(x = -.05),
+    side = "l",
+    color = NA,
+    alpha = 0.3,
+    #draw_quantiles=c(0.25, 0.5)
+   ) +
+  geom_half_violin(
+    data = . %>% dplyr::filter(Expositionszeit == "2"),
+    aes(fill = TargetTyp),
+    position = position_nudge(x = .05),
+    side = "r",
+    color = NA,
+    alpha = 0.3,
+    #draw_quantiles=c(0.25, 0.75)
+  )
+
+interactionPlot
+
+
+ggsave("Grafiken/ergebnis_grafik_antwortgenauigkeit.png",plot= interactionPlot, width = 18, height = 12, units = "cm", dpi = 300)
 
 ```
 
