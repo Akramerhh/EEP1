@@ -635,8 +635,8 @@ Passen die Ergebnisse zu den Hypothesen?
 
 
 ```{=html}
-<div id="htmlwidget-90575616253fc184f5c6" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-90575616253fc184f5c6">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0];\nZusammenfassen [fillcolor= green]\nImport [fillcolor= green]\nBereingiung [fillcolor= green]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-805a96fa58164c68cdfc" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-805a96fa58164c68cdfc">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0];\nZusammenfassen [fillcolor= green]\nImport [fillcolor= green]\nBereingiung [fillcolor= green]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 
@@ -1233,8 +1233,8 @@ Statistische Kennzahlen (z.B. M, SD, Median, .. ) für alle AVs (Reaktionszeiten
 
 
 ```{=html}
-<div id="htmlwidget-2f6baed6912f076ed82b" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2f6baed6912f076ed82b">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nZusammenfassen [fillcolor= green]\nDeskriptive [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-12be85823ad69530c531" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-12be85823ad69530c531">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nZusammenfassen [fillcolor= green]\nDeskriptive [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 
@@ -1710,6 +1710,14 @@ factor(0)
 <a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
 
 # 5. Grafiken
+\
+
+
+## Screencast
+
+
+<iframe src="https://player.vimeo.com/video/661913783?h=41404ada9d&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="640" height="564" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="2022-01-03 10-50-22"></iframe>
+
 \
 
 ## Zwischenfeedback

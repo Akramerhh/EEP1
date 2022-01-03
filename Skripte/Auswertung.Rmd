@@ -237,9 +237,9 @@ data.RT.df <- data.ohneFehler.df %>%
 
 ```
 
-### Datenbereinigung VP-Ebene
+## Datenbereinigung VP-Ebene
 
-#### Boxplot alle Vps
+### Boxplot alle Vps
 
 ```{r}
 data.boxplot <- data.RT.df %>% 
@@ -279,7 +279,7 @@ ggplot(data = data.boxplot.corr, aes(x = TargetTyp , y = mean.corr, label = id))
 
 ```
 
-####  zu wenig Trials / Auffällige Reaktionszeiten
+###  zu wenig Trials / Auffällige Reaktionszeiten
 
 
 ```{r}
