@@ -418,12 +418,54 @@ interactionPlot
 ggsave("Grafiken/ergebnis_grafik_antwortgenauigkeit.png",plot= interactionPlot, width = 18, height = 12, units = "cm", dpi = 300)
 
 ```
-
 \
+
+```{r}
+Baseplot <- ggplot2::ggplot(data= data.clean.corr.vp, ##Datensatz festlegen
+                mapping=aes(
+                  x=Expositionszeit,           ##Datenstruktur (“aesthetics”) definieren
+                  y=mean.corr,
+                  group = TargetTyp,
+                  color = TargetTyp,
+                  shape = TargetTyp
+                )) 
+
+pd = position_dodge(width=0.9)
+
+barPlot <- Baseplot + 
+  stat_summary(aes(fill=TargetTyp),
+                fun=mean,
+               geom=c("bar"),
+               size =0,
+               position=pd,
+               alpha= 0.5) + 
+  geom_errorbar(data=ErrorData,
+                              mapping = aes(x= Expositionszeit, 
+                                            ymin = mean.corr - se, 
+                                            ymax=mean.corr + se ,
+                                            color = TargetTyp,
+                                            group= TargetTyp ),
+                              size = 1.2, 
+                              width=.2, 
+                              position=pd, 
+                              show.legend = F,
+                              alpha= 0.5
+                              ) + 
+  geom_pointpath(mapping = aes(group = interaction(id, TargetTyp) ), 
+                 position = pd, 
+                 alpha= 0.5) 
+  
+
+barPlot
+
+```
+
 
 # Inferenzstatistik
 
 ```{r}
+
+
 
 ```
 

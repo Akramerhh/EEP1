@@ -492,7 +492,8 @@ packages <- c("knitr",
               "ggsci",
               "viridis",
               "lemon",
-              "posterdown"
+              "posterdown",
+              "apaTables"
               )
            
 
@@ -503,7 +504,6 @@ if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
 
 
 # Die Reihenfolge ist hier wichtig, Rmisc muss vor dplyr/tidiverse geladen werden
-library("Rmisc")
 library("tidyverse")
 library("ez")
 
@@ -1202,25 +1202,6 @@ data.RT.df <- data.ohneFehler.df %>%
 
 \
 
-![](Grafiken/workflow2.PNG)
-\
-**Import**
-Daten aller VPs in einen Datensatz
-
-**Zusammenfassen:**
-**pro VP**: mittlere Reaktionszeiten (Fehler, Antwortgenauigkeiten) getrennt nach Bedingungen
-
-**Deskreptive Statistik:**
-Statistische Kennzahlen (z.B. M, SD, Median, .. ) für alle AVs (Reaktionszeiten, Fehler, Antwortgenauigkeiten) getrennt nach Bedingungen
-
-
-\
-
-## Datenebene
-\
-
-![](Grafiken/datenebeneAlleVP.PNG)
-\
 
 ```{r , eval=TRUE, echo=FALSE}
 library(DiagrammeR)
@@ -1268,6 +1249,26 @@ Zusammenfassen [fillcolor= green]
 Deskriptive [fillcolor= green];
 }", width="100%", heigh="100%")
 ```
+
+\
+**Import**
+Daten aller VPs in einen Datensatz
+
+**Zusammenfassen:**
+**pro VP**: mittlere Reaktionszeiten (Fehler, Antwortgenauigkeiten) getrennt nach Bedingungen
+
+**Deskreptive Statistik:**
+Statistische Kennzahlen (z.B. M, SD, Median, .. ) für alle AVs (Reaktionszeiten, Fehler, Antwortgenauigkeiten) getrennt nach Bedingungen
+
+
+\
+
+## Datenebene
+\
+
+![](Grafiken/datenebeneAlleVP.PNG)
+\
+
 
 
 1.Einlesen aller logfiles in eine Datentabelle (für jede neue VP kommen neue Zeilen dazu)
@@ -1695,6 +1696,55 @@ data.alle.vps %>% filter(!(id %in% vp.err))
 # 5. Grafiken
 \
 
+
+```{r , eval=TRUE, echo=FALSE}
+library(DiagrammeR)
+DiagrammeR::grViz("
+digraph dot {
+
+graph [layout = dot,
+       rankdir = LR,
+       newrank=true,
+       compound=true,
+       label='Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n',
+       labelloc  =  t, // t: Place the graph's title on top.
+        fontsize  = 25]
+
+node [shape = rect,
+      style = filled,
+      color = black]
+
+edge [color=black]
+
+node [fillcolor = red]
+Import Bereingiung 
+Ergebnispräsentation [label= 'Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)']
+
+node [fillcolor = white]
+Zusammenfassen[label= 'Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP'] 
+Deskriptive [label= 'Deskriptive Statistik\n für die Stichprobe berechnen'] 
+Inferenzstatistik 
+
+subgraph cluster_0 {
+    rankdir=TB;
+    rank=same;
+		style=filled;
+		color=red;
+		node [style=filled,color=white,fillcolor = white ];
+		Zusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];
+		label = 'Analyse';
+		fontsize  = 20;
+	} 
+
+Import -> Bereingiung
+Bereingiung -> Deskriptive [lhead=cluster_0] ;
+Deskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];
+Ergebnispräsentation [fillcolor= green]
+Deskriptive [fillcolor= green];
+}", width="100%", heigh="100%")
+```
+
+\
 
 ## Screencast
 
@@ -2723,7 +2773,53 @@ ggsave("Grafiken/experiment_grafik2.PNG", plot= Interaction, width = 18, height 
 
 \
 
-![](Grafiken/workflow3.PNG)
+
+```{r , eval=TRUE, echo=FALSE}
+library(DiagrammeR)
+DiagrammeR::grViz("
+digraph dot {
+
+graph [layout = dot,
+       rankdir = LR,
+       newrank=true,
+       compound=true,
+       label='Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n',
+       labelloc  =  t, // t: Place the graph's title on top.
+        fontsize  = 25]
+
+node [shape = rect,
+      style = filled,
+      color = black]
+
+edge [color=black]
+
+node [fillcolor = red]
+Import Bereingiung 
+Ergebnispräsentation [label= 'Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)']
+
+node [fillcolor = white]
+Zusammenfassen[label= 'Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP'] 
+Deskriptive [label= 'Deskriptive Statistik\n für die Stichprobe berechnen'] 
+Inferenzstatistik 
+
+subgraph cluster_0 {
+    rankdir=TB;
+    rank=same;
+		style=filled;
+		color=red;
+		node [style=filled,color=white,fillcolor = white ];
+		Zusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];
+		label = 'Analyse';
+		fontsize  = 20;
+	} 
+
+Import -> Bereingiung
+Bereingiung -> Deskriptive [lhead=cluster_0] ;
+Deskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];
+Ergebnispräsentation [fillcolor= green]
+Inferenzstatistik [fillcolor= green];
+}", width="100%", heigh="100%")
+```
 
 \
 
@@ -2771,6 +2867,10 @@ ggsave("Grafiken/experiment_grafik2.PNG", plot= Interaction, width = 18, height 
 * Sphärizität bei mehr als zwei Stufen des within-subject Faktors (= Gleichheit der Varianzen der paarweisen Differenzen zwischen den Messwiederholungen)
 \
 
+![](Grafiken/Mauchly.PNG)
+
+\
+
 **between-subject ANOVA:**
 
 * Unabhängigkeit der Messungen
@@ -2805,7 +2905,8 @@ myanova <- ezANOVA(daten
 
 \
 
-Eine einfache Auswertung würde für das Beispiel Experiment mit 2 faktoriellem  Within-Design also so aussehen:
+In dem Beispiel-Experiment haben beide UV nur zwei Stufen. In diesem Fall kann Sphärizität nicht auftreten. Um euch dennoch den Umgang mit Sphärizität zeigen zu können, ändern wir das Beispiel ab und fügen dem Faktor Expositionszeit eine weitere Stufe hinzu.
+Eine einfache Auswertung würde für das Beispiel Experiment mit 2 faktoriellem  Within-Design dann so aussehen:
 
 \
 
@@ -2813,11 +2914,27 @@ Eine einfache Auswertung würde für das Beispiel Experiment mit 2 faktoriellem 
 ```{r}
 library(ez)
 
-data.anova <- data.df  %>% 
+##############################################################
+#  Diese Schritte dienen nur dazu, das Beispiel anzupassen,  #
+#  Ihr könnt eure aggregierten Datensätze verwenden          #
+##############################################################
+
+third.level <-data.df %>% 
+  filter(corr ==1, Expositionszeit ==2) %>%
+  rowwise() %>%
+  mutate(Expositionszeit ="3",
+         rt = rt + ifelse(TargetTyp=="threating", rnorm(1,0, 100) ,rnorm(1,50, 100)))
+
+data.anova <- rbind(data.df, third.level)
+
+data.anova <- data.anova  %>% 
   filter(corr ==1) %>% 
   group_by(id, Expositionszeit , TargetTyp) %>% 
   dplyr::summarise(rt.mean = mean(rt, na.rm = T),
                    corr.mean = mean(corr, na.rm = T))
+
+##############################################################
+
 
 ezDesign(data= data.anova, x = Expositionszeit, y = TargetTyp)
 
@@ -2829,33 +2946,10 @@ myanova <- ezANOVA(data.anova
 
 myanova
 
-```
-
-\
-
-
-### Interaction mit ezPlot
-
-Dies ist die einfachste Version einen Interaktionsplot zu erstellen. Leider sind hier die Fehlerbalken in within-Designs nicht korrekt
-
-\
-```{r}
-#?ezPlot
-
-ezPlot(data.anova
-, dv = .(rt.mean)
-, wid = .(id) 
-, x= .(Expositionszeit)
-, within = .(Expositionszeit,TargetTyp) 
-, split =.(TargetTyp)
-, x_lab = "Expositionszeit"
-  	, y_lab = "Reaktionszeiten (ms)", 
-#do_bars = FALSE,
-type = 2
-#print_code=T
-)
 
 ```
+
+
 
 \
 Der Output beinhaltet drei Tabellen:
@@ -2881,11 +2975,7 @@ myanova
 
 Zuerst müssen wir kontrollieren, ob die Voraussetzungen für die Anova erfüllt sind mit dem `Mauchly's Test for Sphericity`.
 
-![](Grafiken/Mauchly.PNG)
-
-\
-
-In diesem Beispiel wird der Test auf Spherizität signifikant für die Effekte **B** und **A:B**, für **A** gibt es keine Werte, da **A** nur zwei Faktorstufen hat.
+In diesem Beispiel wird der Test auf Spherizität signifikant für die Effekte **Expositionszeit** und **Expositionszeit:TargetTyp**, für **TargetTyp** gibt es keine Werte, da **TargetTyp** nur zwei Faktorstufen hat.
 
 \
 ```{r, eval=TRUE, echo= FALSE}
@@ -2926,6 +3016,50 @@ Sehr kleine Werte werden in **scientific notation** wiedergegebn: Xe-05 = X * 0.
 **Ergebnisnotation**: $F$(6, 264) = 19.71, $p$ < .001, $\eta ^2$  = .05
   
 \
+
+Für die Ergebnispräsentation könnt ihr die Werte aus den Tabellen kopieren oder ihr verwendet z.B. das Paket `apaTables` um formatierte Tabellen direkt aus `R` zu bekommen.
+
+```{r}
+library(apaTables)
+
+###########################################################
+# Ihr könnt mit dem folgenden Befehl die Tabellen direkt  #
+#   im APA-Format in eine Worddatei exportieren.          #
+#   Legt dafür vorher einen Ordner "Tabellen" an          #
+###########################################################
+
+apa.ezANOVA.table(myanova, 
+                  table.title = "Anonva (Messwiederholung) der Reaktionszeiten",
+                  filename = "Tabellen/EEP_Anova.doc",
+                  table.number= 1
+                  )
+```
+
+
+
+### Interaction mit ezPlot
+
+Dies ist die einfachste Version einen Interaktionsplot zu erstellen. Leider sind hier die Fehlerbalken in within-Designs nicht korrekt
+
+\
+```{r}
+#?ezPlot
+
+ezPlot(data.anova
+, dv = .(rt.mean)
+, wid = .(id) 
+, x= .(Expositionszeit)
+, within = .(Expositionszeit,TargetTyp) 
+, split =.(TargetTyp)
+, x_lab = "Expositionszeit"
+  	, y_lab = "Reaktionszeiten (ms)", 
+#do_bars = FALSE,
+type = 2
+#print_code=T
+)
+
+```
+
 
 <a name="Post-Hoc-Tests"></a>
 

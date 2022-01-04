@@ -433,7 +433,8 @@ packages <- c("knitr",
               "ggsci",
               "viridis",
               "lemon",
-              "posterdown"
+              "posterdown",
+              "apaTables"
               )
            
 
@@ -444,7 +445,6 @@ if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
 
 
 # Die Reihenfolge ist hier wichtig, Rmisc muss vor dplyr/tidiverse geladen werden
-library("Rmisc")
 library("tidyverse")
 library("ez")
 ```
@@ -509,27 +509,28 @@ attached base packages:
 other attached packages:
  [1] ez_4.4-0         forcats_0.5.1    stringr_1.4.0    dplyr_1.0.7     
  [5] purrr_0.3.4      readr_2.1.0      tidyr_1.1.4      tibble_3.1.6    
- [9] ggplot2_3.3.5    tidyverse_1.3.1  Rmisc_1.5        plyr_1.8.6      
-[13] lattice_0.20-45  rmarkdown_2.11   rmdformats_1.0.3 knitr_1.36      
+ [9] ggplot2_3.3.5    tidyverse_1.3.1  rmarkdown_2.11   rmdformats_1.0.3
+[13] knitr_1.36      
 
 loaded via a namespace (and not attached):
  [1] httr_1.4.2       sass_0.4.0       jsonlite_1.7.2   splines_4.1.2   
  [5] carData_3.0-4    modelr_0.1.8     bslib_0.3.1      assertthat_0.2.1
  [9] cellranger_1.1.0 yaml_2.2.1       pillar_1.6.4     backports_1.4.0 
-[13] glue_1.5.0       digest_0.6.28    rvest_1.0.2      minqa_1.2.4     
-[17] colorspace_2.0-2 htmltools_0.5.2  Matrix_1.3-4     pkgconfig_2.0.3 
-[21] broom_0.7.10     haven_2.4.3      bookdown_0.24    scales_1.1.1    
-[25] tzdb_0.2.0       lme4_1.1-27.1    mgcv_1.8-38      generics_0.1.1  
-[29] car_3.0-12       ellipsis_0.3.2   withr_2.4.2      cli_3.1.0       
-[33] magrittr_2.0.1   crayon_1.4.2     readxl_1.3.1     evaluate_0.14   
-[37] fs_1.5.0         fansi_0.5.0      nlme_3.1-153     MASS_7.3-54     
-[41] xml2_1.3.2       tools_4.1.2      hms_1.1.1        lifecycle_1.0.1 
-[45] munsell_0.5.0    reprex_2.0.1     compiler_4.1.2   jquerylib_0.1.4 
-[49] rlang_0.4.12     grid_4.1.2       nloptr_1.2.2.3   rstudioapi_0.13 
-[53] boot_1.3-28      gtable_0.3.0     abind_1.4-5      DBI_1.1.1       
-[57] reshape2_1.4.4   R6_2.5.1         lubridate_1.8.0  fastmap_1.1.0   
-[61] utf8_1.2.2       rprojroot_2.0.2  stringi_1.7.5    Rcpp_1.0.7      
-[65] vctrs_0.3.8      dbplyr_2.1.1     tidyselect_1.1.1 xfun_0.28       
+[13] lattice_0.20-45  glue_1.5.0       digest_0.6.28    rvest_1.0.2     
+[17] minqa_1.2.4      colorspace_2.0-2 htmltools_0.5.2  Matrix_1.3-4    
+[21] plyr_1.8.6       pkgconfig_2.0.3  broom_0.7.10     haven_2.4.3     
+[25] bookdown_0.24    scales_1.1.1     tzdb_0.2.0       lme4_1.1-27.1   
+[29] mgcv_1.8-38      generics_0.1.1   car_3.0-12       ellipsis_0.3.2  
+[33] withr_2.4.2      cli_3.1.0        magrittr_2.0.1   crayon_1.4.2    
+[37] readxl_1.3.1     evaluate_0.14    fs_1.5.0         fansi_0.5.0     
+[41] nlme_3.1-153     MASS_7.3-54      xml2_1.3.2       tools_4.1.2     
+[45] hms_1.1.1        lifecycle_1.0.1  munsell_0.5.0    reprex_2.0.1    
+[49] compiler_4.1.2   jquerylib_0.1.4  rlang_0.4.12     grid_4.1.2      
+[53] nloptr_1.2.2.3   rstudioapi_0.13  boot_1.3-28      gtable_0.3.0    
+[57] abind_1.4-5      DBI_1.1.1        reshape2_1.4.4   R6_2.5.1        
+[61] lubridate_1.8.0  fastmap_1.1.0    utf8_1.2.2       rprojroot_2.0.2 
+[65] stringi_1.7.5    Rcpp_1.0.7       vctrs_0.3.8      dbplyr_2.1.1    
+[69] tidyselect_1.1.1 xfun_0.28       
 ```
 
 ```r
@@ -635,8 +636,8 @@ Passen die Ergebnisse zu den Hypothesen?
 
 
 ```{=html}
-<div id="htmlwidget-b007cac900d4088a42c8" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b007cac900d4088a42c8">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0];\nZusammenfassen [fillcolor= green]\nImport [fillcolor= green]\nBereingiung [fillcolor= green]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-2af7407a73da3cb89ee7" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2af7407a73da3cb89ee7">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0];\nZusammenfassen [fillcolor= green]\nImport [fillcolor= green]\nBereingiung [fillcolor= green]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 
@@ -1211,7 +1212,13 @@ data.RT.df <- data.RT.df %>%
 
 \
 
-![](Grafiken/workflow2.PNG)
+
+
+```{=html}
+<div id="htmlwidget-ccc0769d72c0b2832d86" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ccc0769d72c0b2832d86">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nZusammenfassen [fillcolor= green]\nDeskriptive [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+```
+
 \
 **Import**
 Daten aller VPs in einen Datensatz
@@ -1231,11 +1238,6 @@ Statistische Kennzahlen (z.B. M, SD, Median, .. ) für alle AVs (Reaktionszeiten
 ![](Grafiken/datenebeneAlleVP.PNG)
 \
 
-
-```{=html}
-<div id="htmlwidget-f7e339bbebbc5d6038ed" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f7e339bbebbc5d6038ed">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nZusammenfassen [fillcolor= green]\nDeskriptive [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-```
 
 
 1.Einlesen aller logfiles in eine Datentabelle (für jede neue VP kommen neue Zeilen dazu)
@@ -1713,6 +1715,14 @@ factor(0)
 \
 
 
+
+```{=html}
+<div id="htmlwidget-a3f25904a62eb9518017" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a3f25904a62eb9518017">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nErgebnispräsentation [fillcolor= green]\nDeskriptive [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+```
+
+\
+
 ## Screencast
 
 
@@ -1907,7 +1917,7 @@ plot <- ggplot2::ggplot(data = data.plot, ##Datensatz festlegen
 print(plot)                               ##Plotten
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-40-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-41-1.png" style="display: block; margin: auto;" />
 
 \
 
@@ -1922,7 +1932,7 @@ plot <- plot + geom_point()
 print(plot)
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-41-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-42-1.png" style="display: block; margin: auto;" />
 
 
 Wenn wir kontrollieren wollen, ob alle VPs dem globalen Trend folgen (B>A) können wir Linien hinzufügen pro VP. Dafür müssen wir die Daten aber gruppieren. Das können wir in den globalen aesthetics machen (`ggplot(data= , aes())`) oder für einzelne Layers festlegen, wie im Beispiel unten:
@@ -1932,7 +1942,7 @@ Wenn wir kontrollieren wollen, ob alle VPs dem globalen Trend folgen (B>A) könn
 plot + geom_line(aes(group=id))
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-42-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-43-1.png" style="display: block; margin: auto;" />
 
 #### Liste von `geoms`
 
@@ -1971,7 +1981,7 @@ plot <-
 plot
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-43-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-44-1.png" style="display: block; margin: auto;" />
 
 Analog können wir den Mittelwert hinzufügen. Wir können die Farbe über `color="farbe"` oder die Größe über `size=xx` verändern und den Mittelwert so abheben.
 
@@ -1995,7 +2005,7 @@ plot <-
 plot
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-44-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-45-1.png" style="display: block; margin: auto;" />
 
 
 **Wichtig:** `geoms` lassen sich anpassen über Argumente wie:
@@ -2038,7 +2048,7 @@ plot <-
 plot
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-45-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-46-1.png" style="display: block; margin: auto;" />
 
 \
 
@@ -2065,7 +2075,7 @@ Baseplot +
   geom_line(mapping = aes(group = interaction(id, TargetTyp) ), alpha= 0.50, position= pd)
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-46-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-47-1.png" style="display: block; margin: auto;" />
 
 ```r
 Interaction <-Baseplot + 
@@ -2073,7 +2083,7 @@ Interaction <-Baseplot +
 Interaction
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-46-2.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-47-2.png" style="display: block; margin: auto;" />
 
 Wir fügen wieder Mittelwerte hinzu.
  
@@ -2095,7 +2105,7 @@ Interaction <- Interaction + stat_summary(fun=mean,
 Interaction
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-47-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-48-1.png" style="display: block; margin: auto;" />
 
 
 ### Interaction mit ezPlot
@@ -2122,7 +2132,7 @@ ezPlot(data.plot
 )
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-48-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-49-1.png" style="display: block; margin: auto;" />
 
 
 
@@ -2161,7 +2171,7 @@ Interaction <- Baseplot +
 Interaction
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-49-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-50-1.png" style="display: block; margin: auto;" />
 
 </div>
 
@@ -2175,7 +2185,7 @@ Wenn individuelle Daten in einem Interaction-Plot dargestellt werden, kann es sc
 Interaction + facet_grid(cols= vars(TargetTyp))
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-50-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-51-1.png" style="display: block; margin: auto;" />
 
 
 ### Fehlerbalken
@@ -2233,7 +2243,7 @@ Interaction  + geom_errorbar(data=ErrorData,
                               )
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-52-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-53-1.png" style="display: block; margin: auto;" />
 
 Das ist zugegeben nicht ganz `tidy`, da wir einen neuen Datensatz erstellen müssen. Das liegt daran, dass wir im Within-Design nicht auf gruppenbasis die *Standard Error of the Mean* berechnen können, sondern immer den kompletten Datensatz brauchen.
 
@@ -2251,7 +2261,7 @@ Interaction  +
                             , geom=c("errorbar"),  size=1.2, width = 0.15)
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-53-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-54-1.png" style="display: block; margin: auto;" />
 
 Hier nochmal alles zusammen für die Genauigkeit.
 
@@ -2293,7 +2303,7 @@ Accplot  + stat_summary(fun.max=function(i) mean(i) + sem(i) ,
                             , geom=c("errorbar"),  size=1.2, width = 0.15)
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-54-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-55-1.png" style="display: block; margin: auto;" />
 
 
 
@@ -2321,7 +2331,7 @@ Boxplot + stat_summary(fun=mean, mapping= aes(x=Expositionszeit,y=rt.mean,
                                           )
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-57-1.png" style="display: block; margin: auto;" />
 
 
 \
@@ -2412,10 +2422,10 @@ Raincloudplot <- Accplot +
 Raincloudplot
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-57-1.png" style="display: block; margin: auto;" />
-
-
 <img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" />
+
+
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-59-1.png" style="display: block; margin: auto;" />
 \
 
 \
@@ -2455,7 +2465,7 @@ Balken <- Balken + geom_errorbar(data=ErrorData,
 Balken
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-60-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-61-1.png" style="display: block; margin: auto;" />
 
 ## Grafiken Formatiern
 ### Achsen Beschriften
@@ -2466,7 +2476,7 @@ Raincloudplot <- Raincloudplot + labs(x = "Expositionszeit (s)", y= "Reaktionsze
 Raincloudplot
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-61-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-62-1.png" style="display: block; margin: auto;" />
 
 ### Farben ändern/ Bezeichnung in der Legende ändern
 
@@ -2487,7 +2497,7 @@ Raincloudplot <-
 Raincloudplot
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-62-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-63-1.png" style="display: block; margin: auto;" />
 \
 
 **Verwendet ihr mehrere Aesthetics (Color und Fill im Beispiel) in der Grafik, muss die Legende für alle  codiert werden, sonst entstehen mehrere Legenden**
@@ -2513,7 +2523,7 @@ specplot(npg)                    # Zeichnet Luminanz, Chroma und HUE Verlauf
 specplot(npg)[c(1,4,7)]
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-63-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-64-1.png" style="display: block; margin: auto;" />
 
 ```
 $HCL
@@ -2556,7 +2566,7 @@ Raincloudplot <-
 Raincloudplot
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-64-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-65-1.png" style="display: block; margin: auto;" />
 
 ##### Perzeptuell gleichförmig
 
@@ -2578,7 +2588,7 @@ ggplot(data.frame(x = rnorm(10000), y = rnorm(10000)), aes(x = x, y = y)) +
   theme_bw()
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-65-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-66-1.png" style="display: block; margin: auto;" />
 
 
 
@@ -2598,7 +2608,7 @@ Accplot + scale_shape_manual(
   )
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-66-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-67-1.png" style="display: block; margin: auto;" />
 
 ```r
 Raincloudplot <-
@@ -2615,7 +2625,7 @@ Raincloudplot <-
 Raincloudplot
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-66-2.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-67-2.png" style="display: block; margin: auto;" />
 
 Vielleicht habt ihr bemerkt, dass nun im Raincloudplot eine Legende verschwunden ist. Wie oben beschrieben legt ggplot für jede Ästhetik eine neue Legende an, es sei denn Name und Labels stimmen überein. Wir haben die Labels für Farben und Shapes vereinheitlicht, deshalb hat ggplot die Legenden zusammengeführt. `scale_linetype_manual` hat auf den Raincloudplot keinen Einfluss, da wir keine Ästhetik für `linetype` definiert haben (z.B. `aes(..., linetype= TargetTyp)`).
 
@@ -2632,7 +2642,7 @@ Balken <-
 Balken
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-67-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-68-1.png" style="display: block; margin: auto;" />
 
 
 ### Y-Limits setzen
@@ -2662,25 +2672,25 @@ Es gibt eine Reihe vordefinierter Themes die ihr z.B. <a href="https://ggplot2.t
 Raincloudplot
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-68-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-69-1.png" style="display: block; margin: auto;" />
 
 ```r
 Raincloudplot + theme_bw()
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-68-2.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-69-2.png" style="display: block; margin: auto;" />
 
 ```r
 Raincloudplot + theme_classic()
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-68-3.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-69-3.png" style="display: block; margin: auto;" />
 
 ```r
 Raincloudplot + theme_linedraw()
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-68-4.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-69-4.png" style="display: block; margin: auto;" />
 
 Es lohnt sich in der Regel sich ein Standard-Theme zu definieren, dass man dann für alle Plots verwendet, sodass die Grafiken ein einheitliches Layout haben und aufgeräumt aussehen.
 Wenn ein bestimmtes Element entfernt werden soll, kann dafür `element_blank()` verwendet werden.
@@ -2708,13 +2718,13 @@ StandardTheme <- theme(
 Raincloudplot
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-69-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-70-1.png" style="display: block; margin: auto;" />
 
 ```r
 Raincloudplot +  StandardTheme
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-69-2.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-70-2.png" style="display: block; margin: auto;" />
 
 
 ## Speichern/ exportieren
@@ -2759,7 +2769,12 @@ ggsave("Grafiken/experiment_grafik2.PNG", plot= Interaction, width = 18, height 
 
 \
 
-![](Grafiken/workflow3.PNG)
+
+
+```{=html}
+<div id="htmlwidget-020e1f5a2709f454667d" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-020e1f5a2709f454667d">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nErgebnispräsentation [fillcolor= green]\nInferenzstatistik [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+```
 
 \
 
@@ -2807,6 +2822,10 @@ ggsave("Grafiken/experiment_grafik2.PNG", plot= Interaction, width = 18, height 
 * Sphärizität bei mehr als zwei Stufen des within-subject Faktors (= Gleichheit der Varianzen der paarweisen Differenzen zwischen den Messwiederholungen)
 \
 
+![](Grafiken/Mauchly.PNG)
+
+\
+
 **between-subject ANOVA:**
 
 * Unabhängigkeit der Messungen
@@ -2841,7 +2860,8 @@ myanova <- ezANOVA(daten
 
 \
 
-Eine einfache Auswertung würde für das Beispiel Experiment mit 2 faktoriellem  Within-Design also so aussehen:
+In dem Beispiel-Experiment haben beide UV nur zwei Stufen. In diesem Fall kann Sphärizität nicht auftreten. Um euch dennoch den Umgang mit Sphärizität zeigen zu können, ändern wir das Beispiel ab und fügen dem Faktor Expositionszeit eine weitere Stufe hinzu.
+Eine einfache Auswertung würde für das Beispiel Experiment mit 2 faktoriellem  Within-Design dann so aussehen:
 
 \
 
@@ -2850,16 +2870,32 @@ Eine einfache Auswertung würde für das Beispiel Experiment mit 2 faktoriellem 
 ```r
 library(ez)
 
-data.anova <- data.df  %>% 
+##############################################################
+#  Diese Schritte dienen nur dazu, das Beispiel anzupassen,  #
+#  Ihr könnt eure aggregierten Datensätze verwenden          #
+##############################################################
+
+third.level <-data.df %>% 
+  filter(corr ==1, Expositionszeit ==2) %>%
+  rowwise() %>%
+  mutate(Expositionszeit ="3",
+         rt = rt + ifelse(TargetTyp=="threating", rnorm(1,0, 100) ,rnorm(1,50, 100)))
+
+data.anova <- rbind(data.df, third.level)
+
+data.anova <- data.anova  %>% 
   filter(corr ==1) %>% 
   group_by(id, Expositionszeit , TargetTyp) %>% 
   dplyr::summarise(rt.mean = mean(rt, na.rm = T),
                    corr.mean = mean(corr, na.rm = T))
 
+##############################################################
+
+
 ezDesign(data= data.anova, x = Expositionszeit, y = TargetTyp)
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-72-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-74-1.png" style="display: block; margin: auto;" />
 
 ```r
 myanova <- ezANOVA(data.anova
@@ -2873,13 +2909,144 @@ myanova
 
 ```
 $ANOVA
-                     Effect DFn DFd          F           p p<.05        ges
-2           Expositionszeit   1  19 10.0939003 0.004962470     * 0.04130396
-3                 TargetTyp   1  19  0.3941029 0.537623455       0.00175660
-4 Expositionszeit:TargetTyp   1  19 13.3066129 0.001711599     * 0.05474727
+                     Effect DFn DFd        F            p p<.05        ges
+2           Expositionszeit   2  38 26.14105 7.235318e-08     * 0.09669736
+3                 TargetTyp   1  19 12.09110 2.522351e-03     * 0.06505475
+4 Expositionszeit:TargetTyp   2  38 35.28935 2.171403e-09     * 0.12068803
+
+$`Mauchly's Test for Sphericity`
+                     Effect         W            p p<.05
+2           Expositionszeit 0.2447206 3.147998e-06     *
+4 Expositionszeit:TargetTyp 0.2012886 5.424661e-07     *
+
+$`Sphericity Corrections`
+                     Effect       GGe        p[GG] p[GG]<.05       HFe
+2           Expositionszeit 0.5697099 2.394938e-05         * 0.5819630
+4 Expositionszeit:TargetTyp 0.5559536 3.930512e-06         * 0.5656875
+         p[HF] p[HF]<.05
+2 2.027796e-05         *
+4 3.330937e-06         *
 ```
 
+
+
 \
+Der Output beinhaltet drei Tabellen:
+
+1. Die Zusammenfassung der Ergebnisse der Anova
+
+2. Mauchly's Test auf Spherizität
+
+3. Spherizität-Korrekturen nach Greenhouse-Geisser und Huynh-Feldt 
+
+Schaut euch die Bedeutung der Spalten mit `?ezANOVA` einmal an.
+
+\
+
+
+
+```
+$ANOVA
+                     Effect DFn DFd        F            p p<.05        ges
+2           Expositionszeit   2  38 26.14105 7.235318e-08     * 0.09669736
+3                 TargetTyp   1  19 12.09110 2.522351e-03     * 0.06505475
+4 Expositionszeit:TargetTyp   2  38 35.28935 2.171403e-09     * 0.12068803
+
+$`Mauchly's Test for Sphericity`
+                     Effect         W            p p<.05
+2           Expositionszeit 0.2447206 3.147998e-06     *
+4 Expositionszeit:TargetTyp 0.2012886 5.424661e-07     *
+
+$`Sphericity Corrections`
+                     Effect       GGe        p[GG] p[GG]<.05       HFe
+2           Expositionszeit 0.5697099 2.394938e-05         * 0.5819630
+4 Expositionszeit:TargetTyp 0.5559536 3.930512e-06         * 0.5656875
+         p[HF] p[HF]<.05
+2 2.027796e-05         *
+4 3.330937e-06         *
+```
+\
+
+Zuerst müssen wir kontrollieren, ob die Voraussetzungen für die Anova erfüllt sind mit dem `Mauchly's Test for Sphericity`.
+
+In diesem Beispiel wird der Test auf Spherizität signifikant für die Effekte **Expositionszeit** und **Expositionszeit:TargetTyp**, für **TargetTyp** gibt es keine Werte, da **TargetTyp** nur zwei Faktorstufen hat.
+
+\
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["W"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p<.05"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Expositionszeit","2":"0.2447206","3":"3.147998e-06","4":"*","_rn_":"2"},{"1":"Expositionszeit:TargetTyp","2":"0.2012886","3":"5.424661e-07","4":"*","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+\
+
+Das heißt es müssen die korrigierten Werte betrachtet werden für **B** und **A:B** ( `p[GG]` für Greenhouse-Geisser oder `p[HF]` für Huynh-Feldt . 
+
+\
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["GGe"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["p[GG]"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p[GG]<.05"],"name":[4],"type":["chr"],"align":["left"]},{"label":["HFe"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["p[HF]"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["p[HF]<.05"],"name":[7],"type":["chr"],"align":["left"]}],"data":[{"1":"Expositionszeit","2":"0.5697099","3":"2.394938e-05","4":"*","5":"0.5819630","6":"2.027796e-05","7":"*","_rn_":"2"},{"1":"Expositionszeit:TargetTyp","2":"0.5559536","3":"3.930512e-06","4":"*","5":"0.5656875","6":"3.330937e-06","7":"*","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+\
+
+An den **p-Werten** (Spalten `p <.05`,  `p[GG] <.05`) erkennen wir, dass **A** und **B** signifikant sind.
+
+Sehr kleine Werte werden in **scientific notation** wiedergegebn: Xe-05 = X * 0.00001 (Komma 5 Stellen nach links verschieben)
+
+
+**Effektstärke** `ges`: generalized eta squared ($\eta ^2 _G$)
+
+* Maß für die Effektstärke 
+
+* wie viel Varianz an der Gesamtvarianz wird durch diesen Effekt aufgeklärt?
+
+* $\eta ^2 _G$ ist maximal 1 
+
+\
+**Ergebnisnotation**: $F$(6, 264) = 19.71, $p$ < .001, $\eta ^2$  = .05
+  
+\
+
+Für die Ergebnispräsentation könnt ihr die Werte aus den Tabellen kopieren oder ihr verwendet z.B. das Paket `apaTables` um formatierte Tabellen direkt aus `R` zu bekommen.
+
+
+```r
+library(apaTables)
+
+###########################################################
+# Ihr könnt mit dem folgenden Befehl die Tabellen direkt  #
+#   im APA-Format in eine Worddatei exportieren.          #
+#   Legt dafür vorher einen Ordner "Tabellen" an          #
+###########################################################
+
+apa.ezANOVA.table(myanova, 
+                  table.title = "Anonva (Messwiederholung) der Reaktionszeiten",
+                  filename = "Tabellen/EEP_Anova.doc",
+                  table.number= 1
+                  )
+```
+
+```
+
+
+Table 1 
+
+Anonva (Messwiederholung) der Reaktionszeiten 
+
+                   Predictor df_num df_den Epsilon     F    p ges
+                   TargetTyp   1.00  19.00         12.09 .003 .07
+             Expositionszeit   1.14  21.65    0.57 26.14 .000 .10
+ Expositionszeit x TargetTyp   1.11  21.13    0.56 35.29 .000 .12
+
+Note. df_num indicates degrees of freedom numerator. df_den indicates degrees of freedom denominator. 
+Epsilon indicates Greenhouse-Geisser multiplier for degrees of freedom, 
+p-values and degrees of freedom in the table incorporate this correction.
+ges indicates generalized eta-squared.
+ 
+```
+
 
 
 ### Interaction mit ezPlot
@@ -2905,75 +3072,8 @@ type = 2
 )
 ```
 
-<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-73-1.png" style="display: block; margin: auto;" />
+<img src="C:\Users\ALEXAN~2\DOCUME~1\PHD\Lehre\EEP1_D~1\EEP1\INDEX_~2/figure-html/unnamed-chunk-79-1.png" style="display: block; margin: auto;" />
 
-\
-Der Output beinhaltet drei Tabellen:
-
-1. Die Zusammenfassung der Ergebnisse der Anova
-
-2. Mauchly's Test auf Spherizität
-
-3. Spherizität-Korrekturen nach Greenhouse-Geisser und Huynh-Feldt 
-
-Schaut euch die Bedeutung der Spalten mit `?ezANOVA` einmal an.
-
-\
-
-
-
-```
-$ANOVA
-                     Effect DFn DFd          F           p p<.05        ges
-2           Expositionszeit   1  19 10.0939003 0.004962470     * 0.04130396
-3                 TargetTyp   1  19  0.3941029 0.537623455       0.00175660
-4 Expositionszeit:TargetTyp   1  19 13.3066129 0.001711599     * 0.05474727
-```
-\
-
-Zuerst müssen wir kontrollieren, ob die Voraussetzungen für die Anova erfüllt sind mit dem `Mauchly's Test for Sphericity`.
-
-![](Grafiken/Mauchly.PNG)
-
-\
-
-In diesem Beispiel wird der Test auf Spherizität signifikant für die Effekte **B** und **A:B**, für **A** gibt es keine Werte, da **A** nur zwei Faktorstufen hat.
-
-\
-
-```
-NULL
-```
-
-\
-
-Das heißt es müssen die korrigierten Werte betrachtet werden für **B** und **A:B** ( `p[GG]` für Greenhouse-Geisser oder `p[HF]` für Huynh-Feldt . 
-
-\
-
-```
-NULL
-```
-
-\
-
-An den **p-Werten** (Spalten `p <.05`,  `p[GG] <.05`) erkennen wir, dass **A** und **B** signifikant sind.
-
-Sehr kleine Werte werden in **scientific notation** wiedergegebn: Xe-05 = X * 0.00001 (Komma 5 Stellen nach links verschieben)
-
-
-**Effektstärke** `ges`: generalized eta squared ($\eta ^2 _G$)
-
-* Maß für die Effektstärke 
-
-* wie viel Varianz an der Gesamtvarianz wird durch diesen Effekt aufgeklärt?
-
-* $\eta ^2 _G$ ist maximal 1 
-
-\
-**Ergebnisnotation**: $F$(6, 264) = 19.71, $p$ < .001, $\eta ^2$  = .05
-  
-\
 
 <a name="Post-Hoc-Tests"></a>
 
@@ -3027,10 +3127,12 @@ pttest
 
 data:  data.anova$rt.mean and interaction(data.anova$Expositionszeit, data.anova$TargetTyp) 
 
-            1.friendly 2.friendly 1.threating
-2.friendly  3.1e-07    -          -          
-1.threating 0.214      0.067      -          
-2.threating 0.643      0.063      1.000      
+            1.friendly 2.friendly 3.friendly 1.threating 2.threating
+2.friendly  7.8e-07    -          -          -           -          
+3.friendly  6.1e-10    1.3e-11    -          -           -          
+1.threating 0.534      0.167      4.3e-05    -           -          
+2.threating 1.000      0.158      6.1e-05    1.000       -          
+3.threating 1.000      0.091      3.1e-05    1.000       1.000      
 
 P value adjustment method: bonferroni 
 ```
@@ -3089,10 +3191,12 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 ```
 
 ```
-            1.friendly 2.friendly 1.threating
-2.friendly   16.383612         NA          NA
-1.threating   2.469357   3.183776          NA
-2.threating   1.789012   3.218099   0.2787094
+            1.friendly 2.friendly 3.friendly 1.threating 2.threating
+2.friendly   16.383612         NA         NA          NA          NA
+3.friendly   36.740119  56.622851         NA          NA          NA
+1.threating   2.469357   3.183776  10.266467          NA          NA
+2.threating   1.789012   3.218099   9.845615   0.2787094          NA
+3.threating   1.553184   3.564961  10.683908   0.4718280    0.679584
 ```
 
 
