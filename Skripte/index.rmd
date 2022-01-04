@@ -2965,22 +2965,12 @@ Schaut euch die Bedeutung der Spalten mit `?ezANOVA` einmal an.
 
 \
 
-
-```{r, eval=TRUE, echo= FALSE}
-library(ez)
-
-myanova
-
-```
-\
-
 Zuerst müssen wir kontrollieren, ob die Voraussetzungen für die Anova erfüllt sind mit dem `Mauchly's Test for Sphericity`.
 
 In diesem Beispiel wird der Test auf Spherizität signifikant für die Effekte **Expositionszeit** und **Expositionszeit:TargetTyp**, für **TargetTyp** gibt es keine Werte, da **TargetTyp** nur zwei Faktorstufen hat.
 
 \
 ```{r, eval=TRUE, echo= FALSE}
-library(ez)
 
 myanova$`Mauchly's Test for Sphericity`
 
@@ -2992,7 +2982,6 @@ Das heißt es müssen die korrigierten Werte betrachtet werden für **Exposition
 
 \
 ```{r, eval=TRUE, echo= FALSE}
-library(ez)
 
 myanova$`Sphericity Corrections`
 
