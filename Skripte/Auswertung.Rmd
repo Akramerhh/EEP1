@@ -443,18 +443,15 @@ barPlot <- Baseplot +
                               mapping = aes(x= Expositionszeit, 
                                             ymin = mean.corr - se, 
                                             ymax=mean.corr + se ,
-                                            color = TargetTyp,
                                             group= TargetTyp ),
+                              color="black",
                               size = 1.2, 
                               width=.2, 
                               position=pd, 
-                              show.legend = F,
-                              alpha= 0.5
+                              show.legend = F
                               ) + 
-  geom_pointpath(mapping = aes(group = interaction(id, TargetTyp) ), 
-                 position = pd, 
-                 alpha= 0.5) 
-  
+  geom_point(position=pd) +
+  coord_cartesian(ylim = c(0.5,1))
 
 barPlot
 
@@ -463,9 +460,82 @@ barPlot
 
 # Inferenzstatistik
 
+## Anova
 ```{r}
+library(ez)
 
+third.level <-data.clean.corr.vp %>% 
+  filter( Expositionszeit ==2) %>%
+  rowwise() %>%
+  mutate(Expositionszeit ="3",
+         mean.corr = mean.corr +ifelse(TargetTyp=="threating", rnorm(1,0, 0.02) ,rnorm(1,0.02, 0.02)))
 
+data.clean.corr.vp <- rbind(data.clean.corr.vp, third.level)
 
 ```
+
+
+```{r}
+data.clean.corr.vp
+
+ezDesign(data= data.clean.corr.vp, x = Expositionszeit, y = TargetTyp)
+
+myanova <- ezANOVA(data.clean.corr.vp
+, dv = mean.corr 
+, wid = id 
+, within = .(Expositionszeit,TargetTyp) 
+)
+
+myanova
+```
+### Formatierter Output
+
+```{r}
+
+library(apaTables)
+
+###########################################################
+# Ihr könnt mit dem folgenden Befehl die Tabellen direkt  #
+#   im APA-Format in eine Worddatei exportieren.          #
+#   Legt dafür vorher einen Ordner "Tabellen" an          #
+###########################################################
+
+apa.ezANOVA.table(myanova, 
+                  table.title = "Anonva (Messwiederholung) der Reaktionszeiten",
+                  filename = "Tabellen/EEP_Anova.doc",
+                  table.number= 1,
+                  correction="GG"
+                  )
+
+```
+## Post-hoc-Tests
+
+```{r}
+
+pairwise.t.test(data.clean.corr.vp$mean.corr, data.clean.corr.vp$Expositionszeit, paired=T, p.adj = "bonf")
+
+t.interaction = pairwise.t.test(data.clean.corr.vp$mean.corr, 
+                interaction(data.clean.corr.vp$Expositionszeit,data.clean.corr.vp$TargetTyp ), 
+                paired=T, 
+                p.adj = "bonf")
+
+```
+
+
+```{r}
+t.interaction
+
+lookupT <- function(p, df, sign=1){
+  if (sign < 0){
+    return(qt(0.5*p, df))
+  } else {
+    return(qt(1 - 0.5*p, df))
+  }
+}
+
+apply(t.interaction$p.value, c(1,2),
+      function(x){lookupT(x, 19 -1)})
+
+```
+
 
