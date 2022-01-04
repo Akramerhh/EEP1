@@ -2947,6 +2947,7 @@ myanova <- ezANOVA(data.anova
 myanova
 
 
+
 ```
 
 
@@ -2987,7 +2988,7 @@ myanova$`Mauchly's Test for Sphericity`
 
 \
 
-Das heißt es müssen die korrigierten Werte betrachtet werden für **B** und **A:B** ( `p[GG]` für Greenhouse-Geisser oder `p[HF]` für Huynh-Feldt . 
+Das heißt es müssen die korrigierten Werte betrachtet werden für **Expositionszeit** und **Expositionszeit:TargetTyp** ( `p[GG]` für Greenhouse-Geisser oder `p[HF]` für Huynh-Feldt . 
 
 \
 ```{r, eval=TRUE, echo= FALSE}
@@ -2999,7 +3000,7 @@ myanova$`Sphericity Corrections`
 
 \
 
-An den **p-Werten** (Spalten `p <.05`,  `p[GG] <.05`) erkennen wir, dass **A** und **B** signifikant sind.
+An den **p-Werten** (Spalten `p <.05`,  `p[GG] <.05`) erkennen wir, dass **Expositionszeit** und **Expositionszeit:TargetTyp** signifikant sind.
 
 Sehr kleine Werte werden in **scientific notation** wiedergegebn: Xe-05 = X * 0.00001 (Komma 5 Stellen nach links verschieben)
 
@@ -3016,6 +3017,19 @@ Sehr kleine Werte werden in **scientific notation** wiedergegebn: Xe-05 = X * 0.
 **Ergebnisnotation**: $F$(6, 264) = 19.71, $p$ < .001, $\eta ^2$  = .05
   
 \
+
+`ezanova` testet auch im between Design die Voraussetzung der Varianzhomogeneität. Ist diese verletzt, sind in der Regel nonparametrische Verfahren der Anonva vorzuziehen.
+
+```{r}
+myanovaBetween <- ezANOVA(data.anova
+, dv = rt.mean 
+, wid = id 
+, between = .(Expositionszeit,TargetTyp) 
+)
+
+myanovaBetween
+```
+
 
 Für die Ergebnispräsentation könnt ihr die Werte aus den Tabellen kopieren oder ihr verwendet z.B. das Paket `apaTables` um formatierte Tabellen direkt aus `R` zu bekommen.
 
