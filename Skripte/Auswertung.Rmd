@@ -291,7 +291,7 @@ vp.err<- data.ohneFehler.df %>%
   mutate(nTrials = n())%>%
   filter(mean(rt) > mean.rt + 3*sd.rt |                     # wichtig: größer als obere Grenze 
          mean(rt) < mean.rt -  3*sd.rt|# wichtig: kleiner als untere Grenze 
-         nTrials < 0.55*54 # Muss ggf. pro VP und Bedingung geprüft werden!
+         nTrials < 0.55*54 # 0.55 = minimale relative Häufigkeit korrekter Trials, 54= Absolute Anzahl an Trials die in einer Bedinung gegeben sein sollte (beide Werte müsst ihr für euer Experiment anpassen)
          ) %>%  
   select(id) %>%
   distinct() %>% 
