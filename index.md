@@ -636,8 +636,8 @@ Passen die Ergebnisse zu den Hypothesen?
 
 
 ```{=html}
-<div id="htmlwidget-04b23f0177f21835ab53" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-04b23f0177f21835ab53">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0];\nZusammenfassen [fillcolor= green]\nImport [fillcolor= green]\nBereingiung [fillcolor= green]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e53ea418faa05b83ece1" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e53ea418faa05b83ece1">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0];\nZusammenfassen [fillcolor= green]\nImport [fillcolor= green]\nBereingiung [fillcolor= green]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 
@@ -1215,8 +1215,8 @@ data.RT.df <- data.RT.df %>%
 
 
 ```{=html}
-<div id="htmlwidget-f84fb37b12644d397f21" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f84fb37b12644d397f21">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nZusammenfassen [fillcolor= green]\nDeskriptive [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5636e1b194b92d36af57" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5636e1b194b92d36af57">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nZusammenfassen [fillcolor= green]\nDeskriptive [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 \
@@ -1717,8 +1717,8 @@ factor(0)
 
 
 ```{=html}
-<div id="htmlwidget-9203d29769e032600ff6" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9203d29769e032600ff6">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nErgebnispräsentation [fillcolor= green]\nDeskriptive [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-fa3a245d41671efdb054" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fa3a245d41671efdb054">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nErgebnispräsentation [fillcolor= green]\nDeskriptive [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 \
@@ -2785,8 +2785,8 @@ ggsave("Grafiken/experiment_grafik2.PNG", plot= Interaction, width = 18, height 
 
 
 ```{=html}
-<div id="htmlwidget-28a24ee0f2bbb45d1c0a" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-28a24ee0f2bbb45d1c0a">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nErgebnispräsentation [fillcolor= green]\nInferenzstatistik [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7bc804db5200cd2afa0d" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7bc804db5200cd2afa0d">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nErgebnispräsentation [fillcolor= green]\nInferenzstatistik [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 \
@@ -2923,22 +2923,22 @@ myanova
 ```
 $ANOVA
                      Effect DFn DFd        F            p p<.05        ges
-2           Expositionszeit   2  38 29.05256 2.206506e-08     * 0.10421860
-3                 TargetTyp   1  19 13.84515 1.449004e-03     * 0.07203115
-4 Expositionszeit:TargetTyp   2  38 36.12397 1.624986e-09     * 0.13131638
+2           Expositionszeit   2  38 27.38064 4.324354e-08     * 0.10147954
+3                 TargetTyp   1  19 13.60403 1.560590e-03     * 0.06607017
+4 Expositionszeit:TargetTyp   2  38 29.89850 1.583814e-08     * 0.12247460
 
 $`Mauchly's Test for Sphericity`
-                     Effect          W            p p<.05
-2           Expositionszeit 0.06446699 1.923252e-11     *
-4 Expositionszeit:TargetTyp 0.21644301 1.042539e-06     *
+                     Effect         W            p p<.05
+2           Expositionszeit 0.2108904 8.251105e-07     *
+4 Expositionszeit:TargetTyp 0.2058562 6.638578e-07     *
 
 $`Sphericity Corrections`
                      Effect       GGe        p[GG] p[GG]<.05       HFe
-2           Expositionszeit 0.5166535 2.620643e-05         * 0.5194652
-4 Expositionszeit:TargetTyp 0.5606773 3.073366e-06         * 0.5712707
+2           Expositionszeit 0.5589373 2.064027e-05         * 0.5692134
+4 Expositionszeit:TargetTyp 0.5573689 1.189308e-05         * 0.5673598
          p[HF] p[HF]<.05
-2 2.514037e-05         *
-4 2.559159e-06         *
+2 1.785855e-05         *
+4 1.023125e-05         *
 ```
 
 
@@ -2963,7 +2963,7 @@ In diesem Beispiel wird der Test auf Spherizität signifikant für die Effekte *
 \
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["W"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p<.05"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Expositionszeit","2":"0.06446699","3":"1.923252e-11","4":"*","_rn_":"2"},{"1":"Expositionszeit:TargetTyp","2":"0.21644301","3":"1.042539e-06","4":"*","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["W"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p<.05"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Expositionszeit","2":"0.2108904","3":"8.251105e-07","4":"*","_rn_":"2"},{"1":"Expositionszeit:TargetTyp","2":"0.2058562","3":"6.638578e-07","4":"*","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
@@ -2974,7 +2974,7 @@ Das heißt es müssen die korrigierten Werte betrachtet werden für **Exposition
 \
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["GGe"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["p[GG]"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p[GG]<.05"],"name":[4],"type":["chr"],"align":["left"]},{"label":["HFe"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["p[HF]"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["p[HF]<.05"],"name":[7],"type":["chr"],"align":["left"]}],"data":[{"1":"Expositionszeit","2":"0.5166535","3":"2.620643e-05","4":"*","5":"0.5194652","6":"2.514037e-05","7":"*","_rn_":"2"},{"1":"Expositionszeit:TargetTyp","2":"0.5606773","3":"3.073366e-06","4":"*","5":"0.5712707","6":"2.559159e-06","7":"*","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["GGe"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["p[GG]"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p[GG]<.05"],"name":[4],"type":["chr"],"align":["left"]},{"label":["HFe"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["p[HF]"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["p[HF]<.05"],"name":[7],"type":["chr"],"align":["left"]}],"data":[{"1":"Expositionszeit","2":"0.5589373","3":"2.064027e-05","4":"*","5":"0.5692134","6":"1.785855e-05","7":"*","_rn_":"2"},{"1":"Expositionszeit:TargetTyp","2":"0.5573689","3":"1.189308e-05","4":"*","5":"0.5673598","6":"1.023125e-05","7":"*","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
@@ -3014,13 +3014,13 @@ myanovaBetween
 ```
 $ANOVA
                      Effect DFn DFd        F            p p<.05        ges
-1           Expositionszeit   2 114 6.631596 0.0018858900     * 0.10421860
-2                 TargetTyp   1 114 8.848951 0.0035803785     * 0.07203115
-3 Expositionszeit:TargetTyp   2 114 8.616525 0.0003274258     * 0.13131638
+1           Expositionszeit   2 114 6.437621 0.0022443687     * 0.10147954
+2                 TargetTyp   1 114 8.064845 0.0053461937     * 0.06607017
+3 Expositionszeit:TargetTyp   2 114 7.955385 0.0005831801     * 0.12247460
 
 $`Levene's Test for Homogeneity of Variance`
   DFn DFd      SSn      SSd         F         p p<.05
-1   5 114 1901.001 156001.5 0.2778359 0.9244399      
+1   5 114 2306.554 170066.2 0.3092291 0.9065377      
 ```
 
 
@@ -3051,9 +3051,9 @@ Table 1
 Anonva (Messwiederholung) der Reaktionszeiten 
 
                    Predictor df_num df_den Epsilon     F    p ges
-                   TargetTyp   1.00  19.00         13.85 .001 .07
-             Expositionszeit   1.03  19.63    0.52 29.05 .000 .10
- Expositionszeit x TargetTyp   1.12  21.31    0.56 36.12 .000 .13
+                   TargetTyp   1.00  19.00         13.60 .002 .07
+             Expositionszeit   1.12  21.24    0.56 27.38 .000 .10
+ Expositionszeit x TargetTyp   1.11  21.18    0.56 29.90 .000 .12
 
 Note. df_num indicates degrees of freedom numerator. df_den indicates degrees of freedom denominator. 
 Epsilon indicates Greenhouse-Geisser multiplier for degrees of freedom, 
@@ -3144,10 +3144,10 @@ data:  data.anova$rt.mean and interaction(data.anova$Expositionszeit, data.anova
 
             1.friendly 2.friendly 3.friendly 1.threating 2.threating
 2.friendly  7.8e-07    -          -          -           -          
-3.friendly  1.3e-11    3.6e-13    -          -           -          
-1.threating 0.534      0.167      4.0e-06    -           -          
-2.threating 1.000      0.158      1.5e-05    1.000       -          
-3.threating 1.000      0.097      1.5e-05    1.000       1.000      
+3.friendly  2.5e-11    8.8e-12    -          -           -          
+1.threating 0.53       0.17       3.7e-06    -           -          
+2.threating 1.00       0.16       2.1e-05    1.00        -          
+3.threating 1.00       0.16       3.4e-05    1.00        1.00       
 
 P value adjustment method: bonferroni 
 ```
@@ -3208,10 +3208,10 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 ```
             1.friendly 2.friendly 3.friendly 1.threating 2.threating
 2.friendly   16.383612         NA         NA          NA          NA
-3.friendly   56.442630  84.047904         NA          NA          NA
-1.threating   2.469357   3.183776   13.58031          NA          NA
-2.threating   1.789012   3.218099   11.63974   0.2787094          NA
-3.threating   1.418183   3.524235   11.67381   0.4803337    1.208526
+3.friendly   52.473438  58.978058         NA          NA          NA
+1.threating   2.469357   3.183776   13.72162          NA          NA
+2.threating   1.789012   3.218099   11.21352   0.2787094          NA
+3.threating   1.639108   3.200231   10.55416   0.3526220   0.3891311
 ```
 
 
@@ -3232,8 +3232,11 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 
 <a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
 
+<iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_K_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
+
 <a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
 
+<iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_E_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
 
 
 
