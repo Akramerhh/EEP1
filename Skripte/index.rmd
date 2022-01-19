@@ -118,7 +118,52 @@ opts_knit$get()
 
 \
 
-![](Grafiken/Folie7.PNG)
+```{r , eval=TRUE, echo=FALSE}
+library(DiagrammeR)
+DiagrammeR::grViz("
+digraph dot {
+
+graph [layout = dot,
+       rankdir = LR,
+       newrank=true,
+       compound=true,
+       label='Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n',
+       labelloc  =  t, // t: Place the graph's title on top.
+        fontsize  = 25]
+
+node [shape = rect,
+      style = filled,
+      color = black]
+
+edge [color=black]
+
+node [fillcolor = red]
+Import Bereingiung 
+Ergebnispräsentation [label= 'Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)']
+
+node [fillcolor = white]
+Zusammenfassen[label= 'Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP'] 
+Deskriptive [label= 'Deskriptive Statistik\n für die Stichprobe berechnen'] 
+Inferenzstatistik 
+
+subgraph cluster_0 {
+    rankdir=TB;
+    rank=same;
+		style=filled;
+		color=red;
+		node [style=filled,color=white,fillcolor = white ];
+		Zusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];
+		label = 'Analyse';
+		fontsize  = 20;
+	} 
+
+Import -> Bereingiung
+Bereingiung -> Deskriptive [lhead=cluster_0] ;
+Deskriptive-> Ergebnispräsentation [ltail=cluster_0];
+
+
+}", width="100%", heigh="100%")
+```
 
 \
 
