@@ -483,7 +483,8 @@ ezDesign(data= data.clean.corr.vp, x = Expositionszeit, y = TargetTyp)
 myanova <- ezANOVA(data.clean.corr.vp
 , dv = mean.corr 
 , wid = id 
-, within = .(Expositionszeit,TargetTyp) 
+, within = .(Expositionszeit,TargetTyp)
+, detailed = TRUE
 )
 
 myanova
@@ -504,7 +505,7 @@ apa.ezANOVA.table(myanova,
                   table.title = "Anonva (Messwiederholung) der Reaktionszeiten",
                   filename = "Tabellen/EEP_Anova.doc",
                   table.number= 1,
-                  correction="GG"
+                  correction="none"
                   )
 
 ```

@@ -1191,9 +1191,13 @@ data.RT.df <- data.ohneFehler.df %>%
         - ähnliche Vorgehensweise wie Analyse der [Antwortgenauigkeit](#Antwortgenauigkeit)
 
 
-<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
+**Feeback zur Session (Seminar K)**
 
-<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
+<iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_K_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
+
+**Feeback zur Session (Seminar E)**
+
+<iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_E_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
 
 
 \
@@ -1689,9 +1693,13 @@ data.alle.vps %>% filter(!(id %in% vp.err))
 
 \
 
-<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
+**Feeback zur Session (Seminar K)**
 
-<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
+<iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_K_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
+
+**Feeback zur Session (Seminar E)**
+
+<iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_E_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
 
 # 5. Grafiken
 \
@@ -2768,11 +2776,15 @@ ggsave("Grafiken/experiment_grafik2.PNG", plot= Interaction, width = 18, height 
 ## **Aufgaben**
 
 1. Erstellt für jede Kern-Hypothese eine aussagekräftige Grafik!
-    *
 
-<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
 
-<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
+**Feeback zur Session (Seminar K)**
+
+<iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_K_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
+
+**Feeback zur Session (Seminar E)**
+
+<iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_E_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
 
 
 
@@ -3193,11 +3205,11 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 
 \
 
-<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
+**Feeback zur Session (Seminar K)**
 
 <iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_K_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
 
-<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
+**Feeback zur Session (Seminar E)**
 
 <iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_E_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
 

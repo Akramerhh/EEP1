@@ -523,7 +523,7 @@ loaded via a namespace (and not attached):
 [29] mgcv_1.8-38      generics_0.1.1   car_3.0-12       ellipsis_0.3.2  
 [33] withr_2.4.2      cli_3.1.0        magrittr_2.0.1   crayon_1.4.2    
 [37] readxl_1.3.1     evaluate_0.14    fs_1.5.0         fansi_0.5.0     
-[41] nlme_3.1-153     MASS_7.3-54      xml2_1.3.2       tools_4.1.2     
+[41] nlme_3.1-153     MASS_7.3-55      xml2_1.3.2       tools_4.1.2     
 [45] hms_1.1.1        lifecycle_1.0.1  munsell_0.5.0    reprex_2.0.1    
 [49] compiler_4.1.2   jquerylib_0.1.4  rlang_0.4.12     grid_4.1.2      
 [53] nloptr_1.2.2.3   rstudioapi_0.13  boot_1.3-28      gtable_0.3.0    
@@ -636,8 +636,8 @@ Passen die Ergebnisse zu den Hypothesen?
 
 
 ```{=html}
-<div id="htmlwidget-341be52cee089a99d300" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-341be52cee089a99d300">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0];\nZusammenfassen [fillcolor= green]\nImport [fillcolor= green]\nBereingiung [fillcolor= green]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-fc688807fb83ffc68723" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fc688807fb83ffc68723">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0];\nZusammenfassen [fillcolor= green]\nImport [fillcolor= green]\nBereingiung [fillcolor= green]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 
@@ -1201,9 +1201,13 @@ data.RT.df <- data.RT.df %>%
         - ähnliche Vorgehensweise wie Analyse der [Antwortgenauigkeit](#Antwortgenauigkeit)
 
 
-<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
+**Feeback zur Session (Seminar K)**
 
-<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
+<iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_K_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
+
+**Feeback zur Session (Seminar E)**
+
+<iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_E_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
 
 
 \
@@ -1215,8 +1219,8 @@ data.RT.df <- data.RT.df %>%
 
 
 ```{=html}
-<div id="htmlwidget-426e9d223d5e5af9516a" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-426e9d223d5e5af9516a">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nZusammenfassen [fillcolor= green]\nDeskriptive [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d671aa757abde8fabe46" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d671aa757abde8fabe46">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nZusammenfassen [fillcolor= green]\nDeskriptive [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 \
@@ -1707,9 +1711,13 @@ factor(0)
 
 \
 
-<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
+**Feeback zur Session (Seminar K)**
 
-<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
+<iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_K_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
+
+**Feeback zur Session (Seminar E)**
+
+<iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_E_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
 
 # 5. Grafiken
 \
@@ -1717,8 +1725,8 @@ factor(0)
 
 
 ```{=html}
-<div id="htmlwidget-b110b8c63b54a7ba81f0" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b110b8c63b54a7ba81f0">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nErgebnispräsentation [fillcolor= green]\nDeskriptive [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e790ee05487ac16e587a" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e790ee05487ac16e587a">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nErgebnispräsentation [fillcolor= green]\nDeskriptive [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 \
@@ -2764,11 +2772,15 @@ ggsave("Grafiken/experiment_grafik2.PNG", plot= Interaction, width = 18, height 
 ## **Aufgaben**
 
 1. Erstellt für jede Kern-Hypothese eine aussagekräftige Grafik!
-    *
 
-<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
 
-<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
+**Feeback zur Session (Seminar K)**
+
+<iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_K_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
+
+**Feeback zur Session (Seminar E)**
+
+<iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_E_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
 
 
 
@@ -2785,8 +2797,8 @@ ggsave("Grafiken/experiment_grafik2.PNG", plot= Interaction, width = 18, height 
 
 
 ```{=html}
-<div id="htmlwidget-b58f7190adb8acd31e1b" style="width:100%;height:100%;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b58f7190adb8acd31e1b">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nErgebnispräsentation [fillcolor= green]\nInferenzstatistik [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7c6e6828b6a9aa95fd55" style="width:100%;height:100%;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7c6e6828b6a9aa95fd55">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot,\n       rankdir = LR,\n       newrank=true,\n       compound=true,\n       label=\"Workflow\\n Dokumentation, Kommunikation, Reproduzierbarkeit\\n\",\n       labelloc  =  t, // t: Place the graph\"s title on top.\n        fontsize  = 25]\n\nnode [shape = rect,\n      style = filled,\n      color = black]\n\nedge [color=black]\n\nnode [fillcolor = red]\nImport Bereingiung \nErgebnispräsentation [label= \"Ergebnispräsentation \\n(z.B. Grafiken, Tabellen usw)\"]\n\nnode [fillcolor = white]\nZusammenfassen[label= \"Zusammenfasse (=Aggregieren)\n der Daten innerhalb der VP\"] \nDeskriptive [label= \"Deskriptive Statistik\n für die Stichprobe berechnen\"] \nInferenzstatistik \n\nsubgraph cluster_0 {\n    rankdir=TB;\n    rank=same;\n\t\tstyle=filled;\n\t\tcolor=red;\n\t\tnode [style=filled,color=white,fillcolor = white ];\n\t\tZusammenfassen -> Deskriptive -> Inferenzstatistik [constraint=false];\n\t\tlabel = \"Analyse\";\n\t\tfontsize  = 20;\n\t} \n\nImport -> Bereingiung\nBereingiung -> Deskriptive [lhead=cluster_0] ;\nDeskriptive-> Ergebnispräsentation [ltail=cluster_0, fillcolor= green];\nErgebnispräsentation [fillcolor= green]\nInferenzstatistik [fillcolor= green];\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 \
@@ -2923,22 +2935,22 @@ myanova
 ```
 $ANOVA
                      Effect DFn DFd        F            p p<.05        ges
-2           Expositionszeit   2  38 24.25828 1.625559e-07     * 0.09320159
-3                 TargetTyp   1  19 11.31451 3.261340e-03     * 0.05542129
-4 Expositionszeit:TargetTyp   2  38 27.58029 3.985440e-08     * 0.10570333
+2           Expositionszeit   2  38 28.19963 3.100879e-08     * 0.10168224
+3                 TargetTyp   1  19 11.64978 2.916217e-03     * 0.06137212
+4 Expositionszeit:TargetTyp   2  38 27.95774 3.418865e-08     * 0.11414881
 
 $`Mauchly's Test for Sphericity`
-                     Effect          W            p p<.05
-2           Expositionszeit 0.08550353 2.442623e-10     *
-4 Expositionszeit:TargetTyp 0.19405753 3.902785e-07     *
+                     Effect         W            p p<.05
+2           Expositionszeit 0.1787859 1.866373e-07     *
+4 Expositionszeit:TargetTyp 0.1402960 2.105757e-08     *
 
 $`Sphericity Corrections`
                      Effect       GGe        p[GG] p[GG]<.05       HFe
-2           Expositionszeit 0.5223306 7.054477e-05         * 0.5261171
-4 Expositionszeit:TargetTyp 0.5537275 2.120664e-05         * 0.5630585
+2           Expositionszeit 0.5490842 1.966423e-05         * 0.5575790
+4 Expositionszeit:TargetTyp 0.5377200 2.444920e-05         * 0.5441919
          p[HF] p[HF]<.05
-2 6.720024e-05         *
-4 1.858016e-05         *
+2 1.739762e-05         *
+4 2.228374e-05         *
 ```
 
 
@@ -2963,7 +2975,7 @@ In diesem Beispiel wird der Test auf Spherizität signifikant für die Effekte *
 \
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["W"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p<.05"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Expositionszeit","2":"0.08550353","3":"2.442623e-10","4":"*","_rn_":"2"},{"1":"Expositionszeit:TargetTyp","2":"0.19405753","3":"3.902785e-07","4":"*","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["W"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["p"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p<.05"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Expositionszeit","2":"0.1787859","3":"1.866373e-07","4":"*","_rn_":"2"},{"1":"Expositionszeit:TargetTyp","2":"0.1402960","3":"2.105757e-08","4":"*","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
@@ -2974,7 +2986,7 @@ Das heißt es müssen die korrigierten Werte betrachtet werden für **Exposition
 \
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["GGe"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["p[GG]"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p[GG]<.05"],"name":[4],"type":["chr"],"align":["left"]},{"label":["HFe"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["p[HF]"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["p[HF]<.05"],"name":[7],"type":["chr"],"align":["left"]}],"data":[{"1":"Expositionszeit","2":"0.5223306","3":"7.054477e-05","4":"*","5":"0.5261171","6":"6.720024e-05","7":"*","_rn_":"2"},{"1":"Expositionszeit:TargetTyp","2":"0.5537275","3":"2.120664e-05","4":"*","5":"0.5630585","6":"1.858016e-05","7":"*","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["GGe"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["p[GG]"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p[GG]<.05"],"name":[4],"type":["chr"],"align":["left"]},{"label":["HFe"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["p[HF]"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["p[HF]<.05"],"name":[7],"type":["chr"],"align":["left"]}],"data":[{"1":"Expositionszeit","2":"0.5490842","3":"1.966423e-05","4":"*","5":"0.5575790","6":"1.739762e-05","7":"*","_rn_":"2"},{"1":"Expositionszeit:TargetTyp","2":"0.5377200","3":"2.444920e-05","4":"*","5":"0.5441919","6":"2.228374e-05","7":"*","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
@@ -3013,14 +3025,14 @@ myanovaBetween
 
 ```
 $ANOVA
-                     Effect DFn DFd        F           p p<.05        ges
-1           Expositionszeit   2 114 5.858514 0.003785408     * 0.09320159
-2                 TargetTyp   1 114 6.688724 0.010961531     * 0.05542129
-3 Expositionszeit:TargetTyp   2 114 6.737238 0.001715742     * 0.10570333
+                     Effect DFn DFd        F            p p<.05        ges
+1           Expositionszeit   2 114 6.451935 0.0022156904     * 0.10168224
+2                 TargetTyp   1 114 7.453882 0.0073356253     * 0.06137212
+3 Expositionszeit:TargetTyp   2 114 7.344893 0.0009989969     * 0.11414881
 
 $`Levene's Test for Homogeneity of Variance`
-  DFn DFd      SSn      SSd         F         p p<.05
-1   5 114 2178.695 170420.2 0.2914809 0.9168343      
+  DFn DFd      SSn      SSd        F         p p<.05
+1   5 114 2652.002 172008.5 0.351527 0.8803495      
 ```
 
 
@@ -3051,9 +3063,9 @@ Table 1
 Anonva (Messwiederholung) der Reaktionszeiten 
 
                    Predictor df_num df_den Epsilon     F    p ges
-                   TargetTyp   1.00  19.00         11.31 .003 .06
-             Expositionszeit   1.04  19.85    0.52 24.26 .000 .09
- Expositionszeit x TargetTyp   1.11  21.04    0.55 27.58 .000 .11
+                   TargetTyp   1.00  19.00         11.65 .003 .06
+             Expositionszeit   1.10  20.87    0.55 28.20 .000 .10
+ Expositionszeit x TargetTyp   1.08  20.43    0.54 27.96 .000 .11
 
 Note. df_num indicates degrees of freedom numerator. df_den indicates degrees of freedom denominator. 
 Epsilon indicates Greenhouse-Geisser multiplier for degrees of freedom, 
@@ -3144,10 +3156,10 @@ data:  data.anova$rt.mean and interaction(data.anova$Expositionszeit, data.anova
 
             1.friendly 2.friendly 3.friendly 1.threating 2.threating
 2.friendly  7.8e-07    -          -          -           -          
-3.friendly  4.3e-10    6.0e-11    -          -           -          
-1.threating 0.53412    0.16676    2.1e-05    -           -          
-2.threating 1.00000    0.15782    5.0e-05    1.00000     -          
-3.threating 1.00000    0.23102    0.00012    1.00000     1.00000    
+3.friendly  1.7e-10    3.7e-10    -          -           -          
+1.threating 0.53412    0.16676    2.0e-06    -           -          
+2.threating 1.00000    0.15782    5.2e-05    1.00000     -          
+3.threating 1.00000    0.33307    0.00021    1.00000     1.00000    
 
 P value adjustment method: bonferroni 
 ```
@@ -3208,10 +3220,10 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 ```
             1.friendly 2.friendly 3.friendly 1.threating 2.threating
 2.friendly   16.383612         NA         NA          NA          NA
-3.friendly   38.217358  47.547634         NA          NA          NA
-1.threating   2.469357   3.183776  11.185595          NA          NA
-2.threating   1.789012   3.218099  10.089370   0.2787094          NA
-3.threating   1.685465   2.981930   9.083329   0.2134884   0.2278316
+3.friendly   42.478147  38.838034         NA          NA          NA
+1.threating   2.469357   3.183776  14.721180          NA          NA
+2.threating   1.789012   3.218099  10.043817   0.2787094          NA
+3.threating   1.559086   2.757443   8.467627   0.2091113   0.2132588
 ```
 
 
@@ -3230,11 +3242,11 @@ apply(pttest$p.value, c(1,2), function(x){lookupT(x, 10 -1)})
 
 \
 
-<a href="https://ep.mafiasi.de/p/EEP_K_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar K
+**Feeback zur Session (Seminar K)**
 
 <iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_K_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
 
-<a href="https://ep.mafiasi.de/p/EEP_E_Session_Feedback" target="_blank">Feeback zur Session</a> Seminar E
+**Feeback zur Session (Seminar E)**
 
 <iframe name="embed_readwrite" src="https://ep.mafiasi.de/p/EEP_E_Session_Feedback?showControls=true&showChat=true&showLineNumbers=true&useMonospaceFont=false" width="100%" height="600" frameborder="0"></iframe>
 
